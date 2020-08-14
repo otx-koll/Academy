@@ -9,7 +9,7 @@
 - ADD_MONTHS
 : 달을 더함
 
-: sysdate, add_months(sysdate, 1) > 20/08/14에서 20/09/14로 됨
+> sysdate, add_months(sysdate, 1) > 20/08/14에서 20/09/14로 됨
 
 
 - NEXT_DAY
