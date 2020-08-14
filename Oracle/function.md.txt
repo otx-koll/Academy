@@ -1,3 +1,4 @@
+### Function
 INITCAP('abcd') > Abcd
 
 LOWER('ABCD') > abcd
