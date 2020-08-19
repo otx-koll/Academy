@@ -46,23 +46,34 @@ FROM 테이블이름
 
 ### 예제
 1. 모든 도서의 이름과 가격을 검색하시오
-`SELECT bookename, price FROM book;`
+```
+SELECT bookename, price FROM book;
+```
 
 2. 도서 테이블에 있는 모든 출판사를 검색하시오(중복은 제거한다)
-`SELECT DISTINCT publisher FROM book;`
+```
+SELECT DISTINCT publisher FROM book;
+```
 
 3. 가격이 1000이상, 2000 이하인 도서를 검색하시오
-`SELECT * FROM Book WHERE price BETWEEN 1000 AND 2000;`
+```
+SELECT * FROM Book WHERE price BETWEEN 1000 AND 2000;
+```
 
 4. 도서 이름의 왼쪽 두 번째 위치에 '구'라는 문자열을 갖는 도서 검색
-`SELECT * FROM Book WHERE bookname LIKE '_구%'`
+```
+SELECT * FROM Book WHERE bookname LIKE '_구%'
+```
 
 5. 도서를 가격의 내림차순으로 검색하시오. 가격이 같을시 출판사의 오름차순으로 검색
-
-`SELECT * FROM Book ORDER BY price DESC, publisher ASC;`
+```
+SELECT * FROM Book ORDER BY price DESC, publisher ASC;
+```
 
 6. 마당서점의 도서 판매 건수
-`SELECT COUNT(*) FROM Orders;`
+```
+SELECT COUNT(*) FROM Orders;
+```
 
 7. 가격이 8,000원 이상인 도서를 구매한 고객에 대하여 고객별 주문 도서의 총 수량을 구하시오. 단, 두 권 이상 구매한 고객만 구한다.
 ```
