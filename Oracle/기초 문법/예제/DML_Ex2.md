@@ -79,7 +79,7 @@ NAME | ADDRESS
 --|--
 김연아	|대한민국 서울
 
-(8)
+(8) 주문하지 않은 고객의 이름(조인 사용)
 ```
 SELECT NAME
 FROM CUSTOMER
@@ -92,7 +92,7 @@ NAME
 --|
 박세리
 
-(9)
+(9) 주문 금액의 
 ```
 SELECT SUM(SALEPRICE), AVG(SALEPRICE)
 FROM ORDERS
