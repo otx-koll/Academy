@@ -151,6 +151,7 @@ WHERE B2.PUBLISHER = B1.PUBLISHER)
 - 합집합 : UNION
 - 차집합 : EXCEPT
 - 교집합 : INTERSECT
+
 EX) 도서를 주문하지 않는 고객의 이름을 보이시오
 ```
 SELECT NAME
@@ -165,6 +166,7 @@ FROM ORDERS)
 ### EXISTS
 - 원래 단어에서 의미하는 것과 같이 조건에 맞는 튜플이 존재하면 결과에 포함시킴
 - 부속질의문의 어떤 행이 조건에 만족하면 참인 반면 NOT EXISTS는 부속질의문의 모든 행이 조건에 만족하지 않을 때만 참임
+
 EX) 주문이 있는 고객의 이름과 주소를 보이시오
 ```
 SELECT NAME, ADDRESS
