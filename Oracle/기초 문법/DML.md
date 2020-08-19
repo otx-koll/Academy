@@ -104,22 +104,22 @@ FROM 테이블1 {LEFT | RIGHT | FULL [OUTER]} JOIN
 테이블2 ON <조인조건>
 WHERE <검색조건>
 ```
-3. 예제
+### 예제
 
-고객별로 주문한 모든 도서의 총 판매액을 구하시오
+1. 고객별로 주문한 모든 도서의 총 판매액을 구하시오
 ```
 SELECT name, SUM(saleprice)
 FROM Customer, Orders
 WHERE Customer.custid = ordrs.custid
 GROUP BY Customer.name
 ```
-가격이 20,000원인 도서를 주문한 고객의 이름과 도서의 이름을 구하시오
+2. 가격이 20,000원인 도서를 주문한 고객의 이름과 도서의 이름을 구하시오
 ```
 SELECT Customer.name, book.bookname
 FROM Customer, Orders, Book
 WHERE Customer.custid = Orders.custid AND Orders.bookid = Book.bookid AND Book.price = 20000
 ```
-도서를 구매하지 않은 고객을 포함하여 고객의 이름과 고객이 주문한 도서의 판매가격
+3. 도서를 구매하지 않은 고객을 포함하여 고객의 이름과 고객이 주문한 도서의 판매가격
 ```
 SELECT Customer.name, saleprice
 FROM Customer LEFT OUTER JOIN
