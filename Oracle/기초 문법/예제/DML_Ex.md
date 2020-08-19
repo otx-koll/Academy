@@ -41,6 +41,14 @@ COUNT(\*)
 --|
 3
 
+(5) 박지성이 구매한 도서의 출판사 수
+```
+SELECT COUNT(publisher)
+FROM Customer, Orders, Book
+WHERE Customer.custid = Orders.custid AND Orders.bookid = Book.bookid AND Customer.name LIKE '박지성'
+```
+
+
 #### 2. 마당서점의 운영자가 경영자가 요구하는 다음 질문에 대해 SQL 문을 작성하시오
 (1)
 ```
