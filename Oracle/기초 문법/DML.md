@@ -105,6 +105,7 @@ FROM 테이블1 {LEFT | RIGHT | FULL [OUTER]} JOIN
 WHERE <검색조건>
 ```
 3. 예제
+
 고객별로 주문한 모든 도서의 총 판매액을 구하시오
 ```
 SELECT name, SUM(saleprice)
