@@ -47,6 +47,9 @@ SELECT COUNT(publisher)
 FROM Customer, Orders, Book
 WHERE Customer.custid = Orders.custid AND Orders.bookid = Book.bookid AND Customer.name LIKE '박지성'
 ```
+COUNT(PUBLISHER)
+-- |
+3
 
 (6) 박지성이 구매한 도서의 이름, 가격, 정가와 판매가격의 차이
 ```
@@ -56,6 +59,11 @@ WHERE CUSTOMER.CUSTID = ORDERS.CUSTID
 AND ORDERS.BOOKID = BOOK.BOOKID
 AND NAME LIKE '박지성'
 ```
+BOOKNAME | PRICE|PRICE-SALEPRICE
+--|--|--
+축구의 역사	|7000	|1000
+축구의 이해	|22000	|1000
+축구아는 여자	|13000	|1000
 
 (7) 박지성이 구매하지 않은 도서의 이름
 1.MINUS
@@ -80,7 +88,6 @@ WHERE CUSTOMER.CUSTID = ORDERS.CUSTID
 AND ORDERS.BOOKID = BOOK.BOOKID
 AND NAME LIKE '박지성')
 ```
-
 2.NOT EXISTS
 ```
 SELECT BOOKNAME
@@ -102,5 +109,13 @@ WHERE CUSTOMER.CUSTID = ORDERS.CUSTID
 AND B1.BOOKID = ORDERS.BOOKID
 AND NAME LIKE '박지성')
 ```
-
+BOOKNAME
+--|
+골프 바이블
+피겨 교본
+역도 단계별기술
+야구의 추억
+야구를 부탁해
+올림픽 이야기
+Olympic Champions
 
