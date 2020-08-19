@@ -15,8 +15,9 @@ CREATE TABLE 테이블이름
   }
 )
 ```
+
 #### 예제
-1. NEWBOOK 테이블을 생성하시오. 정수형은 NUMBER를, 문자형은 가변형 문자 타입인 VARCHAR2를 사용한다
+1-1. NEWBOOK 테이블을 생성하시오. 정수형은 NUMBER를, 문자형은 가변형 문자 타입인 VARCHAR2를 사용한다
 - BOOKID(도서번호) - NUMBER, 기본키 지정
 - BOOKNAME(도서이름) - VARCHAR2(20)
 - PUBLISHER(출판사) - VARCHAR2(20)
@@ -28,6 +29,24 @@ BOOKNAME VARCHAR2(20),
 PUBLISHER VARCHAR2(20),
 PRICE NUMBER,
 PRIMARY KEY(BOOKID)
+)
+```
+1-2. BOOKID속성이 없어서 두 개의 속성 BOOKNAME, PUBLISHER가 기본키가 되면 괄호로 복합키 지정
+```
+CREATE TABLE NEWBOOK(
+BOOKNAME VARCHAR2(20),
+PUBLISHER VARCHAR2(20),
+PRICE NUMBER,
+PRIMARY KEY(BOOKNAME, PUBLISHER)
+)
+```
+1-3. BOOKNAME은 NULL값을 가질 수 없고, PUBLISHER는 같은 값이 있으면 안된다. PRICE에 값이 입력되지 않을 경우 기본 값 10000을 저장한다. 또 가격은 최소 1000원 이상으로 한다.
+```
+CREATE TABLE NEWBOOK(
+BOOKNAME VARCHAR(20) NOT NULL,
+PUBLISHER VARCHAR2(20) UNIQUE,
+PRICE NUMBER DEFAULT 10000 CHECK(PRICE > 1000),
+PRIMARY KEY(BOOKNAME, PUBLISHER)
 )
 ```
 2. 다음과 같은 속성을 가진 NEWCUSTOMER 테이블을 생성하시오
@@ -43,7 +62,6 @@ ADDRESS VARCHAR2(40),
 PHONE VARCHAR2(30)
 )
 ```
-
 3. 다음과 같은 속성을 가진 NEWORDERS 테이블을 생성하시오
 - ORDERID(주문번호) - NUMBER, 기본키
 - CUSTID(고객번호) - NUMBER, NOT NULL 제약조건, 외래키(NewCustomer.custid,연쇄삭제)
