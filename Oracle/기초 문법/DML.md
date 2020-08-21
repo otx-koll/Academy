@@ -38,8 +38,8 @@ FROM 테이블이름
 - STDDEV : 표준편차
 - VARIANCE : 분산
 
-### 예제
-예1) emp테이블의 deptno와 sal을 출력하는데 sal은 null값인 행도 합하여 평균을 구하라
+#### 예제
+1. emp테이블의 deptno와 sal을 출력하는데 sal은 null값인 행도 합하여 평균을 구하라
 ```
 SELECT DEPTNO
      , JOB
@@ -54,7 +54,7 @@ DEPTNO | JOB | A
 20	|CLERK	|800
 30	|CLERK	|950
 
-예2) EMP테이블에서 평균 급여가 2000이상인 SAL과 DEPTNO를 구하시오
+2. EMP테이블에서 평균 급여가 2000이상인 SAL과 DEPTNO를 구하시오
 ```
 SELECT DEPTNO
      , ROUND(AVG(NVL(SAL,0)),2) "A"
@@ -155,6 +155,68 @@ WHERE Customer.custid = Orders.custid AND Orders.bookid = Book.bookid AND Book.p
 SELECT Customer.name, saleprice
 FROM Customer LEFT OUTER JOIN
 ```
+4. 학생 테이블(STUDENT)과 학과 테이블(DEPARTMENT), 교수테이블(PROFESSOR)을 JOIN하여 학생의 이름과 학과이름, 학생의 지도교수 이름을 출력
+```
+SELECT S.NAME STU_NAME
+     , D.DNAME DEPT_NAME
+     , P.NAME PROF_NAME
+FROM STUDENT S, PROFESSOR P, DEPARTMENT D
+WHERE S.PROFNO = P.PROFNO
+  AND P.DEPTNO = D.DEPTNO;
+```
+5. STUDENT 테이블을 조회하여 1전공(DEPTNO1)이 101번인 학생들의 이름과 지도교수 이름을 출력하라
+```
+SELECT S.NAME
+     , P.NAME
+FROM STUDENT S, PROFESSOR P
+WHERE S.PROFNO = P.PROFNO AND S.DEPTNO1 = 101;
+```
+STU_NAME | PROF_NAME
+--|--
+James Seo	|Audie Murphy
+Richard Dreyfus	|Angela Bassett
+Billy Crystal	|Angela Bassett
+
+6. CUSTOMER 테이블과 GIFT테이블을 JOIN하여 고객별로 마일리지 포인트를 조회한 후 해당 마일리리 점수로 받을 수 있는 상품을 조회하여 고객의 이름과 받을 수 있는 상품 명을 출력하시오
+```
+SELECT C.GNAME CUST_NAME
+     , TO_CHAR(C.POINT,'999,999') "POINT"
+     , G.GNAME GIFT_NAME
+FROM CUSTOMER C, GIFT G
+WHERE C.POINT BETWEEN G.G_START AND G.G_END;
+```
+비등가조인
+
+7. student테이블과 score테이블, hakjum 테이블을 조회하여 학생들의 이름과 점수와 학점을 출력하세요
+```
+SELECT S.NAME "STU_NAME"
+     , O.TOTAL "SCORE"
+     , H.GRADE "CREDIT"
+FROM STUDENT S, SCORE O, HAKJUM H
+WHERE S.STUDNO = O.STUDNO
+AND O.TOTAL BETWEEN H.MIN_POINT AND H.MAX_POINT
+ORDER BY O.TOTAL DESC;
+```
+#### Outer Join
+```
+SELECT A.NAME STU_NAME
+     , B.NAME PROF_NAME
+FROM STUDENT A LEFT JOIN PROFESSOR B
+    ON A.PROFNO = B.PROFNO;
+```
+=
+```
+FROM STUDENT A LEFT OUTER JOIN PROFESSOR B
+    ON A.PROFNO = B.PROFNO;
+```
+=
+```
+FROM STUDENT A, PROFESSOR B
+WHERE A.PROFNO = B.PROFNO(+);
+```
+- B.PROFNO의 NULL값도 나온다
+- +가 A.PROFNO에 있으면 A.PROFNO를 기준으로 출력
+
 ---
 ### 부속질의
 - SQL문 내에 또 다른 SQL문을 작성
