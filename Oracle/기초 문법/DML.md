@@ -35,6 +35,37 @@ FROM 테이블이름
 - COUNT({[ALL | DISTINCT] 속성이름 | *})
 - MAX([ALL | DISTINCT] 속성이름)
 - MIN([ALL | DISTINCT] 속성이름)
+- STDDEV : 표준편차
+- VARIANCE : 분산
+
+### 예제
+예1) emp테이블의 deptno와 sal을 출력하는데 sal은 null값인 행도 합하여 평균을 구하라
+```
+SELECT DEPTNO
+     , JOB
+     , AVG(NVL(SAL,0)) "A"
+FROM EMP
+GROUP BY DEPTNO, JOB
+ORDER BY DEPTNO, JOB;
+```
+DEPTNO | JOB | A
+--|--|--
+10	|PRESIDENT	|5000
+20	|CLERK	|800
+30	|CLERK	|950
+
+예2) EMP테이블에서 평균 급여가 2000이상인 SAL과 DEPTNO를 구하시오
+```
+SELECT DEPTNO
+     , ROUND(AVG(NVL(SAL,0)),2) "A"
+FROM EMP
+GROUP BY DEPTNO
+HAVING AVG(NVL(SAL, 0)) > 2000;
+```
+DEPTNO | A
+--|--
+20	|2258.33
+10	|2916.67
 
 ### GROUP BY 
 - GROUP BY <속성>
