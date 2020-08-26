@@ -68,11 +68,10 @@ DEPTNO | A
 10	|2916.67
 
 ### GROUP BY 
-- GROUP BY <속성>
-- 어느 고객이 얼마나 주문했는지 알고 싶다
+- GROUP BY <그룹식>
 
 ### HAVING
-- HAVING <검색조건>
+- HAVING <그룹의 조건식>
 
 
 ### 예제
