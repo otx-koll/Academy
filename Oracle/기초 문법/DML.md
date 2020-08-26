@@ -1,4 +1,4 @@
-## SELECT 기본 문법
+## SELECT
 ```
 SLECT[ALL | DISTINCT]속성이름
 FROM 테이블이름
@@ -38,7 +38,6 @@ FROM 테이블이름
 - STDDEV : 표준편차
 - VARIANCE : 분산
 
-#### 예제
 1. emp테이블의 deptno와 sal을 출력하는데 sal은 null값인 행도 합하여 평균을 구하라
 ```
 SELECT DEPTNO
@@ -114,8 +113,25 @@ GROUP BY custid
 HAVING count(*) >= 2
 ```
 ---
+## INSERT
+- 테이블에 데이터를 추가한다
+```
+INSERT INTO 테이블 이름[(열1, 열2, ... 열N)]
+VALUES(열 1에 들어갈 데이터, 열 2에 들어갈 데이터, ...열N에 들어갈 데이터);
+```
+테이블의 열을 모두 가져오고 싶다면 [(열1, 열2...)]를 생략해도 된다
+
+특정 데이터가 없을 경우 NULL값 또는 빈 공백 문자열('')입력 또는 아예 생략
+
+
+
+
+
+
 
 ---
+
+
 ### 부속질의
 - SQL문 내에 또 다른 SQL문을 작성
 
