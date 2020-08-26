@@ -134,6 +134,17 @@ FROM 테이블1 {LEFT | RIGHT | FULL [OUTER]} JOIN
 테이블2 ON <조인조건>
 WHERE <검색조건>
 ```
+
+3. Self Join
+- 동일 테이블 사이의 조인
+```
+SELECT E1.EMPNO "ENO"
+     , E1.ENAME "ENAME"
+     , E2.EMPNO "MGRNO"
+     , E2.ENAME "MGR_NAME"
+FROM EMP E1, EMP E2
+WHERE E1.MGR = E2.EMPNO;
+```
 #### 예제
 
 1. 고객별로 주문한 모든 도서의 총 판매액을 구하시오
