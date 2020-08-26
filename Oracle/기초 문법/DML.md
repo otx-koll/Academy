@@ -72,7 +72,6 @@ DEPTNO | A
 ### HAVING
 - HAVING <그룹의 조건식>
 
-
 ### 예제
 1. 모든 도서의 이름과 가격을 검색하시오
 ```
@@ -112,18 +111,50 @@ WHERE saleprice >= 8000
 GROUP BY custid
 HAVING count(*) >= 2
 ```
+
 ---
+
 ## INSERT
 - 테이블에 데이터를 추가한다
 ```
 INSERT INTO 테이블 이름[(열1, 열2, ... 열N)]
 VALUES(열 1에 들어갈 데이터, 열 2에 들어갈 데이터, ...열N에 들어갈 데이터);
 ```
-테이블의 열을 모두 가져오고 싶다면 [(열1, 열2...)]를 생략해도 된다
+테이블의 열을 모두 가져오고 싶다면 \[(열1, 열2...)]를 생략해도 된다
 
 특정 데이터가 없을 경우 NULL값 또는 빈 공백 문자열('')입력 또는 아예 생략
 
+## UPDATE
+```
+UPDATE [변경할 테이블] 
+SET [변경할 열1] = [데이터]
+[WHERE 데이터를 변경할 대상 행을 선별하기 위한 조건];
+```
+- 되돌리고 싶을 때 : ROLLBACK;
+- 확정 : COMMIT;
 
+### 서브쿼리 이용하여 데이터 수정
+- 여러 열을 한 번에 수정하는 경우 
+Ex) 
+Professor 테이블에서 'Sharon Stone'교수의 직급(position)과 동일한 직급을 가진 교수들 중 현재 급여(pay)가 250만원이 안되는 교수들의 급여를 15%인상하라.
+```
+UPDATE PROFESSOR
+SET PAY = PAY * 1.15
+WHERE POSITION = (SELECT POSITION
+                  FROM PROFESSOR
+                  WHERE NAME = 'Sharon Stone')
+AND PAY < 250;
+```
+
+## DELETE
+```
+DELETE FROM 테이블명
+```
+- 롤백 가능
+```
+TRUNCATE TABLE 테이블명
+```
+- 롤백 불가능
 
 
 
