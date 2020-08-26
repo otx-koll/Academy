@@ -52,6 +52,26 @@ WHERE DCODE IN (1000, 1001, 1002);
 DEPT2에서 DCODE의 값이 1000, 1001, 1002인 DCODE, DNAME구조만 가져와 DEPT6테이블을 만든다.
 
 ## ALTER
+- 테이블의 속성과 속성에 관한 제약을 변경할 수 있다.
+- ADD, DROP은 속성을 추가하거나 제거할 때
+- MODIFY는 속성의 기본값을 설정하거나 삭제할 때
+- 기본문법
+```
+ALTER TABLE 테이블이름
+ADD 속성이름 데이터타입
+DROP COLUMN 속성이름
+MODIFY 속성이름 데이터타입
+MODIFY 속성이름 [NULL | NOT NULL]
+ADD PRIMARY KEY(속성이름)
+[ADD | DROP] 제약이름
+```
+### 데이터 추가
+```
+ALTER TABLE DEPT6
+ADD(LOCATION2 VARCHAR2(10) DEFAULT 'SEOUL');
+```
+DEPT6테이블에 LOCATION2 컬럼을 추가하고 유형은 VARCHAR2(10)이다. 기본값은 'SEOUL'
+
 
 
 
