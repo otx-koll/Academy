@@ -72,7 +72,15 @@ ADD(LOCATION2 VARCHAR2(10) DEFAULT 'SEOUL');
 ```
 DEPT6테이블에 LOCATION2 컬럼을 추가하고 유형은 VARCHAR2(10)이다. 기본값은 'SEOUL'
 
+### 변경
+- 컬럼이름 변경
+```
+ALTER TABLE DEPT6
+RENAME COLUMN LOCATION2 TO LOC;
+```
+RENAME COLUMN(칼럼을 바꾼다) LOCATION2를 LOC로 바꾼다.
 
+테이블 명을 바꿀 땐 RENAME 테이블 TO 변경할이름
 
 
 ### 예제
