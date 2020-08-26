@@ -82,6 +82,30 @@ RENAME COLUMN(칼럼을 바꾼다) LOCATION2를 LOC로 바꾼다.
 
 테이블 명을 바꿀 땐 RENAME 테이블 TO 변경할이름
 
+- 속성값 변경
+```
+ALTER TABLE NEW_EMP2
+MODIFY(EMPNO NUMBER(7));
+```
+EMPNO의 속성값을 NUMBER(7)로 바꿈
+
+### 삭제
+```
+ALTER TABLE DEPT7
+DROP COLUMN LOC;
+```
+DEPT7 테이블의 LOC 컬럼을 삭제
+
+
+
+## Drop
+- 테이블을 삭제하는 명령
+- 테이블의 구조와 데이터를 모두 삭제하므로 주의해야한다
+- 데이터만 삭제하려면 DELETE문 사용
+- 기본 문법
+```
+DROP TABLE 테이블이름
+```
 
 ### 예제
 1-1. NEWBOOK 테이블을 생성하시오. 정수형은 NUMBER를, 문자형은 가변형 문자 타입인 VARCHAR2를 사용한다
