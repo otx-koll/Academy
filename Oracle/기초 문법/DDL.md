@@ -1,4 +1,4 @@
-### CREATE
+## CREATE
 - 테이블을 구성하고, 속성과 속성에 관한 제약을 정의하며, 기본키 및 외래키를 정의하는 명령
 - PRIMARY KEY는 기본키를 정할 때 사용
 - FOREIGN KEY는 외래키를 지정할 때 사용
@@ -15,8 +15,23 @@ CREATE TABLE 테이블이름
   }
 )
 ```
+### 테이블 복사
+```
+CREATE TABLE DEPT3
+AS
+SELECT * FROM DEPT2;
+```
+DEPT2테이블에서 내용을 복사하여 DEPT3테이블을 만든다.
 
-#### 예제
+- 원하는 내용만 가져와서 복사
+```
+CREATE TABLE DEPT4
+AS
+SELECT DCODE, DNAME FROM DEPT2;
+```
+DEPT2테이블의 DCODE, DNAME만 복사하여 DEPT4테이블을 만든다.
+
+### 예제
 1-1. NEWBOOK 테이블을 생성하시오. 정수형은 NUMBER를, 문자형은 가변형 문자 타입인 VARCHAR2를 사용한다
 - BOOKID(도서번호) - NUMBER, 기본키 지정
 - BOOKNAME(도서이름) - VARCHAR2(20)
