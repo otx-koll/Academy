@@ -31,6 +31,30 @@ SELECT DCODE, DNAME FROM DEPT2;
 ```
 DEPT2테이블의 DCODE, DNAME만 복사하여 DEPT4테이블을 만든다.
 
+-구조만 복사
+```
+CREATE TABLE DEPT5
+AS
+SELECT * FROM DEPT2
+WHERE 1 = 2;
+```
+조건을 거짓으로 하면 구조만 가져올 수 있다.
+
+- 원하는 구조에 값만 가져와서 만들기
+```
+CREATE TABLE DEPT6
+AS
+SELECT DCODE
+     , DNAME
+FROM DEPT2
+WHERE DCODE IN (1000, 1001, 1002);
+```
+DEPT2에서 DCODE의 값이 1000, 1001, 1002인 DCODE, DNAME구조만 가져와 DEPT6테이블을 만든다.
+
+## ALTER
+
+
+
 ### 예제
 1-1. NEWBOOK 테이블을 생성하시오. 정수형은 NUMBER를, 문자형은 가변형 문자 타입인 VARCHAR2를 사용한다
 - BOOKID(도서번호) - NUMBER, 기본키 지정
