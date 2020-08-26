@@ -135,6 +135,7 @@ SET [변경할 열1] = [데이터]
 
 ### 서브쿼리 이용하여 데이터 수정
 - 여러 열을 한 번에 수정하는 경우 
+
 Ex) 
 Professor 테이블에서 'Sharon Stone'교수의 직급(position)과 동일한 직급을 가진 교수들 중 현재 급여(pay)가 250만원이 안되는 교수들의 급여를 15%인상하라.
 ```
@@ -156,34 +157,6 @@ TRUNCATE TABLE 테이블명
 ```
 - 롤백 불가능
 
-
-
-
-
----
-
-
-### 부속질의
-- SQL문 내에 또 다른 SQL문을 작성
-
-#### 예제
-도서를 구매한 적 있는 고객의 이름을 검색하시오
-```
-SELECT NAME
-FROM CUSTOMER
-WHERE CUSTID IN
-(SELECT CUSTID
-FROM ORDERS)
-```
-출판사별로 출판사의 평균 도서 가격보다 비싼 도서를 구하시오
-```
-SELECT B1.BOOKNAME
-FROM BOOK B1
-WHERE B1.PRICE >
-(SELECT AVG(B2.PRICE)
-FROM BOOK B2
-WHERE B2.PUBLISHER = B1.PUBLISHER)
-```
 ---
 ### 집합연산
 - 합집합 : UNION
