@@ -76,9 +76,10 @@ PIVOT
 FOR DAY IN('SUN' "SUN",'MON' "MON",'TUE' "TUE",'WED' "WED",'THU' "THU",'FRI' "FRI",'SAT' "SAT"))
 ORDER BY WEEKNO;
 ```
-
+---
 
 ### PIVOT
+- 오라클 11g부터 제공한다. 기존 테이블의 행을 열로 바꾸고 UNPIVOT는 열을 행으로 바꿔서 출력한다.
 ```
 SELECT *
 FROM(SELECT ...
