@@ -51,7 +51,7 @@ public class BMI extends JFrame {
 		g.add(man);
 		sex.add(woman);
 		sex.add(man);
-		sex.setBorder(new TitledBorder(null, "성별",TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		sex.setBorder(new TitledBorder(null, "성별",TitledBorder.LEADING, TitledBorder.TOP)); // 테두리색(new LineBorder(Color.색), 제목, 경계, 위치
 		sex.setBounds(30, 140, 150, 70);
 		BodyPanel.add(sex);
 
@@ -62,7 +62,7 @@ public class BMI extends JFrame {
 		habit.add(drinking);
 		habit.add(smoking);
 		habit.add(exercise);
-		habit.setBorder(new TitledBorder(null, "습  관",TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		habit.setBorder(new TitledBorder(null, "습  관",TitledBorder.LEADING, TitledBorder.TOP));
 		habit.setBounds(30, 230, 200, 70);
 		BodyPanel.add(habit);
 
@@ -71,7 +71,7 @@ public class BMI extends JFrame {
 		btn.addActionListener(new buttonClick());
 		c.add(btn);
 
-		BodyPanel.setBorder(new TitledBorder(null, "Body Max Index",TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		BodyPanel.setBorder(new TitledBorder(null, "Body Max Index",TitledBorder.LEADING, TitledBorder.TOP));
 		BodyPanel.setBounds(40, 40, 280, 330);
 		c.add(BodyPanel);
 
@@ -113,15 +113,6 @@ public class BMI extends JFrame {
 				bmiStr += "멋진 ";
 			
 			bmiStr += name.getText()+"님의\n신체 질량 지수는:";
-
-//			if(woman.isSelected()) {
-//				result2.setBackground(Color.red);
-//				result2.setOpaque(true);
-//			}
-//			else if(man.isSelected()) {
-//				result2.setBackground(Color.pink);
-//				result2.setOpaque(true);
-//			}
 			
 			result.setText(bmiStr);
 			result.setVerticalAlignment(SwingConstants.TOP);
@@ -130,7 +121,7 @@ public class BMI extends JFrame {
 				opiStr += drinking.getText()+" 그만 마셔요!";
 			if(smoking.isSelected())
 				opiStr += smoking.getText()+" 끊으세요!\n";
-			if(exercise.isSelected())
+			if(!exercise.isSelected())
 				opiStr += exercise.getText()+" 좀 하세요!\n";
 			
 			opinion.setText(opiStr);
