@@ -10,7 +10,7 @@ public class Food extends JFrame {
 	private String rice[] = { null, "고치돈", "제육볶음", "치킨마요" };
 	private Integer riceMoney[] = { null, 3500, 4000, 3000 };
 	private Integer count[] = { null, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-	private String noodle[] = { "", "라면" };
+	private String noodle[] = { null, "라면" };
 	private Integer noodleMoney[] = {null, 2000};
 	private JLabel calculate;
 	private JComboBox riceCombo;
@@ -36,7 +36,7 @@ public class Food extends JFrame {
 
 		JLayeredPane school = new JLayeredPane();
 		school.setLayout(null);
-		school.setBounds(30, 30, 360, 190);
+		school.setBounds(30, 30, 360, 178);
 		school.setBorder(new TitledBorder("학식이 최고!"));
 		c.add(school);
 
@@ -90,7 +90,7 @@ public class Food extends JFrame {
 		school.add(strawberryCombo);
 
 		JPanel vat = new JPanel();
-		vat.setBounds(222, 219, 168, 87);
+		vat.setBounds(222, 210, 168, 96);
 		vat.setBorder(new TitledBorder("영수증"));
 		c.add(vat);
 
@@ -104,7 +104,7 @@ public class Food extends JFrame {
 		vat.add(vatTrue);
 
 		JButton calculateBtn = new JButton("계산하기");
-		calculateBtn.setBounds(402, 228, 122, 33);
+		calculateBtn.setBounds(402, 220, 122, 33);
 		calculateBtn.addActionListener(new cal());
 		c.add(calculateBtn);
 
@@ -112,7 +112,7 @@ public class Food extends JFrame {
 		calculate.setOpaque(true);
 		calculate.setBackground(Color.WHITE);
 		calculate.setBorder(new LineBorder(Color.gray, 1));
-		calculate.setBounds(402, 40, 122, 178);
+		calculate.setBounds(402, 30, 122, 178);
 		c.add(calculate);
 
 		setSize(565, 355);
@@ -131,18 +131,18 @@ public class Food extends JFrame {
 			if(vatFalse.isSelected()) {
 				if(strawberryCombo.isSelected()) {
 					strawberry = riceMulResult + 1500;
-					calculate.setText("<html>"+riceComboValue+" "+riceMul+" "+countValue+"개<br>라면 "+noodleMul+"<br>딸기요거트 1500<br>총 "+strawberry+"원<br>부가세 미포함 </html>");
+					calculate.setText("<html>"+riceComboValue+" "+riceMul+" "+countValue+"개<br>라면 "+noodleMul+"<br>딸기요거트 1500<br>부가세 미포함 <br>총 "+strawberry+"원</html>");
 				}
 				else
-					calculate.setText("<html>"+riceComboValue+" "+riceMul+" "+countValue+"개<br>라면 "+noodleMul+"<br>총 "+riceMulResult+"원<br>부가세 미포함 </html>");
+					calculate.setText("<html>"+riceComboValue+" "+riceMul+" "+countValue+"개<br>라면 "+noodleMul+"<br>부가세 미포함<br>총 "+riceMulResult+"원</html>");
 			}
 			else {
 				if(strawberryCombo.isSelected()) {
 					strawberry = riceMulResult + 1500;
-					calculate.setText("<html>"+riceComboValue+" "+riceMul+" "+countValue+"개<br>라면 "+noodleMul+"<br>딸기요거트 1500<br>총 "+(Math.floor(strawberry*1.10)*10/10.0)+"원<br>부가세 포함 </html>");
+					calculate.setText("<html>"+riceComboValue+" "+riceMul+" "+countValue+"개<br>라면 "+noodleMul+"<br>딸기요거트 1500<br>부가세 포함<br>총 "+(Math.floor(strawberry*1.10)*10/10.0)+"원</html>");
 				}
 				else
-					calculate.setText("<html>"+riceComboValue+" "+riceMul+" "+countValue+"개<br>라면 "+noodleMul+"<br>총 "+(riceMulResult*1.10)+"원<br>부가세 포함 </html>");
+					calculate.setText("<html>"+riceComboValue+" "+riceMul+" "+countValue+"개<br>라면 "+noodleMul+"<br>부가세 포함 <br>총 "+(Math.floor(riceMulResult*1.10)*10/10.0)+"원</html>");
 			}
 		}
 	}
