@@ -1,4 +1,0 @@
-```
-int main(){
-// this is cpp code
-```
