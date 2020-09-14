@@ -33,7 +33,7 @@ CAL | 테이블
 5|	MON	|30
 5|	TUE	|31
 
-```
+```sql
 SELECT MAX(DECODE(DAY, 'SUN', DAYNO)) "SUN",
        MAX(DECODE(DAY, 'MON', DAYNO)) "MON",
        MAX(DECODE(DAY, 'TUE', DAYNO)) "TUE",
@@ -49,7 +49,7 @@ ORDER BY WEEKNO;
 
 - PIVOT : 11G 부터 사용됨
 	- 행 ->열 전환
-```
+```sql
 SELECT * 
 FROM(
     SELECT WEEKNO
@@ -63,7 +63,7 @@ FOR DAY IN('SUN','MON','TUE','WED','THU','FRI','SAT'))
 ORDER BY WEEKNO;
 ```
 
-```
+```sql
 SELECT SUN, MON, TUE, WED, THU, FRI, SAT
 FROM(
     SELECT WEEKNO
@@ -80,7 +80,7 @@ ORDER BY WEEKNO;
 
 ### PIVOT
 - 오라클 11g부터 제공한다. 기존 테이블의 행을 열로 바꾸고 UNPIVOT는 열을 행으로 바꿔서 출력한다.
-```
+```sql
 SELECT *
 FROM(SELECT ...
 	FROM ...)
@@ -91,7 +91,7 @@ ORDER BY [정렬 컬럼]
 ```
 #### 예제
 1.
-```
+```sql
 SELECT DEPTNO
      , SUM(DECODE(JOB, 'CLERK', '1', '0')) "CLERK"
      , SUM(DECODE(JOB, 'MANAGER', '1', '0')) "MANAGER"
@@ -103,7 +103,7 @@ GROUP BY DEPTNO
 ORDER BY DEPTNO;
 ```
 
-```
+```sql
 SELECT * FROM
 (SELECT DEPTNO
       , JOB
@@ -120,7 +120,7 @@ DEPTNO|CLERK|MANAGER|PRESIDENT|ANALYST|SALESMAN
 30	|1	|1	|0	|0	|4
 
 2. 
-```
+```sql
 SELECT * FROM (SELECT DEPTNO, JOB, EMPNO, SAL FROM EMP)
 PIVOT 
 (COUNT(EMPNO) AS COUNT, SUM(NVL(SAL, 0)) AS SUM
@@ -128,7 +128,7 @@ FOR JOB IN('CLERK','MANAGER','PRESIDENT','ANAYLST','SALESMAN'))
 ORDER BY DEPTNO;
 ```
 =
-```
+```sql
 SELECT DEPTNO
     , COUNT(DECODE(JOB, 'CLERK', EMPNO)) AS CLERK_COUNT
     , SUM(DECODE(JOB, 'CLERK', SAL)) AS CLERK_SUM
