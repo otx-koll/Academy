@@ -60,7 +60,7 @@ button | 버튼입력
 
 ## fieldset
 - 폼 요소 그룹 묶기
-	- <legend> : fieldset의 제목
+	- <legend\> : fieldset의 제목
 ```
 <fieldset>
 <legend>제목</legend>
