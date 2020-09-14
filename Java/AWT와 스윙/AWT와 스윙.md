@@ -30,31 +30,31 @@
 2. main() 메소드 작성
 3. 프레임에 스윙 컴포넌트 붙이기
 
-- import java.awt.*; // 그래픽 처리를 위한 클래스들의 경로명
-- import java.awt.event.*; // AWT 이벤트 사용을 위한 경로명
-- import javax.swing.*; // 스윙 컴포넌트 클래스들의 경로명
-- import javax.swing.event.*; // 스윙 이벤트를 위한 경로명
+- import java.awt.\*; // 그래픽 처리를 위한 클래스들의 경로명
+- import java.awt.event.\*; // AWT 이벤트 사용을 위한 경로명
+- import javax.swing.\*; // 스윙 컴포넌트 클래스들의 경로명
+- import javax.swing.event.\*; // 스윙 이벤트를 위한 경로명
 
 ### 프레임에 컴포넌트 붙이기
 타이틀 달기
-```
+```java
 public MyFrame(){ //생성자
 	super("타이틀문자열"); // Jframe의 생성자 호출하여 타이틀 달기
 	setTitle("타이틀문자열"); //메소드를 호출하여 타이틀 달기
 }
 ```
 컨텐트팬 알아내기
-```
+```java
 Containter contentPane = frame.getContentPane();
 ```
 컨텐트팬에 컴포넌트 달기
-```
+```java
 Container c = frame.getContentPane();
 JButton b = new JButton("Click");
 c.add(b);
 ```
 컨텐트팬 변경
-```
+```java
 JPanel p = new JPanel();
 frame.setContentPane(p);
 ```
@@ -63,6 +63,7 @@ frame.setContentPane(p);
 - 메인 스레드와 이벤트 분배 스레드
 > main() 종료 후에도 프레임이 살아 있는 이유
 - 메인 스레드가 종료되어도 이벤트 분배 스레드가 살아 있어 프레임 화면을 그리고 마우스나 키 입력을 받기 때문에 프레임을 닫고 응용 프로그램을 종료시켜야 한다 그러기 위해서는 다음과 같은 문장을 적는다
+
 `setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);`
 
 ---
@@ -84,7 +85,7 @@ ex) `Container.setLayout(new FlowLayout())` : flowlayout을 배치관리자로 �
 ### FlowLayout
 - 컨테이너 공간 내에 왼쪽에서 오른쪽으로 배치한다. 후엔 위에서 아래로 배치
 - 생성자
-```
+```java
 FlowLayout()
 FlowLayout(int align)
 FlowLayout(int align, int hGap, int vGap)
@@ -96,7 +97,7 @@ FlowLayout(int align, int hGap, int vGap)
 ### BorderLayout
 - 컨테이너 공간을 5구역으로 분할 배치한다(East, West, South, North, Center)
 - 생성자
-```
+```java
 void add(Component comp, int index) // comp 컴포넌트를 index위치에 삽입한다.
 - comp : 컨테이너에 삽입되는 컴포넌트
 - index : 컴포넌트 위치
@@ -107,7 +108,7 @@ ex) container.add(new JButton("div"), BorderLayout.WEST);
 ### GridLayout
 - 컨테이너 공간을 동일한 사각형 격자(그리드)로 분할하고 각 셀에 하나의 컴포넌트 배치
 - 생성자
-```
+```java
 GridLayout()
 GridLayout(int rows, int cols)
 GridLayout(int rows, int cols, int hGap, int vGap)
