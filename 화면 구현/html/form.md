@@ -2,15 +2,15 @@
 - 사용자가 웹브라우저에 입력한 정보를 서버로 넘겨주는 역할
 - 입력된 정보를 DB에 저장하거나 저장된 회원정보를 검색, 수정 등의 작업을 하여 결과를 브라우저로 다시 보낸다
 - ASP, JSP, PHP 등과 같은 서버 프로그래밍
-```
+```html
 <form [속성="속성 값"]>폼 요소들</form>
 ```
 action : form태그 안의 내용들을 처리해줄 서버 프로그램 지정
-```
+```html
 <form action="URL">
 ```
 method : 폼에 입력한 내용을 서버 쪽 프로그램으로 어떻게 넘겨줄지 결정
-```
+```html
 <form method="get">, <form method="post">
 ```
 > get : URL 표시줄에 입력내용 표시. 보낼 수 있는 데이터 한계 (IE : 2048 이하)
@@ -18,7 +18,7 @@ method : 폼에 입력한 내용을 서버 쪽 프로그램으로 어떻게 넘�
 > post : 입력내용 표시 되지 않음. 길이 제한 없음. 표준 입력 방식
 
 ## input
-```
+```html
 <input type="유형" [속성="속성값"]>
 <input type="text" value="길동"> <!-- value="초기값"
 ```
@@ -53,7 +53,7 @@ button | 버튼입력
 
 ## label
 - 폼 요소의 제목 붙이기
-```
+```html
 <label for="id이름">레이블</label>
 <input type="" id="id이름"...>
 ```
@@ -61,7 +61,7 @@ button | 버튼입력
 ## fieldset
 - 폼 요소 그룹 묶기
 	- <legend\> : fieldset의 제목
-```
+```html
 <fieldset>
 <legend>제목</legend>
 <input type="text" ...>
@@ -70,7 +70,7 @@ button | 버튼입력
 
 ## select
 - 선택 가능한 입력창. option의 내용을 선택할 수 있다
-```
+```html
 <select name="gender" id="gender">
                 <option value="male">남성</option> <!-- select 안에 들어갈 값 -->
                 <option value="female" selected>여성</option> <!-- selected : 먼저 보일 값 설정 -->
