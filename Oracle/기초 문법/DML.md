@@ -1,5 +1,5 @@
 ## SELECT
-```
+```sql
 SLECT[ALL | DISTINCT]속성이름
 FROM 테이블이름
 [WHERE 검색조건]
@@ -39,7 +39,7 @@ FROM 테이블이름
 - VARIANCE : 분산
 
 1. emp테이블의 deptno와 sal을 출력하는데 sal은 null값인 행도 합하여 평균을 구하라
-```
+```sql
 SELECT DEPTNO
      , JOB
      , AVG(NVL(SAL,0)) "A"
@@ -54,7 +54,7 @@ DEPTNO | JOB | A
 30	|CLERK	|950
 
 2. EMP테이블에서 평균 급여가 2000이상인 SAL과 DEPTNO를 구하시오
-```
+```sql
 SELECT DEPTNO
      , ROUND(AVG(NVL(SAL,0)),2) "A"
 FROM EMP
@@ -74,37 +74,37 @@ DEPTNO | A
 
 ### 예제
 1. 모든 도서의 이름과 가격을 검색하시오
-```
+```sql
 SELECT bookename, price FROM book;
 ```
 
 2. 도서 테이블에 있는 모든 출판사를 검색하시오(중복은 제거한다)
-```
+```sql
 SELECT DISTINCT publisher FROM book;
 ```
 
 3. 가격이 1000이상, 2000 이하인 도서를 검색하시오
-```
+```sql
 SELECT * FROM Book WHERE price BETWEEN 1000 AND 2000;
 ```
 
 4. 도서 이름의 왼쪽 두 번째 위치에 '구'라는 문자열을 갖는 도서 검색
-```
+```sql
 SELECT * FROM Book WHERE bookname LIKE '_구%'
 ```
 
 5. 도서를 가격의 내림차순으로 검색하시오. 가격이 같을시 출판사의 오름차순으로 검색
-```
+```sql
 SELECT * FROM Book ORDER BY price DESC, publisher ASC;
 ```
 
 6. 마당서점의 도서 판매 건수
-```
+```sql
 SELECT COUNT(*) FROM Orders;
 ```
 
 7. 가격이 8,000원 이상인 도서를 구매한 고객에 대하여 고객별 주문 도서의 총 수량을 구하시오. 단, 두 권 이상 구매한 고객만 구한다.
-```
+```sql
 SELECT custid, COUNT(*) AS 도서수량
 FROM Orders
 WHERE saleprice >= 8000
@@ -116,7 +116,7 @@ HAVING count(*) >= 2
 
 ## INSERT
 - 테이블에 데이터를 추가한다
-```
+```sql
 INSERT INTO 테이블 이름[(열1, 열2, ... 열N)]
 VALUES(열 1에 들어갈 데이터, 열 2에 들어갈 데이터, ...열N에 들어갈 데이터);
 ```
@@ -125,7 +125,7 @@ VALUES(열 1에 들어갈 데이터, 열 2에 들어갈 데이터, ...열N에 �
 특정 데이터가 없을 경우 NULL값 또는 빈 공백 문자열('')입력 또는 아예 생략
 
 ## UPDATE
-```
+```sql
 UPDATE [변경할 테이블] 
 SET [변경할 열1] = [데이터]
 [WHERE 데이터를 변경할 대상 행을 선별하기 위한 조건];
@@ -138,7 +138,7 @@ SET [변경할 열1] = [데이터]
 
 Ex) 
 Professor 테이블에서 'Sharon Stone'교수의 직급(position)과 동일한 직급을 가진 교수들 중 현재 급여(pay)가 250만원이 안되는 교수들의 급여를 15%인상하라.
-```
+```sql
 UPDATE PROFESSOR
 SET PAY = PAY * 1.15
 WHERE POSITION = (SELECT POSITION
@@ -148,11 +148,11 @@ AND PAY < 250;
 ```
 
 ## DELETE
-```
+```sql
 DELETE FROM 테이블명
 ```
 - 롤백 가능
-```
+```sql
 TRUNCATE TABLE 테이블명
 ```
 - 롤백 불가능
@@ -164,7 +164,7 @@ TRUNCATE TABLE 테이블명
 - 교집합 : INTERSECT
 
 EX) 도서를 주문하지 않는 고객의 이름을 보이시오
-```
+```sql
 SELECT NAME
 FROM CUSTOMER
 EXCEPT
@@ -179,7 +179,7 @@ FROM ORDERS)
 - 부속질의문의 어떤 행이 조건에 만족하면 참인 반면 NOT EXISTS는 부속질의문의 모든 행이 조건에 만족하지 않을 때만 참임
 
 EX) 주문이 있는 고객의 이름과 주소를 보이시오
-```
+```sql
 SELECT NAME, ADDRESS
 FROM CUSTOMER CS
 WHERE EXISTS
