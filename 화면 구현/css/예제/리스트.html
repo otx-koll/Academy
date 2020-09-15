@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>리스트 CSS</title>
+    <style>
+        /* body{margin:0px;} */
+        .myList{
+            list-style: none;
+            margin:0px;
+            padding: 0px;
+        }
+        .myList li{
+            padding: 5px;
+            margin-bottom: 5px;
+            border-bottom: 1px solid #efefef;
+        }
+        ul.myList li{  /* 클래스가 myList인 ul(띄어쓰기 x) */
+            background-color: bisque;
+        }
+        /* :first-child, :last-child, :nth-child 선택자 */
+        ol.myList li:last-child{ /* 클래스가 myList인 ol태그의 마지막 자식 li */
+            border-bottom: 0px;
+        }
+        .myList li:nth-child(2){ /* 클래스가 myList인 ol태그의 2번째 자식 li */
+            color:blueviolet;
+        }
+        a{
+            color:green;
+            text-decoration: none;
+        }
+        a:visited{ /* 링크를 방문한 후 visited */
+            color: pink;
+        }
+        a:hover{ /* 링크에 마우스를 올렸을 때 hover */
+            color: red;
+            background-color: cyan;
+        }
+        a:active{ /* 링크를 클릭했을 때 active */
+            color: skyblue;
+        }
+        .button{
+            padding: 15px 30px;
+            text-align: center;
+            border-radius: 4px; /* 모서리를 둥굴게 border-radius */
+            color:white;
+        }
+        .red{
+            background-color: red;
+            border: 1px solid red;
+        }
+        .blue{
+            background-color: blue;
+            border: 1px solid blue;
+        }
+        .green{
+            background-color: green;
+            border: 1px solid green;
+        }
+        .test .button:last-child{
+            background-color:greenyellow;
+        }
+    </style>
+</head>
+<body>
+    <ul class="myList">
+        <li>순서 없는 목록의 아이템 1</li>
+        <li>순서 없는 목록의 아이템 2</li>
+        <li>순서 없는 목록의 아이템 3</li>
+    </ul>
+
+    <ol class="myList">
+        <li>순서 있는 목록의 아이템 1</li>
+        <li>순서 있는 목록의 아이템 2</li>
+        <li>순서 있는 목록의 아이템 3</li>
+    </ol>
+    <!-- a 링크 -->
+    <a href="#" target="_blank">Text Link</a> <!-- 주소가 없을 때 # -->
+    <br>
+    <!-- 버튼 -->
+        <button class="button red">Red</button> <!-- 클래스를 여러개 줄땐 한칸 띄우기 -->
+        <button class="button blue">Blue</button>
+        <button class="button green">Green</button>
+</body>
+</html>
