@@ -21,7 +21,7 @@ http://info.cern.ch/
 ## HTML 구조
 ![html구조](https://user-images.githubusercontent.com/66901172/93051820-078b6e80-f6a0-11ea-965a-5bd9af892394.PNG)
 
-- <!DOCTYPE html\> : html5문서를 선언
+- \<!DOCTYPE html\> : html5문서를 선언
 - <html\>...</html\> : html 문서의 시작과 끝
 - <head\>...</head\>
 	- <title\> : 문서의 상단 제목 표시
