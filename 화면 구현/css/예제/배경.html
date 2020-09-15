@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배경 / 보더</title>
+    <style>
+        body {
+            background:
+                url("img/bg1.jpg") /* image */
+                no-repeat /* 초기값 repeat(사이즈에 맞춰서 반복) */
+                center /* position */
+                center /* size */
+                /* center/80% : 중앙 배치 및 크기 조절 */
+                fixed; /* attachment */
+            background-size: cover; /* 사이즈를 전체 화면에 덮어줌 */
+        }
+        body{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        .bg1{
+            height:100vh;
+            background: url("img/bg1.jpg") no-repeat center;
+            background-size: cover; 
+        }
+        .bg2{
+            height:100vh;
+            background: url("img/bg2.jpg") no-repeat center;
+            background-size: 700px 600px;
+            background-color: orange;
+        }
+        .bg3{
+            height:100vh;
+            background: linear-gradient(45deg, #D7FFF1,#8CD790,  #77AF9C, #285943);
+        }
+        .box{
+            width: 200px;
+            height: 50px;
+            border:2px solid white;
+            color:white;
+            /* 디스플레이를 flex로 바꾸고, align-items 세로, justify-content 가로 정렬 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .center1{
+            position: absolute;
+            top:50%;
+            left:50%;
+            margin-top: -25px;
+            margin-left: -100px;
+        }
+        .center2{
+            position: absolute;
+            top:150%;
+            left:50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="bg1">
+        <div class="box center1">정중앙으로</div>
+    </div>
+    <div class="bg2">
+        <div class="box center2">중앙</div>
+    </div>
+    <div class="bg3"></div>
+</body>
+</html>

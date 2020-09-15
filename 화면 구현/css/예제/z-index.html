@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>z-index속성, opacity 속성</title>
+    <style>
+        .red, .green, .blue{
+            position: absolute;
+            width: 100px;
+            color: white;
+            line-height: 100px;
+            text-align: cetner;
+        }
+        span{
+            opacity: 0.9;
+        }
+        .red{
+            z-index: 10;
+            top:20px;
+            left:80px;
+            background: red;
+        }
+        .green{
+            z-index: 2;
+            top:80px;
+            left:20px;
+            background: green;
+        }
+        .blue{
+            z-index: 1;
+            top:100px;
+            left:100px;
+            background: blue;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <span class="red">z-index:10</span>
+    </div>
+    <div>
+        <span class="green">z-index:2</span>
+    </div>
+    <div>
+        <span class="blue">z-index:1</span>
+    </div>
+</body>
+</html>

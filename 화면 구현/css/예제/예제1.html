@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>position-ex</title>
+    <style>
+        #main{
+            position: relative;
+            height:200px;
+            width:200px;
+            border: 1px solid black;
+        }
+        #center{
+            position: relative;
+            left: 50px;
+            top: 50px;
+            border: 1px solid black;
+            width: 100px;
+            height: 100px;
+        }
+        .box{height: 50px; width: 50px;}
+        .blue{background-color: lightblue; position: absolute; top: 0; left: 0;}
+        .green{background-color: lightgreen; position: absolute; top: 0; right: 0;}
+        .yellow{background-color: yellow; position: absolute; right: 0; bottom: 0;}
+        .red{background-color: lightpink; position: absolute; left: 0; bottom: 0;}
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div class="box blue"></div>
+        <div class="box green"></div>
+        <div class="box yellow"></div>
+        <div class="box red"></div>
+        <div id="center">
+            <div class="box blue"></div>
+            <div class="box green"></div>
+            <div class="box yellow"></div>
+            <div class="box red"></div>    
+        </div>
+    </div>
+</body>
+</html>

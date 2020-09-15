@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>포지션</title>
+    <style>
+        .container{
+            width:600px;
+            margin:0 auto;
+            height:300px;
+            border: 2px solid gray;
+            position: relative;
+            /* static이 아니다 */
+        }
+        .box{
+            width:100px;
+            height:100px;
+            overflow: hidden;
+        }
+        .red{background: tomato;}
+        .green{background: yellowgreen;}
+        .blue{background: skyblue;}
+        /* 상대좌표 : 원래 위치에서 top, left, right, bottom으로 이동 */
+        .relative{
+            position: relative;
+            top:15px;
+            left:25px;
+        }
+        /* 절대좌표 : 상위부모의 포지션이 static(기본)이 아닐때 부모의 좌표에서 이동 */
+        .absoulte{
+            position: absolute;
+            top:50%;
+            left:30px;
+        }
+        /* 화면을 기준으로 고정 */
+        .fixed{
+            background-color: violet;
+            position: fixed;
+            bottom: 20px;
+            right:20px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box red">1</div>
+        <div class="box green absoulte">2</div>
+        <div class="box blue">3</div>
+        <div class="box fixed">4</div>
+    </div>    
+</body>
+</html>
