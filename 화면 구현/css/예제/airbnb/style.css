@@ -19,7 +19,7 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 80px;
+    padding: 0 100px;
 }
 .main-navi .logo{
     font-size: 1.5rem;
@@ -51,11 +51,11 @@ body{
 .main-navi .search .button .rButton{
     background-color: rgb(255, 56, 92);
     border-radius: 50%;
-    padding: 5px 7px;
+    padding: 8px 10px;
     color: white;
 }
 .main-navi .search .button:hover{
-    box-shadow: rgb(113, 113, 113);
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
 }
 .main-navi .search .button .rButton i{
     font-size: 10px;
@@ -63,15 +63,74 @@ body{
 .main-navi .menu{
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
 }
 .main-navi .menu .item{
-    margin: 0 15px;
+    margin: 0 2px;
+    border-radius: 50px;
+    padding: 10px;
+    font-weight: 900;
+    font-size: 14px;
 }
+.main-navi .menu .item:first-child:hover{
+    background-color: #f2f2f2;
+}
+.main-navi .menu .item:nth-child(2):hover{
+    background-color: #f2f2f2;
+}
+.main-navi .menu .item:last-child:hover{
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+}
+.main-navi .menu button{
+    border: 1px solid #ddd;
+    background-color: white;
+}
+.main-navi .menu button i{
+    color: rgb(100, 100, 100);
+}
+.main-navi .menu button i:last-child{
+    font-size: 15px;
+    padding: 0px 5px 0 10px;
+}
+.main-navi .menu button i:first-child{
+    padding: 0 0 0 5px;
+}
+/*  */
+.travel{
+    margin-top: 200px;
+    display: block;
+    color: white;
+    padding: 0 100px;
+    font-weight: 1000;
+    line-height: 30px;
+    width: 420px;
+    
+}
+
+.travel .small{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    line-height: 20px;
+    font-size: 14px;
+}
+.travel button{
+    border-radius: 10px;
+    border-style: none;
+    padding: 7px;
+    font-weight: 900;
+    cursor: pointer;
+}
+.travel button:hover{
+    background-color: #cecece;
+}
+
 /* 두번째 섹션 pictures */
 #picture{
-    padding: 0 80px;
+    padding: 0 100px;
     margin: 30px 0;
 }
+
 #picture .grid{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -80,6 +139,7 @@ body{
 #picture .item{
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+    cursor: pointer;
 }
 #picture .item .text{
     padding: 12px 16px 16px;
@@ -97,14 +157,18 @@ body{
     line-height: 18px;
     color:rgb(113, 113, 113);
 }
+/* 세번째 */
 #active{
     background-color: black;
     padding: 64px 0 80px;
     margin-top: 54px;
 }
+#active .active1{
+    padding: 0 100px;
+}
 #active .active-text{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     justify-content: 4fr 1fr;
 }
 #active .active-text .text {
@@ -115,21 +179,139 @@ body{
     border-radius: 10px;
     background-color: black;
     color: white;
-    padding: 10px;
+    padding: 5px 15px;
+    font-weight: 900;
+    cursor: pointer;
 }
 #active .active-text .button button:hover{
     background-color: gray;
 }
-#active .active-text .big{
-    font-weight: 600;
-    font-size: 18px;
-}
 #active .active-text .small{
-    font-size: 14px;
+    font-size: 17px;
     line-height: 18px;
     color:white
-    /* width:460px; */
 }
+#active .active-text .small-width{
+    width:500px;
+}
+/* grid */
+#active .grid{
+    display: grid;
+    height: 100%;
+    width: 100%;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap:16px;   
+    padding-top: 20px; 
+    position: relative;
+}
+.grid-image img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+    cursor: pointer;
+    width: 100%;
+    vertical-align: middle;
+}
+
+
+.grid-image .img-text{
+    padding: 5px 15px;
+    background-color: rgb(46, 46, 46);
+    color: white;
+    font-weight: 1000;
+    cursor: pointer;
+}
+/* img 위에 text */
+.grid-image:first-child .img-text{
+    position: absolute;
+    bottom:0;
+    border-radius: 0 0 20px 20px;
+    padding-bottom: 50px;
+    width: 49.1%;
+    left: 0;
+}
+.grid-image:nth-child(2) .img-text{
+    position: absolute;
+    top:41.5%;
+    border-radius: 0 0 20px 20px;
+    padding-bottom: 50px;
+    width: 24.5%;
+}
+.grid-image:nth-child(3) .img-text{
+    position: absolute;
+    top:41.5%;
+    border-radius: 0 0 20px 20px;
+    padding-bottom: 50px;
+    width: 24.6%;
+}
+.grid-image:nth-child(4) .img-text{
+    position: absolute;
+    bottom: 0;
+    border-radius: 0 0 20px 20px;
+    padding-bottom: 50px;
+    width: 50%;
+}
+/* 여기까지 */
+
+#active .grid .grid-image img{
+    width: 100%;
+    border-radius: 20px;
+}
+#active .grid .grid-image:first-child{
+    grid-area: 1 / 1 / span 2 / auto;
+}
+#active .grid .grid-image:nth-child(2){
+    grid-area: 1 / 2 / auto / auto;
+}
+#active .grid .grid-image:nth-child(3){
+    grid-area: 1 / 3 / auto / auto;
+}
+#active .grid .grid-image:last-child{
+    display: block;
+    grid-area: 2 / 2 / auto / span 2;
+}
+/* footer */
+footer{
+    background-color: white;
+    padding: 0px 100px;
+}
+footer .menu{
+    padding-top: 40px;
+    /* padding-bottom: px; */
+}
+.list-flex{
+    display: flex;    
+    justify-content: space-evenly;
+}
+.list-flex .ul{
+    list-style: none;
+}
+.list-flex .ul li{
+    margin: 20px;
+    font-size: 15px;
+    cursor: pointer;
+}
+.list-flex .ul li h5{
+    cursor: text;
+}
+hr{
+    border:1px solid #f2f2f2;
+    margin:30px 0;
+}
+.copyright{
+    display: flex;
+    justify-content: space-between;
+}
+.copyright .text{
+    padding-bottom:30px;
+    font-size: 14px;
+}
+
+
 
 
 
