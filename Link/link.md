@@ -12,7 +12,7 @@ https://raccoonjy.tistory.com/16
 
 [코딩 결과물 바로 확인](http://jsfiddle.net/34dafzue/)
 
-[표 만들기]https://www.tablesgenerator.com/html_tables
+[표 만들기](https://www.tablesgenerator.com/html_tables)
 
 [이미지 수정](https://crop-circle.imageonline.co/#circlecropresult)
 
