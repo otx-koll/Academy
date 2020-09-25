@@ -18,9 +18,9 @@ public class Ex4 {
 		int actorId = 204; // 변경 기준 (where조건)
 		String lastName = "고"; // 변경할 값
 		
-		String sql = "";
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		String sql = "";
 
 		try {
 			// 1단계. DB드라이버 클래스 로딩
