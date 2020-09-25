@@ -11,6 +11,14 @@ import java.util.List;
 public class MemberDao {
 	
 	private Connection getConnection() throws Exception {
+		// 헤로쿠 MySQL DB
+		// mysql://bf2e748931b0cb:ed3fde98@us-cdbr-east-02.cleardb.com/heroku_84ab2d598813ce4?reconnect=true&useUnicode=true&characterEncoding=utf8&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=Asia/Seoul
+		
+		// 헤로쿠DB id : bf2e748931b0cb
+		// 헤로쿠DB ps : ed3fde98
+		// 헤로쿠DB localhost : us-cdbr-east-02.cleardb.com
+		// 헤로쿠DB 스키마이름 : heroku_84ab2d598813ce4
+		
 		// DB접속정보
 		String dbUrl = "jdbc:mysql://localhost:3306/jspdb?useUnicode=true&characterEncoding=utf8&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=Asia/Seoul";
 		String dbId = "myid";
