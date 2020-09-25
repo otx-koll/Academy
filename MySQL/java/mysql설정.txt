@@ -1,0 +1,93 @@
+* MySQL
+
+
+
+[client]
+default-character-set=utf8
+[mysql]
+default-character-set=utf8
+[mysqld]
+collation-server = utf8_unicode_ci
+init-connect='SET NAMES utf8'
+init_connect='SET collation_connection = utf8_general_ci'
+character-set-server=utf8
+
+
+
+* mysql 터미널 접속해서 utf8 설정 확인
+show variables like 'c%';
+
+
+* 참고 (혹시 root 아이디 허용이 안되어 있으면 아래와 같이 세팅해준다)
+C:\> mysql -u root -p
+
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'root';
+
+FLUSH PRIVILEGES;
+
+
+
+* 데이터베이스 사용자 계정 생성
+  사용자계정명: myid   패스워드: mypwd
+  
+  GRANT ALL PRIVILEGES
+  ON sakila.* TO 'myid'@'localhost'
+  IDENTIFIED BY 'mypwd';
+
+
+  GRANT ALL PRIVILEGES
+  ON sakila.* TO 'myid'@'%'
+  IDENTIFIED BY 'mypwd';
+
+
+* 데이터베이스 선택
+use sakila;
+
+
+-- 사람정보 INSERT
+INSERT INTO actor (first_name, last_name, last_update)
+VALUES ('길동', '홍', now());
+
+-- SELECT문
+SELECT *
+FROM actor
+WHERE first_name = '길동';
+
+-- UPDATE문
+UPDATE actor
+SET last_name = '고'
+WHERE actor_id = 201;
+
+-- DELETE문
+DELETE FROM actor
+WHERE actor_id = 201;
+
+
+
+
+// 자바에서 DB접속정보
+String dbUrl = "jdbc:mysql://localhost:3306/sakila?useUnicode=true&characterEncoding=utf8&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=Asia/Seoul";
+String dbId = "myid";
+String dbPwd = "mypwd";
+
+
+* 데이터베이스 jspdb사용자 계정 설정
+  
+  GRANT ALL PRIVILEGES
+  ON jspdb.* TO 'myid'@'localhost'
+  IDENTIFIED BY 'mypwd';
+  
+  GRANT ALL PRIVILEGES
+  ON jspdb.* TO 'myid'@'%'
+  IDENTIFIED BY 'mypwd';
+  
+* 회원 테이블 생성
+CREATE TABLE memeber (
+	id VARCHAR(50) PRIMARY KEY,
+	passwd VARCHAR(50) NOT NULL,
+	name VARCHAR(50) NOT NULL,
+	reg_date TIMESTAMP
+);
+
+
+
