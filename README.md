@@ -1,4 +1,4 @@
 ## 정리
 - Eclipse
-- Oracle
+- MySQL
 - Visual Studio Code
