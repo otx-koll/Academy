@@ -1,0 +1,37 @@
+서버프로그램 구현
+- 자바 - JSP(모델1) - JSP(모델2, MVC설계) - 프레임워크(스프링)
+      - 안드로이드
+	  
+정적웹프로그램 - HTML,CSS,JavaScript - 클라이언트 측 실행
+동적웹프로그램 - JSP, PHP, ASP, ASP.Net - 서버 측 실행
+
+설치
+1. JDK 설치 - 환경변수 path에 JAVA_HOME 추가
+2. 웹서버(아파치톰캣) 설치
+
+- 웹서버 시작 start
+C:\Program Files\Apache Software Foundation\Tomcat 9.0\bin
+Tomcat9.exe
+Tomcat9w.exe
+
+- 웹서버 접속
+http://localhost:80
+http://127.0.0.1:80
+
+3. 데이터베이스(Oracle, MySQL, MS-SQL 등) 설치
+
+개발툴(이클립스)
+이클립스 설정
+- 웹서버 가져오기
+- 프로젝트 생성
+- 웹서버와 프로젝트 연결
+
+
+jsp_study 동적웹프로젝트 (정적웹+동적웹 모두 실행)
+http://localhost:80/jsp_study/aaa.html
+
+
+
+
+
+
