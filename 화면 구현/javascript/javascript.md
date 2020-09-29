@@ -24,8 +24,25 @@ true // boolean 리터럴
 ```
 
 ## 자바스크립트 출력
+- window.alert() 메소드
+- HTML DOM 요소를 이용한 innerHTML 프로퍼티
+- document.write() 메소드
+- console.log() 메소드
+
 1. window.alert() 메소드
-2. HTML DOM 요소를 이용한 innerHTML 프로퍼티
-3. document.write() 메소드
-4. console.log() 메소드
+- 별도의 대화 상자를 띄워 사용자에게 데이터를 전달해줌
+```javascript
+ <script>
+    function alertDialogBox() {
+        alert('확인');
+    }
+ </script>
+```
+1. HTML DOM 요소를 이용한 innerHTML 프로퍼티
+
+2. document.write() 메소드
+
+3. console.log() 메소드
+
+
 
