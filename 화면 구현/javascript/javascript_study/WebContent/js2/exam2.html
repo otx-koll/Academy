@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<h1>부모창</h1>
+	<hr>
+<form action="" name="frm">
+	<input type="text" id="id" name="id"><br>
+	<input type="button" value="창열기" onclick="openWindow()">
+	<input type="button" value="창열기2" onclick="openWindow2()">
+	<input type="button" value="창닫기" onclick="closeWindow()">
+</form>
+<script>
+function openWindow() {
+	window.open('exam1.html','','width=300, height=200, left=100, top=100');
+	// window.open(새창에 보여질 주소, 창의 속성 또는 이름, 새로 띄어질 페이지의 모양)
+	// name을 지정해 주지 않으면 계속 새 창을 띄움
+	
+}
+function openWindow2() {
+	var childWindow = open('exam3.html', 'bbb', 'width=300, height=300'); // 본래 형태 window.open인데 window 생략 가능
+	var txtId = childWindow.document.getElementById('id');
+	// 부모창에서 자식창으로의 접근은 보안문제로 제한되었음
+	// 자식창에서 부모창으로는 접근 가능함.
+	// txtId.value = '호빵맨'; // 보안이슈로 인해 크롬기반에서는 대입 안됨
+}
+function closeWindow(){
+	window.close()
+}
+
+
+	// 웹브라우저 객체 (내장객체)
+	// window(브라우저) - location(주소표시줄)
+	//				 - history(뒤로가기, 앞으로가기, 새로고침)
+	//				 - document(html문서) - html - head - body
+
+	// window.멤버변수		window.opener 자신창을 띄운 부모창 참조
+	// window.메소드()	window.open()	self.open()		open()
+	//					window.close()	self.close()	close()
+	
+	
+	
+</script>
+</body>
+</html>
