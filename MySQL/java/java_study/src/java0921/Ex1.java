@@ -25,6 +25,7 @@ public class Ex1 {
 			System.out.println("DB연결 완료!");
 		} catch (Exception e) {
 			System.out.println("DB연결 실패...");
+			e.printStackTrace();
 		}
 		System.out.println("=== 프로그램 시작 ===");
 		// INSERT문 수행
