@@ -16,9 +16,9 @@
 	function func() {
 		// document.getElementById('id');
 		// document.frm.id.value
-		// window.opener.document.frm.id.value = frm.id.value;
-		opener.document.frm.id.value = frm.id.value;
-		// 부모 window의 document에서 name이 frm인 태그안에 name이 id인 태그의 값 
+		// window.opener.document.frm.id.value = frm.id.value; 
+		opener.document.frm.id.value = frm.id.value; // window.opener.document 생략 가능
+		// 부모 window의 document에서 name이 frm인 태그안에 name이 id인 태그의 value
 		// opener : 부모 window
 		close();
 	}

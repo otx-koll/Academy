@@ -29,18 +29,50 @@
 		return a + b;
 	}
 	
-	printNum();
-	printNum(10, 20); // 매개변수에서 하나만 선언했으므로 10만 출력
+	// 함수를 리턴하는 함수
+	function func1(){
+		// ...
+		var a = function () {
+			alert('hello world!');
+		};
+		
+		return a;
+	}
 	
-	/* star();
+	function func2(){
+		// ...
+		return function () {
+			alert('hello world!');
+		};
+	}
 	
-	printNum(100);
+	function func3(func) { // 함수를 매개변수로 받음
+		// ...
+		func(); 
+	}
 	
-	let str = getStar();
-	console.log(str);
+	func3(() => { alert('메시지 출력2'); }); // javascript 람다식 '=>'
+// 	func3(function () { alert('메시지 출력'); }); 와 동일 
 	
-	let result = sum(10, 20);
-	console.log(result); */
+// 	func3(star); // star 함수 호출
+	
+// 	func2()(); // 호출하는 것
+	
+// 	var a = func1();
+// 	a();
+	
+// 	printNum();
+// 	printNum(10, 20); // 매개변수에서 하나만 선언했으므로 10만 출력
+	
+// 	star();
+	
+// 	printNum(100);
+	
+// 	let str = getStar();
+// 	console.log(str);
+	
+// 	let result = sum(10, 20);
+// 	console.log(result); 
 	
 </script>
 </body>
