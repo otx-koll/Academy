@@ -1,5 +1,5 @@
 # MySQL 설정
-
+- C드라이브에서 숨김파일 보이기 설정 후, `C:\ProgramData\MySQL\MySQL Server 8.0\my.ini`에서 설정 
 ```
 [client]
 default-character-set=utf8
@@ -23,7 +23,7 @@ FLUSH PRIVILEGES;
 ```sql
 GRANT ALL PRIVILEGES
 ON sakila.* TO 'myid'@'localhost'
-IDENIFIED BY 'mypwd';
+IDENTIFIED BY 'mypwd';
 ```
 ```sql
 GRANT ALL PRIVILEGES
@@ -33,7 +33,29 @@ IDENTIFIED BY 'mypwd';
 + 데이터베이스 jspdb사용자 계정 설정도 해준다
 	+ 회원 테이블 생성
 ```sql
-CREATE TABLE memeber (
+CREATE TABLE member (
+	id VARCHAR(50) PRIMARY KEY,
+	passwd VARCHAR(50) NOT NULL,
+	name VARCHAR(50) NOT NULL,
+	reg_date TIMESTAMP
+);
+```
+
+## jspdb 스키마 생성
+- jspdb 스키마 생성
+```sql
+CREATE SCHEMA jspdb;  // jspdb 스키마 생성
+```
+
+- myid에 jspdb 스키마 허용
+```sql
+GRANT ALL PRIVILEGES
+ON jspdb.*TO 'myid'@'localhost';
+```
+
+- myid에 jspdb 스키마에 member 테이블 생성
+```sql
+CREATE TABLE member (
 	id VARCHAR(50) PRIMARY KEY,
 	passwd VARCHAR(50) NOT NULL,
 	name VARCHAR(50) NOT NULL,
