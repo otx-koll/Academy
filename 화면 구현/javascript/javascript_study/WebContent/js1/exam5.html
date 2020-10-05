@@ -16,7 +16,8 @@
 		console.log('★★★★★★★★★★');
 	}
 
-	function printNum(num){
+	function printNum(num){ // 매개변수 최대 1개까지 받음
+		console.log('printNum() 호출됨')
 		console.log(num);
 	}
 	
@@ -28,7 +29,10 @@
 		return a + b;
 	}
 	
-	star();
+	printNum();
+	printNum(10, 20); // 매개변수에서 하나만 선언했으므로 10만 출력
+	
+	/* star();
 	
 	printNum(100);
 	
@@ -36,7 +40,7 @@
 	console.log(str);
 	
 	let result = sum(10, 20);
-	console.log(result);
+	console.log(result); */
 	
 </script>
 </body>
