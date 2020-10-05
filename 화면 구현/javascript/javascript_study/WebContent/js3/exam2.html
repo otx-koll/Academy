@@ -46,16 +46,18 @@
 		}
 		
 		// 아이디는 4~10글자로 제어
-		if (id.length >= 4 || id.length <= 10) {
+		// 
+		if (id.length < 4 || id.length > 10) {
 			alert('아이디는 4~10 글자 사이로 입력해주세요');
 			frm.id.select();
 			return;
 		}
 		
 		// 패스워드 입력값 없으면 '패스워드를 입력하세요' 포커스
-		if (frm.passwd.value == "") {
+		if (frm.passwd.value.length == 0) {
 			alert('패스워드를 입력하세요');
 			frm.passwd.focus();
+			return;
 		}
 		
 		// 전송 form태그에 submit 수행
