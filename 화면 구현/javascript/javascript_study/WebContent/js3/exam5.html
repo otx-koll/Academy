@@ -37,20 +37,20 @@
 
 	function check() {
 		// 아이디 입력 없으면 '아이디를 입력하세요' 포커스 return
-		if(frm.id.value.length == 0){
+		if(frm.id.value.trim() == ''){
 			alert('아이디를 입력하세요');
 			frm.id.focus();
 			return;
 		}
 		
 		// 패스워드 입력 없으면 '패스워드를 입력하세요' 포커스 return
-		if(frm.passwd.value.length == 0){
+		if(frm.passwd.value.trim == ''){
 			alert('패스워드를 입력하세요');
 			frm.passwd.focus();
 			return;
 		}
 		// 이름 입력 없으면 '이름을 입력하세요' 포커스 return
-		if(frm.name.value.length == 0) {
+		if(frm.name.value.trim == '') {
 			alert('이름을 입력하세요');
 			frm.name.focus();
 			return;
@@ -78,7 +78,7 @@
 		}
 		
 		// 자기소개 입력 없으면 '자기소개를 입력하세요' 포커스 return
-		if (frm.ta.value.length == 0) {
+		if (frm.ta.value.trim == '') {
 			alert('자기소개를 입력하세요');
 			frm.ta.focus();
 			return;
