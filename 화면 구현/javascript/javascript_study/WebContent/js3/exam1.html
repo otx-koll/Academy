@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<div id="app">
+	<form action="a.jsp" method="post" name="frm">
+		<input type="text" name="id" value="aaa"><br>
+		<input type="submit" value="전송">
+		<input type="reset" value="초기화">
+	</form>	
+	<input type="button" value="폼정보" onclick="func1()">
+	<input type="button" value="폼정보변경" onclick="func2()">
+</div>
+
+<script>
+	function func1() {
+		alert(document.forms[0].action); // form들의 배열 forms()
+		alert(document.frm.method); // name을 지정해놓으면 바로 찾기 가능
+	}
+	
+	function func2() {
+		// action -> b.jsp 변경
+		document.forms[0].action = 'b.jsp';
+		// method -> get 변경
+		document.frm.method = 'get';
+		// form submit 호출
+		document.frm.submit();
+	}
+
+
+</script>
+</body>
+</html>
