@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	img {
+		width: 300px;
+		height: 250px;
+	}
+	
+	#btnStop {
+		
+	}
+</style>
+</head>
+
+<body>
+	<input type="button" value="시작" id="btnStart">
+	<input type="button" value="중지" id="btnStop" disabled="disabled">
+	<div id="app">
+		<img src="../images/1.jpg">
+		<img src="../images/2.jpg">
+		<img src="../images/3.jpg">
+		<img src="../images/4.jpg">
+		<img src="../images/5.jpg">
+	</div>
+
+	<script src="../js/jquery-3.5.1.js"></script>
+	<script>
+		$('#btnStart').on('click', function () {
+			// setInterval(함수정의, 밀리초) : 일정 간격으로 계속 실행. (1초 = 1000밀리초)
+// 			setInterval(function () {
+				
+// 			} , 500);
+			
+			// true false 무조건 prop() 씀
+			// 이벤트가 연결된 자기 자신. 시작 버튼이 this가 됨
+			$(this).prop('disabled', true);
+			$('#btnStop').prop('disabled', false);
+		});
+		
+		$('#btnStop').on('click', function () {
+			// 중지 버튼이 this가 됨
+			$(this).prop('disabled', true);
+			$('#btnStart').prop('disabled', false);
+		});
+		
+	</script>
+</body>
+</html>

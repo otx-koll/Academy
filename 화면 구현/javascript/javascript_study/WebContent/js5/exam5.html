@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+</style>
+</head>
+
+<input type="button" value="버튼" id="btn">
+
+<body>
+	<div id="app">
+		<p>텍스트</p>
+	</div>
+
+	<script src="../js/jquery-3.5.1.js"></script>
+	<script>
+		// append() : 뒤에 추가		prepend() : 앞에 추가
+		// html() 함수와 동일하게 html내용을 살려서 내용 추가해줌
+		$('#btn').on('click', function () {
+			let h1 = '<h1>heading1</h1>';
+			let h2 = '<h2>heading2</h2>';
+
+			// div의 아이디가 app인 태그의 뒤에 h2문자열을 추가
+			$('div#app').append(h2);
+			$('div#app').prepend(h1);
+			
+			// h1문자열을 div#app에 추가
+			$(h1).appendTo('div#app');
+			$(h2).prependTo('div#app');
+		});
+		
+	</script>
+</body>
+</html>
