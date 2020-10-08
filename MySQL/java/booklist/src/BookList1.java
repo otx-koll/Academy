@@ -22,8 +22,9 @@ public class BookList1 {
 
 	// 3) 객체
 	Book book1;
-	
+
 	// 4) 객체 배열
+	Book book1_arr[];
 
 	// 1. 멤버변수
 	Connection con = null; // 멤버변수
@@ -37,9 +38,16 @@ public class BookList1 {
 		bookname_arr = new String[10];
 		publisher_arr = new String[10];
 		price_arr = new int[10];
-		
-		// 3번 객체용 초기화
-		book1 = new Book();
+
+		// 3번 객체용 초기화 cf)객체생성을 메소드(selectBookList)에서
+		book1 = new Book(); // 1] 일반적인 방법
+
+		// 4번 객체 배열용 초기화
+		book1_arr = new Book[10];
+
+		for (int i = 0; i < book1_arr.length; ++i) {
+			book1_arr[i] = new Book();
+		}
 	}
 
 	// 3. 메소드- 연결(Connection)을 얻어온다
@@ -103,13 +111,27 @@ public class BookList1 {
 //				publisher_arr[index] = rs.getString(3);
 //				price_arr[index] = rs.getInt(4);
 //				index++;
-				
+
 				// (3) 객체
-				book1.bookid = rs.getInt(1);
-				book1.bookname = rs.getString(2);
-				book1.publisher = rs.getString(3);
-				book1.price = rs.getInt(4);
+//				book1.bookid = rs.getInt(1);
+//				book1.bookname = rs.getString(2);
+//				book1.publisher = rs.getString(3);
+//				book1.price = rs.getInt(4);
+
+				// 메소드를 통한 값 배정(초기화)
+//				book1.setBookid(rs.getInt(1));
+//				book1.setBookname(rs.getString(2));
+//				book1.setPublisher(rs.getString(3));
+//				book1.setPrice(rs.getInt(4));
+
+//				book1 = new Book(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4));
 				
+				// (4) 객체 배열
+				book1_arr[index].setBookid(rs.getInt(1));
+				book1_arr[index].setBookname(rs.getString(2));
+				book1_arr[index].setPublisher(rs.getString(3));
+				book1_arr[index].setPrice(rs.getInt(4));
+				index++;
 			}
 //			con.close(); // db연결 닫음
 		} catch (SQLException e) {
@@ -125,33 +147,14 @@ public class BookList1 {
 	// 3. 메소드 - 화면 출력 메소드 2번 배열용
 	public void printBook_arr() {
 		for (int i = 0; i < bookid_arr.length; i++) {
-			System.out.println(
-					"\t" + bookid_arr[i] + "\t" + bookname_arr[i] + "\t\t" + publisher_arr[i] + "\t\t" + price_arr[i] + "\t");
+			System.out.println("\t" + bookid_arr[i] + "\t" + bookname_arr[i] + "\t\t" + publisher_arr[i] + "\t\t"
+					+ price_arr[i] + "\t");
 		}
 	}
-	
+
 	// 3. 메소드 - 화면 출력 메소드 3번 객체용 -> Book 클래스 안으로 옮김
 //	public void printBook_object() {
 //		System.out.println("\t" + book1.bookid + "\t" + book1.bookname + "\t\t" + book1.publisher + "\t\t" + book1.price + "\t");
-//	}
-
-	// 3.메소드
-//	public void selectCustomerList() {
-//		String query = "SELECT * FROM customer";
-//		try {
-//			stmt = con.createStatement(); // 2
-//			rs = stmt.executeQuery(query); // 3
-//			System.out.println("고객 아이디 \t고객이름 \t주소 \t\t전화번호");
-//			while (rs.next()) {
-//				System.out.print("\t" + rs.getInt(1));
-//				System.out.print("\t" + rs.getString(2));
-//				System.out.print("\t" + rs.getString(3));
-//				System.out.println("\t" + rs.getString(4));
-//			}
-//			con.close(); // db연결 닫음
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
 //	}
 
 	public void closeDB() {
