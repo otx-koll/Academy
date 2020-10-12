@@ -41,6 +41,26 @@ CREATE TABLE member (
 );
 ```
 
+## 테이블 수정
+```sql
+ALTER TABLE member
+ADD age INT;
+```
+```sql
+ALTER TABLE member
+ADD gender VARCHAR(5);
+```
+```sql
+ALTER TABLE member
+ADD email VARCHAR(30);
+```
+```sql
+DESC member; // member테이블의 상세 내역 출력
+```
+- default값 지정
+```sql
+
+```
 ## jspdb 스키마 생성
 - jspdb 스키마 생성
 ```sql
