@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+img.img1 {
+	width: 200px;
+	height: 200px;
+	cursor: pointer;
+}
+ 
+img.img1:hover { 
+	content: url("../images/2.jpg");
+}
+/* hover일 때 content속성으로 url을 변경한다 */ 
+</style>
+</head>
+
+<body>
+	<div id="app">
+		<img src="../images/1.jpg" class="img1">
+	</div>
+
+	<script src="../js/jquery-3.5.1.js"></script>
+	<script>
+		// 대상.mouseover(함수정의).mouseout(함수정의);
+// 		$('img.img1').mouseover(function () {
+// 			$(this).attr('src', '../images/2.jpg');
+// 		}).mouseout(function() {
+// 			$(this).attr('src', '../images/1.jpg');
+// 		});
+		
+		
+		// 대상.on({});
+		$('img.img1').on({ // 요소들에 대한 구분 콤마(,)
+			mouseover: function() {
+				$(this).attr('src', '../images/2.jpg');
+			},
+			mouseout: function() {
+				$(this).attr('src', '../images/1.jpg');
+			}
+		});
+	</script>
+</body>
+</html>
