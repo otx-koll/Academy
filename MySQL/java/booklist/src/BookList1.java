@@ -54,14 +54,16 @@ public class BookList1 {
 	public void getCon() {
 
 		// url은 연결 문자열이다
-		String url = "jdbc:oracle:thin:@localhost:1521:XE";
+//		String url = "jdbc:oracle:thin:@localhost:1521:XE";
+		String url = "jdbc:mysql://localhost:3306/jspdb?useUnicode=true&characterEncoding=utf8&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=Asia/Seoul";
 		/* 11g express edtion은 orcl 대신 XE를 입력 */
 		String userid = "madang"; //
 		String pwd = "madang"; //
 
 		// 1. 드라이버 로드를 위한 (파일 안에 클래스 임포트)
 		try { /* 드라이버를 찾는 과정 */
-			Class.forName("oracle.jdbc.driver.OracleDriver");
+//			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			System.out.println("드라이버 로드 성공");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

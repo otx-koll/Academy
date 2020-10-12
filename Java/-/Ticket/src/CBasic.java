@@ -13,7 +13,8 @@ public class CBasic {
 		v1 = new User("aaa", "bbb", "사자", "010-1234-1234", 50000, starWarzSale);
 		v2 = new User("abc", "def", "기린", "010-4321-4321", 20000, theKing);
 		
-		
+		v1.show();
+		v2.show();
 		
 	}
 }
