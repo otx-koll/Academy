@@ -10,8 +10,8 @@
 
 <body>
 	<div id="app">
-		<form action="" id="myForm"> <!-- action에 값을 비워놓으면 본래 주소값을 가져온다 -->
-			이름: <input type="text" name="name" id="name"><br>
+		<form action="a.jsp" id="myForm" onsubmit=""> <!-- action에 값을 비워놓으면 본래 주소값을 가져온다 -->
+			이름: <input type="text" name="name" id="name" value=""><br>
 			패스워드: <input type="password" name="passwd" id="passwd"><br>
 			<input type="submit" value="제출">
 		</form>
@@ -19,7 +19,24 @@
 
 	<script src="../js/jquery-3.5.1.js"></script>
 	<script>
-		
+		$('#myForm').submit(function (event) {
+			// "쿼리 스트링"으로 폼태그 안의 내용 가져오기
+			let str = $(this).serialize(); // 직렬화(데이터를 텍스트화)
+			alert(str);
+			
+			// ================================= 
+			let name = $('#name').val().trim();
+			let passwd = $('#passwd').val().trim();
+			if(name == '' || passwd == '') {
+				alert('이름과 패스워드 모두 입력하세요.');
+				
+				event.preventDefault(); // 현재 태그요소의 기본 기능 막기
+				return;
+				
+				// return false; // 현재 태그요소의 기본기능과 이벤트 전파를 모두 막는다.
+			}
+			alert('name = ' + name + '\npasswd = ' + passwd);
+		});
 	</script>
 </body>
 </html>

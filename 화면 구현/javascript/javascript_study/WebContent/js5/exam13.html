@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+div.box {
+	width: 50px; /* em : % */
+	height: 50px;
+	background-color: orange;
+	cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+	<div id="app">
+		<div class="box"></div>
+	</div>
+
+	<script src="../js/jquery-3.5.1.js"></script>
+	<script>
+		$('div.box').click(function () {
+			let width = $(this).css('width'); // 값을 지정해주지 않으면 getter. 값을 가져옴
+			let height = $(this).css('height');
+			
+			console.log('typeof width = ' + typeof width);	// string
+			console.log('width = ' + width + ', height = ' + height); // string
+			
+			width = parseInt(width) + 50;
+			height = parseInt(height) + 50;
+			console.log('parseInt() 처리 후 typeof width = ' + typeof width); // number
+			
+// 			$(this).css({
+// 				width: width + 'px', 
+// 				height: height + 'px'
+// 			}); // css를 한번에 처리하려면 객체로 처리. {key : value, ...} value엔 변수 값 사용 가능
+
+			// 제이쿼리 간단한 애니메이션 효과 함수 animate()
+			// animate() 함수는 CSS 속성을 값으로 넣어주면 적용됨
+			$(this).animate({ width: width, height: height });
+			
+		});
+	</script>
+</body>
+</html>

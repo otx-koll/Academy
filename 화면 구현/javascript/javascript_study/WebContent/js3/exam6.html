@@ -10,7 +10,7 @@
 	<h1>회원가입</h1>
 	<hr>
 	<!-- form태그는 submit이벤트 처리 함수에서 false를 리턴받으면 form의 기본동작인 action 요청을 하지 않는다! -->
-	<form action="a.jsp" method="post" name="frm" onsubmit="return check()"> <!-- onsubmit : form태그안에 submit이벤트가 발생할 때--> 
+	<form action="a.jsp" method="post" name="frm" onsubmit="return check()"> <!-- onsubmit : form태그안에 submit이벤트가 발생할 때 / form의 기본 동작을 막는. return -->  
 		아이디: <input type="text" name="id"><br>
 		패스워드: <input type="password" name="passwd"><br>
 		이름: <input type="text" name="name"><br>
@@ -84,7 +84,6 @@
 			frm.ta.focus();
 			return false;
 		}
-	
 	}
 	
 </script>
