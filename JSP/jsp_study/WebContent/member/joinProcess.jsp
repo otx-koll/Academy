@@ -4,7 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-	// post 파라미터값 한글처리
+// post 파라미터값 한글처리
 request.setCharacterEncoding("utf-8");
 
 // VO객체 준비
