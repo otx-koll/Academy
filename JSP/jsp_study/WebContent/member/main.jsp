@@ -25,15 +25,11 @@ if (id == null) {
 	<%=id  %>님 로그인 하셨습니다.<br>
 	<hr>
 	<input type="button" value="로그아웃" onclick="location.href = 'logout.jsp'"><br>
-	<%
-	if (id.equals("")) {
-		%>
+	
 		<a href="info.jsp">회원정보 조회</a><br>
 		<a href="update.jsp">회원정보 수정</a><br>
 		<a href="delete.jsp">회원정보 삭제</a><br>
-		<%
-	}
-	%>
+	
 	
 	<%
 	if (id.equals("admin")) {
