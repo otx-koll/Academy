@@ -10,9 +10,6 @@ import java.util.List;
 
 import com.exam.vo.MemberVo;
 
-
-
-
 public class MemberDao {
 
 	private Connection getConnection() throws Exception {
