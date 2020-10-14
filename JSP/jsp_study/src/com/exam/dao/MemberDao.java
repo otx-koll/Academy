@@ -94,6 +94,43 @@ public class MemberDao {
 			close(con, pstmt);
 		}
 	} // addMember()
+	
+	// 로그인 확인
+	// check -1이면 없는 아이디
+	// check  0이면 패스워드 틀림
+	// check  1이면 아이디, 패스워드 모두 일치
+	public int userCheck(String id, String passwd) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "";
+		int check = -1;
+
+		try {
+			con = getConnection();
+			// id에 해당하는 passwd 가져오기
+			sql = "SELECT passwd FROM member WHERE id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			// rs에 저장
+			rs = pstmt.executeQuery();
+			// rs에 데이터(행) 있으면
+			//				패스워드 비교 맞으면 check = 1, 틀리면 check = 0
+			// rs에 데이터(행) 없으면 check = -1
+			if(rs.next()) {
+				if(passwd.equals(rs.getString("passwd"))) {
+					check = 1;
+				}
+			} else {
+				check = 0;
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(con, pstmt, rs);
+		}
+		return check;
+	} // userCheck
 
 	// 전체 회원목록 가져오기 (수정)
 	public List<MemberVo> getAllMembers() {
@@ -118,6 +155,9 @@ public class MemberDao {
 				memberVo.setId(rs.getString("id"));
 				memberVo.setPasswd(rs.getString("passwd"));
 				memberVo.setName(rs.getString("name"));
+				memberVo.setAge(rs.getInt("age"));
+				memberVo.setGender(rs.getString("gender"));
+				memberVo.setEmail(rs.getString("email"));
 				memberVo.setRegDate(rs.getTimestamp("reg_date"));
 
 				list.add(memberVo);
@@ -154,6 +194,9 @@ public class MemberDao {
 				memberVo.setId(rs.getString("id"));
 				memberVo.setPasswd(rs.getString("passwd"));
 				memberVo.setName(rs.getString("name"));
+				memberVo.setAge(rs.getInt("age"));
+				memberVo.setGender(rs.getString("gender"));
+				memberVo.setEmail(rs.getString("email"));
 				memberVo.setRegDate(rs.getTimestamp("reg_date"));
 			} // if
 		} catch (Exception e) {
@@ -237,42 +280,42 @@ public class MemberDao {
 
 	public static void main(String[] args) {
 
-		// MemberDao 객체 준비
-		MemberDao memberDao = new MemberDao();
-
-		memberDao.deleteAll();
-
-		System.out.println("======== insert 테스트 =========");
-
-		for (int i = 0; i < 5; i++) {
-			MemberVo memberVo = new MemberVo("aaa" + i, "1234", "홍길동" + i);
-			memberDao.addMember(memberVo);
-		}
-
-		List<MemberVo> list = memberDao.getAllMembers();
-		for (MemberVo memberVo : list) {
-			System.out.println(memberVo);
-		}
-
-		System.out.println("======== getMemberById 테스트 =========");
-
-		MemberVo memberVo = memberDao.getMemberById("aaa0");
-		System.out.println(memberVo);
-
-		System.out.println("======== update 테스트 =========");
-
-		memberVo.setName("이순신"); // 수정될 이름값 설정
-		memberDao.update(memberVo);
-
-		MemberVo getMemberVo = memberDao.getMemberById("aaa0");
-		System.out.println(getMemberVo);
-
-		System.out.println("======== deleteById 테스트 =========");
-
-		memberDao.deleteById("aaa0");
-
-		MemberVo getMemberVo2 = memberDao.getMemberById("aaa0");
-		System.out.println(getMemberVo2);
+//		// MemberDao 객체 준비
+//		MemberDao memberDao = new MemberDao();
+//
+//		memberDao.deleteAll();
+//
+//		System.out.println("======== insert 테스트 =========");
+//
+//		for (int i = 0; i < 5; i++) {
+//			MemberVo memberVo = new MemberVo("aaa" + i, "1234", "홍길동" + i);
+//			memberDao.addMember(memberVo);
+//		}
+//
+//		List<MemberVo> list = memberDao.getAllMembers();
+//		for (MemberVo memberVo : list) {
+//			System.out.println(memberVo);
+//		}
+//
+//		System.out.println("======== getMemberById 테스트 =========");
+//
+//		MemberVo memberVo = memberDao.getMemberById("aaa0");
+//		System.out.println(memberVo);
+//
+//		System.out.println("======== update 테스트 =========");
+//
+//		memberVo.setName("이순신"); // 수정될 이름값 설정
+//		memberDao.update(memberVo);
+//
+//		MemberVo getMemberVo = memberDao.getMemberById("aaa0");
+//		System.out.println(getMemberVo);
+//
+//		System.out.println("======== deleteById 테스트 =========");
+//
+//		memberDao.deleteById("aaa0");
+//
+//		MemberVo getMemberVo2 = memberDao.getMemberById("aaa0");
+//		System.out.println(getMemberVo2);
 
 	} // main
 

@@ -9,6 +9,17 @@
 <body>
 	<h1>로그인</h1>
 	<hr>
-	
+	<form action="loginProcess.jsp" method="post">
+		아이디: <input type="text" name="id" requried><br>
+		패스워드: <input type="password" name="passwd" requried><br>
+		<input type="submit" value="로그인">
+		<input type="button" value="회원가입" onclick="location.href='joinForm.jsp'">
+	</form>
 </body>
 </html>
+
+
+
+
+
+
