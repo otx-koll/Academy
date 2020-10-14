@@ -155,6 +155,9 @@ public class MemberDao {
 				memberVo.setId(rs.getString("id"));
 				memberVo.setPasswd(rs.getString("passwd"));
 				memberVo.setName(rs.getString("name"));
+				memberVo.setAge(rs.getInt("age"));
+				memberVo.setGender(rs.getString("gender"));
+				memberVo.setEmail(rs.getString("email"));
 				memberVo.setRegDate(rs.getTimestamp("reg_date"));
 
 				list.add(memberVo);
@@ -191,6 +194,9 @@ public class MemberDao {
 				memberVo.setId(rs.getString("id"));
 				memberVo.setPasswd(rs.getString("passwd"));
 				memberVo.setName(rs.getString("name"));
+				memberVo.setAge(rs.getInt("age"));
+				memberVo.setGender(rs.getString("gender"));
+				memberVo.setEmail(rs.getString("email"));
 				memberVo.setRegDate(rs.getTimestamp("reg_date"));
 			} // if
 		} catch (Exception e) {
