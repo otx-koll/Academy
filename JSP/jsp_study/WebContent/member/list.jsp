@@ -1,3 +1,6 @@
+<%@page import="java.sql.Timestamp"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="com.exam.vo.MemberVo"%>
 <%@page import="java.util.List"%>
 <%@page import="com.exam.dao.MemberDao"%>
@@ -15,7 +18,7 @@ String id = (String) session.getAttribute("id");
 
 if (id == null || !id.equals("admin")) { // 반대
 	// null체크 먼저 한 후에 equals (왼 -> 오 방향으로 코드가 진행되기 때문에)
-	response.sendRedirect("main.jsp"); // script의 location.href와 동일. "main.jsp를 요청하라"
+	response.sendRedirect("main.jsp"); // javascript의 location.href와 동일. "main.jsp를 요청하라"
 	return;
 }
 
@@ -24,6 +27,7 @@ MemberDao memberDao = new MemberDao();
 
 List<MemberVo> memberList = memberDao.getAllMembers();
 
+SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일 a hh시 mm분 ss초");
 %>
 
 <!DOCTYPE html>
@@ -50,6 +54,8 @@ List<MemberVo> memberList = memberDao.getAllMembers();
 		<tbody>
 			<%
 			for (MemberVo memberVo : memberList) {
+// 				Timestamp timestamp = memberVo.getRegDate();
+// 				Date date = new Date(timestamp.getTime());
 				%>
 				<tr>
 					<td><%=memberVo.getId() %></td>
@@ -57,8 +63,8 @@ List<MemberVo> memberList = memberDao.getAllMembers();
 					<td><%=memberVo.getName() %></td>
 					<td><%=memberVo.getGender() %></td>
 					<td><%=memberVo.getAge() %></td>
-					<td><%=memberVo.getEmail() %></td>
-					<td><%=memberVo.getRegDate() %></td>
+					<td><%=(memberVo.getEmail() == null) ? "" : memberVo.getEmail() %></td>
+					<td><%=sdf.format(memberVo.getRegDate()) %></td>
 				</tr>
 				<%
 			}

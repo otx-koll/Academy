@@ -27,7 +27,7 @@ if (id == null) {
 	<input type="button" value="로그아웃" onclick="location.href = 'logout.jsp'"><br>
 	
 		<a href="info.jsp">회원정보 조회</a><br>
-		<a href="update.jsp">회원정보 수정</a><br>
+		<a href="updateUserCheck.jsp">회원정보 수정</a><br>
 		<a href="delete.jsp">회원정보 삭제</a><br>
 	
 	
