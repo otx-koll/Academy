@@ -18,6 +18,7 @@ int check = memberDao.userCheck(id, passwd);
 // check == 0  '패스워드 틀림'	뒤로 이동
 // check == -1 '아이디 없음'	뒤로 이동
 if (check == 1) {
+	session.setAttribute("id", id);
 	%>
 	<script>
 		alert('로그인 성공!');

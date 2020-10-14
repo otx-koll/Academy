@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/FirstServlet")
 public class FirstServlet extends HttpServlet {
@@ -21,6 +22,10 @@ public class FirstServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		// 브라우저로 출력하는 객체 참조 받기
 		PrintWriter out = response.getWriter();
+		
+		// 세션 가져오기. 세션은 Map 컬렉션으로 구현됨.
+		// 사용자 1명당 유지하는 정보 관리.
+		HttpSession session = request.getSession();
 
 		// 스크립틀릿 영역 (자바 코드 영역)
 		/*
