@@ -12,10 +12,9 @@ public class BoardVo {
 	private Timestamp regDate;
 	private String ip;
 	private String file;
-	private int re_ref;
-	private int re_lev;
-	private int re_seq;
-	
+	private int reRef; // 그룹번호. 주글번호는 그룹번호가 됨
+	private int reLev; // 들여쓰기 레벨
+	private int reSeq; // 그룹 내에서의 순번
 	public int getNum() {
 		return num;
 	}
@@ -70,29 +69,28 @@ public class BoardVo {
 	public void setFile(String file) {
 		this.file = file;
 	}
-	public int getRe_ref() {
-		return re_ref;
+	public int getReRef() {
+		return reRef;
 	}
-	public void setRe_ref(int re_ref) {
-		this.re_ref = re_ref;
+	public void setReRef(int reRef) {
+		this.reRef = reRef;
 	}
-	public int getRe_lev() {
-		return re_lev;
+	public int getReLev() {
+		return reLev;
 	}
-	public void setRe_lev(int re_lev) {
-		this.re_lev = re_lev;
+	public void setReLev(int reLev) {
+		this.reLev = reLev;
 	}
-	public int getRe_seq() {
-		return re_seq;
+	public int getReSeq() {
+		return reSeq;
 	}
-	public void setRe_seq(int re_seq) {
-		this.re_seq = re_seq;
+	public void setReSeq(int reSeq) {
+		this.reSeq = reSeq;
 	}
-	
 	@Override
 	public String toString() {
 		return "BoardVo [num=" + num + ", name=" + name + ", passwd=" + passwd + ", subject=" + subject + ", content="
 				+ content + ", readcount=" + readcount + ", regDate=" + regDate + ", ip=" + ip + ", file=" + file
-				+ ", re_ref=" + re_ref + ", re_lev=" + re_lev + ", re_seq=" + re_seq + "]";
+				+ ", reRef=" + reRef + ", reLev=" + reLev + ", reSeq=" + reSeq + "]";
 	}
 }

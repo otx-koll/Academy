@@ -215,10 +215,71 @@ intervalId = setInterval(function () {
 - keydown
 - keypress
 - keyup
-
 ---
 
-js5/exam9.html까지
+```javascript
+// a 클릭		css()	background-color	blue
+$('a').on('click', function(event) {
+	$(this).css('background-color', 'blue')
+	
+// 현재 태그요소의 기본기능 막기(a태그의 하이퍼링크 기능 막기)
+// 			event.preventDefault();
+	
+// 이벤트 전파 막기 (태그가 포함관계로 겹쳐있을 경우)
+// 			event.stopPropagation();
+	
+	return false; // 기본기능과 이벤트 전파 모두 막기
+});
+```
+---
+```javascript
+// 대상.mouseover(함수정의).mouseout(함수정의);
+$('img.img1').mouseover(function () {
+	$(this).attr('src', '../images/2.jpg');
+}).mouseout(function() {
+	$(this).attr('src', '../images/1.jpg');
+});
+```
+```javascript
+// 대상.on({});
+$('img.img1').on({ // 요소들에 대한 구분 콤마(,)
+	mouseover: function() {
+		$(this).attr('src', '../images/2.jpg');
+	},
+	mouseout: function() {
+		$(this).attr('src', '../images/1.jpg');
+	}
+});
+```
+```javascript
+let str = $(this).serialize(); // 직렬화(데이터를 텍스트화)
+```
+---
+- 제이쿼리 간단한 화면효과 함수
+```javascript
+// show()		hide()		toggle()
+// slideDown()	slideUp()	slideToggle()
+// fadeIn()		fadeOut()	fadeToggle()
+
+// 제이쿼리에서 현재 태그 요소 기준으로 다른 태그 요소를 탐색하는 함수
+// next() : 형제관계에서 바로 다음요소
+// prev() : 형제관계에서 바로 이전요소
+// find() : 포함하고 있는 자식 또는 자손요소를 찾기
+// closest() : 자신을 포함하고 있는 부모 또는 조상요소를 찾기
+```
+- css를 한번에 처리하려면 객체로 처리. {key : value, ...} value엔 변수 값 사용 가능
+
+- 제이쿼리 간단한 애니메이션 효과 함수 animate()
+- animate() 함수는 CSS 속성을 값으로 넣어주면 적용됨
+```javascript
+$(this).animate({ width: width, height: height });
+```
 
 
+
+
+> javascript_study 정리하기
+> jsp 옮긴 후 정리
+> Dao, Vo 정리
+> 안드로이드스튜디오 zip
 
