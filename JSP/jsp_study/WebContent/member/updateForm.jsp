@@ -12,9 +12,9 @@ if (id == null) {
 	return;
 }
 
-//DAO 객체 준비
+// DAO 객체 준비
 MemberDao memberDao = new MemberDao();
-//현재 로그인 된 회원정보 한개 가져오기
+// 현재 로그인 된 회원정보 한개 가져오기
 MemberVo memberVo = memberDao.getMemberById(id);
 
 String gender = memberVo.getGender();

@@ -132,7 +132,7 @@ public class MemberDao {
 		return check;
 	} // userCheck
 
-	// 전체 회원목록 가져오기 (수정)
+	// 전체 회원목록 가져오기
 	public List<MemberVo> getAllMembers() {
 		List<MemberVo> list = new ArrayList<>();
 
@@ -170,7 +170,7 @@ public class MemberDao {
 		return list;
 	} // getAllMembers()
 
-	// 특정id에 해당하는 회원 1명 가져오기 (수정)
+	// 특정id에 해당하는 회원 1명 가져오기 
 	public MemberVo getMemberById(String id) {
 		MemberVo memberVo = null;
 
@@ -217,12 +217,15 @@ public class MemberDao {
 
 			String sql = "";
 			sql += "UPDATE member ";
-			sql += "SET name = ? ";
+			sql += "SET name = ?, age = ?, gender = ?, email = ? ";
 			sql += "WHERE id = ? ";
 
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, memberVo.getName());
-			pstmt.setString(2, memberVo.getId());
+			pstmt.setInt(2, memberVo.getAge());
+			pstmt.setString(3, memberVo.getGender());
+			pstmt.setString(4, memberVo.getEmail());
+			pstmt.setString(5, memberVo.getId());
 
 			pstmt.executeUpdate();
 
