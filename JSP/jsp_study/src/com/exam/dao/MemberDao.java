@@ -12,6 +12,18 @@ import com.exam.vo.MemberVo;
 
 public class MemberDao {
 
+	// ΩÃ±€≈Ê ∆–≈œ º≥∞Ë
+	private static MemberDao instance = new MemberDao();
+	
+	public static MemberDao getInstance() {
+		return instance;
+	}
+
+	///////////////////////////////////////////
+	
+	private MemberDao() {
+	}
+	
 	private Connection getConnection() throws Exception {
 		// «Ï∑ŒƒÌ MySQL DB
 		// mysql://bf2e748931b0cb:ed3fde98@us-cdbr-east-02.cleardb.com/heroku_84ab2d598813ce4?reconnect=true&useUnicode=true&characterEncoding=utf8&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=Asia/Seoul

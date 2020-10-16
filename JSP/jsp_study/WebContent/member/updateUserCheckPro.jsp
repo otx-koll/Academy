@@ -16,7 +16,7 @@ request.setCharacterEncoding("utf-8");
 String passwd = request.getParameter("passwd");
 
 // DAO 객체 준비
-MemberDao memberDao = new MemberDao();
+MemberDao memberDao = MemberDao.getInstance();
 
 int check = memberDao.userCheck(id, passwd);
 

@@ -91,3 +91,22 @@ String dbUrl = "jdbc:mysql://localhost:3306/sakila?useUnicode=true&characterEnco
 String dbId = "myid";
 String dbPwd = "mypwd";
 ```
+
+---
+### 게시판 테이블 생성
+```sql
+CREATE TABLE board (
+	num INT PRIMARY KEY,
+	name VARCHAR(20),
+	passwd VARCHAR(20),
+	subject VARCHAR(50),
+	content VARCHAR(2000),
+	readcount INT,
+	reg_date TIMESTAMP,
+	ip VARCHAR(20),
+	file VARCHAR(50),
+	re_ref INT,
+	re_lev INT,
+	re_seq INT
+);
+```

@@ -13,7 +13,7 @@ if (id == null) {
 }
 
 // DAO 객체 준비
-MemberDao memberDao = new MemberDao();
+MemberDao memberDao = MemberDao.getInstance();
 // 현재 로그인 된 회원정보 한개 가져오기
 MemberVo memberVo = memberDao.getMemberById(id);
 

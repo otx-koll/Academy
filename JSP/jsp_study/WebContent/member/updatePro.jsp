@@ -29,7 +29,7 @@ memberVo.setGender(request.getParameter("gender"));
 memberVo.setEmail(request.getParameter("email"));
 
 // DAO 객체 준비
-MemberDao memberDao = new MemberDao();
+MemberDao memberDao = MemberDao.getInstance();
 
 // 회원 수정
 memberDao.update(memberVo);
