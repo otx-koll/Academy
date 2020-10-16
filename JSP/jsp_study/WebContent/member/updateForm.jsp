@@ -38,6 +38,5 @@ String gender = memberVo.getGender();
 		이메일: <input type="email" name="email" value="<%=(memberVo.getEmail() == null) ? "" : memberVo.getEmail() %>"><br>
 		<input type="submit" value="회원수정">
 	</form>
-	
 </body>
 </html>

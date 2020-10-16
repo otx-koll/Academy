@@ -28,7 +28,7 @@ if (id == null) {
 	
 		<a href="info.jsp">회원정보 조회</a><br>
 		<a href="updateUserCheck.jsp">회원정보 수정</a><br>
-		<a href="delete.jsp">회원정보 삭제</a><br>
+		<a href="deleteUserCheck.jsp">회원정보 삭제</a><br>
 	
 	
 	<%

@@ -104,6 +104,7 @@ public class MemberDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = "";
+		
 		int check = -1;
 
 		try {
@@ -120,9 +121,11 @@ public class MemberDao {
 			if(rs.next()) {
 				if(passwd.equals(rs.getString("passwd"))) {
 					check = 1;
+				} else {
+					check = 0;
 				}
 			} else {
-				check = 0;
+				check = -1;
 			}
 		} catch(Exception e) {
 			e.printStackTrace();

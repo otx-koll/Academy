@@ -59,8 +59,41 @@ hoisting : var선언문이나 function 선언문 등을 해당 스코프의 선�
 함수 : 자주쓰는 실행문들을 기능단위로 정의한 것.
 	  자바스크립트에서 함수정의는 브라우저에 의해 최우선적으로 메모리에 로딩됨
 
-```javascript
+---
 
-```
+- GUI(Graphic User Interface) : 그래픽기반 유저 인터페이스
+- 이벤트 : 사용자 또는 프로그램 자체적으로 발생시키는 사건.
+			발생하면 특정 대상에 신호를 줌.
+- 이벤트 핸들러 : 이벤트를 처리하는 함수 정의.
+				신호를 받으면 연결된 함수의 명령문을 실행함.
+- 이벤트 소스 : 이벤트가 발생된 대상 (버튼 등)
+			  이벤트 핸들러를 등록하는 대상이 됨.
+	
+document 는 브라우저가 로딩한 문서정보를 가진 문서 객체이다.
+	
+**이벤트 종류**
+- click / dblclick
+- mousedown / mouseup / mouseover / mouseout / mousemove
+- dragndrop
+- keydown / keypress / keyup
+- focus / blur / select / change
 
+---
 
+- window.open(새창에 보여질 주소, 창의 속성 또는 이름, 새로 띄어질 페이지의 모양)
+- 이름을 지정해 주지 않으면 계속 새 창을 띄움
+
+웹브라우저 객체 (내장객체)
+window(브라우저) - location(주소표시줄)
+				- history(뒤로가기, 앞으로가기, 새로고침)
+				- document(html문서) - html - head - body
+
+window.멤버변수		window.opener 자신창을 띄운 부모창 참조
+window.메소드()	window.open()	self.open()		open()
+				window.close()	self.close()	close()
+
+---
+window - location 웹 문서의 주소 정보 저장
+window 생략 가능
+window.location.속성	href / protocol / hostname / port / host
+window.location.메소드()	reload()	replace()
