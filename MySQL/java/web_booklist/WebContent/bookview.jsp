@@ -1,9 +1,9 @@
 <%@ page import="java.sql.*" contentType="text/html; charset=EUC-KR"%>
 <%
-Class.forName("oracle.jdbc.driver.OracleDriver");
-// Class.forName("com.mysql.cj.jdbc.Driver");
-String url = "jdbc:oracle:thin:@localhost:1521:XE";
-// String url = "jdbc:mysql://localhost:3306/jspdb?useUnicode=true&characterEncoding=utf8&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=Asia/Seoul";
+// Class.forName("oracle.jdbc.driver.OracleDriver");
+Class.forName("com.mysql.cj.jdbc.Driver");
+// String url = "jdbc:oracle:thin:@localhost:1521:XE";
+String url = "jdbc:mysql://localhost:3306/jspdb?useUnicode=true&characterEncoding=utf8&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=Asia/Seoul";
 Connection dbconn = DriverManager.getConnection(url, "madang", "madang");
 Statement stmt = dbconn.createStatement();
 String bookid = request.getParameter("bookid");

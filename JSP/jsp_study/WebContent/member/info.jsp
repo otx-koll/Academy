@@ -31,8 +31,8 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일 a hh시 mm분 s
 	아이디: <%=memberVo.getId() %><br>
 	패스워드: <%=memberVo.getPasswd() %><br>
 	이름: <%=memberVo.getName() %><br>
-	나이: <%=memberVo.getGender() %><br>
-	성별: <%=memberVo.getAge() %><br>
+	나이: <%=memberVo.getAge() %><br>
+	성별: <%=memberVo.getGender() %><br>
 	이메일: <%=(memberVo.getEmail() == null) ? "" : memberVo.getEmail() %><br>
 	가입날짜: <%=sdf.format(memberVo.getRegDate()) %><br>
 	

@@ -34,7 +34,7 @@ String gender = memberVo.getGender();
 		이름: <input type="text" name="name" value="<%=memberVo.getName() %>"><br>
 		나이: <input type="number" name="age" min="0" max="200" value="<%=memberVo.getAge() %>"><br>
 		성별: <input type="radio" name="gender" value="남" <%=(gender.equals("남")) ? "checked" : "" %>>남성
-		      <input type="radio" name="gender" value="여" <%=(gender.equals("남")) ? "checked" : "" %>> 여성<br>
+		      <input type="radio" name="gender" value="여" <%=(gender.equals("여")) ? "checked" : "" %>>여성<br>
 		이메일: <input type="email" name="email" value="<%=(memberVo.getEmail() == null) ? "" : memberVo.getEmail() %>"><br>
 		<input type="submit" value="회원수정">
 	</form>
