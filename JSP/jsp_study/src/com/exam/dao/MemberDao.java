@@ -12,6 +12,18 @@ import com.exam.vo.MemberVo;
 
 public class MemberDao {
 
+	// 싱글톤 패턴 설계
+	private static MemberDao instance = new MemberDao();
+	
+	public static MemberDao getInstance() {
+		return instance;
+	}
+
+	///////////////////////////////////////////
+	
+	private MemberDao() {
+	}
+	
 	private Connection getConnection() throws Exception {
 		// 헤로쿠 MySQL DB
 		// mysql://bf2e748931b0cb:ed3fde98@us-cdbr-east-02.cleardb.com/heroku_84ab2d598813ce4?reconnect=true&useUnicode=true&characterEncoding=utf8&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=Asia/Seoul
@@ -104,6 +116,7 @@ public class MemberDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = "";
+		
 		int check = -1;
 
 		try {
@@ -120,9 +133,11 @@ public class MemberDao {
 			if(rs.next()) {
 				if(passwd.equals(rs.getString("passwd"))) {
 					check = 1;
+				} else {
+					check = 0;
 				}
 			} else {
-				check = 0;
+				check = -1;
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -132,7 +147,7 @@ public class MemberDao {
 		return check;
 	} // userCheck
 
-	// 전체 회원목록 가져오기 (수정)
+	// 전체 회원목록 가져오기
 	public List<MemberVo> getAllMembers() {
 		List<MemberVo> list = new ArrayList<>();
 
@@ -170,7 +185,7 @@ public class MemberDao {
 		return list;
 	} // getAllMembers()
 
-	// 특정id에 해당하는 회원 1명 가져오기 (수정)
+	// 특정id에 해당하는 회원 1명 가져오기 
 	public MemberVo getMemberById(String id) {
 		MemberVo memberVo = null;
 
@@ -217,12 +232,15 @@ public class MemberDao {
 
 			String sql = "";
 			sql += "UPDATE member ";
-			sql += "SET name = ? ";
+			sql += "SET name = ?, age = ?, gender = ?, email = ? ";
 			sql += "WHERE id = ? ";
 
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, memberVo.getName());
-			pstmt.setString(2, memberVo.getId());
+			pstmt.setInt(2, memberVo.getAge());
+			pstmt.setString(3, memberVo.getGender());
+			pstmt.setString(4, memberVo.getEmail());
+			pstmt.setString(5, memberVo.getId());
 
 			pstmt.executeUpdate();
 

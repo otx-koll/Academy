@@ -12,9 +12,9 @@ if (id == null) {
 	return;
 }
 
-//DAO 객체 준비
-MemberDao memberDao = new MemberDao();
-//현재 로그인 된 회원정보 한개 가져오기
+// DAO 객체 준비
+MemberDao memberDao = MemberDao.getInstance();
+// 현재 로그인 된 회원정보 한개 가져오기
 MemberVo memberVo = memberDao.getMemberById(id);
 
 String gender = memberVo.getGender();
@@ -38,6 +38,5 @@ String gender = memberVo.getGender();
 		이메일: <input type="email" name="email" value="<%=(memberVo.getEmail() == null) ? "" : memberVo.getEmail() %>"><br>
 		<input type="submit" value="회원수정">
 	</form>
-	
 </body>
 </html>

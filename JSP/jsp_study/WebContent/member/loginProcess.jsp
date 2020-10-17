@@ -10,7 +10,7 @@ String id = request.getParameter("id");
 String passwd = request.getParameter("passwd");
 
 // DAO 객체 준비
-MemberDao memberDao = new MemberDao();
+MemberDao memberDao = MemberDao.getInstance();
 
 // 로그인 확인 메소드 호출		userCheck(id, passwd)
 int check = memberDao.userCheck(id, passwd);
