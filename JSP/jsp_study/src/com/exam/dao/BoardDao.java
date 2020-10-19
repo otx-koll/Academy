@@ -237,7 +237,77 @@ public class BoardDao {
 		return list;
 	} // getBoards()
 	
+	// 글번호에 해당하는 패스워드 일치여부 확인하기
+	public boolean isPasswdOk(int num, String passwd) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		boolean isPasswdOk = false;
+		String sql = "";
+		
+		try {
+			con = jdbcUtils.getConnection();
+			
+			sql = "SELECT COUNT(*) ";
+			sql += "FROM board ";
+			sql += "WHERE num = ? ";
+			sql += "AND passwd = ? ";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			pstmt.setString(2, passwd);
+			
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				int count = rs.getInt(1);
+				if (count == 1) {
+					isPasswdOk = true;
+				} else {
+					isPasswdOk = false;
+				}
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			jdbcUtils.close(con, pstmt, rs);
+		}
+		return isPasswdOk;
+	} // isPasswdOk()
 
+	public void updateBoard(BoardVo boardVo) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		// update니까 resultset안씀
+		
+		String sql = "";
+		
+		try {
+			con = jdbcUtils.getConnection();
+			
+			sql = "UPDATE board ";
+			sql += "SET name = ?, subject = ?, content = ? ";
+			sql += "WHERE num = ? ";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, boardVo.getName());
+			pstmt.setString(2, boardVo.getSubject());
+			pstmt.setString(3, boardVo.getContent());
+			pstmt.setInt(4, boardVo.getNum());
+			
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			jdbcUtils.close(con, pstmt);
+		}
+		
+		
+		
+	} // updateBoard()
+	
 	public static void main(String[] args) {
 
 		BoardDao boardDao = BoardDao.getInstance();

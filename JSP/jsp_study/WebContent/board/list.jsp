@@ -2,7 +2,7 @@
 <%@page import="java.util.List"%>
 <%@page import="com.exam.dao.BoardDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%
 // DAO 객체 준비
 BoardDao boardDao = BoardDao.getInstance();
@@ -29,22 +29,48 @@ List<BoardVo> boardList = null;
 if (count > 0) {
 	boardList = boardDao.getBoards(startRow, pageSize);
 }
-
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+table {
+	width: 800px;
+}
+th.subject{
+	width:250px;
+}
+a{
+	text-decoration:none;
+	color: black;
+}
+a:visited{
+	color:purple;
+}
+a:hover{
+	color:orange;
+	text-decoration:underline;
+}
+.active {
+	font-weight: bold;
+	text-decoration:underline;
+}
+</style>
 </head>
 <body>
-	<h1>글목록 (전체 글 갯수 : <%=count %>)</h1>
+	<h1>
+		글목록 (전체 글 갯수 :
+		<%=count%>)
+	</h1>
 	<hr>
+	<h3><a href="writeForm.jsp">글쓰기</a></h3>
 	<table border="1">
 		<thead>
 			<tr>
 				<th>번호</th>
-				<th>제목</th>
+				<th class="subject">제목</th>
 				<th>작성자</th>
 				<th>작성일</th>
 				<th>조회</th>
@@ -52,29 +78,87 @@ if (count > 0) {
 			</tr>
 		</thead>
 		<tbody>
-		<%
-		if (count > 0) {
-			for (BoardVo boardVo : boardList) {
-				%>
-				<tr>
-					<td><%=boardVo.getNum() %></td>
-					<td><%=boardVo.getSubject() %></td>
-					<td><%=boardVo.getName() %></td>
-					<td><%=boardVo.getRegDate() %></td>
-					<td><%=boardVo.getReadcount() %></td>
-					<td><%=boardVo.getIp() %></td>
-				</tr>
-				<%
-			}
-		} else { // count == 0
+			<%
+				if (count > 0) {
+				for (BoardVo boardVo : boardList) {
+			%>
+			<tr>
+				<td><%=boardVo.getNum()%></td>
+				<td><a href="content.jsp?num=<%=boardVo.getNum() %>&pageNum=<%=pageNum %>"><%=boardVo.getSubject()%></a></td>
+				<td><%=boardVo.getName()%></td>
+				<td><%=boardVo.getRegDate()%></td>
+				<td><%=boardVo.getReadcount()%></td>
+				<td><%=boardVo.getIp()%></td>
+			</tr>
+			<%
+				}
+			} else { // count == 0
 			%>
 			<tr>
 				<td colspan="6">게시판 글 없음</td>
 			</tr>
-			<%	
-		}
-		%>
+			<%
+				}
+			%>
 		</tbody>
 	</table>
+	<%
+		// 글 갯수가 0보다 크면 페이지 블록 계산해서 출력하기
+	if (count > 0) {
+		// 총 필요한 페이지 갯수
+		// 글 50개	한 화면에 보여줄 글은 10개 => 50 / 10 = 5
+		// 글 55개	한 화면에 보여줄 글은 10개 => 55 / 10 = 5 + 1페이지(나머지존재) => 6
+		// 		int pageCount = (int) Math.ceil((double) count / pageSize);
+		int pageCount = (count / pageSize) + (count % pageSize == 0 ? 0 : 1);
+
+		// 한 화면에 보여줄 페이지갯수 설정
+		int pageBlock = 5;
+
+		// 화면에 보여줄 시작페이지 번호 구하기
+		// 1~5			6~10			11~15			16~21		...
+		// 1~5 => 1		6~10 => 6		11~15 => 11		16~20 => 16	...
+		int startPage = ((pageNum / pageBlock) - (pageNum % pageBlock == 0 ? 1 : 0)) * pageBlock + 1;
+
+		// 화면에 보여줄 끝페이지 번호 구하기
+		int endPage = startPage + pageBlock - 1;
+		if (endPage > pageCount) {
+			endPage = pageCount;
+		}
+		
+		// [이전]
+		if (startPage > pageBlock) {
+			%>
+			<a href="list.jsp?pageNum=<%=startPage - pageBlock %>">[이전]</a>
+			<%
+		}
+				
+		// 1 ~ 5
+		for (int i = startPage; i <= endPage; i++) {
+			
+			if (i == pageNum) {
+				%>
+				<a href="list.jsp?pageNum=<%=i %>" class="active">[<%=i %>]</a>
+				<%
+			} else {
+				%>
+				<a href="list.jsp?pageNum=<%=i%>">[<%=i %>]</a> 
+				<%
+			}
+		} // for
+		
+		
+		// [다음]
+		if (endPage < pageCount) {
+			%>
+			<a href="list.jsp?pageNum=<%=startPage + pageBlock %>">[다음]</a>
+			<%
+		}
+	}
+	%>
 </body>
 </html>
+
+
+
+
+
