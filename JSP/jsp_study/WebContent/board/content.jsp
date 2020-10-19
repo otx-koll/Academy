@@ -3,8 +3,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-// 파라미터값 num 가져오기
-int num = Integer.parseInt(request.getParameter("num"));
+// 파라미터값 int num, String pageNum 가져오기
+int num = Integer.parseInt(request.getParameter("num")); // 글 번호
+String pageNum = request.getParameter("pageNum"); // 페이지 번호
 
 // DAO 객체 준비
 BoardDao boardDao = BoardDao.getInstance();
@@ -39,17 +40,17 @@ table {
 			<th>작성일</th><td><%=boardVo.getRegDate() %></td>
 		</tr>
 		<tr>
-			<th>글제목</th><td colspan="3")><%=boardVo.getSubject() %></td>
+			<th>글제목</th><td colspan="3"><%=boardVo.getSubject() %></td>
 		</tr>
 		<tr>
-			<th>글내용</th><td colspan="3")><%=boardVo.getContent() %></td>
+			<th>글내용</th><td colspan="3"><pre><%=boardVo.getContent() %></pre></td>
 		</tr>
 		<tr>
 			<td colspan="4">
-				<input type="button" value="글수정">
-				<input type="button" value="글삭제">
+				<input type="button" value="글수정" onclick="location.href='updateForm.jsp?num=<%=num %>&pageNum=<%=pageNum %>'">
+				<input type="button" value="글삭제" onclick="location.href='deleteForm.jsp?num=<%=num %>&pageNum=<%=pageNum %>'">
 				<input type="button" value="답글쓰기">
-				<input type="button" value="글목록">
+				<input type="button" value="글목록" onclick="location.href='list.jsp?pageNum=<%=pageNum %>'">
 			</td>
 		</tr>
 	</table>

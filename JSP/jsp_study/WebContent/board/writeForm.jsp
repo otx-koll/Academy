@@ -31,7 +31,7 @@
 				<td colspan="2">
 					<input type="submit" value="글쓰기">
 					<input type="reset" value="다시쓰기">
-					<input type="button" value="글목록">
+					<input type="button" value="글목록" onclick="">
 				</td>
 			</tr>
 		</table>
