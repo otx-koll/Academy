@@ -5,117 +5,70 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.exam.vo.BoardVo;
 
 public class BoardDao {
-	// 싱글톤 
+	// 싱글톤
 	// 외부에서 new연산자 권한을 안주는 것
 	// 로딩되는 시점에만 객체 생성됨. 잡혀있음
-	 
+
 	private static BoardDao instance = new BoardDao();
-	
+
 	public static BoardDao getInstance() {
 		return instance;
 	}
 
 	///////////////////
 
-	private BoardDao() {} // 싱글톤
-	
-	private Connection getConnection() throws Exception {
-		// 헤로쿠 MySQL DB
-		// mysql://bf2e748931b0cb:ed3fde98@us-cdbr-east-02.cleardb.com/heroku_84ab2d598813ce4?reconnect=true&useUnicode=true&characterEncoding=utf8&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=Asia/Seoul
+	private BoardDao() {
+	} // 싱글톤
 
-		// 헤로쿠DB id : bf2e748931b0cb
-		// 헤로쿠DB ps : ed3fde98
-		// 헤로쿠DB localhost : us-cdbr-east-02.cleardb.com
-		// 헤로쿠DB 스키마이름 : heroku_84ab2d598813ce4
-
-		// DB접속정보
-		String dbUrl = "jdbc:mysql://localhost:3306/jspdb?useUnicode=true&characterEncoding=utf8&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=Asia/Seoul";
-		String dbId = "myid";
-		String dbPwd = "mypwd";
-
-		Connection con = null;
-
-		// 1단계. DB드라이버 클래스 로딩
-		Class.forName("com.mysql.cj.jdbc.Driver");
-		// 2단계. DB에 연결 시도. 연결후 Connection객체를 리턴함.
-		con = DriverManager.getConnection(dbUrl, dbId, dbPwd);
-		return con;
-	} // getConnection()
-	
-	private void close(Connection con, PreparedStatement pstmt) {
-		close(con, pstmt, null);
-	}
-
-	private void close(Connection con, PreparedStatement pstmt, ResultSet rs) {
-		try {
-			if (rs != null) {
-				rs.close();
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		try {
-			if (pstmt != null) {
-				pstmt.close();
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		try {
-			if (con != null) {
-				con.close();
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	} // close()
-	
 	public int getNextNum() {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
+
 		int nextNum = 0;
-		
+
 		String sql = "";
-		
+
 		try {
-			con = getConnection();
-			
+			con = jdbcUtils.getConnection();
+
 			sql = "SELECT IFNULL(MAX(num),0) + 1 AS next_num ";
 			sql += "FROM board";
-			
+
 			pstmt = con.prepareStatement(sql);
-			
+
 			rs = pstmt.executeQuery();
-			
+
 			if (rs.next()) {
 				nextNum = rs.getInt("next_num");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			close(con, pstmt, rs);
+			jdbcUtils.close(con, pstmt, rs);
 		}
 		return nextNum;
 	} // getNextNum()
-	
+
 	public void addBoard(BoardVo boardVo) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		
+
 		String sql = "";
-		
+
 		try {
-			con = getConnection();
-			
+			con = jdbcUtils.getConnection();
+
 			sql = "INSERT INTO board (num, name, passwd, subject, content, readcount, reg_date, ip, file, re_ref, re_lev, re_seq) ";
 			sql += "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
-			
+
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, boardVo.getNum());
 			pstmt.setString(2, boardVo.getName());
@@ -130,35 +83,36 @@ public class BoardDao {
 			pstmt.setInt(11, boardVo.getReLev());
 			pstmt.setInt(12, boardVo.getReSeq());
 			// 실행
-			pstmt.executeUpdate();
+			pstmt.executeUpdate(); // executeQuery는 resultset리턴
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			close(con, pstmt);
+			jdbcUtils.close(con, pstmt);
 		}
 	} // addBoard()
-	
+
 	public BoardVo getBoardByNum(int num) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
+
 		BoardVo boardVo = null;
 		String sql = "";
-		
+
 		try {
-			con = getConnection();
-			
+			con = jdbcUtils.getConnection();
+
 			sql = "SELECT * FROM board WHERE num = ?";
-			
+
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, num);
-			
+
 			rs = pstmt.executeQuery();
-			
+
 			if (rs.next()) {
 				boardVo = new BoardVo();
-				
+
 				boardVo.setNum(rs.getInt("num"));
 				boardVo.setName(rs.getString("name"));
 				boardVo.setPasswd(rs.getString("passwd"));
@@ -176,33 +130,137 @@ public class BoardDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			close(con, pstmt, rs);
+			jdbcUtils.close(con, pstmt, rs);
 		}
 		return boardVo;
 	} // getBoardByNum
-	
-	public void updateReadcount(int num){
+
+	public void updateReadcount(int num) {
 
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		
+
 		try {
-			con = getConnection();
-			
+			con = jdbcUtils.getConnection();
+
 			String sql = "";
 			sql = "UPDATE board ";
 			sql += "SET readcount = readcount + 1 ";
 			sql += "WHERE num = ? ";
-			
+
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, num);
-			
+
 			pstmt.executeUpdate();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			close(con, pstmt);
+			jdbcUtils.close(con, pstmt);
 		}
 	} // updateReadcount()
+	
+	// 전체 글 갯수 가져오기
+	public int getCount() {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		int count = 0;
+		String sql = "";
+		
+		try {
+			con = jdbcUtils.getConnection();
+			
+			sql = "SELECT COUNT(num) FROM board;";
+			
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				count = rs.getInt(1); // count(*) 가져옴
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			jdbcUtils.close(con, pstmt, rs);
+		}
+		return count;
+	} // getCount()
+	
+	public List<BoardVo> getBoards(int startRow, int pageSize) { // 구성요소 BoardVo
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		List<BoardVo> list = new ArrayList<>();
+		String sql = "";
+		
+		try {
+			con = jdbcUtils.getConnection();
+			
+			sql = "SELECT * ";
+			sql += "FROM board ";
+			sql += "ORDER BY num DESC ";
+			sql += "LIMIT ?, ? ";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, pageSize);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				BoardVo boardVo = new BoardVo();
+				boardVo.setNum(rs.getInt("num"));
+				boardVo.setName(rs.getString("name"));
+				boardVo.setPasswd(rs.getString("passwd"));
+				boardVo.setSubject(rs.getString("subject"));
+				boardVo.setContent(rs.getString("content"));
+				boardVo.setReadcount(rs.getInt("readcount"));
+				boardVo.setRegDate(rs.getTimestamp("reg_date"));
+				boardVo.setIp(rs.getString("ip"));
+				boardVo.setFile(rs.getString("file"));
+				boardVo.setReRef(rs.getInt("re_ref"));
+				boardVo.setReLev(rs.getInt("re_lev"));
+				boardVo.setReSeq(rs.getInt("re_seq"));
+				
+				list.add(boardVo);
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			jdbcUtils.close(con, pstmt, rs);
+		}
+		return list;
+	} // getBoards()
+	
+
+	public static void main(String[] args) {
+
+		BoardDao boardDao = BoardDao.getInstance();
+
+		for (int i = 0; i < 100; i++) {
+			BoardVo boardVo = new BoardVo();
+
+			int num = boardDao.getNextNum(); // dao에서 글번호를 가져와서 vo에 넣는다.
+			boardVo.setNum(num);
+			boardVo.setName("홍길동" + num);
+			boardVo.setPasswd("1234");
+			boardVo.setSubject("글제목" + num);
+			boardVo.setContent("글내용" + num);
+			boardVo.setReadcount(0);
+			boardVo.setRegDate(new Timestamp(System.currentTimeMillis()));
+			boardVo.setIp("127.0.0.1");
+			boardVo.setReRef(num);
+			boardVo.setReLev(0);
+			boardVo.setReSeq(0);
+
+			System.out.println(boardVo);
+			
+			boardDao.addBoard(boardVo);
+		} // for
+	} // main()
 }

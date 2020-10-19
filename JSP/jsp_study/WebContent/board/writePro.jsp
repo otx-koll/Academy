@@ -4,16 +4,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-Integer num = (Integer) session.getAttribute("num");
-if (num == null) {
-	%>
-	<script>
-		alert('접근할 수 없는 페이지입니다.');
-		location.href = 'writeForm.jsp';
-	</script>
-	<%
-	return;
-}
 
 // post 파라미터 값 한글 처리
 request.setCharacterEncoding("utf-8");

@@ -102,7 +102,7 @@ CREATE TABLE board (
 	subject VARCHAR(50),
 	content VARCHAR(2000),
 	readcount INT,
-	reg_date TIMESTAMP,
+	reg_date DATETIME,
 	ip VARCHAR(20),
 	file VARCHAR(50),
 	re_ref INT,
@@ -110,3 +110,4 @@ CREATE TABLE board (
 	re_seq INT
 );
 ```
+ - 우클릭후 alter 웅앵 클릭 -> reg_date Timestamp를 datetime으로 변경 후 nn 해제 및 값 null

@@ -49,7 +49,7 @@ table {
 				<input type="button" value="글수정">
 				<input type="button" value="글삭제">
 				<input type="button" value="답글쓰기">
-				<input type="button" value="글목록">
+				<input type="button" value="글목록" onclick="location.href='list.jsp'">
 			</td>
 		</tr>
 	</table>
