@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--
+    CompoundButton 클래스
+        - Button 클래스의 하위 클래스
+        - 체크박스, 라디오버튼, 스위치, 토글버튼의 상위 클래스
+
+    체크박스
+        - 여러 개의 체크박스가 있어도 서로 독립적으로 동작
+     -->
+
+    <CheckBox
+        android:id="@+id/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="안드로이드폰"
+        android:checked="true"/>
+
+    <CheckBox
+        android:id="@+id/iphone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="아이폰"/>
+
+    <CheckBox
+        android:id="@+id/window"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="윈도폰"
+        android:checked="true"/>
+
+</LinearLayout>

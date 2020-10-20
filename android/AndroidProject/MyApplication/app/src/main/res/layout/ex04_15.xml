@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--
+    rotation : 위젯을 회전시켜서 출력. 값은 각도로 지정
+     -->
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="버튼 1"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="버튼 2"/>
+
+    <Button
+        android:rotation="45"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="버튼 3"/>
+
+</LinearLayout>

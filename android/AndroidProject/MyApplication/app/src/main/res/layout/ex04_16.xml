@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--
+    텍스트뷰의 속성
+    text : 텍스트뷰에 나타나는 문자열 표현
+    textColor : 글자의 색상을 지정, rgb나 argb형식
+    textSize : 글자의 크기를 dp, px, in, mm, sp 단위로 지정
+    typeface : 글자의 글꼴을 지정
+        - 값으로 sans, serif, monospace설정. default는 normal
+    textStyle : 글자의 스타일을 지정
+        - 값으로 bolid, italic, bolid|italic을 설정. default는 normal
+    singleLine : 글이 길어 넘어갈 경우 강제로 한 줄만 출력. 문자열 맨 뒤에는 '...'표시
+        - 값으로 true와 false를 설정할 수 있다. default는 false
+     -->
+
+   <TextView
+       android:textSize="30dp"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:text="textSize 속성"/>
+
+    <TextView
+        android:textSize="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#00ff00"
+        android:text="textColor 속성"/>
+
+    <TextView
+        android:textSize="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold|italic"
+        android:text="textStyle 속성"/>
+
+    <TextView
+        android:textSize="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:typeface="serif"
+        android:text="typeface 속성"/>
+
+    <TextView
+        android:textSize="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:text="singleLine 속성 singleLine 속성 singleLine 속성"/>
+
+</LinearLayout>
