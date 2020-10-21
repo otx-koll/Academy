@@ -37,7 +37,7 @@ public class BoardDao {
 		String sql = "";
 
 		try {
-			con = jdbcUtils.getConnection();
+			con = JdbcUtils.getConnection();
 
 			sql = "SELECT IFNULL(MAX(num),0) + 1 AS next_num ";
 			sql += "FROM board";
@@ -52,7 +52,7 @@ public class BoardDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			jdbcUtils.close(con, pstmt, rs);
+			JdbcUtils.close(con, pstmt, rs);
 		}
 		return nextNum;
 	} // getNextNum()
@@ -64,7 +64,7 @@ public class BoardDao {
 		String sql = "";
 
 		try {
-			con = jdbcUtils.getConnection();
+			con = JdbcUtils.getConnection();
 
 			sql = "INSERT INTO board (num, name, passwd, subject, content, readcount, reg_date, ip, file, re_ref, re_lev, re_seq) ";
 			sql += "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
@@ -88,7 +88,7 @@ public class BoardDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			jdbcUtils.close(con, pstmt);
+			JdbcUtils.close(con, pstmt);
 		}
 	} // addBoard()
 
@@ -101,7 +101,7 @@ public class BoardDao {
 		String sql = "";
 
 		try {
-			con = jdbcUtils.getConnection();
+			con = JdbcUtils.getConnection();
 
 			sql = "SELECT * FROM board WHERE num = ?";
 
@@ -130,7 +130,7 @@ public class BoardDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			jdbcUtils.close(con, pstmt, rs);
+			JdbcUtils.close(con, pstmt, rs);
 		}
 		return boardVo;
 	} // getBoardByNum
@@ -141,7 +141,7 @@ public class BoardDao {
 		PreparedStatement pstmt = null;
 
 		try {
-			con = jdbcUtils.getConnection();
+			con = JdbcUtils.getConnection();
 
 			String sql = "";
 			sql = "UPDATE board ";
@@ -156,7 +156,7 @@ public class BoardDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			jdbcUtils.close(con, pstmt);
+			JdbcUtils.close(con, pstmt);
 		}
 	} // updateReadcount()
 	
@@ -170,7 +170,7 @@ public class BoardDao {
 		String sql = "";
 		
 		try {
-			con = jdbcUtils.getConnection();
+			con = JdbcUtils.getConnection();
 			
 			sql = "SELECT COUNT(num) FROM board;";
 			
@@ -183,7 +183,7 @@ public class BoardDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			jdbcUtils.close(con, pstmt, rs);
+			JdbcUtils.close(con, pstmt, rs);
 		}
 		return count;
 	} // getCount()
@@ -197,11 +197,11 @@ public class BoardDao {
 		String sql = "";
 		
 		try {
-			con = jdbcUtils.getConnection();
+			con = JdbcUtils.getConnection();
 			
 			sql = "SELECT * ";
 			sql += "FROM board ";
-			sql += "ORDER BY num DESC ";
+			sql += "ORDER BY re_ref DESC, re_seq ASC ";
 			sql += "LIMIT ?, ? ";
 			
 			pstmt = con.prepareStatement(sql);
@@ -232,7 +232,7 @@ public class BoardDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			jdbcUtils.close(con, pstmt, rs);
+			JdbcUtils.close(con, pstmt, rs);
 		}
 		return list;
 	} // getBoards()
@@ -247,7 +247,7 @@ public class BoardDao {
 		String sql = "";
 		
 		try {
-			con = jdbcUtils.getConnection();
+			con = JdbcUtils.getConnection();
 			
 			sql = "SELECT COUNT(*) ";
 			sql += "FROM board ";
@@ -271,7 +271,7 @@ public class BoardDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			jdbcUtils.close(con, pstmt, rs);
+			JdbcUtils.close(con, pstmt, rs);
 		}
 		return isPasswdOk;
 	} // isPasswdOk()
@@ -284,7 +284,7 @@ public class BoardDao {
 		String sql = "";
 		
 		try {
-			con = jdbcUtils.getConnection();
+			con = JdbcUtils.getConnection();
 			
 			sql = "UPDATE board ";
 			sql += "SET name = ?, subject = ?, content = ? ";
@@ -301,12 +301,93 @@ public class BoardDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			jdbcUtils.close(con, pstmt);
+			JdbcUtils.close(con, pstmt);
 		}
-		
-		
-		
 	} // updateBoard()
+	
+	public void deleteBoardByNum(int num) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = "";
+		
+		try {
+			con = JdbcUtils.getConnection();
+			
+			sql = "DELETE FROM board WHERE num = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtils.close(con, pstmt);
+		}
+	} // deleteBoard
+	
+	public boolean updateAndAddReply(BoardVo boardVo) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = "";
+		
+		try {
+			con = JdbcUtils.getConnection();
+			
+			con.setAutoCommit(false); // 수동커밋으로 변경
+			
+			sql  = "UPDATE board ";
+			sql += "SET re_seq = re_seq + 1 ";
+			sql += "WHERE re_ref = ? ";
+			sql += "AND re_seq > ? ";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, boardVo.getReRef());
+			pstmt.setInt(2, boardVo.getReSeq());
+			// update 수행
+			pstmt.executeUpdate();
+			// update문장을 가진 pstmt 객체 닫기
+			pstmt.close();
+			
+			sql  = "INSERT INTO board (num, name, passwd, subject, content, readcount, reg_date, ip, file, re_ref, re_lev, re_seq) ";
+			sql += "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, boardVo.getNum());
+			pstmt.setString(2, boardVo.getName());
+			pstmt.setString(3, boardVo.getPasswd());
+			pstmt.setString(4, boardVo.getSubject());
+			pstmt.setString(5, boardVo.getContent());
+			pstmt.setInt(6, boardVo.getReadcount());
+			pstmt.setTimestamp(7, boardVo.getRegDate());
+			pstmt.setString(8, boardVo.getIp());
+			pstmt.setString(9, boardVo.getFile());
+			pstmt.setInt(10, boardVo.getReRef());     // 같은 그룹
+			pstmt.setInt(11, boardVo.getReLev() + 1); // 답글쓰는 대상글의 들여쓰기 + 1
+			pstmt.setInt(12, boardVo.getReSeq() + 1); // 답글쓰는 대상글의 그룹내 순번 + 1
+			// insert문 실행
+			pstmt.executeUpdate();
+			
+			con.commit(); // 커밋하기
+			
+			con.setAutoCommit(true); // 자동커밋은 기본값인 true로 수정
+			
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+			try {
+				con.rollback(); // 단위작업에 문제가 생기면 롤백(전체취소)하기 
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			
+			return false;
+		} finally {
+			JdbcUtils.close(con, pstmt);
+		}
+	} // updateAndAddReply
 	
 	public static void main(String[] args) {
 

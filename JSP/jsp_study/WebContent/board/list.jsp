@@ -4,7 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-// DAO 객체 준비
+	// DAO 객체 준비
 BoardDao boardDao = BoardDao.getInstance();
 
 // 전체 글 갯수 가져오기
@@ -39,23 +39,28 @@ if (count > 0) {
 table {
 	width: 800px;
 }
-th.subject{
-	width:250px;
+
+th.subject {
+	width: 250px;
 }
-a{
-	text-decoration:none;
+
+a {
+	text-decoration: none;
 	color: black;
 }
-a:visited{
-	color:purple;
+
+a:visited {
+	color: purple;
 }
-a:hover{
-	color:orange;
-	text-decoration:underline;
+
+a:hover {
+	color: orange;
+	text-decoration: underline;
 }
+
 .active {
 	font-weight: bold;
-	text-decoration:underline;
+	text-decoration: underline;
 }
 </style>
 </head>
@@ -65,7 +70,9 @@ a:hover{
 		<%=count%>)
 	</h1>
 	<hr>
-	<h3><a href="writeForm.jsp">글쓰기</a></h3>
+	<h3>
+		<a href="writeForm.jsp">글쓰기</a>
+	</h3>
 	<table border="1">
 		<thead>
 			<tr>
@@ -84,7 +91,17 @@ a:hover{
 			%>
 			<tr>
 				<td><%=boardVo.getNum()%></td>
-				<td><a href="content.jsp?num=<%=boardVo.getNum() %>&pageNum=<%=pageNum %>"><%=boardVo.getSubject()%></a></td>
+				<td>
+					<%
+					if (boardVo.getReLev() > 0) { // 답글이면
+						%>
+						<img src="../images/level.gif" width="<%=boardVo.getReLev() * 15 %>" height="13">
+						<img src="../images/icon_re.gif">
+						<%
+					}
+					%>
+					<a href="content.jsp?num=<%=boardVo.getNum()%>&pageNum=<%=pageNum%>"><%=boardVo.getSubject()%></a>
+				</td>
 				<td><%=boardVo.getName()%></td>
 				<td><%=boardVo.getRegDate()%></td>
 				<td><%=boardVo.getReadcount()%></td>
@@ -124,34 +141,35 @@ a:hover{
 		if (endPage > pageCount) {
 			endPage = pageCount;
 		}
-		
+
 		// [이전]
 		if (startPage > pageBlock) {
-			%>
-			<a href="list.jsp?pageNum=<%=startPage - pageBlock %>">[이전]</a>
-			<%
+	%>
+	<a href="list.jsp?pageNum=<%=startPage - pageBlock%>">[이전]</a>
+	<%
 		}
-				
-		// 1 ~ 5
-		for (int i = startPage; i <= endPage; i++) {
-			
-			if (i == pageNum) {
-				%>
-				<a href="list.jsp?pageNum=<%=i %>" class="active">[<%=i %>]</a>
-				<%
-			} else {
-				%>
-				<a href="list.jsp?pageNum=<%=i%>">[<%=i %>]</a> 
-				<%
-			}
-		} // for
-		
-		
-		// [다음]
-		if (endPage < pageCount) {
-			%>
-			<a href="list.jsp?pageNum=<%=startPage + pageBlock %>">[다음]</a>
-			<%
+
+	// 1 ~ 5
+	for (int i = startPage; i <= endPage; i++) {
+
+	if (i == pageNum) {
+	%>
+	<a href="list.jsp?pageNum=<%=i%>" class="active">[<%=i%>]
+	</a>
+	<%
+		} else {
+	%>
+	<a href="list.jsp?pageNum=<%=i%>">[<%=i%>]
+	</a>
+	<%
+		}
+	} // for
+
+	// [다음]
+	if (endPage < pageCount) {
+	%>
+	<a href="list.jsp?pageNum=<%=startPage + pageBlock%>">[다음]</a>
+	<%
 		}
 	}
 	%>

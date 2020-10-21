@@ -25,6 +25,7 @@ BoardVo boardVo = boardDao.getBoardByNum(num);
 	<h1>게시판 글수정</h1>
 	<hr>
 	<form action="updatePro.jsp" method="post">
+		<input type="hidden" name="pageNum" value="<%=pageNum%>">
 		<input type="hidden" name="num" value="<%=num%>"> <!-- hidden : 눈에 안보이지만 서버엔 전송한다 -->
 		<table border="1">
 			<tr>
@@ -45,7 +46,7 @@ BoardVo boardVo = boardDao.getBoardByNum(num);
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="submit" value="글수정" onclick="">
+					<input type="submit" value="글수정">
 					<input type="reset" value="다시쓰기">
 					<input type="button" value="글목록" onclick="location.href='list.jsp?pageNum=<%=pageNum %>'">
 				</td>

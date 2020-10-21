@@ -30,7 +30,7 @@ public class MemberDao {
 		PreparedStatement pstmt = null;
 
 		try {
-			con = jdbcUtils.getConnection(); // public static 붙혀서
+			con = JdbcUtils.getConnection(); // public static 붙혀서
 
 			String sql = "";
 			sql += "INSERT INTO member (id, passwd, name, age, gender, email, reg_date) ";
@@ -52,7 +52,7 @@ public class MemberDao {
 		} finally {
 			// 예외 발생여부에 관계없이 무조건 정리작업 수행함.
 			// try블록에서 만든 객체를 정리하는 작업을 주로 함
-			jdbcUtils.close(con, pstmt);
+			JdbcUtils.close(con, pstmt);
 		}
 	} // addMember()
 	
@@ -69,7 +69,7 @@ public class MemberDao {
 		int check = -1;
 
 		try {
-			con = jdbcUtils.getConnection();
+			con = JdbcUtils.getConnection();
 			// id에 해당하는 passwd 가져오기
 			sql = "SELECT passwd FROM member WHERE id = ?";
 			pstmt = con.prepareStatement(sql);
@@ -91,7 +91,7 @@ public class MemberDao {
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			jdbcUtils.close(con, pstmt, rs);
+			JdbcUtils.close(con, pstmt, rs);
 		}
 		return check;
 	} // userCheck
@@ -107,7 +107,7 @@ public class MemberDao {
 		String sql = "";
 
 		try {
-			con = jdbcUtils.getConnection();
+			con = JdbcUtils.getConnection();
 
 			sql = "SELECT * FROM member ORDER BY id";
 			pstmt = con.prepareStatement(sql);
@@ -129,7 +129,7 @@ public class MemberDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			jdbcUtils.close(con, pstmt, rs);
+			JdbcUtils.close(con, pstmt, rs);
 		}
 		return list;
 	} // getAllMembers()
@@ -145,7 +145,7 @@ public class MemberDao {
 		String sql = "";
 
 		try {
-			con = jdbcUtils.getConnection();
+			con = JdbcUtils.getConnection();
 
 			sql = "SELECT * FROM member WHERE id = ?";
 			pstmt = con.prepareStatement(sql);
@@ -166,7 +166,7 @@ public class MemberDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			jdbcUtils.close(con, pstmt, rs);
+			JdbcUtils.close(con, pstmt, rs);
 		}
 		return memberVo;
 	} // getMemberById()
@@ -177,7 +177,7 @@ public class MemberDao {
 		PreparedStatement pstmt = null;
 
 		try {
-			con = jdbcUtils.getConnection();
+			con = JdbcUtils.getConnection();
 
 			String sql = "";
 			sql += "UPDATE member ";
@@ -198,7 +198,7 @@ public class MemberDao {
 		} finally {
 			// 예외 발생여부에 관계없이 무조건 정리작업 수행함.
 			// try블록에서 만든 객체를 정리하는 작업을 주로 함
-			jdbcUtils.close(con, pstmt);
+			JdbcUtils.close(con, pstmt);
 		}
 	} // addMember()
 
@@ -208,7 +208,7 @@ public class MemberDao {
 		PreparedStatement pstmt = null;
 
 		try {
-			con = jdbcUtils.getConnection();
+			con = JdbcUtils.getConnection();
 
 			String sql = "";
 			sql += "DELETE FROM member WHERE id = ? ";
@@ -220,7 +220,7 @@ public class MemberDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			jdbcUtils.close(con, pstmt);
+			JdbcUtils.close(con, pstmt);
 		}
 	} // deleteById()
 
@@ -230,7 +230,7 @@ public class MemberDao {
 		PreparedStatement pstmt = null;
 
 		try {
-			con = jdbcUtils.getConnection();
+			con = JdbcUtils.getConnection();
 
 			String sql = "";
 			sql += "DELETE FROM member ";
@@ -241,7 +241,7 @@ public class MemberDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			jdbcUtils.close(con, pstmt);
+			JdbcUtils.close(con, pstmt);
 		}
 	} // deleteAll()
 

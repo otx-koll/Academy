@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class jdbcUtils {
+public class JdbcUtils {
 	
 	public static Connection getConnection() throws Exception { // 호출 가능하게 static
 		// 헤로쿠 MySQL DB

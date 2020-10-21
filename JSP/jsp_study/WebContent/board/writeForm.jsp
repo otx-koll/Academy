@@ -21,7 +21,7 @@
 			</tr>
 			<tr>
 				<th>제목</th>
-				<td><input type="text" name="subject"></td>
+				<td><input type="text" name="subject" required></td>
 			</tr>
 			<tr>
 				<th>내용</th>
@@ -31,7 +31,7 @@
 				<td colspan="2">
 					<input type="submit" value="글쓰기">
 					<input type="reset" value="다시쓰기">
-					<input type="button" value="글목록" onclick="">
+					<input type="button" value="글목록" onclick="location.href='list.jsp'">
 				</td>
 			</tr>
 		</table>

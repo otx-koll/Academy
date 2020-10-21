@@ -15,6 +15,7 @@ public class BoardVo {
 	private int reRef; // 그룹번호. 주글번호는 그룹번호가 됨
 	private int reLev; // 들여쓰기 레벨
 	private int reSeq; // 그룹 내에서의 순번
+	
 	public int getNum() {
 		return num;
 	}
