@@ -43,6 +43,30 @@ table {
 			<th>글제목</th><td colspan="3"><%=boardVo.getSubject() %></td>
 		</tr>
 		<tr>
+			<th>파일</th>
+			<td colspan="3">
+<%-- 				<%=boardVo.getFile() == null ? "" : boardVo.getFile() %> --%>
+				<%
+				if (boardVo.getFile() != null) {
+					// 이미지일 때 미리보기
+					String filename = boardVo.getFile();
+					%>
+					<a href="../upload/<%=filename %>"><%=boardVo.getFile() %></a>
+					<%
+					if (filename.endsWith("jpg") || filename.endsWith("jpeg") || filename.endsWith("gif") || filename.endsWith("png")) {
+						%>
+						<br>
+						<img src="../upload/<%=filename %>" width="100" height"100">
+						<%
+					}
+					// 특정 문자열 포함 contains
+					// 특정 문자열로 시작 startsWith
+					// 특정 문자열로 끝 endsWith
+				}
+				%>
+			</td>
+		</tr>
+		<tr>
 			<th>글내용</th><td colspan="3"><pre><%=boardVo.getContent() %></pre></td>
 		</tr>
 		<tr>
