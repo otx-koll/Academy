@@ -16,6 +16,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_main);
 
+//        1. 레이아웃 만들기(Linear)
+//            1-1. 레이아웃 속성객체 만들기(param 객체)
+//            1-2. 레이아웃 객체에 속성객체를 사용
+//        2. 위젯 만들기(버튼, 텍스뷰, 에디트 텍스트)
+//        3. 위젯 이벤트 달기(버튼, )
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
 

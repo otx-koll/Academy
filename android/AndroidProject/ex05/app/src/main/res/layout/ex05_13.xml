@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tableLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--
+    1. 테이블레이아웃(TableLayout)
+    - 위젯을 표 형태로 배치할 때 사용
+    - <TableRow>와 함께 사용. <TableRow>의 개수가 행의 개수가 됨
+    - 열의 개수는 <TableRow>안에 포함된 위젯의 개수로 결정
+
+    2. 속성
+    - layout_column : 지정된 열에 현재 위젯 표시 (0부터 시작)
+    - stretchColumns : 지정된 열의 폭 늘림
+    - stretchColumns="*" : 각 셀을 같은 크기로 확장. 전체 화면 꽉 참
+    -->
+
+    <TableRow>
+        <Button
+            android:text="1"/>
+
+        <Button
+            android:layout_span="2"
+            android:text="2"/>
+        <Button
+            android:text="3"/>
+    </TableRow>
+    <TableRow>
+        <Button
+            android:layout_column="1"
+            android:text="4"/>
+        <Button
+            android:text="5"/>
+        <Button
+            android:text="6"/>
+    </TableRow>
+</TableLayout>
