@@ -1,0 +1,7 @@
+메이븐 mvn
+Maven Repository: Search/Browse/Explore ㄱㄱ
+
+또는
+http://www.servlets.com/cos/ 가서 제일 밑에 cos-20.08.zip다운받고
+lib폴더 안에 있는 cos.jar 파일을
+jsp_study > WEB_INF > lib안에 넣기

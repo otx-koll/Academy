@@ -1,33 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical">
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"/>
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextVie"/>
+        android:id="@+id/tv1"
+        android:text="전화번호"
+        android:textSize="30dp"
+        android:layout_alignBaseline="@+id/edt1"/>
 
-    <CheckBox
+    <EditText
+        android:id="@+id/edt1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/tv1"
+        android:hint="010-0000-0000"
+        android:textSize="30dp"/>
+
+    <Button
+        android:id="@+id/btnCancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CheckBox"/>
+        android:text="취소"
+        android:textSize="30dp"
+        android:layout_below="@+id/tv1"
+        android:layout_alignParentRight="true"/>
 
-    <RadioButton
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="RadioButton"/>
+        android:text="확인"
+        android:textSize="30dp"
+        android:layout_below="@+id/tv1"
+        android:layout_toLeftOf="@+id/btnCancel"/>
 
-    <Switch
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Switch"/>
 
-</LinearLayout>
+
+</RelativeLayout>
