@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%-- pageNum 파라미터값 가져오기 --%>
+<% String pageNum = request.getParameter("pageNum"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +12,7 @@
 	<h1>게시판 글쓰기</h1>
 	<hr>
 	<form action="writePro.jsp" method="post">
+		<input type="hidden" name="pageNum" value="<%=pageNum %>">
 		<table border="1">
 			<tr>
 				<th>작성자</th>

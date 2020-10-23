@@ -56,7 +56,7 @@ table {
 					if (filename.endsWith("jpg") || filename.endsWith("jpeg") || filename.endsWith("gif") || filename.endsWith("png")) {
 						%>
 						<br>
-						<img src="../upload/<%=filename %>" width="100" height"100">
+						<img src="../upload/<%=filename %>" width="100" height="100">
 						<%
 					}
 					// 특정 문자열 포함 contains

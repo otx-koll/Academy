@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8">ㅌ
 <title>스터디 - 회원가입</title>
 </head>
 <body>

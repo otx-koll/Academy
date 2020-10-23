@@ -4,7 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-	// DAO 객체 준비
+// DAO 객체 준비
 BoardDao boardDao = BoardDao.getInstance();
 
 // 전체 글 갯수 가져오기
@@ -65,12 +65,10 @@ a:hover {
 </style>
 </head>
 <body>
-	<h1>
-		글목록 (전체 글 갯수 :
-		<%=count%>)
-	</h1>
+	<h1>글목록 (전체 글 갯수 :<%=count%>)</h1>
 	<hr>
-	<h3><a href="writeForm.jsp">글쓰기</a></h3>
+	
+	<h3><a href="writeForm.jsp?pageNum=<%=pageNum %>">글쓰기</a></h3>
 	<h3><a href="fileWriteForm.jsp">파일 글쓰기</a></h3>
 	
 	<table border="1">

@@ -16,18 +16,24 @@ if (id == null) {
 request.setCharacterEncoding("utf-8");
 
 // VO 객체 준비
-MemberVo memberVo = new MemberVo();
+// MemberVo memberVo = new MemberVo();
+%>
+<jsp:useBean id="memberVo" class="com.exam.vo.MemberVo"/>
 
+<%
 // 파라미터값 가져와서 VO에 저장
 // request.getParameter : 무조건 사용자 입력값 String. 파라미터값 int면 Integer.parseInt 해줘야함
 // Integer로 생성하면 변수값은 무조건 0
-memberVo.setId(request.getParameter("id"));
-memberVo.setPasswd(request.getParameter("passwd"));
-memberVo.setName(request.getParameter("name")); 
-memberVo.setAge(Integer.parseInt(request.getParameter("age")));
-memberVo.setGender(request.getParameter("gender"));
-memberVo.setEmail(request.getParameter("email"));
-
+// memberVo.setId(request.getParameter("id"));
+// memberVo.setPasswd(request.getParameter("passwd"));
+// memberVo.setName(request.getParameter("name")); 
+// memberVo.setAge(Integer.parseInt(request.getParameter("age")));
+// memberVo.setGender(request.getParameter("gender"));
+// memberVo.setEmail(request.getParameter("email"));
+%>
+<jsp:setProperty property="*" name="memberVo"/>
+ 
+<%
 // DAO 객체 준비
 MemberDao memberDao = MemberDao.getInstance();
 

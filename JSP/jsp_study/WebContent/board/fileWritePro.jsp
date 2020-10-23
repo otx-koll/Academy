@@ -23,9 +23,9 @@ System.out.println("realPath : " + realPath);
 MultipartRequest multi = new MultipartRequest(
 		request,
 		realPath,
-		1024 * 1024 * 20, // 최대 업로드 20MB로 제한
+		1024 * 1024 * 20, // 최대 업로드 20MB로 제한 (1MB * 20)
 		"utf-8",
-		new DefaultFileRenamePolicy());
+		new DefaultFileRenamePolicy()); // 파일 중복 이름 변경체크(숫자 1씩 증가하면서 이름 붙힘)
 
 // enctype="multipart/form-data"로 전송받으면
 // 기본내장객체인 request에서 파라미터값을 바로 찾을 수 없음!
@@ -34,6 +34,9 @@ MultipartRequest multi = new MultipartRequest(
 // post 파라미터 값 한글 처리는 위에서 생성자에서 처리하기 때문에 할 필요 없음!
 // request.setCharacterEncoding("utf-8");
 
+// pageNum 파라미터값 가져오기
+String pageNum = multi.getParameter("pageNum");
+		
 // VO 객체 준비
 BoardVo boardVo = new BoardVo();
 
@@ -73,5 +76,5 @@ boardVo.setReSeq(0); // 주글일때는 글그룹 내에서 순번이 0 (첫번�
 boardDao.addBoard(boardVo); // 순수 자바 소스 코드와 다름. 바로 반영이 안돼서 jsp코드를 문법 검사하면 자바 클래스 서블릿으로 바꾸는 작업이 있어야함 일이 많아서. 저장할때만 일어남
 
 // 글내용 상세보기 화면 content.jsp로 이동
-response.sendRedirect("content.jsp?num=" + boardVo.getNum());
+response.sendRedirect("content.jsp?num=" + boardVo.getNum() + "&pageNum=" + pageNum);
 %>

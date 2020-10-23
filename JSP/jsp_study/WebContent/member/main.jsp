@@ -30,7 +30,6 @@ if (id == null) {
 		<a href="updateUserCheck.jsp">회원정보 수정</a><br>
 		<a href="deleteUserCheck.jsp">회원정보 삭제</a><br>
 	
-	
 	<%
 	if (id.equals("admin")) {
 		%>

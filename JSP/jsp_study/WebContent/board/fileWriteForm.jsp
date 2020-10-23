@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%-- pageNum 파라미터값 가져오기 --%>
+<% String pageNum = request.getParameter("pageNum"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +12,8 @@
 	<h1>파일 게시판 글쓰기</h1>
 	<hr>
 	<!-- 222쪽 7번. enc인코딩타입 / 멀티파트방식에 저장. enctype안써주면 파일 전송이 안됨. 전송방식이 post으로 저장해야 저장공간이 무제한 -->
-	<form action="fileWritePro.jsp" method="post" enctype="multipart/form-data">  
+	<form action="fileWritePro.jsp" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="pageNum" value="<%=pageNum %>">
 		<table border="1">
 			<tr>
 				<th>작성자</th>
