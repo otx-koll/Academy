@@ -58,7 +58,7 @@ a:hover {
 	text-decoration: underline;
 }
 
-.active {
+a.active {
 	font-weight: bold;
 	text-decoration: underline;
 }
@@ -69,7 +69,7 @@ a:hover {
 	<hr>
 	
 	<h3><a href="writeForm.jsp?pageNum=<%=pageNum %>">글쓰기</a></h3>
-	<h3><a href="fileWriteForm.jsp">파일 글쓰기</a></h3>
+	<h3><a href="fileWriteForm.jsp?pageNum=<%=pageNum %>">파일 글쓰기</a></h3>
 	
 	<table border="1">
 		<thead>

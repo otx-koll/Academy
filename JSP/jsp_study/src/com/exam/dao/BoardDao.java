@@ -12,6 +12,8 @@ import java.util.List;
 import com.exam.vo.BoardVo;
 
 public class BoardDao {
+	
+	
 	// 싱글톤
 	// 외부에서 new연산자 권한을 안주는 것
 	// 로딩되는 시점에만 객체 생성됨. 잡혀있음
@@ -33,7 +35,6 @@ public class BoardDao {
 		ResultSet rs = null;
 
 		int nextNum = 0;
-
 		String sql = "";
 
 		try {
