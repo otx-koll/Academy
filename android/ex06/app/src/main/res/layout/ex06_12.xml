@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <!--
+    1. 프로그래스바, 시크바, 래이팅바
+    프로그래스바(ProgressBar) : 작업의 진행 상황을 바나 원 형태로 제공
+    시크바(SeekBar) : 프로그래스바와 대부분 비슷, 사용자 터치로 임의 조절 가능
+    래이팅바(RatingBar) : 진행 상황을 별 모양으로 표시
+
+    2. 속성
+    - 프로그래스바
+        * max : 범위
+        * progress : 현재 진척도
+        * secondaryProgress : 두번째 진척도
+    - 래이팅바
+        * rating : 현재 별에서 차지하는 범위
+        * numStars : 비율바에서 나타내는 별의 수
+        * stepSize : 변화되는 단위
+    -->
+   <ProgressBar
+       style="?android:attr/progressBarStyleHorizontal"
+       android:max="100"
+       android:progress="20"
+       android:secondaryProgress="50"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"/>
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:progress="20"/>
+
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:rating="1.5"
+        android:stepSize="0.5" />
+
+
+</LinearLayout>

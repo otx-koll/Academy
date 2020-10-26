@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <!--
+    1. 스크롤뷰(ScrollView)
+        : 수직(위아래)으로 스크롤 하는 기능
+        : 수평으로 스크롤하는 수평스크롤뷰는 따로 있음(HorizontalScrollView)
+        : 스크롤뷰에는 단 하나의 위젯만 넣을 수 있음
+     -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="버튼 1"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="버튼 2"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="버튼 3"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="버튼 4"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="버튼 5"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="버튼 6"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="버튼 7"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="버튼 8"/>
+    </LinearLayout>
+</ScrollView>
+
+

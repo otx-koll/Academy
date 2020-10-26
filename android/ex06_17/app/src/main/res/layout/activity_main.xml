@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TabHost xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@android:id/tabhost"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--
+    1. 탭호스트(TabHost)
+        : 여러 탭을 두고 각 탭을 클릭할 때마다 해당 화면이 나오도록 설정하는 뷰 컨테이너
+
+    2. 구성
+    <탭호스트 id="@android:id/tabhost">
+        <리니어레이아웃>
+            <탭위젯 id="@android:id/tabs"/>
+            <프레임레이아웃 id="@android:id/tabcontent">
+                // 여기에 각 탭스펙에 대응할 탭화면(레이아웃)을 3개 넣음
+            </프레임레이아웃>
+        </리니어레이아웃>
+    </탭호스트>
+
+    3. 탭화면 연결 위한 Java 코드 형식
+    TabHost tabHost = getTabHost(); // 탭호스트 변수 생성
+    // 탭스팩 생성 : 탭을 구성하는 요소들의 집합
+    TabSpec tabSpec1 = tabhost.newTabSpec("TAG1").setIndicator("탭에 출력될 글자");
+    tabSpec1.setContent(R.id.tab1); // 탭스팩을 탭과 연결
+    tabHost.addTab(tabSpec1); // 탭을 탭호스트에 부착
+    -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TabWidget
+            android:id="@android:id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <FrameLayout
+            android:id="@android:id/tabcontent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/tabSong"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#f00000"
+                android:orientation="vertical"/>
+
+            <LinearLayout
+                android:id="@+id/tabArtist"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#f0f000"
+                android:orientation="vertical"/>
+
+            <LinearLayout
+                android:id="@+id/tabAlbum"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#f000ff"
+                android:orientation="vertical"/>
+        </FrameLayout>
+    </LinearLayout>
+</TabHost>

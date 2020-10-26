@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <!--
+    1. 슬라이딩드로어(SlidingDrawer)
+        : 서랍. 위젯들을 서랍처럼 열어서 보여주거나 닫아서 감춤
+    2. 일반적 형태
+    <슬라이딩드로어 handel="핸들명" content="콘텐트명">
+        <버튼 id="핸들명"> // 서랍 손잡이 역할
+        <리니어레이아웃 id="콘텐트명">
+
+            // 이곳에 서랍 내부이며, 필요한 위젯들을 넣으면 됨
+
+        </리니어레이아웃>
+    </슬라이딩드로어>
+     -->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="여기는 서랍 밖입니다."/>
+    <SlidingDrawer
+        android:id="@+id/slidingDrawer1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:content="@+id/content"
+        android:handle="@+id/handle">
+
+        <Button
+            android:id="@+id/handle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="서랍 손잡이"/>
+
+            <LinearLayout
+                android:id="@+id/content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00ff00"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="여기는 서랍 안입니다."/>
+            </LinearLayout>
+
+    </SlidingDrawer>
+
+</LinearLayout>
+
+

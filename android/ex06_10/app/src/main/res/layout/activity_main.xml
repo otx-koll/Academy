@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <!--
+    1. 자동완성텍스트뷰, 멀티자동완성텍스트뷰
+        : 사용자가 단어의 일부만 입력해도 자동완성됨
+        : 자동완성텍스트뷰는 1개. 멀티자동완성텍스트뷰는 쉼표로 구분하여 자동완성
+
+    2. 속성
+    completionThreshold : 검색어가 최소 몇자리일때 자동완성 검색기능 실행
+    completionHint : 검색 시 검색 리스트 맨 하단에 뜨는 문장
+    -->
+    <AutoCompleteTextView
+        android:id="@+id/autoCompleteTextView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:completionHint="선택하세요"
+        android:completionThreshold="2"
+        android:hint="자동완성텍스트뷰"/>
+
+    <MultiAutoCompleteTextView
+        android:id="@+id/multiAutoCompleteTextView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:completionHint="선택하세요"
+        android:completionThreshold="2"
+        android:hint="멀티자동완성텍스트뷰"/>
+
+</LinearLayout>
