@@ -22,9 +22,10 @@ public class MainActivity extends AppCompatActivity {
 
         vFlipper = (ViewFlipper) findViewById(R.id.viewFlipper1);
 
+        vFlipper.setFlipInterval(1000);
+
         btnStart.setOnClickListener(v -> {
             vFlipper.startFlipping();
-            vFlipper.setFlipInterval(1000);
         });
 
         btnStop.setOnClickListener(new View.OnClickListener() {

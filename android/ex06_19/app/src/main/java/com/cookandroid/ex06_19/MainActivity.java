@@ -1,10 +1,13 @@
 package com.cookandroid.ex06_19;
 
-import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ActionBar;
-import android.app.Activity;
-import android.app.FragmentTransaction;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -30,40 +33,30 @@ import com.google.android.material.tabs.TabLayout;
 // tabSong.setText("음악별"); // 탭의 글자를 설정
 // tabSong.setTabListener(this); // 탭을 터치하면 작동하는 리스너 지정
 // bar.addTab(tabSong); // 탭을 액션바에 추가
-
-public class MainActivity extends Activity implements ActionBar.TabListener {
-    ActionBar.Tab tabSong, tabArtist, tabAlbum;
+@SuppressWarnings("deprecation")
+public class MainActivity extends AppCompatActivity implements ActionBar.TabListener {
+    ActionBar.Tab tabSong;
+    ActionBar.Tab tabArtist;
+    ActionBar.Tab tabAlbum;
 
     MyTabFragment myFrags[] = new MyTabFragment[3];
-
-    public void onTabSelected(TabLayout.Tab tab, FragmentTransaction ft) {
-        MyTabFragment myTabFrag = null;
-
-        if (myFrags[tab.getPosition()] == null) {
-            myTabFrag = new MyTabFragment();
-            Bundle data = new Bundle();
-            data.putString("tabName", tab.getText().toString());
-            myTabFrag.setArguments(data);
-            myFrags[tab.getPosition()] = myTabFrag;
-        }
-        else
-            myTabFrag = myFrags[tab.getPosition()];
-
-        ft.replace(android.R.id.content, myTabFrag);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActionBar bar = getActionBar(); // 상단에 표시할 액션바 준비
+        // seContentView(R.layout.activity_main); // View 대신에 Fragement 사용할 예정
+
+        // 액션바 만들기
+        ActionBar bar = getSupportActionBar();
         // 탭호스트와 같이 탭의 모양을 가지도록 설정
         bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
+        // 1-1 탭 만들어서 액션바에 꽂기
         tabSong = bar.newTab(); // 탭을 액션바에 생성
         tabSong.setText("음악별"); // 탭의 글자 설정
         tabSong.setTabListener(this); // 탭을 터치하면 작동하는 리스너 지정
         bar.addTab(tabSong); // 탭을 액션바에 추가
-
+        //
         tabArtist = bar.newTab();
         tabArtist.setText("가수별");
         tabArtist.setTabListener(this);
@@ -77,6 +70,19 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
 
     @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
+        MyTabFragment myTabFrag = null;
+
+        if (myFrags[tab.getPosition()] == null) {
+            myTabFrag = new MyTabFragment();
+            Bundle data = new Bundle(); // 번들 만들어서 데이터에 보냄
+            data.putString("tabName", tab.getText().toString());
+            myTabFrag.setArguments(data);
+            myFrags[tab.getPosition()] = myTabFrag;
+        }
+        else
+            myTabFrag = myFrags[tab.getPosition()];
+
+        ft.replace(android.R.id.content, myTabFrag);
     }
 
     @Override
@@ -87,14 +93,22 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
     }
 
+    //2.프레그먼트 만들기 -> 내부(이너) 클래스로 만든다, 외부에 만들어도 된다
+
     public static class MyTabFragment extends androidx.fragment.app.Fragment {
         String tabName;
+
+        //프레그먼트가 만들어 질 때, 액티비티(OS)와 통신이 필요할 시 설정값 세팅
+        @Override
         public void onCreate(Bundle savedInstanceState){
             super.onCreate(savedInstanceState);
             Bundle data = getArguments();
             tabName = data.getString("tabName");
         }
-        public View onCreateView(LayoutInflater inflater, ViewGroup contatiner, Bundle savedInstanceState) {
+
+        //프레그먼트가 만들어지고 나서, 뷰를 생성할 때, 화면과 관련된 코드 작성
+        @Nullable
+        public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT,
                     LinearLayout.LayoutParams.MATCH_PARENT);
