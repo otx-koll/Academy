@@ -189,8 +189,9 @@ public class MemberDao {
 			
 			rs = pstmt.executeQuery();
 			
+			// 값이 1개일때 if
 			if (rs.next()) {
-				count = rs.getInt(1);
+				count = rs.getInt(1); 
 			} // if
 		} catch (Exception e) {
 			e.printStackTrace();

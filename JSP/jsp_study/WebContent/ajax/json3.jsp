@@ -27,6 +27,8 @@ for (MemberVo memberVo : memberList) {
 	// jsonObject를 jsonArray에 추가하기
 	jsonArray.add(jsonObject);
 } // for
+//memberList 객체를 JSONArray(자바의 List), JSONObject(자바의 Map)로 변환
+//					(List)                    (Vo)
 
 // 웹서버 콘솔에 출력
 System.out.println(jsonArray);
