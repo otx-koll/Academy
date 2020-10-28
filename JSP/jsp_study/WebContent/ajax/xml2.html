@@ -12,32 +12,31 @@ section {
 <body>
 	<div id="app">
 		<input type="button" value="버튼" id="btn">
-		<section></section>
+		<ul></ul>
 	</div>
 	<script src="../js/jquery-3.5.1.js"></script>
 	<script>
 	function process (data) {
 		let str = '';
 		
-		// find()는 전체 문서 기준으로 person 태그요소 찾기
-		// person 태그 여러개가 배열리스트로 리턴됨.  
-		$(data).find('person').each(function () {
-			// this는 각각의 person태그가 됨
+		// find()는 전체 문서 기준으로 member 태그요소 찾기
+		// member 태그 여러개가 배열리스트로 리턴됨.  
+		$(data).find('member').each(function () {
+			// this는 각각의 member태그가 됨
+			let id = $(this).find('id').text();
 			let name = $(this).find('name').text();
-			let gender = $(this).find('gender').text();
 			let age = $(this).find('age').text();
 			
-			str += '<h2>' + name + " : " + gender + " : " + age + '</h2>';
-			// 배열리스트의 갯수만큼 반복 호출
+			str += `<li> ${id} : ${name} : ${age}</li>`;
 		});
 		
-		$('section').html(str);
+		$('ul').html(str);
 		
 	} // process()
 		$('#btn').click(function () {
 			
 			$.ajax({
-				url: 'xml.jsp',
+				url: 'xml2.jsp',
 				success: function (data) {
 					console.log(typeof data); // 태그문서DOM, Document Object Model
 					console.log(data);

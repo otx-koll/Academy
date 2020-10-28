@@ -288,14 +288,15 @@ public class BoardDao {
 			con = JdbcUtils.getConnection();
 			
 			sql = "UPDATE board ";
-			sql += "SET name = ?, subject = ?, content = ? ";
+			sql += "SET name = ?, subject = ?, content = ?, file = ? ";
 			sql += "WHERE num = ? ";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, boardVo.getName());
 			pstmt.setString(2, boardVo.getSubject());
 			pstmt.setString(3, boardVo.getContent());
-			pstmt.setInt(4, boardVo.getNum());
+			pstmt.setString(4, boardVo.getFile());
+			pstmt.setInt(5, boardVo.getNum());
 			
 			pstmt.executeUpdate();
 			
