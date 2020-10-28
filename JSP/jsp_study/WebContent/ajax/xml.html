@@ -39,7 +39,7 @@ section {
 			$.ajax({
 				url: 'xml.jsp',
 				success: function (data) {
-					console.log(typeof data);
+					console.log(typeof data); // 태그문서DOM, Document Object Model
 					console.log(data);
 					
 					process(data);

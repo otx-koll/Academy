@@ -6,14 +6,14 @@
 
     <EditText
         android:id="@+id/Edit1"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:hint="숫자1" />
 
     <EditText
         android:id="@+id/Edit2"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:hint="숫자2" />

@@ -29,11 +29,20 @@ section {
 			// 여러개를 가지고 있는 배열리스트이기 때문에 $.each(). 배열리스트를 첫번째로 두고 두번쨰 인자는 function(index, item(인덱스에 해당하는)). 배열리스트 갯수만큼 호출
 			$.each(list, function (index, item) {
 				
-				str += '<tr>';
-				str += '	<td>' + item.name + '</td>';
-				str += '	<td>' + item.gender + '</td>';
-				str += '	<td>' + item.age + '</td>';
-				str += '<tr>';
+// 				str += '<tr>';
+// 				str += '	<td>' + item.name + '</td>';
+// 				str += '	<td>' + item.gender + '</td>';
+// 				str += '	<td>' + item.age + '</td>';
+// 				str += '<tr>';
+
+			// 백틱(Backtick ')
+				str += `
+					<tr>
+						<td>${item.name}</td>
+						<td>${item.gender}</td>
+						<td>${item.age}</td>
+					</tr>
+				`;
 			});
 			
 			$('tbody').html(str);

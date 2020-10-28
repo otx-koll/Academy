@@ -14,7 +14,6 @@ section {
 		<form id="frm">
 			<input type="text" name="name" placeholder="이름을 입력하세요"><br>
 			<input type="text" name="age" placeholder="나이를 입력하세요"><br>
-			
 		</form>
 		<input type="button" value="버튼" id="btn">
 		<section></section>
@@ -25,6 +24,7 @@ section {
 			
 			var str = $('#frm').serialize(); // 데이터 직렬화해서 쿼리 스트링으로 가져옴 // 직렬화 : ex)name=John&age=33
 			console.log(str);
+		
 			$.ajax({
 				url: 'string2.jsp',
 				data: str,
