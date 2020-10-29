@@ -4,13 +4,14 @@
 
     <uses-permission android:name="android.permission.INTERNET"/> <!-- 인터넷 사용을 허가한다 -->
     <!-- usesCleartextTraffic : https 아니더라도 가능. http로 -->
+
     <application
         android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@drawable/emo_im_cool"
         android:label="쿡북 웹브라우저"
         android:logo="@drawable/web"
-        android:theme="@style/Theme.AppCompat">
+        android:theme="@style/Theme.AppCompat.Light">
         <activity
             android:name=".MainActivity"
             android:label="간단 웹브라우저">

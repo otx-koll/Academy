@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="horizontal"
+    android:gravity="center">
+
+    <!--
+     토스트(Toast)
+     - 화면에 잠깐 나타났다 사라지는 메시지
+     - 프로그래머가 디버깅 용도로 사용하기에도 적당
+     Toast.makeText(Context context, String message, int duration).show();
+
+     * setGravity() 메소드를 이용하면 위치 변경 가능
+     Toast.setGravity(int gravity, int xOffset, int yOffset);
+     -->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button1"
+        android:text="메시지 출력"/>
+</LinearLayout>

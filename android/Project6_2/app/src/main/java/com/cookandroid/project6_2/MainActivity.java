@@ -21,6 +21,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // getSupportActionBar() : 액티비티 제목 또는 액티비티의 기본 도구 모음
+        // Nav icon, Title, Actions, Overflow menu
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true); // 뒤로가기 버튼 생성
+        getSupportActionBar().setIcon(R.drawable.web);
+
         edtUrl = (EditText) findViewById(R.id.edtUrl);
         btnGo = (Button) findViewById(R.id.btnGo);
         btnBack = (Button) findViewById(R.id.btnBack);
@@ -29,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         web.setWebViewClient(new CookWebViewClient());
 
         WebSettings webSet = web.getSettings();
-        webSet.setBuiltInZoomControls(true);
+        webSet.setBuiltInZoomControls(true); // 줌 아이콘 사용가능
 
         btnGo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-
+            // shouldOverrideUrlLoading : 웹 로드를 컨트롤 하겠다
             return super.shouldOverrideUrlLoading(view, url);
         }
     }
