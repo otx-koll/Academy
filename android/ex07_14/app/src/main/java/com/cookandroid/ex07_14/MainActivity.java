@@ -15,15 +15,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         final Button button1 = (Button) findViewById(R.id.button1);
+
+        final boolean[] checkArray = new boolean[]{false, false, false}; // 변할 수 있는 변수화가 됨. 체크 유지되어있음
+
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 /* 목록 대화상자 */
-                final String[] versionArray = new String[] {"롤리팝", "마시멜로", "누가"};
+                final String[] versionArray = new String[]{"롤리팝", "마시멜로", "누가"};
                 /* 체크목록 대화상자 */
-                final boolean[] checkArray = new boolean[] {true, false, false};
+
 
                 AlertDialog.Builder dlg = new AlertDialog.Builder(MainActivity.this);
                 dlg.setTitle("좋아하는 버전은?");
@@ -62,7 +64,23 @@ public class MainActivity extends AppCompatActivity {
                 dlg.setMultiChoiceItems(versionArray, checkArray, new DialogInterface.OnMultiChoiceClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-                        button1.setText(versionArray[which]);
+
+                        String str = "";
+                        int cnt = 0;
+                        for (int i = 0; i < checkArray.length; i++) {
+                            if(checkArray[i]){
+                                cnt++;
+                                if(cnt != 1){
+                                    str += ",";
+                                }
+                                str += versionArray[i];
+                            }
+                        }
+                        button1.setText(str);
+
+                        if(button1.getText().equals("")) {
+                            button1.setText("선택없음");
+                        }
                     }
                 });
 
