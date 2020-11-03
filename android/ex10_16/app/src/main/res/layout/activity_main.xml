@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--
+     양방향 액티비티
+        : 메인 액티비티에서 세컨드 액티비티로 데이터를 넘긴 후 다시 세컨드 액티비티에서 메인 액티비티로 데이터 돌려주는 경우 있음
+
+     메인 액티비티에서 (1) putExtra()
+     메인에서 세컨드 (2) startActivityForResult()
+     세컨드 액티비티에서 (3) getExtra()
+     세컨드 (4) getExtra()
+     세컨드 -> 메인 (5) setResult()
+     세컨드 (6) finish()
+     메인 (7) getExtra()
+     -->
+
+    <EditText
+        android:id="@+id/edtNum1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/edtNum2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <RadioGroup
+        android:id="@+id/rdGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="더하기" />
+        <RadioButton
+            android:id="@+id/minus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="빼기"/>
+        <RadioButton
+            android:id="@+id/mul"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="곱하기"/>
+        <RadioButton
+            android:id="@+id/div"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="나누기"/>
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btnNewActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="계산하기"/>
+
+</LinearLayout>
+

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--
+    암시적 인텐트(Implicit Intent, 묵시적 인텐트)
+        : 약속된 액션을 지정하여 안드로이드에서 제공하는 기존 응용프로그램을 실행하는 것
+    예시
+    - 119에 응급전화를 거는 형식
+    Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:/119"));
+    startActivity(intent);
+    - 전화걸기를 하려면 AndroidManifest.xml에 권한 추가
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    -->
+    <Button
+        android:id="@+id/btnDial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="전화 걸기"/>
+    <Button
+        android:id="@+id/btnWeb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="홈 페이지 열기"/>
+    <Button
+        android:id="@+id/btnGoogle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="구글 맵 열기"/>
+    <Button
+        android:id="@+id/btnSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="구글 검색하기"/>
+    <Button
+        android:id="@+id/btnSms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="문자 보내기"/>
+    <Button
+        android:id="@+id/btnPhoto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="사진 보기"/>
+</LinearLayout>
+

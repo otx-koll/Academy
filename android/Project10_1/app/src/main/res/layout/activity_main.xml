@@ -3,7 +3,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/second"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Second 액티비티"
+            android:checked="true"/>
+        <RadioButton
+            android:id="@+id/third"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Third 액티비티"/>
+    </RadioGroup>
 
     <Button
         android:id="@+id/btnNewActivity"
