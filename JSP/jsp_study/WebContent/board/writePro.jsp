@@ -1,11 +1,10 @@
 <%@page import="java.sql.Timestamp"%>
-<%@page import="com.exam.dao.BoardDao"%>
-<%@page import="com.exam.vo.BoardVo"%>
+<%@page import="com.exam.dao.NoticeDao"%>
+<%@page import="com.exam.vo.NoticeVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-
-// post 파라미터 값 한글 처리
+	// post 파라미터 값 한글 처리
 request.setCharacterEncoding("utf-8");
 
 // pageNum 파라미터값 가져오기
@@ -14,10 +13,10 @@ String pageNum = request.getParameter("pageNum");
 // VO 객체 준비
 // BoardVo boardVo = new BoardVo();
 %>
-<jsp:useBean id="boardVo" class="com.exam.vo.BoardVo"/>
+<jsp:useBean id="boardVo" class="com.exam.vo.NoticeVo"/>
 
 <%
-// 파라미터 값 가져와서 VO에 저장
+	// 파라미터 값 가져와서 VO에 저장
 // boardVo.setName(request.getParameter("name"));
 // boardVo.setPasswd(request.getParameter("passwd"));
 // boardVo.setSubject(request.getParameter("subject"));
@@ -26,9 +25,8 @@ String pageNum = request.getParameter("pageNum");
 
 <jsp:setProperty property="*" name="boardVo"/>
 <%
-
-// DAO 객체 준비
-BoardDao boardDao = BoardDao.getInstance();
+	// DAO 객체 준비
+NoticeDao boardDao = NoticeDao.getInstance();
 // new BoardDao()인데 싱글톤해서 BoardDao.getInstance()
 
 // 글번호 가져오기

@@ -3,8 +3,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- head 컨텍트 영역 -->
+<%-- head 컨텍트 영역--%>
 <jsp:include page="../include/headContent.jsp"/>
+
+<link href="/css/subpage.css" rel="stylesheet" type="text/css"  media="all">
 </head>
 
 <body>

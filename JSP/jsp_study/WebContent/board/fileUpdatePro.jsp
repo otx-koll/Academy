@@ -2,12 +2,12 @@
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@page import="java.sql.Timestamp"%>
-<%@page import="com.exam.dao.BoardDao"%>
-<%@page import="com.exam.vo.BoardVo"%>
+<%@page import="com.exam.dao.NoticeDao"%>
+<%@page import="com.exam.vo.NoticeVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-// 파일 업로드 위해서 cos.jar 라이브러리를 프로젝트 빌드패스에 추가.
+	// 파일 업로드 위해서 cos.jar 라이브러리를 프로젝트 빌드패스에 추가.
 
 // 업로드 객체 생성할때 필요한 인자값
 // 1. request
@@ -47,7 +47,7 @@ if(delFilename != null) {
 String pageNum = multi.getParameter("pageNum");
 
 // VO 객체 준비
-BoardVo boardVo = new BoardVo();
+NoticeVo boardVo = new NoticeVo();
 
 // 파라미터값 가져와서 VO에 저장. MultipartRequest 로부터 찾음.
 boardVo.setNum(Integer.parseInt(multi.getParameter("num")));
@@ -64,7 +64,7 @@ System.out.println("실제파일명 : " + multi.getFilesystemName("filename"));
 boardVo.setFile(multi.getFilesystemName("filename"));
 
 // DAO 객체 준비
-BoardDao boardDao = BoardDao.getInstance();
+NoticeDao boardDao = NoticeDao.getInstance();
 
 // DB 테이블 글정보 수정하기
 boardDao.updateBoard(boardVo);
