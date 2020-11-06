@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8">
 <title>Welcome to Fun Web</title>
-<link href="/css/default.css" rel="stylesheet" type="text/css" media="all">
+
+<jsp:include page="/include/headContent.jsp"/>
+
 <link href="/css/front.css" rel="stylesheet" type="text/css" media="all">
-<link href="/css/print.css" rel="stylesheet" type="text/css" media="print">
-<link href="/css/iphone.css" rel="stylesheet" type="text/css" media="screen">
 
 <script src="/script/jquery-1.6.1.min.js"></script>
 <script src="/script/s3Slider.js"></script>

@@ -1,20 +1,20 @@
-<%@page import="com.exam.vo.BoardVo"%>
-<%@page import="com.exam.dao.BoardDao"%>
+<%@page import="com.exam.vo.NoticeVo"%>
+<%@page import="com.exam.dao.NoticeDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-// 파라미터값 int num, String pageNum 가져오기
+	// 파라미터값 int num, String pageNum 가져오기
 int num = Integer.parseInt(request.getParameter("num")); // 글 번호
 String pageNum = request.getParameter("pageNum"); // 페이지 번호
 
 // DAO 객체 준비
-BoardDao boardDao = BoardDao.getInstance();
+NoticeDao boardDao = NoticeDao.getInstance();
 
 // 조회수 1 증가하기
 boardDao.updateReadcount(num);
 
 // 글번호에 해당하는 글 한개 가져오기
-BoardVo boardVo = boardDao.getBoardByNum(num);
+NoticeVo boardVo = boardDao.getBoardByNum(num);
 %>
 <!DOCTYPE html>
 <html>

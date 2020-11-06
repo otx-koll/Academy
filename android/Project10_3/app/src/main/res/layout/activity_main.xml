@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <!--
     액티비티 생명주기
@@ -11,13 +12,23 @@
 
     * 로그캣(LogCat)
     : 작성 중인 프로그램에 예기치 못한 오류가 발생했을 때 원인을 파악하는 방법.
-    android.util.d("태그", "메시지") : 디버깅
+    android.util.Log.d("태그", "메시지") : 디버깅
     e : 가장 심각한 오류 발생시
     i : 정보 로그
     v : 상세한 기록 로그
     w : 경고 수준 로그
     -->
 
+    <Button
+        android:id="@+id/btnDial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="전화걸기"/>
 
+    <Button
+        android:id="@+id/btnFinish"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="끝내기"/>
 </LinearLayout>
 

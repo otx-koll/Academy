@@ -12,7 +12,7 @@
      메인 액티비티에서 (1) putExtra()
      메인에서 세컨드 (2) startActivityForResult()
      세컨드 액티비티에서 (3) getExtra()
-     세컨드 (4) getExtra()
+     세컨드 (4) putExtra()
      세컨드 -> 메인 (5) setResult()
      세컨드 (6) finish()
      메인 (7) getExtra()

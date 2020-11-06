@@ -54,6 +54,7 @@ ADD gender VARCHAR(5);
 ALTER TABLE member
 ADD email VARCHAR(30);
 ```
+
 ```sql
 DESC member; // member테이블의 상세 내역 출력
 ```
@@ -111,3 +112,39 @@ CREATE TABLE board (
 );
 ```
  - 우클릭후 alter 웅앵 클릭 -> reg_date Timestamp를 datetime으로 변경 후 nn 해제 및 값 null
+---
+> 추가된 항목
+```sql
+ALTER TABLE member
+ADD address VARCHAR(100);
+```
+```sql
+ALTER TABLE member
+ADD tel VARCHAR(20);
+```
+
+* funweb 게시판 테이블
+```sql
+CREATE TABLE notice (
+	num INT PRIMARY KEY,
+	id VARCHAR(20),
+	subject VARCHAR(50),
+	content VARCHAR(2000),
+	readcount INT,
+	reg_date DATETIME,
+	ip VARCHAR(20),
+	re_ref INT,
+	re_lev INT,
+	re_seq INT
+);
+```
+* funweb 첨부파일 테이블
+```sql
+CREATE TABLE attach (
+	num 	   INT PRIMARY KEY AUTO_INCREMENT,
+	filename   VARCHAR(1000),
+	uploadpath VARCHAR(1000),
+	image	   VARCHAR(5),
+	no_num	   INT
+);
+```

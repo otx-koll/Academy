@@ -13,8 +13,6 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    RadioGroup rdGroup;
-    RadioButton add, minus, mul, div;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,34 +20,29 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setTitle("메인 액티비티");
 
+        android.util.Log.d("액티비티1", "11111111");
+
         Button btnNewActivity = (Button) findViewById(R.id.btnNewActivity);
         btnNewActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                android.util.Log.d("액티비티1", "2222_클릭");
+
                 EditText edtNum1 = (EditText) findViewById(R.id.edtNum1);
                 EditText edtNum2 = (EditText) findViewById(R.id.edtNum2);
 
-                rdGroup = (RadioGroup) findViewById(R.id.rdGroup);
-                add = (RadioButton) findViewById(R.id.add);
-                minus = (RadioButton) findViewById(R.id.minus);
-                mul = (RadioButton) findViewById(R.id.mul);
-                div = (RadioButton) findViewById(R.id.div);
-
-                // 뭐야이게
-                // ;;;
-//                String rdId1 = add.getText().toString();
-//                rdId1 = rdId1.equals("더하기")? "" : rdId1;
+                RadioGroup rdGroup = (RadioGroup) findViewById(R.id.rdGroup);
+                RadioButton rd = (RadioButton) findViewById(rdGroup.getCheckedRadioButtonId());
+                String rdValue = rd.getText().toString();
 
                 Intent intent = new Intent(getApplicationContext(), SecondActivity.class);
                 intent.putExtra("Num1", Integer.parseInt(edtNum1.getText().toString()));
                 intent.putExtra("Num2", Integer.parseInt(edtNum2.getText().toString()));
 
+                intent.putExtra("RadioButton", rdValue);
 
-
-                intent.putExtra("Add", Integer.parseInt(add.getText().toString()));
-                intent.putExtra("Minus", Integer.parseInt(minus.getText().toString()));
-                intent.putExtra("Mul", Integer.parseInt(mul.getText().toString()));
-                intent.putExtra("Div", Integer.parseInt(div.getText().toString()));
+                android.util.Log.d("액티비티1", "33333");
 
                 startActivityForResult(intent, 0);
             }
