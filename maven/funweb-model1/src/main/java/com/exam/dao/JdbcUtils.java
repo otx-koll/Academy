@@ -68,4 +68,36 @@ public class JdbcUtils {
 			e.printStackTrace();
 		}
 	} // close()
+	
+	public static int getNextNum(String tableName) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		int num = 0;
+		String sql = "";
+
+		try {
+			con = JdbcUtils.getConnection();
+
+			sql = "SELECT AUTO_INCREMENT ";
+			sql += "FROM information_schema.tables ";
+			sql += "WHERE table_name = ? "; // 
+			sql += "AND table_schema = DATABASE() ";
+
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, tableName);
+			
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				num = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtils.close(con, pstmt, rs);
+		}
+		return num;
+	} // getNextNum()
 }

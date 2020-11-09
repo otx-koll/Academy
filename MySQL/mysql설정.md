@@ -125,8 +125,8 @@ ADD tel VARCHAR(20);
 
 * funweb 게시판 테이블
 ```sql
-CREATE TABLE notice (
-	num INT PRIMARY KEY,
+CREATE OR REPLACE TABLE notice (
+	num INT PRIMARY KEY AUTO_INCREMENT,
 	id VARCHAR(20),
 	subject VARCHAR(50),
 	content VARCHAR(2000),
@@ -148,3 +148,14 @@ CREATE TABLE attach (
 	no_num	   INT
 );
 ```
+
+* 특정 테이블의 AUTO_INCREMENT 컬럼 다음숫자 가져오기
+```sql
+SELECT AUTO_INCREMENT
+FROM information_schema.tables
+WHERE table_name = 'table name'
+AND table_schema = DATABASE();
+```
+> query를 사용하다보면 insert시 다음 auto_increment값이 필요할 때가 있다.
+> select LAST_INDERT_ID() 를 사용할 수도 있지만, LAST_INSERT_ID()는 table을 선택할 수 없다.
+> 그래서 위의 query를 이용하면 다음 auto_increment의 값을 얻을 수 있다.

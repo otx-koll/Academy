@@ -1,11 +1,11 @@
-<%@page import="com.exam.vo.NoticeVo"%>
+<%@page import="com.exam.vo.BoardVo"%>
 <%@page import="java.util.List"%>
-<%@page import="com.exam.dao.NoticeDao"%>
+<%@page import="com.exam.dao.BoardDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
 	// DAO 객체 준비
-NoticeDao boardDao = NoticeDao.getInstance();
+BoardDao boardDao = BoardDao.getInstance();
 
 // 전체 글 갯수 가져오기
 int count = boardDao.getCount(); // 페이지 번호 출력할 때 필요함. 
@@ -25,7 +25,7 @@ int pageNum = Integer.parseInt(strPageNum);
 int startRow = (pageNum - 1) * pageSize;
 
 // 글 목록 가져오기
-List<NoticeVo> boardList = null;
+List<BoardVo> boardList = null;
 if (count > 0) {
 	boardList = boardDao.getBoards(startRow, pageSize);
 }
@@ -83,10 +83,10 @@ a.active {
 			</tr>
 		</thead>
 		<tbody>
-			<%
-				if (count > 0) {
-					for (NoticeVo boardVo : boardList) {
-			%>
+		<%
+		if (count > 0) {
+			for (BoardVo boardVo : boardList) {
+		%>
 			<tr>
 				<td><%=boardVo.getNum()%></td>
 				<td>

@@ -77,10 +77,10 @@ public class NoticeVo {
 	public void setReSeq(int reSeq) {
 		this.reSeq = reSeq;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "BoardVo [num=" + num + ", id=" + id + ", subject=" + subject + ", content=" + content + ", readcount="
+		return "NoticeVo [num=" + num + ", id=" + id + ", subject=" + subject + ", content=" + content + ", readcount="
 				+ readcount + ", regDate=" + regDate + ", ip=" + ip + ", reRef=" + reRef + ", reLev=" + reLev
 				+ ", reSeq=" + reSeq + "]";
 	}
