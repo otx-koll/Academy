@@ -25,7 +25,7 @@ String pageNum = request.getParameter("pageNum");
 
 <jsp:setProperty property="*" name="boardVo"/>
 <%
-	// DAO 객체 준비
+// DAO 객체 준비
 NoticeDao boardDao = NoticeDao.getInstance();
 // new BoardDao()인데 싱글톤해서 BoardDao.getInstance()
 

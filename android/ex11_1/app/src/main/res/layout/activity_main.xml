@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--
+    어댑터뷰 : AdapterView 하위에 ListView, ExpandableListView, GridView, Spinner, Gallery 등을 묶어서 표현
+              어댑터뷰를 사용할 때 어댑터뷰의 모양을 설정하고 데이터를 채워주는 ArrayAdapter<T> 클래스를 함께 사용
+    1. 리스트뷰(ListView)
+        : 데이터를 리스트 모양으로 보여주며 리스트 중 하나를 선택하는 용도로 사용
+        = 리스트뷰 만드는 형식 =
+        1) 리스트뷰에 나열할 내용을 String 배열로 미리 만듦
+        2) 리스트뷰 변수를 생성하고 xml의 <ListView>에 대응시킴
+        3) ArrayAdapter<String>형의 변수를 선언하고, 리스트뷰의 모양과 내용을 1)번 배열로 채운다.
+        4) 4), 3)번에서 생성한 어레이어댑터를 2)번의 리스트뷰 변수에 적용시킴
+        5) 리스트뷰의 항목을 클릭했을 때 동작하는 리스너 정의
+    -->
+
+    <ListView
+        android:id="@+id/listView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
+

@@ -58,6 +58,7 @@ public class BoardDao {
 		return nextNum;
 	} // getNextNum()
 
+	// 주글쓰기 메서드
 	public void addBoard(BoardVo boardVo) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -329,6 +330,7 @@ public class BoardDao {
 		}
 	} // deleteBoard
 	
+	// 답글쓰기 메서드
 	public boolean updateAndAddReply(BoardVo boardVo) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
