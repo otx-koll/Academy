@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--
+    그리드뷰(GridView)
+        : 사진이나 그림을 격자 모양으로 배치
+        : xml 파일에는 간단히 GridView를 넣으면 되지만 java코드에 필요한 내용을 반드시 코딩해야 함
+        : 열 개수를 지정하는 numColumns 필수
+    -->
+    <GridView
+        android:id="@+id/gridView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:numColumns="4"/>
+</LinearLayout>
