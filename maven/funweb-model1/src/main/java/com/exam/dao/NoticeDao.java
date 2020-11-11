@@ -22,7 +22,6 @@ public class NoticeDao {
 
 	private NoticeDao() {}
 	
-	
 	// 주글쓰기 메서드
 	public void addNotice(NoticeVo noticeVo) {
 		Connection con = null;
@@ -55,7 +54,6 @@ public class NoticeDao {
 			JdbcUtils.close(con, pstmt);
 		}
 	} // addBoard()
-	
 	
 	public NoticeVo getNoticeByNum(int num) {
 		Connection con = null;
@@ -97,7 +95,6 @@ public class NoticeDao {
 		return noticeVo;
 	} // getNoticeByNum()
 	
-	
 	public void updateReadcount(int num) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -122,7 +119,6 @@ public class NoticeDao {
 			JdbcUtils.close(con, pstmt);
 		}
 	} // updateReadcount()
-	
 	
 	// 전체글갯수 가져오기
 	public int getCountAll() {
@@ -152,7 +148,6 @@ public class NoticeDao {
 		}
 		return count;
 	} // getCountAll()
-	
 	
 	// 검색어를 적용한 글갯수 가져오기
 	public int getCountBySearch(String category, String search) {
@@ -195,7 +190,6 @@ public class NoticeDao {
 		}
 		return count;
 	} // getCountBySearch()
-	
 	
 	public List<NoticeVo> getNotices(int startRow, int pageSize) {
 		Connection con = null;
@@ -241,7 +235,6 @@ public class NoticeDao {
 		}
 		return list;
 	} // getNotices()
-	
 	
 	public List<NoticeVo> getNoticesBySearch(int startRow, int pageSize, String category, String search) {
 		Connection con = null;
@@ -303,8 +296,6 @@ public class NoticeDao {
 		return list;
 	} // getNoticesBySearch()
 	
-	
-	
 	public void updateBoard(NoticeVo noticeVo) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -332,8 +323,6 @@ public class NoticeDao {
 		}
 	} // updateBoard
 	
-	
-	
 	public void deleteNoticeByNum(int num) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -356,7 +345,6 @@ public class NoticeDao {
 		}
 	} // deleteNoticeByNum
 	
-	
 	public void deleteAll() {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -377,7 +365,6 @@ public class NoticeDao {
 			JdbcUtils.close(con, pstmt);
 		}
 	} // deleteAll
-	
 	
 	// 답글쓰기 메서드
 	public boolean updateAndAddReply(NoticeVo noticeVo) {
@@ -440,9 +427,6 @@ public class NoticeDao {
 		}
 	} // updateAndAddReply
 	
-	
-	
-	
 	public static void main(String[] args) {
 		
 		NoticeDao noticeDao = NoticeDao.getInstance();
@@ -472,5 +456,4 @@ public class NoticeDao {
 		System.out.println("count = " + count);
 		
 	} // main()
-	
 }
