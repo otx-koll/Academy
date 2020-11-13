@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--
+    브로드캐스트 리시버(BR, Broadcast Receiver)
+        : 안드로이드 문자 메시지 도착, 배터리 방전, SD카드 탈부착, 네트워크 환경 변화 등이 발생하면 방송(Broadcast) 신호를 보낸다.
+        : 대표적인 응용은 배터리 상태 확인
+
+    = 배터리와 관련된 액션 =
+    1. ACTION_BATTERY_CHANGED : 배터리의 상태가 변경될 때
+    2. ACTION_BATTERY_LOW : 배터리가 거의 방전되었을 때
+    3. ACTION_BATTRY_OKAY : 배터리가 방전 상태에서 정상 수준으로 올라왔을 때
+    -->
+    <ImageView
+        android:id="@+id/ivBattery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/battery_0"/>
+    <EditText
+        android:id="@+id/edtBattery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:enabled="false"/>
+</LinearLayout>
+

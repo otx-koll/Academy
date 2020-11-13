@@ -5,6 +5,18 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <!--
+    서비스(Service)
+        : 화면 없이 동작하는 프로그램
+        : 백그라운드 프로세스
+        : 액티비티 응용프로그램은 화면(액티비티)가 종료되면 종료되지 않지만 서비스는 백그라운드에서 실행되므로 화면과 상관없이 계속 동작함
+
+    = 서비스 생명 주기 =
+    서비스 요청 onStartService() -> 시작 -> onCreate() -> onStartCommand() -> 서비스 동작
+    -> 서비스 중지 요청 onStopService() -> onDestroy() -> 종료
+
+
+    -->
     <Button
         android:id="@+id/btnStart"
         android:layout_width="match_parent"
