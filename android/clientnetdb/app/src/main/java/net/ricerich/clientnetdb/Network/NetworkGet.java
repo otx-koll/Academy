@@ -53,15 +53,15 @@ public class NetworkGet extends AsyncTask<String, Void, String> {
             buffer.append("id").append("=").append(strings[0]);
 
             // 서버로 전송
-            OutputStreamWriter outStream = new OutputStreamWriter(con.getOutputStream(), "utf-8");
+            OutputStreamWriter outStream = new OutputStreamWriter(con.getOutputStream(), "UTF-8");
             PrintWriter writer = new PrintWriter(outStream);
             writer.write(buffer.toString());
             writer.flush();
 
             StringBuilder builder = new StringBuilder();
-            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream(), "utf-8"));
+            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream(), "UTF-8"));
             String line;
-            while((line = in.readLine()) != null) {
+            while ((line = in.readLine()) != null) {
                 builder.append(line + "\n");
             }
             res = builder.toString();
@@ -71,7 +71,7 @@ public class NetworkGet extends AsyncTask<String, Void, String> {
             e.printStackTrace();
         }
         Log.i("Get reulst", res);
-        return res; // return Result
+        return res; // return Result // 자동으로 onPostExecute의 string으로 들어간다. 그럼 String s의 s겠네
     }
 
     @Override
@@ -82,13 +82,14 @@ public class NetworkGet extends AsyncTask<String, Void, String> {
         int count = 0;
         try {
             count = JsonParser.getUserInfoJson(s, userList);
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
         if(count == 0) {
         } else {
             adapter.setDatas(userList);
-            adapter.notifyDataSetChanged();
+            adapter.notifyDataSetInvalidated();
         }
     }
 }

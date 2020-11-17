@@ -53,13 +53,13 @@ public class NetworkInsert extends AsyncTask<String, Void, String> {
             buffer.append("&grade").append("=").append(strings[3]);
 
             // 서버로 전송
-            OutputStreamWriter outStream = new OutputStreamWriter(con.getOutputStream(), "utf-8");
+            OutputStreamWriter outStream = new OutputStreamWriter(con.getOutputStream(), "UTF-8");
             PrintWriter writer = new PrintWriter(outStream);
             writer.write(buffer.toString());
             writer.flush();
 
             StringBuilder builder = new StringBuilder();
-            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream(), "utf-8"));
+            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream(), "UTF-8"));
             String line;
             while((line = in.readLine()) != null) {
                 builder.append(line + "\n");

@@ -29,23 +29,23 @@
 		out.println("]");
 		out.println("}");
 	} else {
-		out.print("{");
-		out.print("\"ID\":\"" + resArr.get(0) + "\",");
-		out.print("\"NAME\":\"" + resArr.get(1) + "\",");
-		out.print("\"PHONE\":\"" + resArr.get(2) + "\",");
-		out.print("\"GRADE\":\"" + resArr.get(3) + "\",");
-		out.print("\"WRITE_TIME\":\"" + resArr.get(4) + "\"");
-		out.print("}");
+		out.print("{ ");
+		out.print("\"ID\": \"" + (String)resArr.get(0) + "\", ");
+		out.print("\"NAME\": \"" + (String)resArr.get(1) + "\", ");
+		out.print("\"PHONE\": \"" + (String)resArr.get(2) + "\", ");
+		out.print("\"GRADE\": \"" + (String)resArr.get(3) + "\", ");
+		out.print("\"WRITE_TIME\": \"" + (String)resArr.get(4) + "\" ");
+		out.print("} ");
 		
 		for (int i=5; i<resArr.size(); i+=5) {
 			out.print(",");
-			out.print("{");
-			out.print("\"ID\":\"" + resArr.get(i) + "\",");
-			out.print("\"NAME\":\"" + resArr.get(i+1) + "\",");
-			out.print("\"PHONE\":\"" + resArr.get(i+2) + "\",");
-			out.print("\"GRADE\":\"" + resArr.get(i+3) + "\",");
-			out.print("\"WRITE_TIME\":\"" + resArr.get(i+4) + "\"");
-			out.print("}");
+			out.print("{ ");
+			out.print("\"ID\":\"" + (String)resArr.get(i) + "\", ");
+			out.print("\"NAME\":\"" + (String)resArr.get(i+1) + "\", ");
+			out.print("\"PHONE\":\"" + (String)resArr.get(i+2) + "\", ");
+			out.print("\"GRADE\":\"" + (String)resArr.get(i+3) + "\", ");
+			out.print("\"WRITE_TIME\":\"" + (String)resArr.get(i+4) + "\" ");
+			out.print("} ");
 		}
 		out.println("]");
 		out.println("}");

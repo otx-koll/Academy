@@ -50,28 +50,29 @@ public class Custom_Adapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
-        if (view==null){
+        if (view==null)
            view = mInflater.inflate(mListLayout, viewGroup, false);
-        }
+
         final TextView tvID = (TextView) view.findViewById(R.id.tv_id);
         tvID.setText(mUserInfoObjArr.get(position).id);
 
         final TextView tvName = (TextView) view.findViewById(R.id.tv_name);
-        tvID.setText(mUserInfoObjArr.get(position).name);
+        tvName.setText(mUserInfoObjArr.get(position).name);
 
         final TextView tvPhone = (TextView) view.findViewById(R.id.tv_phone);
-        tvID.setText(mUserInfoObjArr.get(position).phone);
+        tvPhone.setText(mUserInfoObjArr.get(position).phone);
 
         final TextView tvGrade = (TextView) view.findViewById(R.id.tv_grade);
-        tvID.setText(mUserInfoObjArr.get(position).grade);
+        tvGrade.setText(mUserInfoObjArr.get(position).grade);
 
         final TextView tvWriteTime = (TextView) view.findViewById(R.id.tv_write_time);
-        tvID.setText(mUserInfoObjArr.get(position).writeTime);
+        tvWriteTime.setText(mUserInfoObjArr.get(position).writeTime);
 
         Button updateButton = (Button) view.findViewById(R.id.btnUpdate);
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
 
             }
         });
@@ -89,9 +90,10 @@ public class Custom_Adapter extends BaseAdapter {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         new NetworkDelete(Custom_Adapter.this).execute(tvID.getText().toString());
+                        Toast.makeText(mAct, "삭제하였습니다.", Toast.LENGTH_SHORT).show();
                     }
                 });
-                
+
                 ad.setPositiveButton("취소", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -101,6 +103,7 @@ public class Custom_Adapter extends BaseAdapter {
                 ad.show();
             }
         });
+
         return view;
     }
 }

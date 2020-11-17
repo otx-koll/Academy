@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         listView = (ListView) findViewById(R.id.listView);
-        adapter = new Custom_Adapter(MainActivity.this, R.layout.adapter_userinfo, new ArrayList<UserInfo>());
+        adapter = new Custom_Adapter(MainActivity.this, R.layout.adapter_userinfo, new ArrayList<UserInfo>()); // 여기서 arrayList : 갯수
         listView.setAdapter(adapter);
 
         refreshBtn = (Button) findViewById(R.id.btnReresh);
@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 new NetworkGet((Custom_Adapter) listView.getAdapter()).execute(""); // 전체 불러오기
-                Toast.makeText(MainActivity.this, "확인", Toast.LENGTH_SHORT).show();
             }
         });
 

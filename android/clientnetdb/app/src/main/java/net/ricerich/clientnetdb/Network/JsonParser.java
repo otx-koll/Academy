@@ -11,10 +11,10 @@ import java.util.ArrayList;
 public class JsonParser {
     static public int getUserInfoJson(String response, ArrayList<UserInfo> userList) throws JSONException {
         String strID;
-        String strName = null;
-        String strPhone = null;
-        String strGrade = null;
-        String strWriteTime = null;
+        String strName;
+        String strPhone;
+        String strGrade;
+        String strWriteTime;
 
         JSONObject rootJSON = new JSONObject(response);
         JSONArray jsonArray = new JSONArray(rootJSON.getString("datas"));
@@ -28,25 +28,25 @@ public class JsonParser {
                 strID = jsonObj.getString("ID").toString();
 
             if(jsonObj.getString("NAME").toString().equals("null"))
-                strID = "-";
+                strName = "-";
             else
-                strID = jsonObj.getString("NAME").toString();
+                strName = jsonObj.getString("NAME").toString();
 
             if(jsonObj.getString("PHONE").toString().equals("null"))
-                strID = "-";
+                strPhone = "-";
             else
-                strID = jsonObj.getString("PHONE").toString();
+                strPhone = jsonObj.getString("PHONE").toString();
 
             if(jsonObj.getString("GRADE").toString().equals("null"))
-                strID = "-";
+                strGrade = "-";
             else
-                strID = jsonObj.getString("GRADE").toString();
+                strGrade = jsonObj.getString("GRADE").toString();
 
             if(jsonObj.getString("WRITE_TIME").toString().equals("null"))
-                strID = "-";
+                strWriteTime = "-";
             else {
-                strID = jsonObj.getString("WRITE_TIME").toString();
-                String temp[] = strWriteTime.split("");
+                strWriteTime = jsonObj.getString("WRITE_TIME").toString();
+                String temp[] = strWriteTime.split(" ");
                 strWriteTime = temp[0] + "\n" + temp[1];
             }
             userList.add(new UserInfo(strID, strName, strPhone, strGrade, strWriteTime));

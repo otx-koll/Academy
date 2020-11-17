@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class QueryBean {
 	Connection con; // ¿¬°á °´Ã¼
-	Statement stmt; // Áú¿Ü °´Ã¼
+	Statement stmt; // Áú¿Ü °´Ã¼ // ¹°À½Ç¥°¡ ¾øÀ¸¸é Statement. ÀÖÀ¸¸é preparedstatement
 	ResultSet rs; 	// °á°ú °´Ã¼
 	
 	public QueryBean() {
@@ -67,7 +67,7 @@ public class QueryBean {
 			res.add(rs.getString(1));
 			res.add(rs.getString(2));
 			res.add(rs.getString(3));
-			res.add(rs.getInt(4));
+			res.add(rs.getString(4));
 			res.add(rs.getString(5));
 		}
 		System.out.print(sb.toString());
@@ -77,15 +77,15 @@ public class QueryBean {
 	public ArrayList getUserInfo(String strUser) throws Exception {
 		StringBuffer sb = new StringBuffer();
 		
-		sb.append("SELECT ");
-		sb.append("U_ID, U_NAME, U_PHONE, U_GRADE, WRITE_TIME ");
-		sb.append("FROM ");
-		sb.append("user_info_sample ");
-		sb.append("WHERE ");
-		sb.append("U_ID like '%" + strUser + "%' ");
-		sb.append("ORDER BY ");
-		sb.append("WRITE_TIME ");
-		sb.append("DESC ");
+		sb.append(" SELECT ");
+		sb.append(" U_ID, U_NAME, U_PHONE, U_GRADE, WRITE_TIME ");
+		sb.append(" FROM ");
+		sb.append(" user_info_sample ");
+		sb.append(" WHERE ");
+		sb.append(" U_ID like '%" + strUser + "%' ");
+		sb.append(" ORDER BY ");
+		sb.append(" WRITE_TIME ");
+		sb.append(" DESC ");
 		
 		rs = stmt.executeQuery(sb.toString());
 		
@@ -94,7 +94,7 @@ public class QueryBean {
 			res.add(rs.getString(1));
 			res.add(rs.getString(2));
 			res.add(rs.getString(3));
-			res.add(rs.getInt(4));
+			res.add(rs.getString(4));
 			res.add(rs.getString(5));
 		}
 		System.out.print(sb.toString());
@@ -107,10 +107,10 @@ public class QueryBean {
 		StringBuffer sb = new StringBuffer();
 		PreparedStatement pstmt = null;
 		
-		sb.append("INSERT INTO ");
-		sb.append("USER_INFO_SAMPLE (U_ID, U_NAME, U_PHONE, U_GRADE, WRITE_TIME) ");
-		sb.append("VALUES ");
-		sb.append("('" + id + "', '" + name + "', '" + phone + "', '" + grade + "', sysdate) ");
+		sb.append(" INSERT INTO ");
+		sb.append(" USER_INFO_SAMPLE (U_ID, U_NAME, U_PHONE, U_GRADE, WRITE_TIME) ");
+		sb.append(" VALUES ");
+		sb.append(" ('" + id + "', '" + name + "', '" + phone + "', '" + grade + "', now() ) ");
 		
 		System.out.println(sb.toString());
 		
@@ -161,6 +161,26 @@ public class QueryBean {
 			} catch (Exception e){
 				e.printStackTrace();
 			}
+		}
+		return result;
+	}
+	
+	public int updateUserInfo(String id, String name, String phone, String grade) {
+		int result = 0;
+		
+		StringBuffer sb = new StringBuffer();
+		PreparedStatement pstmt = null;
+		
+		sb.append("UPDATE USER_INFO_SAMPLE ");
+		sb.append("SET ");
+		sb.append("U_ID = ?, U_NAME = ?, U_PHONE = ?, U_GRADE = ?, WRITE_TIME ");
+		
+		try {
+			pstmt = con.prepareStatement(sb.toString());
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 		return result;
 	}
