@@ -35,6 +35,7 @@ public class NetworkGet extends AsyncTask<String, Void, String> {
     @Override
     protected String doInBackground(String... strings) {
         String res = "";
+
         try {
             Url = new URL(URL_Adress);
             HttpURLConnection con = (HttpURLConnection) Url.openConnection();
@@ -70,7 +71,7 @@ public class NetworkGet extends AsyncTask<String, Void, String> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Log.i("Get reulst", res);
+        Log.i("Get result", res);
         return res; // return Result // 자동으로 onPostExecute의 string으로 들어간다. 그럼 String s의 s겠네
     }
 

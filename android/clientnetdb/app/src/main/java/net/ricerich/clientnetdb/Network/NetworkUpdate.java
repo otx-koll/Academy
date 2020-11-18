@@ -3,6 +3,7 @@ package net.ricerich.clientnetdb.Network;
 import android.os.AsyncTask;
 
 import net.ricerich.clientnetdb.Custom_Adapter;
+import net.ricerich.clientnetdb.UserInfo;
 
 import org.json.JSONException;
 
@@ -14,20 +15,17 @@ import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 
-public class NetworkDelete extends AsyncTask<String, Void, String> {
+public class NetworkUpdate extends AsyncTask<String, Void, String> {
     private URL Url;
-    private String URL_Adress = "http://10.100.103.21/testWeb/testDB3_delete.jsp";
+    private String URL_Adress = "http://10.100.103.21/testWeb/testDB3_update.jsp";
     private Custom_Adapter adapter;
 
-    public NetworkDelete(Custom_Adapter adapter){
-        this.adapter = adapter;
-    }
+    public NetworkUpdate(Custom_Adapter adapter) { this.adapter = adapter; }
 
     @Override
-    protected void onPreExecute() {
-        super.onPreExecute();
-    }
+    protected void onPreExecute() { super.onPreExecute(); }
 
     @Override
     protected String doInBackground(String... strings) {
@@ -69,13 +67,14 @@ public class NetworkDelete extends AsyncTask<String, Void, String> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return res; // return Result
+        return res;
     }
 
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
 
+        ArrayList<UserInfo> userList = new ArrayList<UserInfo>(); // 데이터 받을 곳
         int res = 0;
         try {
             res = JsonParser.getResultJson(s);
@@ -84,7 +83,8 @@ public class NetworkDelete extends AsyncTask<String, Void, String> {
         }
         if(res == 0) {
         } else {
-            new NetworkGet(adapter).equals("");
+            adapter.setDatas(userList);
+            adapter.notifyDataSetInvalidated();
         }
     }
 }

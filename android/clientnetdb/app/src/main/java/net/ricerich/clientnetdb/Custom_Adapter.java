@@ -9,10 +9,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import net.ricerich.clientnetdb.Network.NetworkDelete;
+import net.ricerich.clientnetdb.Network.NetworkUpdate;
 
 import java.util.ArrayList;
 
@@ -21,6 +25,7 @@ public class Custom_Adapter extends BaseAdapter {
     LayoutInflater mInflater;
     ArrayList<UserInfo> mUserInfoObjArr;
     int mListLayout;
+    private Custom_Adapter adapter;
 
     public Custom_Adapter(Activity a, int listLayout, ArrayList<UserInfo> userInfoObjArrayListT) {
         mAct = a;
@@ -50,6 +55,7 @@ public class Custom_Adapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
+
         if (view==null)
            view = mInflater.inflate(mListLayout, viewGroup, false);
 
@@ -68,12 +74,49 @@ public class Custom_Adapter extends BaseAdapter {
         final TextView tvWriteTime = (TextView) view.findViewById(R.id.tv_write_time);
         tvWriteTime.setText(mUserInfoObjArr.get(position).writeTime);
 
+        final View[] viewBtn = {view};
+
         Button updateButton = (Button) view.findViewById(R.id.btnUpdate);
         updateButton.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
 
+                final View view = mAct.getLayoutInflater().inflate(R.layout.dialog_add, null);
+                final EditText edtId, edtName, edtPhone, edtGrade;
+                edtId = (EditText)view.findViewById(R.id.edtID);
+                edtName = (EditText)view.findViewById(R.id.edtName);
+                edtPhone = (EditText)view.findViewById(R.id.edtPhone);
+                edtGrade = (EditText)view.findViewById(R.id.edtGrade);
 
+                edtId.setText(tvID.getText());
+                edtName.setText(tvName.getText());
+                edtPhone.setText(tvPhone.getText());
+                edtGrade.setText(tvGrade.getText());
+
+                edtId.setFocusable(false);
+
+                new AlertDialog.Builder((Context)mAct)
+                        .setTitle("수정")
+                        .setView(view)
+                        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                String id = edtId.getText().toString();
+                                String name = edtName.getText().toString();
+                                String phone = edtPhone.getText().toString();
+                                String grade = edtGrade.getText().toString();
+
+                                new NetworkUpdate(Custom_Adapter.this).execute(id, name, phone, grade);
+                            }
+                        })
+                        .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        })
+                        .setCancelable(false).show();
             }
         });
 
@@ -107,3 +150,4 @@ public class Custom_Adapter extends BaseAdapter {
         return view;
     }
 }
+

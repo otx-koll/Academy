@@ -1,8 +1,10 @@
 package net.ricerich.clientnetdb.Network;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import net.ricerich.clientnetdb.Custom_Adapter;
+import net.ricerich.clientnetdb.UserInfo;
 
 import org.json.JSONException;
 
@@ -14,13 +16,14 @@ import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 
-public class NetworkDelete extends AsyncTask<String, Void, String> {
+public class NetworkSearch extends AsyncTask<String, Void, String> {
     private URL Url;
-    private String URL_Adress = "http://10.100.103.21/testWeb/testDB3_delete.jsp";
+    private String URL_Adress = "http://10.100.103.21/testWeb/testDB.jsp";
     private Custom_Adapter adapter;
 
-    public NetworkDelete(Custom_Adapter adapter){
+    public NetworkSearch(Custom_Adapter adapter){
         this.adapter = adapter;
     }
 
@@ -59,32 +62,34 @@ public class NetworkDelete extends AsyncTask<String, Void, String> {
             StringBuilder builder = new StringBuilder();
             BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream(), "UTF-8"));
             String line;
-            while((line = in.readLine()) != null) {
+            while ((line = in.readLine()) != null) {
                 builder.append(line + "\n");
             }
-
             res = builder.toString();
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return res; // return Result
+        return res;
     }
 
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
 
-        int res = 0;
+        ArrayList<UserInfo> userList = new ArrayList<UserInfo>();
+        int count = 0;
         try {
-            res = JsonParser.getResultJson(s);
+            count = JsonParser.getUserInfoJson(s, userList);
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        if(res == 0) {
+        if(count == 0) {
         } else {
-            new NetworkGet(adapter).equals("");
+            adapter.setDatas(userList);
+            adapter.notifyDataSetInvalidated();
         }
     }
 }

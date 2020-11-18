@@ -37,6 +37,7 @@ public class NetworkInsert extends AsyncTask<String, Void, String> {
             Url = new URL(URL_Adress);
             HttpURLConnection con = (HttpURLConnection) Url.openConnection();
 
+            // 전송모드 설정
             con.setDefaultUseCaches(false);
             con.setDoInput(true);
             con.setDoOutput(true);
@@ -77,8 +78,8 @@ public class NetworkInsert extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
-        int res = 0;
 
+        int res = 0;
         try {
             res = JsonParser.getResultJson(s);
         } catch (JSONException e) {

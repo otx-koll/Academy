@@ -1,6 +1,6 @@
 <%@page import="java.io.File"%>
-<%@page import="com.exam.vo.NoticeVo"%>
-<%@page import="com.exam.dao.NoticeDao"%>
+<%@page import="com.exam.vo.BoardVo"%>
+<%@page import="com.exam.dao.BoardDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
@@ -13,14 +13,14 @@ int num = Integer.parseInt(request.getParameter("num"));
 String passwd = request.getParameter("passwd");
 
 // DAO 객체 준비
-NoticeDao boardDao = NoticeDao.getInstance();
+BoardDao boardDao = BoardDao.getInstance();
 
 // 본인확인용 글 패스워드 비교
 boolean isPasswdOk = boardDao.isPasswdOk(num, passwd);
 // 글 패스워드 일치하면 글삭제하고 글목록으로 이동 
 if (isPasswdOk) {
 	// 글번호에 해당하는 글내용 가져오기(첨부파일 정보 확인 위해서)
-	NoticeVo boardVo = boardDao.getBoardByNum(num);
+	BoardVo boardVo = boardDao.getBoardByNum(num);
 	// 첨부파일 이름
 	String filename = boardVo.getFile();
 	if (filename != null) { // 첨부파일이 있으면

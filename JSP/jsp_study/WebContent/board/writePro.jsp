@@ -1,6 +1,6 @@
 <%@page import="java.sql.Timestamp"%>
-<%@page import="com.exam.dao.NoticeDao"%>
-<%@page import="com.exam.vo.NoticeVo"%>
+<%@page import="com.exam.dao.BoardDao"%>
+<%@page import="com.exam.vo.BoardVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
@@ -13,7 +13,7 @@ String pageNum = request.getParameter("pageNum");
 // VO 객체 준비
 // BoardVo boardVo = new BoardVo();
 %>
-<jsp:useBean id="boardVo" class="com.exam.vo.NoticeVo"/>
+<jsp:useBean id="boardVo" class="com.exam.vo.BoardVo"/>
 
 <%
 	// 파라미터 값 가져와서 VO에 저장
@@ -26,7 +26,7 @@ String pageNum = request.getParameter("pageNum");
 <jsp:setProperty property="*" name="boardVo"/>
 <%
 // DAO 객체 준비
-NoticeDao boardDao = NoticeDao.getInstance();
+BoardDao boardDao = BoardDao.getInstance();
 // new BoardDao()인데 싱글톤해서 BoardDao.getInstance()
 
 // 글번호 가져오기
