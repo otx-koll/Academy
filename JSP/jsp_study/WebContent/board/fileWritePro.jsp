@@ -1,8 +1,8 @@
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@page import="java.sql.Timestamp"%>
-<%@page import="com.exam.dao.NoticeDao"%>
-<%@page import="com.exam.vo.NoticeVo"%>
+<%@page import="com.exam.dao.BoardDao"%>
+<%@page import="com.exam.vo.BoardVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
@@ -38,7 +38,7 @@ MultipartRequest multi = new MultipartRequest(
 String pageNum = multi.getParameter("pageNum");
 
 // VO 객체 준비
-NoticeVo boardVo = new NoticeVo();
+BoardVo boardVo = new BoardVo();
 
 // 파라미터값 가져와서 VO에 저장. MultipartRequest 로부터 찾음.
 boardVo.setName(multi.getParameter("name"));
@@ -54,7 +54,7 @@ System.out.println("실제파일명 : " + multi.getFilesystemName("filename"));
 boardVo.setFile(multi.getFilesystemName("filename"));
 
 // DAO 객체 준비
-NoticeDao boardDao = NoticeDao.getInstance();
+BoardDao boardDao = BoardDao.getInstance();
 
 // 글번호 가져와서 VO에 저장
 int nextNum = boardDao.getNextNum();

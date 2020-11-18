@@ -13,11 +13,12 @@ import android.widget.Toast;
 
 import net.ricerich.clientnetdb.Network.NetworkGet;
 import net.ricerich.clientnetdb.Network.NetworkInsert;
+import net.ricerich.clientnetdb.Network.NetworkSearch;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    private Button refreshBtn, addBtn;
+    private Button refreshBtn, addBtn, btnSearch;
     private ListView listView;
     private Custom_Adapter adapter;
 
@@ -30,7 +31,15 @@ public class MainActivity extends AppCompatActivity {
         adapter = new Custom_Adapter(MainActivity.this, R.layout.adapter_userinfo, new ArrayList<UserInfo>()); // 여기서 arrayList : 갯수
         listView.setAdapter(adapter);
 
-        refreshBtn = (Button) findViewById(R.id.btnReresh);
+        btnSearch = (Button) findViewById(R.id.btnSearch);
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new NetworkSearch((Custom_Adapter) listView.getAdapter()).execute("");
+            }
+        });
+
+        refreshBtn = (Button) findViewById(R.id.btnRefresh);
         refreshBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

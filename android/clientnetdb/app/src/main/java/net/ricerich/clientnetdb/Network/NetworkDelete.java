@@ -69,13 +69,13 @@ public class NetworkDelete extends AsyncTask<String, Void, String> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return res; // return Result
     }
 
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
+
         int res = 0;
         try {
             res = JsonParser.getResultJson(s);

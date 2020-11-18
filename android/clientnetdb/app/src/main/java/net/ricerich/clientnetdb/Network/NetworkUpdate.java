@@ -1,7 +1,6 @@
 package net.ricerich.clientnetdb.Network;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 import net.ricerich.clientnetdb.Custom_Adapter;
 import net.ricerich.clientnetdb.UserInfo;
@@ -18,19 +17,15 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class NetworkGet extends AsyncTask<String, Void, String> {
+public class NetworkUpdate extends AsyncTask<String, Void, String> {
     private URL Url;
-    private String URL_Adress = "http://211.197.105.10:8006/testWeb/testDB.jsp";
+    private String URL_Adress = "http://10.100.103.21/testWeb/testDB3_update.jsp";
     private Custom_Adapter adapter;
 
-    public NetworkGet(Custom_Adapter adapter){
-        this.adapter = adapter;
-    }
+    public NetworkUpdate(Custom_Adapter adapter) { this.adapter = adapter; }
 
     @Override
-    protected void onPreExecute() {
-        super.onPreExecute();
-    }
+    protected void onPreExecute() { super.onPreExecute(); }
 
     @Override
     protected String doInBackground(String... strings) {
@@ -62,17 +57,17 @@ public class NetworkGet extends AsyncTask<String, Void, String> {
             StringBuilder builder = new StringBuilder();
             BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream(), "UTF-8"));
             String line;
-            while ((line = in.readLine()) != null) {
+            while((line = in.readLine()) != null) {
                 builder.append(line + "\n");
             }
+
             res = builder.toString();
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Log.i("Get result", res);
-        return res; // return Result // 자동으로 onPostExecute의 string으로 들어간다. 그럼 String s의 s겠네
+        return res;
     }
 
     @Override
@@ -80,14 +75,13 @@ public class NetworkGet extends AsyncTask<String, Void, String> {
         super.onPostExecute(s);
 
         ArrayList<UserInfo> userList = new ArrayList<UserInfo>(); // 데이터 받을 곳
-        int count = 0;
+        int res = 0;
         try {
-            count = JsonParser.getUserInfoJson(s, userList);
-
+            res = JsonParser.getResultJson(s);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        if(count == 0) {
+        if(res == 0) {
         } else {
             adapter.setDatas(userList);
             adapter.notifyDataSetInvalidated();
