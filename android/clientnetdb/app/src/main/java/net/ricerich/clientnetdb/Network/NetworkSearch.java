@@ -20,7 +20,8 @@ import java.util.ArrayList;
 
 public class NetworkSearch extends AsyncTask<String, Void, String> {
     private URL Url;
-    private String URL_Adress = "http://10.100.103.21/testWeb/testDB.jsp";
+    //    private String URL_Adress = "http://10.100.103.21/testWeb/testDB3_search.jsp";
+    private String URL_Adress = "http://211.104.196.146:8006/testWeb/testDB3_search.jsp";
     private Custom_Adapter adapter;
 
     public NetworkSearch(Custom_Adapter adapter){
@@ -47,6 +48,7 @@ public class NetworkSearch extends AsyncTask<String, Void, String> {
             con.setRequestMethod("POST");
 
             // content-type 설정
+            // 텍스트만 전송할 때 사용
             con.setRequestProperty("Content-type", "application/x-www-form-urlencoded; charset=utf-8");
 
             // 전송값 설정
@@ -71,14 +73,15 @@ public class NetworkSearch extends AsyncTask<String, Void, String> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return res;
+        Log.i("Get result", res);
+        return res; // return Result // 자동으로 onPostExecute의 string으로 들어간다. 그럼 String s의 s겠네
     }
 
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
 
-        ArrayList<UserInfo> userList = new ArrayList<UserInfo>();
+        ArrayList<UserInfo> userList = new ArrayList<UserInfo>(); // 데이터 받을 곳
         int count = 0;
         try {
             count = JsonParser.getUserInfoJson(s, userList);

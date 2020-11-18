@@ -35,7 +35,8 @@ public class MainActivity extends AppCompatActivity {
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new NetworkSearch((Custom_Adapter) listView.getAdapter()).execute("");
+                String name = ((EditText)findViewById(R.id.edtSearch)).getText().toString();
+                new NetworkSearch(adapter).execute(name);
             }
         });
 

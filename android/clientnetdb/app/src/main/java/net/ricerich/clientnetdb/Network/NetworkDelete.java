@@ -17,7 +17,7 @@ import java.net.URL;
 
 public class NetworkDelete extends AsyncTask<String, Void, String> {
     private URL Url;
-    private String URL_Adress = "http://211.197.105.10:8006/testWeb/testDB3_delete.jsp";
+    private String URL_Adress = "http://211.104.196.146:8006/testWeb/testDB3_delete.jsp";
     private Custom_Adapter adapter;
 
     public NetworkDelete(Custom_Adapter adapter){
@@ -84,7 +84,7 @@ public class NetworkDelete extends AsyncTask<String, Void, String> {
         }
         if(res == 0) {
         } else {
-            new NetworkGet(adapter).equals("");
+            new NetworkGet(adapter).execute("");
         }
     }
 }

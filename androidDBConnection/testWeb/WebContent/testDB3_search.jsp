@@ -10,12 +10,14 @@
 	
 	request.setCharacterEncoding("utf-8");
 	
+	String name = request.getParameter("name") == null ? "" : request.getParameter("name").trim();
+	
 	QueryBean.getConnection();
 	
 	ArrayList resArr = new ArrayList();
 	
 	try {
-		resArr = QueryBean.searchUserInfo();
+		resArr = QueryBean.getUserInfo(name);
 	} catch (SQLException e) {
 		out.print(e.toString());
 	} finally {

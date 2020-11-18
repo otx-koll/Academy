@@ -168,8 +168,9 @@ public class QueryBean {
 	public int updateUserInfo(String id, String name, String phone, String grade) {
 		int result = 0;
 		
-		StringBuffer sb = new StringBuffer();
 		PreparedStatement pstmt = null;
+		
+		StringBuffer sb = new StringBuffer();
 		
 		sb.append("UPDATE ");
 		sb.append("USER_INFO_SAMPLE ");
@@ -177,6 +178,7 @@ public class QueryBean {
 		sb.append("WHERE U_ID = ? ");
 		
 		System.out.println(sb.toString());
+		
 		try {
 			pstmt = con.prepareStatement(sb.toString());
 			pstmt.clearParameters();
@@ -200,30 +202,30 @@ public class QueryBean {
 		return result;
 	}
 
-	public ArrayList searchUserInfo(String id) throws Exception {
-		StringBuffer sb = new StringBuffer();
-		
-		sb.append(" SELECT ");
-		sb.append(" U_ID, U_NAME, U_PHONE, U_GRADE, WRITE_TIME ");
-		sb.append(" FROM ");
-		sb.append(" user_info_sample ");
-		sb.append(" WHERE ");
-		sb.append(" U_ID like '%" + id + "%' ");
-		sb.append(" ORDER BY ");
-		sb.append(" WRITE_TIME ");
-		sb.append(" DESC ");
-		
-		rs = stmt.executeQuery(sb.toString());
-		
-		ArrayList res = new ArrayList();
-		while (rs.next()) {
-			res.add(rs.getString(1));
-			res.add(rs.getString(2));
-			res.add(rs.getString(3));
-			res.add(rs.getString(4));
-			res.add(rs.getString(5));
-		}
-		System.out.print(sb.toString());
-		return res;
-	}
+//	public ArrayList searchUserInfo(String strUser) throws Exception {
+//		StringBuffer sb = new StringBuffer();
+//		
+//		sb.append(" SELECT ");
+//		sb.append(" U_ID, U_NAME, U_PHONE, U_GRADE, WRITE_TIME ");
+//		sb.append(" FROM ");
+//		sb.append(" user_info_sample ");
+//		sb.append(" WHERE ");
+//		sb.append(" U_ID like '%" + strUser + "%' ");
+//		sb.append(" ORDER BY ");
+//		sb.append(" WRITE_TIME ");
+//		sb.append(" DESC ");
+//		
+//		rs = stmt.executeQuery(sb.toString());
+//		
+//		ArrayList res = new ArrayList();
+//		while (rs.next()) {
+//			res.add(rs.getString(1));
+//			res.add(rs.getString(2));
+//			res.add(rs.getString(3));
+//			res.add(rs.getString(4));
+//			res.add(rs.getString(5));
+//		}
+//		System.out.print(sb.toString());
+//		return res;
+//	}
 }

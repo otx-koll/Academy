@@ -9,7 +9,7 @@
 	
 	request.setCharacterEncoding("utf-8");
 	
-	String id = request.getParameter("id") == null ? "" : request.getParameter("id").trim();
+	String id = request.getParameter("id") == null ? "2" : request.getParameter("id").trim();
 	String name = request.getParameter("name") == null ? "" : request.getParameter("name").trim();
 	String phone = request.getParameter("phone") == null ? "" : request.getParameter("phone").trim();
 	String grade = request.getParameter("grade") == null ? "" : request.getParameter("grade").trim();
