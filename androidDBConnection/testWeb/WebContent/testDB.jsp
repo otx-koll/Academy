@@ -8,16 +8,21 @@
 	response.setHeader("Pragma", "no-cache");
 	response.setDateHeader("Expires", 0);
 	
-	request.setCharacterEncoding("utf-8");
+	request.setCharacterEncoding("UTF-8");
+	
+	String id = request.getParameter("id") == null ? "" : request.getParameter("id").trim();
 	
 	QueryBean.getConnection();
 	
 	ArrayList resArr = new ArrayList();
 	
 	try {
-		resArr = QueryBean.getUserInfo();
+		resArr = QueryBean.getUserInfo(id);
+	
 	} catch (SQLException e) {
-		out.print(e.toString());
+		e.printStackTrace();
+		System.out.println(e.toString());
+		
 	} finally {
 		QueryBean.closeConnection();
 	}

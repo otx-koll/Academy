@@ -30,6 +30,8 @@
 	} finally {
 		QueryBean.closeConnection();
 	}
+	
+	// 문서를 만들 부분
 	out.println("[");
 	out.println("{");
 	out.println("\"RESULT_OK\": \"" + res + "\" ");

@@ -9,11 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import net.ricerich.clientnetdb.Network.NetworkGet;
 import net.ricerich.clientnetdb.Network.NetworkInsert;
-import net.ricerich.clientnetdb.Network.NetworkSearch;
 
 import java.util.ArrayList;
 
@@ -21,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private Button refreshBtn, addBtn, btnSearch;
     private ListView listView;
     private Custom_Adapter adapter;
+    private EditText edtSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,19 +27,25 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         listView = (ListView) findViewById(R.id.listView);
+
+        addBtn = (Button) findViewById(R.id.btn_add);
+        refreshBtn = (Button) findViewById(R.id.btnRefresh);
+
+        edtSearch = (EditText) findViewById(R.id.edtSearch);
+        btnSearch = (Button) findViewById(R.id.btnSearch);
+
         adapter = new Custom_Adapter(MainActivity.this, R.layout.adapter_userinfo, new ArrayList<UserInfo>()); // 여기서 arrayList : 갯수
         listView.setAdapter(adapter);
 
-        btnSearch = (Button) findViewById(R.id.btnSearch);
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name = ((EditText)findViewById(R.id.edtSearch)).getText().toString();
-                new NetworkSearch(adapter).execute(name);
+                String strSearch = "";
+                strSearch = edtSearch.getText().toString();
+                new NetworkGet((Custom_Adapter)listView.getAdapter()).execute(strSearch);
             }
         });
 
-        refreshBtn = (Button) findViewById(R.id.btnRefresh);
         refreshBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        addBtn = (Button) findViewById(R.id.btn_add);
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

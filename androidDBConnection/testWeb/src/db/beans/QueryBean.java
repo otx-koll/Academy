@@ -74,7 +74,7 @@ public class QueryBean {
 		return res;
 	}
 	
-	public ArrayList getUserInfo(String strUser) throws Exception {
+	public ArrayList getUserInfo(String id) throws Exception {
 		StringBuffer sb = new StringBuffer();
 		
 		sb.append(" SELECT ");
@@ -82,14 +82,14 @@ public class QueryBean {
 		sb.append(" FROM ");
 		sb.append(" user_info_sample ");
 		sb.append(" WHERE ");
-		sb.append(" U_ID like '%" + strUser + "%' ");
-		sb.append(" ORDER BY ");
-		sb.append(" WRITE_TIME ");
+		sb.append(" U_ID like '%" + id + "%' ");
+		sb.append(" ORDER BY WRITE_TIME ");
 		sb.append(" DESC ");
 		
 		rs = stmt.executeQuery(sb.toString());
 		
 		ArrayList res = new ArrayList();
+		
 		while (rs.next()) {
 			res.add(rs.getString(1));
 			res.add(rs.getString(2));
@@ -102,7 +102,6 @@ public class QueryBean {
 	}
 	
 	public int setUserInfo(String id, String name, String phone, String grade) {
-		int result = 0;
 		
 		StringBuffer sb = new StringBuffer();
 		PreparedStatement pstmt = null;
@@ -113,27 +112,29 @@ public class QueryBean {
 		sb.append(" ('" + id + "', '" + name + "', '" + phone + "', '" + grade + "', now() ) ");
 		
 		System.out.println(sb.toString());
+
+		int res = 0;
 		
 		try {
-			pstmt = con.prepareStatement(sb.toString());
+			pstmt = con.prepareStatement(sb.toString()); // preparedstatement로 하면 이렇게 해야함
 			
-			result = pstmt.executeUpdate();
+			res = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			try {
 				if(pstmt != null) {
-					pstmt.close();
+					pstmt.close(); // 메모리 누수가 일어나기때문에 해줘야함
 				}
 			} catch(Exception e) {
 				e.printStackTrace();
 			}
 		}
-		return result;
+		return res;
 	}
 	
 	public int deleteUserInfo(String id) throws Exception {
-		int result = 0;
+		int res = 0;
 		
 		PreparedStatement pstmt = null;
 		
@@ -150,7 +151,7 @@ public class QueryBean {
 			pstmt.clearParameters();
 			pstmt.setString(1, id);
 			
-			result = pstmt.executeUpdate();
+			res = pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -162,11 +163,11 @@ public class QueryBean {
 				e.printStackTrace();
 			} 
 		}
-		return result;
+		return res;
 	}
 	
 	public int updateUserInfo(String id, String name, String phone, String grade) {
-		int result = 0;
+		int res = 0;
 		
 		PreparedStatement pstmt = null;
 		
@@ -187,7 +188,7 @@ public class QueryBean {
 			pstmt.setString(3, grade);
 			pstmt.setString(4, id);
 			
-			result = pstmt.executeUpdate();
+			res = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -199,7 +200,7 @@ public class QueryBean {
 				e.printStackTrace();
 			}
 		}
-		return result;
+		return res;
 	}
 
 //	public ArrayList searchUserInfo(String strUser) throws Exception {
