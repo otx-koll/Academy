@@ -1,0 +1,25 @@
+<resources>
+    <!--
+    TODO: Before you run your application, you need a Google Maps API key.
+
+    To get one, follow this link, follow the directions and press "Create" at the end:
+
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=A4:27:53:DF:E0:EC:71:B4:73:E4:F4:FD:41:88:00:B2:60:F5:56:CB%3Bcom.cookandroid.ex13_gmap
+
+    You can also add your credentials to an existing key, using these values:
+
+    Package name:
+    com.cookandroid.ex13_gmap
+
+    SHA-1 certificate fingerprint:
+    A4:27:53:DF:E0:EC:71:B4:73:E4:F4:FD:41:88:00:B2:60:F5:56:CB
+
+    Alternatively, follow the directions here:
+    https://developers.google.com/maps/documentation/android/start#get-key
+
+    Once you have your key (it starts with "AIza"), replace the "google_maps_key"
+    string in this file.
+    -->
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyBbIbh-UveZajQ9bHbzV12AUyWS7gkBRJU</string>
+    <!-- 위의 console사이트 들어가서 YOUR_KEY_HERE위치에 api키 복붙하면 지도 뜸 -->
+</resources>
