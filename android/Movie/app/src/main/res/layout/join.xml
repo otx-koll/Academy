@@ -1,11 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:gravity="center"
+    android:id="@+id/join">
 
-    <Button
+    <TextView
+        android:id="@+id/joinTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="가입"/>
-</LinearLayout>
+        android:text="      회원가입"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:layout_marginBottom="65dp" />
+
+    <EditText
+        android:id="@+id/nameEdt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/joinTv"
+        android:ems="10"
+        android:hint="이름"
+        android:inputType="text"
+        android:layout_marginBottom="10dp"/>
+
+    <EditText
+        android:id="@+id/idEdt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nameEdt"
+        android:ems="7"
+        android:hint="아이디"
+        android:inputType="text"
+        android:layout_marginBottom="10dp"/>
+
+    <Button
+        android:id="@+id/checkBtn"
+        android:layout_width="65dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/idEdt"
+        android:layout_toRightOf="@id/idEdt"
+        android:text="확인" />
+
+    <EditText
+        android:id="@+id/passEdt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idEdt"
+        android:ems="10"
+        android:hint="비밀번호"
+        android:inputType="textPassword"
+        android:layout_marginBottom="10dp"/>
+
+    <EditText
+        android:id="@+id/passcheckEdt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/passEdt"
+        android:ems="10"
+        android:hint="비밀번호 확인"
+        android:inputType="textPassword"
+        android:layout_marginBottom="10dp"/>
+
+    <Button
+        android:id="@+id/joinBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/passcheckEdt"
+        android:layout_below="@id/passcheckEdt"
+        android:text="가입" />
+
+    <Button
+        android:id="@+id/cancelBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/passcheckEdt"
+        android:layout_below="@id/passcheckEdt"
+        android:text="취소" />
+</RelativeLayout>

@@ -24,28 +24,24 @@
                 android:id="@+id/tabHome"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#FFC3C3"
                 android:orientation="vertical"/>
 
             <LinearLayout
                 android:id="@+id/tabTicket"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#FFFF80"
                 android:orientation="vertical" />
 
             <LinearLayout
                 android:id="@+id/tabSnack"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#C1FFA7"
                 android:orientation="vertical" />
 
             <LinearLayout
                 android:id="@+id/tabInfo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#7BB7FF"
                 android:orientation="vertical"/>
         </FrameLayout>
     </LinearLayout>

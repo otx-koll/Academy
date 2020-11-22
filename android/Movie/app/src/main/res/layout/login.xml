@@ -1,11 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:gravity="center">
 
-    <Button
+    <TextView
+        android:id="@+id/loginTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="로그인"/>
-</LinearLayout>
+        android:text="         로그인"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:layout_marginBottom="65dp" />
+
+    <EditText
+        android:id="@+id/idEdt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/loginTv"
+        android:ems="10"
+        android:hint="아이디"
+        android:inputType="text"
+        android:layout_marginBottom="20dp"/>
+
+    <EditText
+        android:id="@+id/passEdt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idEdt"
+        android:ems="10"
+        android:hint="비밀번호"
+        android:inputType="textPassword"
+        android:layout_marginBottom="10dp"/>
+
+    <Button
+        android:id="@+id/loginBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/passEdt"
+        android:layout_below="@id/passEdt"
+        android:text="로그인" />
+
+    <Button
+        android:id="@+id/joinBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/passEdt"
+        android:layout_below="@id/passEdt"
+        android:text="가입" />
+</RelativeLayout>

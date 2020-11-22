@@ -7,39 +7,42 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TabHost;
+import android.widget.Toast;
 
 public class MainActivity extends TabActivity {
 
     TabHost.TabSpec tabSpecHome, tabSpecTicket, tabSpecSnack, tabSpecInfo;
+    Intent itHome, itTicket, itSnack, itInfo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        LayoutInflater in = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        in.inflate(R.layout.home, findViewById(R.id.tabHome), true);
-        in.inflate(R.layout.ticket, findViewById(R.id.tabTicket), true);
-        in.inflate(R.layout.snack, findViewById(R.id.tabSnack), true);
-        in.inflate(R.layout.info, findViewById(R.id.tabInfo), true);
-
         TabHost tabHost = getTabHost();
 
-        tabSpecHome = tabHost.newTabSpec("Home").setIndicator("홈").setContent(R.id.home);
+        itHome = new Intent(getApplicationContext(), HomeActivity.class);
+        tabSpecHome = tabHost.newTabSpec("Home").setIndicator("홈").setContent(itHome);
         tabHost.addTab(tabSpecHome);
 
-        tabSpecTicket = tabHost.newTabSpec("Ticket").setIndicator("예매").setContent(R.id.tabTicket);
+        itTicket = new Intent(getApplicationContext(), TicketActivity.class);
+        tabSpecTicket = tabHost.newTabSpec("Ticket").setIndicator("예매").setContent(itTicket);
         tabHost.addTab(tabSpecTicket);
 
-        tabSpecSnack = tabHost.newTabSpec("Snack").setIndicator("스낵").setContent(R.id.tabSnack);
+        itSnack = new Intent(getApplicationContext(), SnackActivity.class);
+        tabSpecSnack = tabHost.newTabSpec("Snack").setIndicator("스낵").setContent(itSnack);
         tabHost.addTab(tabSpecSnack);
 
-        tabSpecInfo = tabHost.newTabSpec("Info").setIndicator("내정보").setContent(R.id.tabInfo);
+        itInfo = new Intent(getApplicationContext(), InfoActivity.class);
+        tabSpecInfo = tabHost.newTabSpec("Info").setIndicator("내정보").setContent(itInfo);
         tabHost.addTab(tabSpecInfo);
 
         tabHost.setCurrentTab(0);
-
-
     }
 }
