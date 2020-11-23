@@ -21,19 +21,12 @@ public class TicketActivity extends Activity {
 
        btnTest = (Button) findViewById(R.id.btnTicket);
 
-//        btnTest.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Toast.makeText(TicketActivity.this, "ticket", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-
-        btnTest.setOnLongClickListener(new View.OnLongClickListener() {
+        btnTest.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onLongClick(View v) {
+            public void onClick(View v) {
                 Toast.makeText(TicketActivity.this, "ticket", Toast.LENGTH_SHORT).show();
-                return false;
             }
         });
+
     }
 }
