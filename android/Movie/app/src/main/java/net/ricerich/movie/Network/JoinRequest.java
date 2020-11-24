@@ -1,6 +1,8 @@
-package net.ricerich.movie;
+package net.ricerich.movie.Network;
 
 import android.os.AsyncTask;
+
+import net.ricerich.movie.Custom_Adapter;
 
 import org.json.JSONException;
 

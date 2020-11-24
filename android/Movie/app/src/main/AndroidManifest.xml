@@ -2,26 +2,29 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="net.ricerich.movie">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light">
-        <activity android:name=".MainActivity">
+        <activity android:name=".FirstActivity">
+            <!-- 제일 처음 시작 부분 -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".TicketActivity" />
-        <activity android:name=".SnackActivity" />
-        <activity android:name=".InfoActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".Tab.HomeActivity" />
+        <activity android:name=".Tab.TicketActivity" />
+        <activity android:name=".Tab.SnackActivity" />
+        <activity android:name=".Tab.InfoActivity" />
         <activity android:name=".JoinActivity" />
     </application>
 

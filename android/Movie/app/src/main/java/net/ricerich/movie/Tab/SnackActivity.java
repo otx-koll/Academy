@@ -1,16 +1,17 @@
-package net.ricerich.movie;
+package net.ricerich.movie.Tab;
 
+import android.app.Activity;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TabHost;
+import android.widget.Toast;
 
-import net.ricerich.movie.Tab.HomeActivity;
-import net.ricerich.movie.Tab.InfoActivity;
-import net.ricerich.movie.Tab.SnackActivity;
-import net.ricerich.movie.Tab.TicketActivity;
+import net.ricerich.movie.R;
 
-public class MainActivity extends TabActivity {
+public class SnackActivity extends TabActivity {
 
     TabHost.TabSpec tabSpecHome, tabSpecTicket, tabSpecSnack, tabSpecInfo;
     Intent itHome, itTicket, itSnack, itInfo;
@@ -19,7 +20,7 @@ public class MainActivity extends TabActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.snack);
 
         final TabHost tabHost = getTabHost();
 
@@ -50,9 +51,4 @@ public class MainActivity extends TabActivity {
 //            }
 //        });
     }
-//    @Override
-//    protected void onPause() {
-//        super.onPause();
-//        overridePendingTransition(R.anim.silde_in_left, R.anim.slide_out_left);
-//    }
 }

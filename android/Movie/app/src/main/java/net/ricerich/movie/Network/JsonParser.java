@@ -1,4 +1,6 @@
-package net.ricerich.movie;
+package net.ricerich.movie.Network;
+
+import net.ricerich.movie.UserInfo;
 
 import org.json.JSONArray;
 import org.json.JSONException;
