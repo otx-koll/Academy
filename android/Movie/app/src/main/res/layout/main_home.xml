@@ -3,8 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:id="@+id/home"
-    android:background="#FFBBBB">
+    android:id="@+id/home">
 
     <Button
         android:id="@+id/btnHome"

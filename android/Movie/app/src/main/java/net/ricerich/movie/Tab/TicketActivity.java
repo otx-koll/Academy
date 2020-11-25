@@ -15,7 +15,7 @@ public class TicketActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.ticket);
+        setContentView(R.layout.main_ticket);
 
        btnTest = (Button) findViewById(R.id.btnTicket);
 
@@ -25,6 +25,5 @@ public class TicketActivity extends Activity {
                 Toast.makeText(TicketActivity.this, "ticket", Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 }

@@ -1,54 +1,65 @@
 package net.ricerich.movie.Tab;
 
-import android.app.Activity;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TabHost;
-import android.widget.Toast;
 
+import com.google.android.material.tabs.TabLayout;
+
+import net.ricerich.movie.Combo.Combo;
+import net.ricerich.movie.Combo.Drink;
+import net.ricerich.movie.Combo.Popcorn;
+import net.ricerich.movie.Combo.Snack;
 import net.ricerich.movie.R;
 
 public class SnackActivity extends TabActivity {
 
-    TabHost.TabSpec tabSpecHome, tabSpecTicket, tabSpecSnack, tabSpecInfo;
-    Intent itHome, itTicket, itSnack, itInfo;
+    TabHost.TabSpec tabSpecCombo, tabSpecPopcorn, tabSpecDrink, tabSpecSnack;
+    Intent itCombo, itPopcorn, itDrink, itSnack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.snack);
+        setContentView(R.layout.main_snack);
 
         final TabHost tabHost = getTabHost();
 
-        itHome = new Intent(getApplicationContext(), HomeActivity.class);
-        tabSpecHome = tabHost.newTabSpec("Home").setIndicator("홈").setContent(itHome);
-        tabHost.addTab(tabSpecHome);
+        tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+            ImageView imgLogo = (ImageView) findViewById(R.id.imgLogo);
 
-        itTicket = new Intent(getApplicationContext(), TicketActivity.class);
-        tabSpecTicket = tabHost.newTabSpec("Ticket").setIndicator("예매").setContent(itTicket);
-        tabHost.addTab(tabSpecTicket);
+            @Override
+            public void onTabChanged(String tabId) {
+                if(tabId.equals("Combo")) {
+                    imgLogo.setImageResource(R.drawable.combo_logo);
+                } else if(tabId.equals("Popcorn")) {
+                    imgLogo.setImageResource(R.drawable.popcorn_logo);
+                } else if(tabId.equals("Drink")) {
+                    imgLogo.setImageResource(R.drawable.drink_logo);
+                } else if(tabId.equals("Snack")) {
+                    imgLogo.setImageResource(R.drawable.snack_logo);
+                }
+            }
+        });
 
-        itSnack = new Intent(getApplicationContext(), SnackActivity.class);
+        itCombo = new Intent(getApplicationContext(), Combo.class);
+        tabSpecCombo = tabHost.newTabSpec("Combo").setIndicator("콤보").setContent(itCombo);
+        tabHost.addTab(tabSpecCombo);
+
+        itPopcorn = new Intent(getApplicationContext(), Popcorn.class);
+        tabSpecPopcorn = tabHost.newTabSpec("Popcorn").setIndicator("팝콘").setContent(itPopcorn);
+        tabHost.addTab(tabSpecPopcorn);
+
+        itDrink = new Intent(getApplicationContext(), Drink.class);
+        tabSpecDrink = tabHost.newTabSpec("Drink").setIndicator("음료").setContent(itDrink);
+        tabHost.addTab(tabSpecDrink);
+
+        itSnack = new Intent(getApplicationContext(), Snack.class);
         tabSpecSnack = tabHost.newTabSpec("Snack").setIndicator("스낵").setContent(itSnack);
         tabHost.addTab(tabSpecSnack);
 
-        itInfo = new Intent(getApplicationContext(), InfoActivity.class);
-        tabSpecInfo = tabHost.newTabSpec("Info").setIndicator("내정보").setContent(itInfo);
-        tabHost.addTab(tabSpecInfo);
-
         tabHost.setCurrentTab(0);
-
-// 탭호스트 슬라이드
-//        tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
-//            @Override
-//            public void onTabChanged(String tabId) {
-//                View currentView = tabHost.getCurrentView();
-//                currentView.setAnimation(R.anim.);
-//            }
-//        });
     }
 }

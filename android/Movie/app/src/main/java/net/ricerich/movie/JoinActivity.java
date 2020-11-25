@@ -1,9 +1,7 @@
 package net.ricerich.movie;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.Activity;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,16 +10,17 @@ import android.widget.Toast;
 
 import net.ricerich.movie.Network.JoinRequest;
 
-public class JoinActivity extends AppCompatActivity {
+public class JoinActivity extends Activity {
 
     private Button checkBtn, joinBtn, canselBtn;
     private Custom_Adapter adapter;
     TextView tvPasswdCheck;
+    EditText passwdEdt, passwdCheckEdt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.join);
+        setContentView(R.layout.info_join);
 
         checkBtn = (Button) findViewById(R.id.checkBtn);
         checkBtn.setOnClickListener(new View.OnClickListener() {
@@ -31,12 +30,26 @@ public class JoinActivity extends AppCompatActivity {
             }
         });
 
-        tvPasswdCheck = (TextView) findViewById(R.id.passcheckEdt);
-        tvPasswdCheck.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        passwdEdt = (EditText) findViewById(R.id.passEdt);
+        passwdCheckEdt = (EditText) findViewById(R.id.passcheckEdt);
+        passwdCheckEdt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                String password = ((EditText) findViewById(R.id.passEdt)).getText().toString();
-                String passwordCheck = ((EditText) findViewById(R.id.passcheckEdt)).getText().toString();
+                String password = passwdEdt.getText().toString();
+                String passwordCheck = passwdCheckEdt.getText().toString();
+
+                if (hasFocus == false) {
+                    if (!(password.equals(passwordCheck)))
+                        Toast.makeText(JoinActivity.this, "비밀번호를 다시 확인해주세요", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        passwdCheckEdt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                String password = passwdEdt.getText().toString();
+                String passwordCheck = passwdCheckEdt.getText().toString();
 
                 if (hasFocus == false) {
                     if (!(password.equals(passwordCheck)))
@@ -49,16 +62,19 @@ public class JoinActivity extends AppCompatActivity {
         joinBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 String id = ((EditText) findViewById(R.id.idEdt)).getText().toString();
                 String name = ((EditText) findViewById(R.id.nameEdt)).getText().toString();
-                String password = ((EditText) findViewById(R.id.passEdt)).getText().toString();
-                String passwordCheck = ((EditText) findViewById(R.id.passcheckEdt)).getText().toString();
+                String password = passwdEdt.getText().toString();
+                String passwordCheck = passwdCheckEdt.getText().toString();
 
                 if (name.equals("") || id.equals("") || password.equals("") || passwordCheck.equals("")) {
                     Toast.makeText(JoinActivity.this, "입력하지 않은 값이 있습니다", Toast.LENGTH_SHORT).show();
                     return;
                 } else {
+                    if(!password.equals(passwordCheck)) {
+                        Toast.makeText(JoinActivity.this, "비밀번호를 다시 확인해주세요", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                     new JoinRequest(adapter).execute(id, name, password);
                     Toast.makeText(JoinActivity.this, "가입성공!", Toast.LENGTH_SHORT).show();
                     finish();

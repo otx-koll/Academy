@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             ImageView imageView = new ImageView(MainActivity.this);
-            imageView.setLayoutParams(new GridView.LayoutParams(100, 150)); // 이미지뷰의 크기 200 x 300으로 지정
+            imageView.setLayoutParams(new GridView.LayoutParams(200, 300)); // 이미지뷰의 크기 200 x 300으로 지정
             imageView.setScaleType(ImageView.ScaleType.FIT_CENTER); // 각 그리드뷰 칸의 중앙에 배치
             imageView.setPadding(5, 5, 5, 5);
 
