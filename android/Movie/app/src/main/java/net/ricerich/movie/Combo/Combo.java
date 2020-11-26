@@ -27,8 +27,6 @@ public class Combo extends Activity {
     public class MyGridAdpater extends BaseAdapter {
         Context context;
 
-
-
         public MyGridAdpater(Context c) { context = c; }
 
         @Override

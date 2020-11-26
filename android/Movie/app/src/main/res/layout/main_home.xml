@@ -1,14 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:id="@+id/home">
+    android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btnHome"
+    <!--
+    갤러리(Gallery)
+        : 사진이나 이미지를 배치하고 좌우로 스크롤해서 볼 수 있도록 해줌
+    -->
+
+    <Gallery
+        android:id="@+id/gallery1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:spacing="5dp"/>
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="홈버튼"/>
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/ivPoster"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ㅁㄴㅇㄹ"/>
+    </LinearLayout>
 
 </LinearLayout>
+

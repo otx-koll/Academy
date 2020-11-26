@@ -1,39 +1,28 @@
 package net.ricerich.movie.Tab;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
+import android.widget.FrameLayout;
+import android.widget.TextView;
 
-import net.ricerich.movie.JoinActivity;
 import net.ricerich.movie.R;
 
 public class InfoActivity extends Activity {
 
-    Button btnTest;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.info_login);
+        setContentView(R.layout.main_info);
 
-        Button loginBtn = (Button) findViewById(R.id.loginBtn);
-        loginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(InfoActivity.this, "로그인버튼 테스트", Toast.LENGTH_SHORT).show();
-            }
-        });
+        TextView idTv = (TextView) findViewById(R.id.tvId);
 
-        Button joinBtn = (Button) findViewById(R.id.joinBtn);
-        joinBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), JoinActivity.class);
-                startActivity(intent);
-            }
-        });
+//        Intent intent = getIntent();
+//
+//        String id = intent.getStringExtra("Id");
+//        idTv.setText(id);
     }
 }

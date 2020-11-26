@@ -1,8 +1,11 @@
 package net.ricerich.movie.Network;
 
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 import net.ricerich.movie.Custom_Adapter;
+
+import org.json.JSONException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,13 +18,13 @@ import java.net.URL;
 
 public class LoginRequest extends AsyncTask<String, Void, String> {
     private URL Url;
-    private String URL_Adress = "http://10.100.103.21/movieApp/movie_insert.jsp";
+    private String URL_Adress = "http://10.100.103.21/movieApp/movie_login.jsp";
     //    private String URL_Adress = "http://211.104.196.146:8006/movieApp/movie_insert.jsp";
-    private Custom_Adapter adapter;
-
-    public LoginRequest(Custom_Adapter adapter) {
-        this.adapter = adapter;
-    }
+//    private Custom_Adapter adapter;
+//
+//    public LoginRequest(Custom_Adapter adapter) {
+//        this.adapter = adapter;
+//    }
 
     @Override
     protected void onPreExecute() {
@@ -73,5 +76,16 @@ public class LoginRequest extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
+        int res = 0;
+        try {
+            res = JsonParser.getResultJson(s);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        if(res == 0) {
+
+        } else {
+
+        }
     }
 }

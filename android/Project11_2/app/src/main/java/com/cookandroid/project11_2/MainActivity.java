@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             ImageView imageView = new ImageView(act);
-            imageView.setLayoutParams(new Gallery.LayoutParams(100, 150));
+            imageView.setLayoutParams(new Gallery.LayoutParams(300, 350));
             imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
             imageView.setPadding(5, 5, 5, 5);
 
