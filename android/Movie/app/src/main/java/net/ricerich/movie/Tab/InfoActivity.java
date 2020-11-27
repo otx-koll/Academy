@@ -20,9 +20,9 @@ public class InfoActivity extends Activity {
 
         TextView idTv = (TextView) findViewById(R.id.tvId);
 
-//        Intent intent = getIntent();
-//
-//        String id = intent.getStringExtra("Id");
-//        idTv.setText(id);
+        Intent intent = getIntent();
+
+        String id = intent.getStringExtra("Id");
+        idTv.setText(id);
     }
 }

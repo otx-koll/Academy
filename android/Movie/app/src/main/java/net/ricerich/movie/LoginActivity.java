@@ -31,9 +31,9 @@ public class LoginActivity extends Activity {
                 String id = ((EditText) findViewById(R.id.idEdt)).getText().toString().trim();
                 String password = ((EditText) findViewById(R.id.passEdt)).getText().toString().trim();
 
-                Intent intId = new Intent(getApplicationContext(), InfoActivity.class);
-                intId.putExtra("Id", id);
-                startActivity(intId);
+//                Intent intId = new Intent(getApplicationContext(), InfoActivity.class);
+//                intId.putExtra("Id", id);
+//                startActivity(intId);
 
                 try {
                     String res = new LoginRequest().execute(id, password).get();
@@ -43,7 +43,6 @@ public class LoginActivity extends Activity {
                         Toast.makeText(LoginActivity.this, "로그인 성공!", Toast.LENGTH_SHORT).show();
                         Intent login = new Intent(getApplicationContext(), MainActivity.class);
                         login.putExtra("Count", count);
-
                         startActivity(login);
                     } else if (count == 0) {
                         Toast.makeText(LoginActivity.this, "아이디나 비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();

@@ -27,28 +27,22 @@ public class MainActivity extends TabActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
 //        View view = new View(this);
 //
 //        view.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
-
-
 
         final TabHost tabHost = getTabHost();
 
         itHome = new Intent(getApplicationContext(), HomeActivity.class);
         tabSpecHome = tabHost.newTabSpec("Home").setIndicator("홈").setContent(itHome);
-//        tabSpecHome = tabHost.newTabSpec("Home").setIndicator("홈").setContent(R.id.tabHome);
         tabHost.addTab(tabSpecHome);
 
         itTicket = new Intent(getApplicationContext(), TicketActivity.class);
         tabSpecTicket = tabHost.newTabSpec("Ticket").setIndicator("예매").setContent(itTicket);
-//        tabSpecTicket = tabHost.newTabSpec("Ticket").setIndicator("예매").setContent(R.id.tabTicket);
         tabHost.addTab(tabSpecTicket);
 
         itSnack = new Intent(getApplicationContext(), SnackActivity.class);
         tabSpecSnack = tabHost.newTabSpec("Snack").setIndicator("스낵").setContent(itSnack);
-//        tabSpecSnack = tabHost.newTabSpec("Snack").setIndicator("스낵").setContent(R.id.tabSnack);
         tabHost.addTab(tabSpecSnack);
 
         Intent intent = getIntent();
@@ -60,7 +54,6 @@ public class MainActivity extends TabActivity {
             itInfo = new Intent(getApplicationContext(), LoginActivity.class);
         }
         tabSpecInfo = tabHost.newTabSpec("Info").setIndicator("내정보").setContent(itInfo);
-//        tabSpecInfo = tabHost.newTabSpec("Info").setIndicator("내정보").setContent(R.id.tabInfo);
         tabHost.addTab(tabSpecInfo);
 
         tabHost.setCurrentTab(0);

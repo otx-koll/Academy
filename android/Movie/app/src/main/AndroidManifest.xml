@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Tab.InfoActivity"></activity>
+        <activity android:name=".Tab.InfoActivity"/>
         <activity android:name=".LoginActivity" />
         <activity android:name=".FirstActivity">
 
