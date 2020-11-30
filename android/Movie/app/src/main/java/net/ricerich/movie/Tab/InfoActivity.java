@@ -18,11 +18,11 @@ public class InfoActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_info);
 
-        TextView idTv = (TextView) findViewById(R.id.tvId);
-
-        Intent intent = getIntent();
-
-        String id = intent.getStringExtra("Id");
-        idTv.setText(id);
+//        TextView idTv = (TextView) findViewById(R.id.tvId);
+//
+//        Intent intent = getIntent();
+//
+//        String id = intent.getStringExtra("Id");
+//        idTv.setText(id);
     }
 }

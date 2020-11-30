@@ -1,25 +1,18 @@
 package net.ricerich.movie;
 
-import android.app.ActionBar;
-import android.app.Activity;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.TabHost;
-
-import com.google.android.material.tabs.TabLayout;
 
 import net.ricerich.movie.Tab.HomeActivity;
 import net.ricerich.movie.Tab.InfoActivity;
 import net.ricerich.movie.Tab.SnackActivity;
-import net.ricerich.movie.Tab.TicketActivity;
 
 public class MainActivity extends TabActivity {
 
-    TabHost.TabSpec tabSpecHome, tabSpecTicket, tabSpecSnack, tabSpecInfo;
-    Intent itHome, itTicket, itSnack, itInfo;
+    TabHost.TabSpec tabSpecHome, tabSpecSnack, tabSpecInfo;
+    Intent itHome, itSnack, itInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +29,6 @@ public class MainActivity extends TabActivity {
         itHome = new Intent(getApplicationContext(), HomeActivity.class);
         tabSpecHome = tabHost.newTabSpec("Home").setIndicator("홈").setContent(itHome);
         tabHost.addTab(tabSpecHome);
-
-        itTicket = new Intent(getApplicationContext(), TicketActivity.class);
-        tabSpecTicket = tabHost.newTabSpec("Ticket").setIndicator("예매").setContent(itTicket);
-        tabHost.addTab(tabSpecTicket);
 
         itSnack = new Intent(getApplicationContext(), SnackActivity.class);
         tabSpecSnack = tabHost.newTabSpec("Snack").setIndicator("스낵").setContent(itSnack);

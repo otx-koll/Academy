@@ -53,10 +53,10 @@ public class Combo extends Activity {
 
             iv.setImageResource(comId[position]);
 
-//            final int pos = position;
-//            iv.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
+            final int pos = position;
+            iv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 //                    View dialogView = (View) View.inflate(Combo.this, R.layout.dialog_combo, null);
 //                    AlertDialog.Builder dlg = new AlertDialog.Builder(Combo.this);
 //                    ImageView ivPoster = (ImageView) dialogView.findViewById(R.id.ivPoster);
@@ -65,9 +65,10 @@ public class Combo extends Activity {
 //                    dlg.setView(dialogView);
 //                    dlg.setNegativeButton("닫기", null);
 //                    dlg.show();
-//                    Toast.makeText(context, "클릭", Toast.LENGTH_SHORT).show();
-//                }
-//            });
+
+                    Toast.makeText(context, "클릭", Toast.LENGTH_SHORT).show();
+                }
+            });
 
             return iv;
         }

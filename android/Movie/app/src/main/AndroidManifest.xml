@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Tab.InfoActivity"/>
+        <activity android:name=".TicketActivity"></activity>
+        <activity android:name=".Tab.InfoActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".FirstActivity">
 
@@ -25,7 +26,6 @@
         </activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".Tab.HomeActivity" />
-        <activity android:name=".Tab.TicketActivity" />
         <activity android:name=".Tab.SnackActivity" />
         <activity android:name=".Combo.Combo" />
         <activity android:name=".Combo.Popcorn" />
