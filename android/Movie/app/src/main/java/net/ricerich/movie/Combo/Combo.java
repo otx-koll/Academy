@@ -65,8 +65,6 @@ public class Combo extends Activity {
 //                    dlg.setView(dialogView);
 //                    dlg.setNegativeButton("닫기", null);
 //                    dlg.show();
-
-                    Toast.makeText(context, "클릭", Toast.LENGTH_SHORT).show();
                 }
             });
 

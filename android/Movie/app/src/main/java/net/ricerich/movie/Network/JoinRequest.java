@@ -17,8 +17,8 @@ import java.net.URL;
 
 public class JoinRequest extends AsyncTask<String, Void, String> {
     private URL Url;
-    private String URL_Adress = "http://10.100.103.21/movieApp/movie_insert.jsp";
-    //    private String URL_Adress = "http://211.104.196.146:8006/movieApp/movie_insert.jsp";
+//    private String URL_Adress = "http://10.100.103.21/movieApp/movie_insert.jsp";
+    private String URL_Adress = "http://211.104.196.146:8006/movieApp/movie_insert.jsp";
     private Custom_Adapter adapter;
 
     public JoinRequest(Custom_Adapter adapter) {

@@ -12,13 +12,10 @@ import android.widget.Gallery;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
-import net.ricerich.movie.JoinActivity;
 import net.ricerich.movie.R;
-import net.ricerich.movie.TicketActivity;
 
 public class HomeActivity extends Activity {
 
