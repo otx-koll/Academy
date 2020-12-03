@@ -4,7 +4,7 @@
 <jsp:setProperty name="QueryBean" property="*"/>
 <%
 	response.setHeader("Cache-Control", "no-store");
-	response.setHeader("Pragma", "no-cache");
+	response.setHeader("Pragma", "no-cache"); 
 	response.setDateHeader("Expires", 0);
 	
 	request.setCharacterEncoding("utf-8");
