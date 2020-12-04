@@ -28,7 +28,7 @@
 	<article>
 		
 	<h1>회원 가입</h1>
-	<form id="join" action="joinPro.jsp" method="post" name="frm">
+	<form id="join" action="memberJoinPro.do" method="post" name="frm">
 	<fieldset>
 		<legend>Basic Info</legend>
 		
@@ -100,7 +100,7 @@
 		}
 
 		// id중복체크 창열기  joinIdDupCheck.jsp
-		window.open('joinIdDupCheck.jsp?id=' + id, 'idDupCheck', 'width=500,height=400');
+		window.open('joinIdDupCheck.do?id=' + id, 'idDupCheck', 'width=500,height=400');
 	});
 
 	// .pass2 요소에 포커스가 해제되면

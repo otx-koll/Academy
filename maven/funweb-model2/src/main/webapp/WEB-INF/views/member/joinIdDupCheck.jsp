@@ -1,16 +1,24 @@
-<%@page import="com.exam.dao.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-// 파라미터값 id 가져오기
-String id = request.getParameter("id");
-
-// DAO 객체 준비
-MemberDao memberDao = MemberDao.getInstance();
-
-// 중복아이디 여부 확인
-int count = memberDao.getCountById(id);
+// request 영역객체에 저장한 데이터 가져오기
+// String id = (String) request.getAttribute("id");
+int count = (int) request.getAttribute("count");
 %>
+<%--
+* JSP의 EL언어로 영역객체의 데이터에 접근하는 표현이 가능함
+${  }로 표현함
+
+Scope 탐색 순서 (↑)
+application -> applicationScope
+			↑
+session -> sessionScope
+			↑
+request -> requestScope
+			↑
+page -> pageScope
+			↑
+--%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,8 +43,8 @@ if (count == 1) {
 }
 %>
 
-<form action="joinIdDupCheck.jsp" method="get" name="frm">
-	<input type="text" name="id" value="<%=id %>">
+<form action="joinIdDupCheck.do" method="get" name="frm">
+	<input type="text" name="id" value="${ id }">
 	<input type="submit" value="ID 중복확인">
 </form>
 
