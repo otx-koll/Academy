@@ -1,49 +1,25 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>Welcome to Fun Web</title>
-<link href="../css/default.css" rel="stylesheet" type="text/css" media="all">
-<link href="../css/subpage.css" rel="stylesheet" type="text/css"  media="all">
-<link href="../css/print.css" rel="stylesheet" type="text/css"  media="print">
-<link href="../css/iphone.css" rel="stylesheet" type="text/css" media="screen">
-<!--[if lt IE 9]>
-<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js" type="text/javascript"></script>
-<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/ie7-squish.js" type="text/javascript"></script>
-<script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
-<![endif]-->
+<%-- head 컨텐트 영역 --%>
+<jsp:include page="/WEB-INF/views/include/headContent.jsp" />
 
+<link href="/css/subpage.css" rel="stylesheet" type="text/css"  media="all">
 </head>
 
 <body>
 <div id="wrap">
-	<header>
-       <div id="login"> <a href="../member/login.html">login</a> | <a href="../member/join.html">Join</a></div>
-        <div class="clear"></div>
-        <div id="logo"><a href="../"><img src="../images/logo.gif" width="265" height="62" alt="Fun Web"></a></div>
-        <nav id="top_menu">
-            <ul>
-                <li><a href="../">HOME</a></li>
-                <li><a href="../company/welcome.html">COMPANY</a></li>
-                <li><a href="#">SOLUTIONS</a></li>
-                <li><a href="../center/notice.html">CUSTOMER CENTER</a></li>
-                <li><a href="#">CONTACT US</a></li>
-            </ul>
-        </nav>
-	</header>
+	<%-- header 영역 --%>
+	<jsp:include page="/WEB-INF/views/include/topHeader.jsp" />
 	
 	<div class="clear"></div>
 	<div id="sub_img"></div>
 	
 	<div class="clear"></div>
-	<nav id="sub_menu">
-        <ul>
-            <li> <a href="welcome.html">Welcome</a></li>
-            <li> <a href="history.html">History</a></li>
-            <li> <a href="#">Newsroom</a></li>
-            <li> <a href="#">Public Policy</a></li>
-    	</ul>
-    </nav>
+	<%-- nav 영역 --%>
+	<jsp:include page="/WEB-INF/views/include/submenuCompany.jsp" />
 	
 	<article>
 		<h1>History</h1>
@@ -112,18 +88,11 @@
 	</article>
     
 	<div class="clear"></div>
-	<footer>  
-		<hr>
-		<div id="copy">
-			All contents Copyright 2011 FunWeb Inc. all rights reserved<br>
-			Contact mail : funweb@funwebbiz.com Tel: +82 64 123 4315 Fax +82 64 123 4321
-		</div>
-		<div id="social">
-			<img src="../images/facebook.gif" width="33" height="33" alt="Facebook"> <img src="../images/twitter.gif" width="33" height="34" alt="Twitter">
-		</div>
-	</footer>
+	<%-- footer 영역 --%>
+	<jsp:include page="/WEB-INF/views/include/bottomFooter.jsp" />
 </div>
 
 </body>
 </html>   
 
+    
