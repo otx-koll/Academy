@@ -1,6 +1,7 @@
 package net.ricerich.movie.Tab;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +15,7 @@ import net.ricerich.movie.R;
 public class TicketActivity extends Activity {
 
     TextView tvTitle, tvKinds, tvOpen, tvAge, tvTime, tvStory;
+    Button btnTest, runSelect;
     ImageView ivPoster;
 
     @Override
@@ -22,8 +24,8 @@ public class TicketActivity extends Activity {
         setContentView(R.layout.ticket);
 
         Intent intent = getIntent();
-        int resPos = intent.getIntExtra("Position", 0);
-        int resPic[] = intent.getIntArrayExtra("Picture");
+        final int resPos = intent.getIntExtra("Position", 0);
+        final int resPic[] = intent.getIntArrayExtra("Picture");
         String resTitle[] = intent.getStringArrayExtra("Title");
         String resKinds[] = intent.getStringArrayExtra("Kinds");
         String resOpen[] = intent.getStringArrayExtra("Open");
@@ -69,11 +71,27 @@ public class TicketActivity extends Activity {
                 break;
         }
 
-        Button btnTest = (Button) findViewById(R.id.btnTest);
+
+        btnTest = (Button) findViewById(R.id.btnTest);
         btnTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+        runSelect = (Button) findViewById(R.id.runSelect);
+        runSelect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                View dialogView = (View) View.inflate(TicketActivity.this, R.layout.dialog_combo, null);
+                    AlertDialog.Builder dlg = new AlertDialog.Builder(TicketActivity.this);
+                    ImageView ivPoster = (ImageView) dialogView.findViewById(R.id.ivPoster);
+                    ivPoster.setImageResource(resPic[resPos]);
+                    dlg.setTitle("asdf");
+                    dlg.setView(dialogView);
+                    dlg.setNegativeButton("닫기", null);
+                    dlg.show();
             }
         });
     }
