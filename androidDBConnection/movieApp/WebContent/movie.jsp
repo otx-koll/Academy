@@ -4,7 +4,7 @@
 <jsp:useBean id="QueryBean" scope="page" class="db.beans.QueryBean" />
 <jsp:setProperty name="QueryBean" property="*" />
 <%
-	response.setHeader("Cache-Control", "no-store");
+response.setHeader("Cache-Control", "no-store");
 response.setHeader("Pragma", "no-cache");
 response.setDateHeader("Expires", 0);
 
