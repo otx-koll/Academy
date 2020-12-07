@@ -166,7 +166,11 @@ if (count > 0) {
 		// [이전]
 		if (startPage > pageBlock) {
 			%>
+<<<<<<< HEAD
 			<a href="fileNotice.jsp?pageNum=<%=startPage - pageBlock %>&category=<%=category %>&search=<%=search %>">[이전]</a>
+=======
+			<a href="fileNotice.jsp?pageNum=<%=startPage - pageBlock %>">[이전]</a>
+>>>>>>> d44115f475ec485145b63ce82940bda6a14e3931
 			<%
 		}
 		

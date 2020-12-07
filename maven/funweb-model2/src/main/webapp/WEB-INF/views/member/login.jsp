@@ -11,8 +11,13 @@
 
 <body>
 <div id="wrap">
+<<<<<<< HEAD
     <!-- header 영역 -->
 	<jsp:include page="/WEB-INF/views/include/topHeader.jsp"/>
+=======
+	<%-- header 영역 --%>
+	<jsp:include page="/WEB-INF/views/include/topHeader.jsp" />
+>>>>>>> d44115f475ec485145b63ce82940bda6a14e3931
 	
 	<div class="clear"></div>
 	<div id="sub_img_member"></div>
@@ -27,7 +32,11 @@
 	
 	<article>
 		<h1>로그인</h1>
+<<<<<<< HEAD
 		<form action="loginPro.jsp" method="post" id="join">
+=======
+		<form action="memberLoginPro.do" method="post" id="join">
+>>>>>>> d44115f475ec485145b63ce82940bda6a14e3931
 			<fieldset>
 				<legend>Login Info</legend>
 				
@@ -46,16 +55,29 @@
 			<div class="clear"></div>
 			<div id="buttons">
 				<input type="submit" value="로그인" class="submit">
+<<<<<<< HEAD
 				<input type="button" value="초기화" class="cancel">
+=======
+				<input type="reset" value="초기화" class="cancel">
+>>>>>>> d44115f475ec485145b63ce82940bda6a14e3931
 			</div>
 		</form>
 	</article>
 	
 	<div class="clear"></div>
+<<<<<<< HEAD
 	<!-- footer 영역 -->
 	<jsp:include page="/WEB-INF/views/include/bottomFooter.jsp"/>
+=======
+	<%-- footer 영역 --%>
+	<jsp:include page="/WEB-INF/views/include/bottomFooter.jsp" />
+>>>>>>> d44115f475ec485145b63ce82940bda6a14e3931
 </div>
 
 </body>
 </html>   
 
+<<<<<<< HEAD
+=======
+    
+>>>>>>> d44115f475ec485145b63ce82940bda6a14e3931

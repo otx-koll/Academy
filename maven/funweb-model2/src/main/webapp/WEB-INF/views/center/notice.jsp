@@ -166,7 +166,11 @@ if (count > 0) {
 		// [이전]
 		if (startPage > pageBlock) {
 			%>
+<<<<<<< HEAD
 			<a href="notice.jsp?pageNum=<%=startPage - pageBlock %>">[이전]</a>
+=======
+			<a href="notice.jsp?pageNum=<%=startPage - pageBlock %>&category=<%=category %>&search=<%=search %>">[이전]</a>
+>>>>>>> d44115f475ec485145b63ce82940bda6a14e3931
 			<%
 		}
 		
@@ -174,11 +178,19 @@ if (count > 0) {
 		for (int i=startPage; i<=endPage; i++) {
 			if (i == pageNum) {
 				%>
+<<<<<<< HEAD
 				<a href="notice.jsp?pageNum=<%=i %>" class="active">[<%=i %>]</a>
 				<%
 			} else {
 				%>
 				<a href="notice.jsp?pageNum=<%=i %>">[<%=i %>]</a>
+=======
+				<a href="notice.jsp?pageNum=<%=i %>&category=<%=category %>&search=<%=search %>" class="active">[<%=i %>]</a>
+				<%
+			} else {
+				%>
+				<a href="notice.jsp?pageNum=<%=i %>&category=<%=category %>&search=<%=search %>">[<%=i %>]</a>
+>>>>>>> d44115f475ec485145b63ce82940bda6a14e3931
 				<%
 			}
 		} // for
@@ -187,7 +199,11 @@ if (count > 0) {
 		// [다음]
 		if (endPage < pageCount) {
 			%>
+<<<<<<< HEAD
 			<a href="notice.jsp?pageNum=<%=startPage + pageBlock %>">[다음]</a>
+=======
+			<a href="notice.jsp?pageNum=<%=startPage + pageBlock %>&category=<%=category %>&search=<%=search %>">[다음]</a>
+>>>>>>> d44115f475ec485145b63ce82940bda6a14e3931
 			<%
 		}
 	}

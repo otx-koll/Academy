@@ -1,17 +1,26 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
+<<<<<<< HEAD:maven/funweb-model2/src/main/webapp/WEB-INF/views/company/welcome.html
 <meta charset="utf-8">
 <title>Welcome to Fun Web</title>
 <link href="../css/default.css" rel="stylesheet" type="text/css" media="all">
 <link href="../css/subpage.css" rel="stylesheet" type="text/css"  media="all">
 <link href="../css/print.css" rel="stylesheet" type="text/css"  media="print">
 <link href="../css/iphone.css" rel="stylesheet" type="text/css" media="screen">
+=======
+<%-- head 컨텐트 영역 --%>
+<jsp:include page="/WEB-INF/views/include/headContent.jsp" />
+>>>>>>> d44115f475ec485145b63ce82940bda6a14e3931:maven/funweb-model2/src/main/webapp/WEB-INF/views/company/welcome.jsp
 
+<link href="/css/subpage.css" rel="stylesheet" type="text/css"  media="all">
 </head>
 
 <body>
 <div id="wrap">
+<<<<<<< HEAD:maven/funweb-model2/src/main/webapp/WEB-INF/views/company/welcome.html
 	<header>
        <div id="login"> <a href="../member/login.html">login</a> | <a href="../member/join.html">Join</a></div>
         <div class="clear"></div>
@@ -27,18 +36,17 @@
         </nav>
 	</header>
 	
+=======
+	<%-- header 영역 --%>
+	<jsp:include page="/WEB-INF/views/include/topHeader.jsp" />
+  
+>>>>>>> d44115f475ec485145b63ce82940bda6a14e3931:maven/funweb-model2/src/main/webapp/WEB-INF/views/company/welcome.jsp
 	<div class="clear"></div>
 	<div id="sub_img"></div>
   
 	<div class="clear"></div>
-	<nav id="sub_menu">  
-        <ul>
-            <li> <a href="welcome.html">Welcome</a></li>
-            <li> <a href="history.html">History</a></li>
-            <li> <a href="#">Newsroom</a></li>
-            <li> <a href="#">Public Policy</a></li>
-    	</ul>   
-    </nav>
+	<%-- nav 영역 --%>
+	<jsp:include page="/WEB-INF/views/include/submenuCompany.jsp" />
 	
 	<article>
 		<h1>Welcome</h1>
@@ -50,18 +58,11 @@
 	</article>
     
 	<div class="clear"></div>
-	<footer>  
-		<hr>
-		<div id="copy">
-			All contents Copyright 2011 FunWeb Inc. all rights reserved<br>
-			Contact mail : funweb@funwebbiz.com Tel: +82 64 123 4315 Fax +82 64 123 4321
-		</div>
-		<div id="social">
-			<img src="../images/facebook.gif" width="33" height="33" alt="Facebook"> <img src="../images/twitter.gif" width="33" height="34" alt="Twitter">
-		</div>
-	</footer>
+	<%-- footer 영역 --%>
+	<jsp:include page="/WEB-INF/views/include/bottomFooter.jsp" />
 </div>
 
 </body>
 </html>   
 
+    
