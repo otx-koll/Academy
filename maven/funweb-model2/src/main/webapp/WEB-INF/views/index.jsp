@@ -3,21 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<<<<<<< HEAD:maven/funweb-model2/src/main/webapp/WEB-INF/views/index.jsp
-<meta charset="utf-8">
-<title>Welcome to Fun Web</title>
-
-<jsp:include page="/WEB-INF/views/include/headContent.jsp"/>
-
-<link href="/css/front.css" rel="stylesheet" type="text/css" media="all">
-
-=======
 <%-- head 컨텐트 영역 --%>
 <jsp:include page="/WEB-INF/views/include/headContent.jsp" />
 
 <link href="/css/front.css" rel="stylesheet" type="text/css" media="all">
 
->>>>>>> d44115f475ec485145b63ce82940bda6a14e3931:maven/funweb-model2/src/main/webapp/index.html
 <script src="/script/jquery-1.6.1.min.js"></script>
 <script src="/script/s3Slider.js"></script>
 <script>

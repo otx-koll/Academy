@@ -3,38 +3,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-<<<<<<< HEAD
-<!-- head 컨텍트 영역 -->
-<jsp:include page="/WEB-INF/views/include/headContent.jsp"/>
-=======
 <%-- head 컨텐트 영역 --%>
 <jsp:include page="/WEB-INF/views/include/headContent.jsp" />
->>>>>>> d44115f475ec485145b63ce82940bda6a14e3931
 
 <link href="/css/subpage.css" rel="stylesheet" type="text/css"  media="all">
 </head>
 
 <body>
 <div id="wrap">
-<<<<<<< HEAD
-	<!-- header 영역 -->
-	<jsp:include page="/WEB-INF/views/include/topHeader.jsp"/>
-=======
 	<%-- header 영역 --%>
 	<jsp:include page="/WEB-INF/views/include/topHeader.jsp" />
->>>>>>> d44115f475ec485145b63ce82940bda6a14e3931
 	
 	<div class="clear"></div>
 	<div id="sub_img"></div>
 	
 	<div class="clear"></div>
-<<<<<<< HEAD
-	<!-- nav 영역 -->
-	<jsp:include page="/WEB-INF/views/include/submenuCompany.jsp"/>
-=======
 	<%-- nav 영역 --%>
 	<jsp:include page="/WEB-INF/views/include/submenuCompany.jsp" />
->>>>>>> d44115f475ec485145b63ce82940bda6a14e3931
 	
 	<article>
 		<h1>History</h1>
@@ -103,19 +88,11 @@
 	</article>
     
 	<div class="clear"></div>
-<<<<<<< HEAD
-	<!-- footer 영역 -->
-	<jsp:include page="/WEB-INF/views/include/bottomFooter.jsp"/>
-=======
 	<%-- footer 영역 --%>
 	<jsp:include page="/WEB-INF/views/include/bottomFooter.jsp" />
->>>>>>> d44115f475ec485145b63ce82940bda6a14e3931
 </div>
 
 </body>
 </html>   
 
-<<<<<<< HEAD
-=======
     
->>>>>>> d44115f475ec485145b63ce82940bda6a14e3931

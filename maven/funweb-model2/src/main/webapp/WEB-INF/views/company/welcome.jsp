@@ -1,72 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-<<<<<<< HEAD
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<%-- head 컨텍트 영역--%>
-<jsp:include page="../include/headContent.jsp"/>
-=======
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<<<<<<< HEAD:maven/funweb-model2/src/main/webapp/WEB-INF/views/company/welcome.html
-<meta charset="utf-8">
-<title>Welcome to Fun Web</title>
-<link href="../css/default.css" rel="stylesheet" type="text/css" media="all">
-<link href="../css/subpage.css" rel="stylesheet" type="text/css"  media="all">
-<link href="../css/print.css" rel="stylesheet" type="text/css"  media="print">
-<link href="../css/iphone.css" rel="stylesheet" type="text/css" media="screen">
-=======
 <%-- head 컨텐트 영역 --%>
 <jsp:include page="/WEB-INF/views/include/headContent.jsp" />
->>>>>>> d44115f475ec485145b63ce82940bda6a14e3931:maven/funweb-model2/src/main/webapp/WEB-INF/views/company/welcome.jsp
->>>>>>> d44115f475ec485145b63ce82940bda6a14e3931
 
 <link href="/css/subpage.css" rel="stylesheet" type="text/css"  media="all">
 </head>
 
 <body>
 <div id="wrap">
-<<<<<<< HEAD
-	<!-- header 영역 -->
-	<jsp:include page="/WEB-INF/views/include/topHeader.jsp"/>
-	
-=======
-<<<<<<< HEAD:maven/funweb-model2/src/main/webapp/WEB-INF/views/company/welcome.html
-	<header>
-       <div id="login"> <a href="../member/login.html">login</a> | <a href="../member/join.html">Join</a></div>
-        <div class="clear"></div>
-        <div id="logo"><a href="../"><img src="../images/logo.gif" width="265" height="62" alt="Fun Web"></a></div>
-        <nav id="top_menu">
-            <ul>
-                <li><a href="../">HOME</a></li>
-                <li><a href="../company/welcome.html">COMPANY</a></li>
-                <li><a href="#">SOLUTIONS</a></li>
-                <li><a href="../center/notice.html">CUSTOMER CENTER</a></li>
-                <li><a href="#">CONTACT US</a></li>
-            </ul>
-        </nav>
-	</header>
-	
-=======
 	<%-- header 영역 --%>
 	<jsp:include page="/WEB-INF/views/include/topHeader.jsp" />
   
->>>>>>> d44115f475ec485145b63ce82940bda6a14e3931:maven/funweb-model2/src/main/webapp/WEB-INF/views/company/welcome.jsp
->>>>>>> d44115f475ec485145b63ce82940bda6a14e3931
 	<div class="clear"></div>
 	<div id="sub_img"></div>
   
 	<div class="clear"></div>
-<<<<<<< HEAD
-	<!-- nav 영역 -->
-	<jsp:include page="/WEB-INF/views/include/submenuCompany.jsp"/>
-=======
 	<%-- nav 영역 --%>
 	<jsp:include page="/WEB-INF/views/include/submenuCompany.jsp" />
->>>>>>> d44115f475ec485145b63ce82940bda6a14e3931
 	
 	<article>
 		<h1>Welcome</h1>
@@ -78,19 +31,11 @@
 	</article>
     
 	<div class="clear"></div>
-<<<<<<< HEAD
-	<!-- footer 영역 -->
-	<jsp:include page="/WEB-INF/views/include/bottomFooter.jsp"/>
-=======
 	<%-- footer 영역 --%>
 	<jsp:include page="/WEB-INF/views/include/bottomFooter.jsp" />
->>>>>>> d44115f475ec485145b63ce82940bda6a14e3931
 </div>
 
 </body>
 </html>   
 
-<<<<<<< HEAD
-=======
     
->>>>>>> d44115f475ec485145b63ce82940bda6a14e3931

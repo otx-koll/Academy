@@ -1,15 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-<<<<<<< HEAD
-	pageEncoding="UTF-8"%>
-<nav id="sub_menu">
-	<ul>
-		<li><a href="/center/notice.jsp">텍스트 게시판</a></li>
-		<li><a href="/center/fileNotice.jsp">자료실 게시판</a></li>
-		<li><a href="#">Driver Download</a></li>
-		<li><a href="#">Service Policy</a></li>
-	</ul>
-</nav>
-=======
     pageEncoding="UTF-8"%>
 	<nav id="sub_menu">
         <ul>
@@ -19,4 +8,3 @@
             <li> <a href="#">Service Policy</a></li>
     	</ul>
     </nav>
->>>>>>> d44115f475ec485145b63ce82940bda6a14e3931

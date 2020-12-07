@@ -3,15 +3,9 @@
 <%
 // 로그인 상태유지 쿠키정보 가져오기
 Cookie[] cookies = request.getCookies();
-<<<<<<< HEAD
-
-if (cookies != null) {
-	for (Cookie cookie: cookies) {
-=======
 // 쿠키 name이 "id"인 쿠키객체 찾기
 if (cookies != null) {
 	for (Cookie cookie : cookies) {
->>>>>>> d44115f475ec485145b63ce82940bda6a14e3931
 		if (cookie.getName().equals("id")) {
 			String id = cookie.getValue();
 			
@@ -23,13 +17,8 @@ if (cookies != null) {
 
 // 세션값 가져오기
 String id = (String) session.getAttribute("id");
-<<<<<<< HEAD
-// 세션값 있으면	..님 반가워요~	[로그아웃]으로 바뀌고 [회원가입]은 없어짐
-// 세션값 없으면 [로그인] [회원가입]
-=======
 // 세션값 있으면  ..님 반가워요~  [로그아웃]으로 바뀜. [회원가입]은 없어짐.
 // 세션값 없으면  [로그인]  [회원가입]
->>>>>>> d44115f475ec485145b63ce82940bda6a14e3931
 %>
 <header>
 	<div id="login">
@@ -37,21 +26,6 @@ String id = (String) session.getAttribute("id");
 		if (id != null) {
 			%>
 			<%=id %>님 반가워요~
-<<<<<<< HEAD
-			<a href="/member/logout.jsp">로그아웃</a>
-			<%
-		} else { // id == null
-			%>
-			<a href="/member/login.jsp">로그인</a> | <a href="/member/join.jsp">회원가입</a>
-			<%
-		}
-		%>
-		
-	</div>
-	<div class="clear"></div>
-	<div id="logo">
-		<a href="/"><img src="/images/logo.gif" width="265" height="62" alt="Fun Web"></a>
-=======
 			<a href="/memberLogout.do">로그아웃</a>
 			<%
 		} else { // id == null
@@ -68,20 +42,13 @@ String id = (String) session.getAttribute("id");
 		<a href="/">
 		<img src="/images/logo.gif" width="265" height="62" alt="Fun Web">
 		</a>
->>>>>>> d44115f475ec485145b63ce82940bda6a14e3931
 	</div>
 	<nav id="top_menu">
 		<ul>
 			<li><a href="/">HOME</a></li>
-<<<<<<< HEAD
-			<li><a href="/company/welcome.jsp">COMPANY</a></li>
-			<li><a href="#">SOLUTIONS</a></li>
-			<li><a href="/center/notice.jsp">CUSTOMER CENTER</a></li>
-=======
 			<li><a href="/welcome.do">COMPANY</a></li>
 			<li><a href="#">SOLUTIONS</a></li>
 			<li><a href="/notice.do">CUSTOMER CENTER</a></li>
->>>>>>> d44115f475ec485145b63ce82940bda6a14e3931
 			<li><a href="#">CONTACT US</a></li>
 		</ul>
 	</nav>

@@ -3,45 +3,23 @@ package com.exam.controller;
 import java.util.HashMap;
 import java.util.Map;
 
-<<<<<<< HEAD
-public class ControllerFactory {
-
-=======
 import com.exam.controller.company.*;
 import com.exam.controller.member.*;
+import com.exam.controller.notice.*;
 
 public class ControllerFactory {
 	
->>>>>>> d44115f475ec485145b63ce82940bda6a14e3931
 	private static ControllerFactory instance = new ControllerFactory();
 	
 	public static ControllerFactory getInstance() {
 		return instance;
 	}
-<<<<<<< HEAD
-	
-	////////////////////////////////////////////////////
-=======
 
 	///////////////////////////////////////////////////////////
->>>>>>> d44115f475ec485145b63ce82940bda6a14e3931
 
 	private Map<String, Controller> map = new HashMap<>();
 	
 	private ControllerFactory() {
-<<<<<<< HEAD
-		// 명령어와 명령어를 처리하는 컨트롤러 객체를 쌍으로 등록함
-		map.put("/index",  new IndexController());
-		
-	} // 생성자
-	
-	public Controller getController(String command) {
-		// Map 컬렉션은 키값이 존재하지 않는 값을 꺼내면 null을 리턴함.
-		Controller controller = map.get(command);
-		return controller;
-	}
-
-=======
 		// 키값은 .do로 끝나는 요청 URL주소의 일부 - 명령어 개념으로 사용
 		
 		// 명령어와 명령어를 처리하는 컨트롤러 객체를 쌍으로 등록함
@@ -59,6 +37,9 @@ public class ControllerFactory {
 		map.put("/memberLoginPro", new MemberLoginProController());
 		map.put("/memberLogout", new MemberLogoutController());
 		
+		// notice 게시판
+		map.put("/notice", new NoticeController());
+		
 	} // 생성자
 
 	
@@ -67,5 +48,4 @@ public class ControllerFactory {
 		Controller controller = map.get(command);
 		return controller;
 	}
->>>>>>> d44115f475ec485145b63ce82940bda6a14e3931
 }

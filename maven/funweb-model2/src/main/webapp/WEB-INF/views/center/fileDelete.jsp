@@ -1,21 +1,12 @@
 <%@page import="java.io.File"%>
 <%@page import="com.exam.vo.AttachVo"%>
 <%@page import="java.util.List"%>
-<<<<<<< HEAD
-<%@page import="com.exam.dao.NoticeDao"%>
-<%@page import="com.exam.dao.AttachDao"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%
-// num pageNum 파라미터값 가져오기
-=======
 <%@page import="com.exam.dao.AttachDao"%>
 <%@page import="com.exam.dao.NoticeDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
 // num  pageNum  파라미터값 가져오기
->>>>>>> d44115f475ec485145b63ce82940bda6a14e3931
 int num = Integer.parseInt(request.getParameter("num"));
 String pageNum = request.getParameter("pageNum");
 
@@ -28,36 +19,16 @@ List<AttachVo> attachList = attachDao.getAttachesByNoNum(num);
 
 String realPath = application.getRealPath("/upload"); // 업로드 기준경로
 
-<<<<<<< HEAD
-// 첨부파일 삭제
-for (AttachVo attachVo : attachList) {
-	// 삭제할 파일을 File 타입 객체로 준비
-	File file = new File(realPath + "/" + attachVo.getUploadpath(), attachVo.getFilename()); // (폴더경로, 파일 이름)
-	
-	if (file.exists()) { // 해당 경로에 파일이 존재하면 
-=======
 // 첨부파일 삭제하기
 for (AttachVo attachVo : attachList) {
 	// 삭제할 파일을 File 타입 객체로 준비
 	File file = new File(realPath + "/" + attachVo.getUploadpath(), attachVo.getFilename());
 	
 	if (file.exists()) { // 해당 경로에 파일이 존재하면
->>>>>>> d44115f475ec485145b63ce82940bda6a14e3931
 		file.delete();   // 파일 삭제하기
 	}
 } // for
 
-<<<<<<< HEAD
-// notice 게시글 삭제
-noticeDao.deleteNoticeByNum(num);
-		
-// attach 첨부파일내용 삭제하기
-attachDao.deleteAttachesByNoNum(num);
-
-// 글목록 fileNotice.jsp 로 이동
-response.sendRedirect("fileNotice.jsp?pageNum=" + pageNum);
-%>
-=======
 // attach 첨부파일내용 삭제하기
 attachDao.deleteAttachesByNoNum(num);
 
@@ -69,4 +40,3 @@ response.sendRedirect("fileNotice.jsp?pageNum=" + pageNum);
 %>
 
 
->>>>>>> d44115f475ec485145b63ce82940bda6a14e3931

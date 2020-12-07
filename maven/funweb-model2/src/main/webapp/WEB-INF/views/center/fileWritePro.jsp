@@ -2,21 +2,12 @@
 <%@page import="com.exam.vo.AttachVo"%>
 <%@page import="java.sql.Timestamp"%>
 <%@page import="com.exam.dao.JdbcUtils"%>
-<<<<<<< HEAD
-<%@page import="java.util.Enumeration"%>
-<%@page import="java.io.File"%>
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page import="java.util.Date"%>
-<%@page import="com.exam.dao.NoticeDao"%>
-<%@page import="com.exam.vo.NoticeVo"%>
-=======
 <%@page import="com.exam.dao.NoticeDao"%>
 <%@page import="java.util.Enumeration"%>
 <%@page import="com.exam.vo.NoticeVo"%>
 <%@page import="java.io.File"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
->>>>>>> d44115f475ec485145b63ce82940bda6a14e3931
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -25,29 +16,6 @@
 
 boolean isImage(String filename) {
 	boolean result = false;
-<<<<<<< HEAD
-	
-	// 확장자 문자열 추출하기
-	// aaaa.bbb.cc.dd
-// 	filename.indexOf("."); // 첫번째 .찾기
-	int index = filename.lastIndexOf("."); // 마지막 .찾기
-	
-	String ext = filename.substring(index + 1); // 파일 확장자 문자열 // +1 안해주면 .부터 추출됨. 그러니까 +1
-	
-	if (ext.equalsIgnoreCase("jpg")
-		|| ext.equalsIgnoreCase("jpeg")
-		|| ext.equalsIgnoreCase("png")
-		|| ext.equalsIgnoreCase("gif")) { // equalsIgnoreCase : 대소문자 구분 없이
-		result = true;
-	}
-	
-	return result;
-}
-%>    
-    
-<%
-//파일 업로드 위해서 cos.jar 라이브러리를 프로젝트 빌드패스에 추가.
-=======
 	// 파일 확장자 문자열 추출하기
 	// aaaa.bbb.ccc.ddd
 	int index = filename.lastIndexOf(".");
@@ -66,7 +34,6 @@ boolean isImage(String filename) {
 
 <%
 // 파일 업로드 위해서 cos.jar 라이브러리를 프로젝트 빌드패스에 추가.
->>>>>>> d44115f475ec485145b63ce82940bda6a14e3931
 
 //업로드 객체 생성할때 필요한 인자값
 //1. request
@@ -87,19 +54,6 @@ String strDate = sdf.format(date); // "2020/11/11"
 File dir = new File(realPath, strDate);
 System.out.println("dir : " + dir.getPath());
 
-<<<<<<< HEAD
-if (!dir.exists()) { // 폴더가 존재하지 않는다면
-	dir.mkdirs(); // 월, 일 폴더 다 만들어야하기 때문에 mkdirs. 
-}
-
-//파일 업로드 하기
-MultipartRequest multi = new MultipartRequest(
-		request, 
-		dir.getPath(), // 실제 경로
-		1024 * 1024 * 100, // 최대 업로드 100MB로 제한
-		"utf-8", 
-		new DefaultFileRenamePolicy()); 
-=======
 if (!dir.exists()) {
 	dir.mkdirs();
 }
@@ -112,7 +66,6 @@ MultipartRequest multi = new MultipartRequest(
 		1024 * 1024 * 100, // 최대 업로드 100MB로 제한
 		"utf-8",
 		new DefaultFileRenamePolicy());
->>>>>>> d44115f475ec485145b63ce82940bda6a14e3931
 
 //enctype="multipart/form-data" 로 전송받으면
 //기본내장객체인 request에서 파라미터값을 바로 찾을수 없음!
@@ -124,16 +77,11 @@ MultipartRequest multi = new MultipartRequest(
 //pageNum 파라미터값 가져오기
 String pageNum = multi.getParameter("pageNum");
 
-<<<<<<< HEAD
-=======
 
->>>>>>> d44115f475ec485145b63ce82940bda6a14e3931
 //DAO 객체 준비
 NoticeDao noticeDao = NoticeDao.getInstance();
 AttachDao attachDao = AttachDao.getInstance();
 
-<<<<<<< HEAD
-=======
 int nextNum = JdbcUtils.getNextNum("notice");
 
 //Enumeration은 반복자 객체. file의 name속성들을 가지고 있음
@@ -160,7 +108,6 @@ while (enu.hasMoreElements()) {
 
 
 
->>>>>>> d44115f475ec485145b63ce82940bda6a14e3931
 //VO 객체 준비
 NoticeVo noticeVo = new NoticeVo();
 
@@ -170,10 +117,6 @@ noticeVo.setSubject(multi.getParameter("subject"));
 noticeVo.setContent(multi.getParameter("content"));
 
 //글번호 가져와서 VO에 저장
-<<<<<<< HEAD
-int nextNum = JdbcUtils.getNextNum("notice");
-=======
->>>>>>> d44115f475ec485145b63ce82940bda6a14e3931
 noticeVo.setNum(nextNum);
 
 //ip  regDate  readcount  값 저장
@@ -186,38 +129,6 @@ noticeVo.setReRef(nextNum); // 주글일때는 글번호가 그룹번호가 됨
 noticeVo.setReLev(0); // 주글일때는 들여쓰기 레벨이 0 (들여쓰기 없음)
 noticeVo.setReSeq(0); // 주글일때는 글그룹 내에서 순번이 0 (첫번째)
 
-<<<<<<< HEAD
-// Enumeration은 반복자 객체. file의 name 속성들을 가지고 있음. 
-Enumeration<String> enu = multi.getFileNames(); // 제네릭 적용됨. name속성값이고 결국 문자열이기때문에 미리 지정해줘도 괜찮.  
-
-while (enu.hasMoreElements()) { // 그 다음 요소가 있는지 없는지 true, false
-	// AttachVo 객체 준비
-	AttachVo attachVo = new AttachVo();
-
-	String fname = enu.nextElement(); // 제네릭적용 후, return 타입도 자동으로 string 타입으로 바뀜
-	
-	// 실제 업로드된 파일명 가져오기
-	String filename = multi.getOriginalFileName(fname);
-	System.out.println("실제파일명 : " + filename);
-	
-	attachVo.setFilename(filename); // 실제파일명을 Vo에 저장
-	attachVo.setUploadpath(strDate); // "년/월/일" 경로를 저장
-	attachVo.setNoNum(nextNum); // insert될 게시판 글번호를 저장
-	// attachVo.setImage();
-	
-	attachVo.setImage(isImage(filename) ? "I": "O");
-	
-	// attachVo를 attach 테이블에 insert하기
-	attachDao.insertAttach(attachVo);
-} // while
-
-//주글 등록하기
-noticeDao.addNotice(noticeVo);
-
-//글내용 상세보기 화면 fileContent.jsp로 이동
-response.sendRedirect("fileContent.jsp?num=" + noticeVo.getNum() + "&pageNum=" + pageNum);
-%>
-=======
 
 //주글 noticeVo 등록하기
 noticeDao.addNotice(noticeVo);
@@ -229,4 +140,3 @@ response.sendRedirect("fileContent.jsp?num=" + noticeVo.getNum() + "&pageNum=" +
 
 
 
->>>>>>> d44115f475ec485145b63ce82940bda6a14e3931
