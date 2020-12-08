@@ -9,16 +9,17 @@ import java.util.List;
 import com.exam.vo.AttachVo;
 
 public class AttachDao {
-	
+
 	private static AttachDao instance = new AttachDao();
 	
 	public static AttachDao getInstance() {
 		return instance;
 	}
-	
+
 	private AttachDao() {}
 	
-	public void insertAttach(AttachVo attachVo) { // AttachVo 타입으로 받아서
+	
+	public void insertAttach(AttachVo attachVo) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String sql = "";
@@ -26,11 +27,11 @@ public class AttachDao {
 		try {
 			con = JdbcUtils.getConnection();
 			
-			sql = "INSERT INTO attach (filename, uploadpath, image, no_num) ";
+			sql  = "INSERT INTO attach (filename, uploadpath, image, no_num) ";
 			sql += "VALUES (?, ?, ?, ?) ";
 			
 			pstmt = con.prepareStatement(sql);
-			
+
 			pstmt.setString(1, attachVo.getFilename());
 			pstmt.setString(2, attachVo.getUploadpath());
 			pstmt.setString(3, attachVo.getImage());
@@ -43,14 +44,16 @@ public class AttachDao {
 		} finally {
 			JdbcUtils.close(con, pstmt);
 		}
-	} // insertAttach()
+	} // insertAttach
+	
+	
 	
 	public List<AttachVo> getAttachesByNoNum(int noNum) {
 		List<AttachVo> list = new ArrayList<>();
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		ResultSet rs = null; // select니까 resultset도
+		ResultSet rs = null;
 		String sql = "";
 		
 		try {
@@ -61,9 +64,9 @@ public class AttachDao {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, noNum);
 			
-			rs = pstmt.executeQuery(); // select니까 executeQuery()
+			rs = pstmt.executeQuery();
 			
-			while(rs.next()) {
+			while (rs.next()) {
 				AttachVo attachVo = new AttachVo();
 				attachVo.setNum(rs.getInt("num"));
 				attachVo.setFilename(rs.getString("filename"));
@@ -78,9 +81,9 @@ public class AttachDao {
 		} finally {
 			JdbcUtils.close(con, pstmt, rs);
 		}
-		
-		return list;		
-	} // getAttachesByNoNum()
+		return list;
+	} // getAttachesByNoNum
+	
 	
 	public void deleteAttachesByNoNum(int noNum) {
 		Connection con = null;
@@ -90,7 +93,7 @@ public class AttachDao {
 		try {
 			con = JdbcUtils.getConnection();
 			
-			sql = "DELETE FROM attach WHERE no_num = ? ";
+			sql = "DELETE FROM attach where no_num = ? ";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, noNum);
@@ -101,5 +104,9 @@ public class AttachDao {
 		} finally {
 			JdbcUtils.close(con, pstmt);
 		}
-	} // deleteAttachesByNoNum()
+	} // deleteAttachesByNoNum
+	
 }
+
+
+

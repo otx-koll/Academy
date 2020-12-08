@@ -25,12 +25,12 @@
 	<h1>텍스트 게시판 글쓰기</h1>
 		
 	<form action="writePro.do" method="post" name="frm">
-	<input type="hidden" name="pageNum" value="${ requestScope.pageNum }"> <%-- requestScope 생략가능 --%>
+	<input type="hidden" name="pageNum" value="${ pageNum }">
 	<table id="notice">
 		<tr>
 			<th scope="col" class="twrite">작성자</th>
 			<td class="left" width="500">
-				<input type="text" name="id" value="${ sessionScope.id }" readonly> <%-- sessionScope 생략가능 --%>
+				<input type="text" name="id" value="${ id }" readonly>
 			</td>
 		</tr>
 		<tr>
