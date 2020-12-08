@@ -82,7 +82,7 @@ public class JdbcUtils {
 
 			sql = "SELECT AUTO_INCREMENT ";
 			sql += "FROM information_schema.tables ";
-			sql += "WHERE table_name = ? "; // 
+			sql += "WHERE table_name = ? "; 
 			sql += "AND table_schema = DATABASE() ";
 
 			pstmt = con.prepareStatement(sql);
