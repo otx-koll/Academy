@@ -40,6 +40,6 @@ public class ContentController implements Controller {
 		request.setAttribute("pageNum", pageNum);
 		
 		// 실행할 jsp 경로 이름 정보를 리턴
-		return "center/conent";
+		return "center/content";
 	}
 }

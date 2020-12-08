@@ -80,7 +80,7 @@ a.active {
 			<input type="submit" value="검색" class="btn">
 			
 			<%-- 로그인 했을때만 [글쓰기] 버튼 보이기 --%>
-			<c:if test="${ not empty sessionScope.id }"> <%-- 키값이 같다면 앞에 sessionScope하면 좋음 / note empty : 데이터가 비어있냐 --%>
+			<c:if test="${ not empty sessionScope.id }">
 				<input type="button" value="글쓰기" class="btn" onclick="location.href='writeForm.do?pageNum=${ pageNum }'">
 			</c:if>
 

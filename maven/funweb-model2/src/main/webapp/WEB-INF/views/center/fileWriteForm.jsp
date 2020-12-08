@@ -104,7 +104,7 @@ span.file-delete {
 		
 		let str = `
 			<div>
-				<input type="file" name="filename\${fileIndex}"> <%-- \안하면 el언어로 보고 jsp문법에서 제외되도록 \을 붙혀준다. --%>
+				<input type="file" name="filename\${fileIndex}">
 				<span class="file-delete">X</span>
 			</div>
 		`;

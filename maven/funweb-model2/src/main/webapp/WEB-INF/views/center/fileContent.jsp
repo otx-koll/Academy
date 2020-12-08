@@ -54,62 +54,48 @@
 		<tr>
 			<th scope="col" class="ttitle">첨부파일</th>
 			<td class="left">
-			<c:if test="${ not empty attachList && attachList.size gt 0 }">
-				<c:forEach var="attach" items="${ attachList }">
-					<c:choose>
-						<c:when test="">
-							
-						</c:when>
-						<c:otherwise>
-							
-						</c:otherwise>
-					</c:choose>
-				</c:forEach>
-			</c:if>
 			
-			<%
-			if (attachList != null && attachList.size() > 0) {
-				for (AttachVo attachVo : attachList) {
-					if (attachVo.getImage().equals("I")) {
-						%>
+			<c:if test="${ not empty attachList }">
+			
+				<c:forEach var="attach" items="${ attachList }">
+				
+					<c:choose>
+					<c:when test="${ attach.image eq 'I' }">
 						<p>
-							<a href="/upload/<%=attachVo.getUploadpath() %>/<%=attachVo.getFilename() %>">
-								<img src="/upload/<%=attachVo.getUploadpath() %>/<%=attachVo.getFilename() %>" width="100" height="100">
+							<a href="/upload/${ attach.uploadpath }/${ attach.filename }">
+								<img src="/upload/${ attach.uploadpath }/${ attach.filename }" width="100" height="100">
 							</a>
 						</p>
-						<%
-					} else {
-						%>
+					</c:when>
+					<c:otherwise>
 						<p>
-							<a href="/upload/<%=attachVo.getUploadpath() %>/<%=attachVo.getFilename() %>">
-								<%=attachVo.getFilename() %>
+							<a href="/upload/${ attach.uploadpath }/${ attach.filename }">
+								${ attach.filename }
 							</a>
-						</p>					
-						<%
-					}
-				} // for
-			}
-			%>
+						</p>
+					</c:otherwise>
+					</c:choose>
+					
+				</c:forEach>
+			</c:if>
+
 			</td>
 		</tr>
 	</table>
 
 	<div id="table_search">
-		<%
-		String id = (String) session.getAttribute("id");
-		if (id != null) { // 로그인 했을때
-			if (id.equals(noticeVo.getId())) { // 로그인 아이디와 글작성자 아이디가 같을때
-				%>
+	
+		<c:if test="${ not empty id }">
+			<%-- 로그인 했을때 --%>
+			<c:if test="${ id eq noticeVo.id }">
+				<%-- 로그인 아이디와 글작성자 아이디가 같을때 --%>
 				<input type="button" value="글수정" class="btn">
 				<input type="button" value="글삭제" class="btn" onclick="remove()">
-				<%
-			}
-			%>
+			</c:if>
 			<input type="button" value="답글쓰기" class="btn">
-			<%
-		}
-		%>
-		<input type="button" value="목록보기" class="btn" onclick="location.href = 'fileNotice.jsp?pageNum=<%=pageNum %>'">
+		</c:if>
+		
+		<input type="button" value="목록보기" class="btn" onclick="location.href = 'fileNotice.do?pageNum=${ pageNum }'">
 	</div>
 	
 	<div class="clear"></div>
@@ -125,9 +111,9 @@
 
 <script>
 	function remove() {
-		let isDelete = confirm('<%=noticeVo.getNum() %>번 글을 정말 삭제하시겠습니까?');
+		let isDelete = confirm('${ noticeVo.num }번 글을 정말 삭제하시겠습니까?');
 		if (isDelete) {
-			location.href = 'fileDelete.jsp?num=<%=noticeVo.getNum() %>&pageNum=<%=pageNum %>';
+			location.href = 'fileDelete.jsp?num=${ noticeVo.num }&pageNum=${ pageNum }';
 		}
 	}
 </script>

@@ -24,9 +24,10 @@ public class FileWriteFormController implements Controller {
 		// 파라미터값  pageNum  가져오기
 		String pageNum = request.getParameter("pageNum");
 		
-		// 뷰(jsp)에서 필요한 정보를 request 영역 객체에 저장
+		// 뷰(jsp)에서 필요한 정보를 request 영역객체에 저장
 		request.setAttribute("pageNum", pageNum);
 		
 		return "center/fileWriteForm";
 	}
+
 }

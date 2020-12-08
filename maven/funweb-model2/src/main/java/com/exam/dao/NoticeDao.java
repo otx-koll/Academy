@@ -434,7 +434,7 @@ public class NoticeDao {
 		noticeDao.deleteAll(); // 테이블 내용 모두 삭제
 		
 		// 주글 1000개 insert하기
-		for (int i=0; i<1000; i++) {
+		for (int i=0; i<100; i++) {
 			NoticeVo noticeVo = new NoticeVo();
 
 			noticeVo.setId("user1");
