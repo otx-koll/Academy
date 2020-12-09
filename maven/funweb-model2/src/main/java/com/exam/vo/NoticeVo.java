@@ -81,7 +81,7 @@ public class NoticeVo {
 	
 	@Override
 	public String toString() {
-		return "BoardVo [num=" + num + ", id=" + id + ", subject=" + subject + ", content=" + content + ", readcount="
+		return "NoticeDao [num=" + num + ", id=" + id + ", subject=" + subject + ", content=" + content + ", readcount="
 				+ readcount + ", regDate=" + regDate + ", ip=" + ip + ", reRef=" + reRef + ", reLev=" + reLev
 				+ ", reSeq=" + reSeq + "]";
 	}
