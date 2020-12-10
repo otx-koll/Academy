@@ -29,10 +29,16 @@ public class WriteProController implements Controller {
 		// pageNum 파라미터 가져오기
 		String pageNum = request.getParameter("pageNum");
 		
+		//DAO 객체 준비
+		NoticeDao noticeDao = NoticeDao.getInstance();
+				
 		// NoticeVo 객체 준비
 		NoticeVo noticeVo = new NoticeVo();
 		
+		int num = noticeDao.getNextNum();
+		
 		// 파라미터값을 가져와서 NoticeVo 객체에 저장
+		noticeVo.setNum(num);
 		noticeVo.setId(request.getParameter("id"));
 		noticeVo.setSubject(request.getParameter("subject"));
 		noticeVo.setContent(request.getParameter("content"));
@@ -43,13 +49,13 @@ public class WriteProController implements Controller {
 		noticeVo.setReadcount(0);  // 조회수
 
 		//re_ref  re_lev  re_seq
-		int num = JdbcUtils.getNextNum("notice"); // insert될 글번호 가져오기
 		noticeVo.setReRef(num); // 주글일때는 글번호가 그룹번호가 됨
 		noticeVo.setReLev(0); // 주글일때는 들여쓰기 레벨이 0 (들여쓰기 없음)
 		noticeVo.setReSeq(0); // 주글일때는 글그룹 내에서 순번이 0 (첫번째)
+		
+		System.out.println(noticeVo);
 
-		//DAO 객체 준비
-		NoticeDao noticeDao = NoticeDao.getInstance();
+		
 
 		//주글 등록하기
 		noticeDao.addNotice(noticeVo);
