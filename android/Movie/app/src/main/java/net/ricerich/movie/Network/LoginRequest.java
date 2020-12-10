@@ -19,7 +19,6 @@ import java.net.URL;
 public class LoginRequest extends AsyncTask<String, Void, String> {
     private URL Url;
     private String URL_Adress = "http://10.100.103.21/movieApp/movie_login.jsp";
-//    private String URL_Adress = "http://211.104.196.146:8006/movieApp/movie_insert.jsp";
 
     @Override
     protected void onPreExecute() {

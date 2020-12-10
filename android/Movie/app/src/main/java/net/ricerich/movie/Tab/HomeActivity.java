@@ -15,13 +15,12 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
-import net.ricerich.movie.Data;
 import net.ricerich.movie.R;
 
 public class HomeActivity extends Activity {
 
-    Button btnTicket;
-    TextView tvTitle, tvKinds, tvOpen, tvAge, tvTime;
+    private Button btnTicket;
+    private TextView tvTitle, tvKinds, tvOpen, tvAge, tvTime;
 
 
     @Override

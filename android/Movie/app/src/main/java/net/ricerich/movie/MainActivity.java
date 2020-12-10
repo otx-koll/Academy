@@ -11,8 +11,8 @@ import net.ricerich.movie.Tab.SnackActivity;
 
 public class MainActivity extends TabActivity {
 
-    TabHost.TabSpec tabSpecHome, tabSpecSnack, tabSpecInfo;
-    Intent itHome, itSnack, itInfo;
+    private TabHost.TabSpec tabSpecHome, tabSpecSnack, tabSpecInfo;
+    private Intent itHome, itSnack, itInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

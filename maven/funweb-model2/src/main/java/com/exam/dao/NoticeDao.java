@@ -23,35 +23,6 @@ public class NoticeDao {
 	private NoticeDao() {}
 	
 	
-	public int getNextNum() {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
-		int nextNum = 0;
-		String sql = "";
-
-		try {
-			con = JdbcUtils.getConnection();
-
-			sql = "SELECT IFNULL(MAX(num),0) + 1 AS next_num ";
-			sql += "FROM notice";
-
-			pstmt = con.prepareStatement(sql);
-
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) {
-				nextNum = rs.getInt("next_num");
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			JdbcUtils.close(con, pstmt, rs);
-		}
-		return nextNum;
-	} // getNextNum()
-	
 	// 주글쓰기 메서드
 	public void addNotice(NoticeVo noticeVo) {
 		Connection con = null;
@@ -62,20 +33,19 @@ public class NoticeDao {
 		try {
 			con = JdbcUtils.getConnection();
 			
-			sql  = "INSERT INTO notice (num, id, subject, content, readcount, reg_date, ip, re_ref, re_lev, re_seq) ";
-			sql += "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+			sql  = "INSERT INTO notice (id, subject, content, readcount, reg_date, ip, re_ref, re_lev, re_seq) ";
+			sql += "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) ";
 			
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, noticeVo.getNum());
-			pstmt.setString(2, noticeVo.getId());
-			pstmt.setString(3, noticeVo.getSubject());
-			pstmt.setString(4, noticeVo.getContent());
-			pstmt.setInt(5, noticeVo.getReadcount());
-			pstmt.setTimestamp(6, noticeVo.getRegDate());
-			pstmt.setString(7, noticeVo.getIp());
-			pstmt.setInt(8, noticeVo.getReRef());
-			pstmt.setInt(9, noticeVo.getReLev());
-			pstmt.setInt(10, noticeVo.getReSeq());
+			pstmt.setString(1, noticeVo.getId());
+			pstmt.setString(2, noticeVo.getSubject());
+			pstmt.setString(3, noticeVo.getContent());
+			pstmt.setInt(4, noticeVo.getReadcount());
+			pstmt.setTimestamp(5, noticeVo.getRegDate());
+			pstmt.setString(6, noticeVo.getIp());
+			pstmt.setInt(7, noticeVo.getReRef());
+			pstmt.setInt(8, noticeVo.getReLev());
+			pstmt.setInt(9, noticeVo.getReSeq());
 			// 실행
 			pstmt.executeUpdate();
 			
@@ -479,8 +449,8 @@ public class NoticeDao {
 		
 		noticeDao.deleteAll(); // 테이블 내용 모두 삭제
 		
-		// 주글 1000개 insert하기
-		for (int i=0; i<10; i++) {
+		// 주글 100개 insert하기
+		for (int i=0; i<100; i++) {
 			NoticeVo noticeVo = new NoticeVo();
 
 			noticeVo.setId("user1");
