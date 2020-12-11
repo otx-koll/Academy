@@ -45,6 +45,40 @@ public class AttachDao {
 		}
 	} // insertAttach()
 	
+	public AttachVo getAttachByNum(int num) {
+		AttachVo attachVo = null;
+				
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "";
+		
+		try {
+			con = JdbcUtils.getConnection();
+			
+			sql = "SELECT * FROM attach WHERE num = ? ";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				attachVo = new AttachVo();
+				attachVo.setNum(rs.getInt("num"));
+				attachVo.setFilename(rs.getString("filename"));
+				attachVo.setUploadpath(rs.getString("uploadpath"));
+				attachVo.setImage(rs.getString("image"));
+				attachVo.setNoNum(rs.getInt("no_num"));
+			} // if
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtils.close(con, pstmt, rs);
+		}
+		return attachVo;
+	} // getAttachByNum
+	
 	public List<AttachVo> getAttachesByNoNum(int noNum) {
 		List<AttachVo> list = new ArrayList<>();
 		
@@ -81,6 +115,27 @@ public class AttachDao {
 		
 		return list;		
 	} // getAttachesByNoNum()
+	
+	public void deleteAttachByNum(int num) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = "";
+		
+		try {
+			con = JdbcUtils.getConnection();
+			
+			sql = "DELETE FROM attach where num = ? ";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtils.close(con, pstmt);
+		}
+	} // deleteAttachByNum
 	
 	public void deleteAttachesByNoNum(int noNum) {
 		Connection con = null;

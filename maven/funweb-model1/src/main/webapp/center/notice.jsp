@@ -93,8 +93,8 @@ if (count > 0) {
 						<%
 						if (noticeVo.getReLev() > 0) { // 답글이면
 							%>
-							<img src="../images/level.gif" width="<%=noticeVo.getReLev() * 15 %>" height="13">
-							<img src="../images/re.gif">
+							<img src="/images/center/level.gif" width="<%=noticeVo.getReLev() * 15 %>" height="13">
+							<img src="/images/center/re.gif">
 							<%
 						}
 						%>
@@ -166,7 +166,7 @@ if (count > 0) {
 		// [이전]
 		if (startPage > pageBlock) {
 			%>
-			<a href="notice.jsp?pageNum=<%=startPage - pageBlock %>">[이전]</a>
+			<a href="notice.jsp?pageNum=<%=startPage - pageBlock %>&category=<%=category %>&search=<%=search %>">[이전]</a>
 			<%
 		}
 		
@@ -174,11 +174,11 @@ if (count > 0) {
 		for (int i=startPage; i<=endPage; i++) {
 			if (i == pageNum) {
 				%>
-				<a href="notice.jsp?pageNum=<%=i %>" class="active">[<%=i %>]</a>
+				<a href="notice.jsp?pageNum=<%=i %>&category=<%=category %>&search=<%=search %>" class="active">[<%=i %>]</a>
 				<%
 			} else {
 				%>
-				<a href="notice.jsp?pageNum=<%=i %>">[<%=i %>]</a>
+				<a href="notice.jsp?pageNum=<%=i %>&category=<%=category %>&search=<%=search %>">[<%=i %>]</a>
 				<%
 			}
 		} // for
@@ -187,7 +187,7 @@ if (count > 0) {
 		// [다음]
 		if (endPage < pageCount) {
 			%>
-			<a href="notice.jsp?pageNum=<%=startPage + pageBlock %>">[다음]</a>
+			<a href="notice.jsp?pageNum=<%=startPage + pageBlock %>&category=<%=category %>&search=<%=search %>">[다음]</a>
 			<%
 		}
 	}
