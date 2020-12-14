@@ -1,4 +1,4 @@
-<%@page import="com.exam.dao.NoticeDao"%>
+﻿<%@page import="com.exam.dao.NoticeDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%

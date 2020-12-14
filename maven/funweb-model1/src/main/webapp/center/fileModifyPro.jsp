@@ -1,3 +1,4 @@
+<%@page import="com.exam.vo.NoticeVo"%>
 <%@page import="java.util.Enumeration"%>
 <%@page import="com.exam.vo.AttachVo"%>
 <%@page import="com.exam.dao.NoticeDao"%>
@@ -56,20 +57,20 @@ while (enu.hasMoreElements()) {
 	String fname = enu.nextElement();
 	String filename = multi.getFilesystemName(fname);
 	
+	if (filename == null) {
+		continue;
+	}
+	
 	// insert를 위한 VO 객체 준비
 	AttachVo attachVo = new AttachVo();
 	attachVo.setFilename(filename);
 	attachVo.setUploadpath(strDate);
-	if (filename != null) {
-		attachVo.setImage( isImage(filename) ? "I" : "O" );
-	}
+	attachVo.setImage( isImage(filename) ? "I" : "O" );
 	attachVo.setNoNum(noNum);
 	
 	// 첨부파일정보 insert하기
 	attachDao.insertAttach(attachVo);
 } // while
-
-
 
 // 삭제해야 할 첨부파일들 번호 가져오기
 String[] delFileNums = multi.getParameterValues("delfile");
@@ -90,18 +91,23 @@ for (String delFileNum : delFileNums) {
 	attachDao.deleteAttachByNum(num);
 } // for
 
+// NoticeVo 객체 준비
+NoticeVo noticeVo = new NoticeVo();
 
+// 파라미터값을 NoticeVo에 저장
+noticeVo.setNum(noNum);
+noticeVo.setId(multi.getParameter("id"));
+noticeVo.setSubject(multi.getParameter("subject"));
+noticeVo.setContent(multi.getParameter("content"));
 
+// 게시판 테이블 글 update하기
+noticeDao.updateBoard(noticeVo);
 
+// pageNum 파라미터값 가져오기
+String pageNum = multi.getParameter("pageNum");
 
-
-
-
-// noticeDao.updateBoard(noticeVo);
-
-		
 // 상세보기 화면으로 이동
-
+response.sendRedirect("fileContent.jsp?num=" + noNum + "&pageNum=" + pageNum);
 		
 %>
 
