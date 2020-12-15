@@ -1,6 +1,7 @@
 package com.exam.vo;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 public class NoticeVo {
 	
@@ -15,6 +16,9 @@ public class NoticeVo {
 	private int reLev; // 들여쓰기 레벨
 	private int reSeq; // 그룹 내에서의 순번
 	
+//	private AttachVo attachVo; 		   // JOIN에서 1:1의 관계일 때
+	private List<AttachVo> attachList; // JOIN에서 1:N의 관계일 때
+
 	public NoticeVo() {}
 	
 	public int getNum() {
@@ -78,10 +82,18 @@ public class NoticeVo {
 		this.reSeq = reSeq;
 	}
 
+	public List<AttachVo> getAttachList() {
+		return attachList;
+	}
+
+	public void setAttachList(List<AttachVo> attachList) {
+		this.attachList = attachList;
+	}
+
 	@Override
 	public String toString() {
 		return "NoticeVo [num=" + num + ", id=" + id + ", subject=" + subject + ", content=" + content + ", readcount="
 				+ readcount + ", regDate=" + regDate + ", ip=" + ip + ", reRef=" + reRef + ", reLev=" + reLev
-				+ ", reSeq=" + reSeq + "]";
+				+ ", reSeq=" + reSeq + ", attachList=" + attachList + "]";
 	}
 }

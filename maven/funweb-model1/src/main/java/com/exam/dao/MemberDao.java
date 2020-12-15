@@ -153,7 +153,7 @@ public class MemberDao {
 		try {
 			con = JdbcUtils.getConnection();
 
-			sql = "SELECT * FROM member WHERE id = ?";
+			sql = "SELECT * FROM member WHERE id = ? ";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
 
@@ -379,7 +379,7 @@ public class MemberDao {
 
 		System.out.println("======== insert Å×½ºÆ® =========");
 
-		for (int i = 0; i < 1000; i++) {
+		for (int i = 0; i < 100; i++) {
 			MemberVo memberVo = new MemberVo();
 			memberVo.setId("user" + i);
 			memberVo.setPasswd("1234");
