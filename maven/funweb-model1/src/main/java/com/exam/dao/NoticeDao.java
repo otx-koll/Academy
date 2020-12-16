@@ -504,9 +504,6 @@ public class NoticeDao {
 		}
 	} // updateAndAddReply
 	
-	
-	
-	
 	public static void main(String[] args) {
 		
 		NoticeDao noticeDao = NoticeDao.getInstance();

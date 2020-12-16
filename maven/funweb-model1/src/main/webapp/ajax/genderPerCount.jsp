@@ -1,3 +1,4 @@
+<%@page import="com.exam.dao.MemberMyBatisDao"%>
 <%@page import="org.json.simple.JSONArray"%>
 <%@page import="com.google.gson.Gson"%>
 <%@page import="java.util.Map"%>
@@ -7,16 +8,17 @@
     pageEncoding="UTF-8"%>
 <%
 // DAO 객체 준비
-MemberDao memberDao = MemberDao.getInstance();
+// MemberDao memberDao = MemberDao.getInstance();
+MemberMyBatisDao memberDao = MemberMyBatisDao.getInstance();
 
 List<Map<String, Object>> list = memberDao.getGenderPerCount();
-System.out.println(list);
+System.out.println("list = " + list);
 
 JSONArray jsonArray = new JSONArray();
 
 for (Map<String, Object> map : list) {
 	String gender = (String) map.get("gender");
-	int cnt = (int) map.get("cnt");
+	long cnt = (long) map.get("cnt");
 	
 	JSONArray rowArray = new JSONArray();
 	rowArray.add(0, gender);

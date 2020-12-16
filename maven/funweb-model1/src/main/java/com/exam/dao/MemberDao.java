@@ -72,7 +72,7 @@ public class MemberDao {
 		ResultSet rs = null;
 		String sql = "";
 
-		int check = -1;
+		int check = -1; // 없는 아이디 상태값으로 초기화
 
 		try {
 			con = JdbcUtils.getConnection();
@@ -340,7 +340,7 @@ public class MemberDao {
 			sql += "		WHEN age BETWEEN 20 AND 39 THEN '청년층' ";
 			sql += "		WHEN age BETWEEN 40 AND 59 THEN '장년층' ";
 			sql += "		WHEN age >= 60 THEN '노년층' ";
-			sql += "		WHEN age <= 10 OR age >= NULL THEN '기타' ";
+			sql += "		WHEN age < 10 OR age >= NULL THEN '기타' ";
 			sql += "	END AS age_range ";
 			sql += "	, count(*) AS cnt ";
 			sql += "FROM member ";

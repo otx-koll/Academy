@@ -4,8 +4,15 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<settings>
-		<setting name="mapUderscoreToCamelCase" value="true"/>
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
 	</settings>
+
+	<typeAliases>
+<!-- 		<typeAlias type="com.exam.vo.MemberVo" alias="memberVo"/> -->
+<!-- 		<typeAlias type="com.exam.vo.NoticeVo" alias="noticeVo"/> -->
+		<package name="com.exam.vo"/>
+	</typeAliases>
+	
 	<environments default="development">
 		<environment id="development">
 			<transactionManager type="JDBC" />
@@ -19,6 +26,9 @@
 	</environments>
 	
 	<mappers>
-		<mapper class="com.exam.mapper.MemberMapper" />
+<!-- 		<mapper class="com.exam.mapper.MemberMapper" /> -->
+<!-- 		<mapper class="com.exam.mapper.NoticeMapper" /> -->
+<!-- 		<mapper class="com.exam.mapper.AttachMapper" /> -->
+		<package name="com.exam.mapper"/>
 	</mappers>
 </configuration>
