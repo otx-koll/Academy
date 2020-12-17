@@ -4,7 +4,6 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Welcome to Fun Web</title>
 
 <jsp:include page="/include/headContent.jsp"/>
 
