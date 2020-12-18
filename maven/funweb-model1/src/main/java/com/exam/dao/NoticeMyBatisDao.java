@@ -1,0 +1,133 @@
+package com.exam.dao;
+
+import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import com.exam.mapper.MemberMapper;
+import com.exam.mapper.NoticeMapper;
+import com.exam.vo.NoticeVo;
+
+public class NoticeMyBatisDao {
+	// 싱글톤
+	private static NoticeMyBatisDao instance = new NoticeMyBatisDao();
+
+	public static NoticeMyBatisDao getInstance() {
+		return instance;
+	}
+	
+	///////////////////////////////////////////////////
+	
+	private SqlSessionFactory sqlSessionFactory;
+	
+	private NoticeMyBatisDao() {
+		sqlSessionFactory = MyBatisUtils.getSqlSessionFactory();
+	}
+	
+	// 주글쓰기 메서드
+	public void addNotice(NoticeVo noticeVo) {
+		try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+			NoticeMapper mapper = sqlSession.getMapper(NoticeMapper.class);
+			mapper.addNotice(noticeVo);
+		}
+	}
+	
+	public NoticeVo getNoticeByNum(int num) {
+		try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+			NoticeMapper mapper = sqlSession.getMapper(NoticeMapper.class);
+			NoticeVo noticeVo = mapper.getNoticeByNum(num);
+			return noticeVo;
+		}
+	}
+	
+	public void updateReadcount(int num) {
+		try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+			NoticeMapper mapper = sqlSession.getMapper(NoticeMapper.class);
+			mapper.updateReadcount(num);
+		}
+	}
+	
+	// 전체글갯수 가져오기
+	public int getCountAll() {
+		try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+			NoticeMapper mapper = sqlSession.getMapper(NoticeMapper.class);
+			return mapper.getCountAll();
+		}
+	}
+	
+	public List<NoticeVo> getNotices(int startRow, int pageSize) {
+		try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+			NoticeMapper mapper = sqlSession.getMapper(NoticeMapper.class);
+			List<NoticeVo> list = mapper.getNotices(startRow, pageSize);
+			return list;
+		}
+	}
+	
+	public void updateBoard(NoticeVo noticeVo) {
+		try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+			NoticeMapper mapper = sqlSession.getMapper(NoticeMapper.class);
+			mapper.updateBoard(noticeVo);
+		}
+	}
+	
+	public void deleteNoticeByNum(int num) {
+		try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+			NoticeMapper mapper = sqlSession.getMapper(NoticeMapper.class);
+			mapper.deleteNoticeByNum(num);
+		}
+	}
+	
+	public void deleteAll() {
+		try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+			NoticeMapper mapper = sqlSession.getMapper(NoticeMapper.class);
+			mapper.deleteAll();
+		}
+	}
+	
+	// 답글쓰기 메서드
+	public boolean updateAndAddReply(NoticeVo noticeVo) {
+		SqlSession sqlSession = null;
+		// 롤백코드도 포함시켜야하기때문에 위와 같이 처리
+		try { 
+			// 트랜잭션 단위로 처리하기 위해서 수동커밋으로 설정함
+			sqlSession = sqlSessionFactory.openSession(false); // false면 수동커밋
+			NoticeMapper mapper = sqlSession.getMapper(NoticeMapper.class);
+			
+			// 답글 insert 하기 전에 같은 글그룹 내의 순번
+			mapper.updateReSeq(noticeVo.getReRef(), noticeVo.getReSeq());
+			
+			// 답글에 알맞은 값으로 VO를 수정
+			noticeVo.setReLev(noticeVo.getReLev() + 1);
+			noticeVo.setReSeq(noticeVo.getReSeq() + 1);
+			
+			// 답글 insert 하기
+			mapper.addNotice(noticeVo);
+			
+			sqlSession.commit(); // 커밋하기
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			sqlSession.rollback(); // 롤백하기
+			return false; // finally가 있으면 실행해주고 return 한다
+		} finally {
+			sqlSession.close(); // sqlSession 닫기
+		}
+	}
+	
+	// 검색어를 적용한 글갯수 가져오기
+	public int getCountBySearch(String category, String search) {
+		try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+			NoticeMapper mapper = sqlSession.getMapper(NoticeMapper.class);
+			return mapper.getCountBySearch(category, search);
+		}
+	}
+	
+	public List<NoticeVo> getNoticesBySearch(int startRow, int pageSize, String category, String search) {
+		try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+			NoticeMapper mapper = sqlSession.getMapper(NoticeMapper.class);
+			return mapper.getNoticesBySearch(startRow, pageSize, category, search);
+		}
+	}
+}

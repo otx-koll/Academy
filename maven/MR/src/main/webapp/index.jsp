@@ -8,6 +8,5 @@
 	<jsp:include page="/include/topHeader.jsp" />
 
 	<script src="/script/jquery-1.6.1.min.js"></script>
-	<script src="/script/s3Slider.js"></script>
 </body>
 </html>
