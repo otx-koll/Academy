@@ -23,7 +23,8 @@ int check = userDao.loginCheck(id, passwd);
 if (check != 1) {
 	%>
 	<script>
-		alert('아이디 또는 패스워드가 일치하지 않습니다.')
+		alert('아이디 또는 패스워드가 일치하지 않습니다.');
+		history.back();
 	</script>
 	<%
 	return;

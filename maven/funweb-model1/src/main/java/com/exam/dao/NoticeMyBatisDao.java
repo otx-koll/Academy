@@ -1,5 +1,7 @@
 package com.exam.dao;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -129,5 +131,38 @@ public class NoticeMyBatisDao {
 			NoticeMapper mapper = sqlSession.getMapper(NoticeMapper.class);
 			return mapper.getNoticesBySearch(startRow, pageSize, category, search);
 		}
+	}
+	// notice 테이블과 attach 테이블 왼쪽 외부조인해서 가져오기
+	public NoticeVo getNoticeAndAttaches(int num) {
+		try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+			NoticeMapper mapper = sqlSession.getMapper(NoticeMapper.class);
+			return mapper.getNoticeAndAttaches(num);
+		}
+	}
+	
+	//public List<NoticeVo> getNoticesByNums(List<Integer> numList)
+	public List<NoticeVo> getNoticesByNums(Integer... numArr) {
+		List<Integer> numList = Arrays.asList(numArr);
+		
+		try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+			NoticeMapper mapper = sqlSession.getMapper(NoticeMapper.class);
+			return mapper.getNoticesByNums(numList);
+		}
+	}
+	
+	public static void main(String[] args) {
+		NoticeMyBatisDao dao = NoticeMyBatisDao.getInstance();
+		
+		List<Integer> numList = new ArrayList<>();
+		numList.add(1014);
+		numList.add(1013);
+		numList.add(1010);
+		
+		//List<NoticeVo> noticeList = dao.getNoticesByNums(numList);
+		List<NoticeVo> noticeList = dao.getNoticesByNums(1014, 1013, 1010);
+		for (NoticeVo noticeVo : noticeList) {
+			System.out.println(noticeVo);
+		}
+		
 	}
 }

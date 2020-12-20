@@ -11,7 +11,9 @@ import org.apache.ibatis.annotations.Update;
 import com.exam.vo.NoticeVo;
 
 public interface NoticeMapper {
-
+	
+//	@Insert("INSERT INTO notice (id, subject, content, readcount, reg_date, ip, re_ref, re_lev, re_seq) "
+//	+ "VALUES (#{id}, #{subject}, #{content}, #{readcount}, #{regDate}, #{ip}, #{reRef}, #{reLev}, #{reSeq})")
 	void addNotice(NoticeVo noticeVo);
 	
 	@Select("SELECT * FROM notice WHERE num = #{num}")
@@ -19,7 +21,7 @@ public interface NoticeMapper {
 	
 	void updateReadcount(int num);
 	
-	@Select("SELECT COUNT(*) FROM notice")
+//	@Select("SELECT COUNT(*) FROM notice")
 	int getCountAll();
 	
 	List<NoticeVo> getNotices(@Param("startRow") int startRow, @Param("pageSize") int pageSize);
@@ -45,4 +47,8 @@ public interface NoticeMapper {
 			@Param("category") String category, 
 			@Param("search") String search);
 	
+	NoticeVo getNoticeAndAttaches(int num);
+	
+	// 매개변수 타입이 컬렉션일 때는 @Param으로 이름을 명시해야 함!
+	List<NoticeVo> getNoticesByNums(@Param("numList") List<Integer> numList);
 }

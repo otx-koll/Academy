@@ -70,4 +70,43 @@
 		ORDER BY re_ref DESC, re_seq ASC 
 		LIMIT ${startRow}, ${pageSize}
 	</select>
+	
+	<select id="getNoticeAndAttaches" resultMap="noticeAndAttaches">
+		SELECT n.num, n.id, n.subject, n.content, n.readcount, n.reg_date, n.ip,
+		       n.re_ref, n.re_lev, n.re_seq,
+		       a.num as anum, a.filename, a.uploadpath, a.image, a.no_num
+		FROM notice n LEFT OUTER JOIN attach a
+		ON n.num = a.no_num
+		where n.num = #{num}
+	</select>
+	
+	<resultMap type="noticeVo" id="noticeAndAttaches">
+		<!-- property 속성은 setter 메소드 이름을 의미함! -->
+		<id column="num" property="num"/>
+		<result column="id" property="id"/>
+		<result column="subject" property="subject"/>
+		<result column="content" property="content"/>
+		<result column="readcount" property="readcount"/>
+		<result column="reg_date" property="regDate"/>
+		<result column="ip" property="ip"/>
+		<result column="re_ref" property="reRef"/>
+		<result column="re_lev" property="reLev"/>
+		<result column="re_seq" property="reSeq"/>
+		<collection property="attachList" ofType="attachVo">
+			<id column="anum" property="num"/>
+			<result column="filename" property="filename"/>
+			<result column="uploadpath" property="uploadpath"/>
+			<result column="image" property="image"/>
+			<result column="no_num" property="noNum"/>
+		</collection>
+	</resultMap>
+	
+	<select id="getNoticesByNums" resultType="noticeVo">
+		SELECT * 
+		FROM notice
+		WHERE num IN 
+		<foreach collection="numList" item="num" open="(" separator="," close=")">
+			#{num}
+		</foreach>
+	</select>
 </mapper>
