@@ -6,7 +6,6 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
 
 import com.exam.vo.NoticeVo;
 
@@ -28,7 +27,7 @@ public interface NoticeMapper {
 	
 	void updateBoard(NoticeVo noticeVo);
 	
-	@Delete("DELETE FROM notice WHERE num = #[num}")
+	@Delete("DELETE FROM notice WHERE num = #{num}")
 	void deleteNoticeByNum(int num);
 
 	@Delete("DELETE FROM notice")

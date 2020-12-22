@@ -3,8 +3,8 @@ package com.exam.dao;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -13,17 +13,17 @@ import com.exam.mapper.NoticeMapper;
 import com.exam.vo.NoticeVo;
 
 public class NoticeMyBatisDao {
-	// 싱글톤
-	private static NoticeMyBatisDao instance = new NoticeMyBatisDao();
 
+	private static NoticeMyBatisDao instance = new NoticeMyBatisDao();
+	
 	public static NoticeMyBatisDao getInstance() {
 		return instance;
 	}
 	
-	///////////////////////////////////////////////////
+	/////////////////////////////////////////////////
 	
 	private SqlSessionFactory sqlSessionFactory;
-	
+
 	private NoticeMyBatisDao() {
 		sqlSessionFactory = MyBatisUtils.getSqlSessionFactory();
 	}
@@ -55,9 +55,11 @@ public class NoticeMyBatisDao {
 	public int getCountAll() {
 		try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
 			NoticeMapper mapper = sqlSession.getMapper(NoticeMapper.class);
-			return mapper.getCountAll();
+			int count = mapper.getCountAll();
+			return count;
 		}
 	}
+	
 	
 	public List<NoticeVo> getNotices(int startRow, int pageSize) {
 		try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
@@ -91,13 +93,12 @@ public class NoticeMyBatisDao {
 	// 답글쓰기 메서드
 	public boolean updateAndAddReply(NoticeVo noticeVo) {
 		SqlSession sqlSession = null;
-		// 롤백코드도 포함시켜야하기때문에 위와 같이 처리
-		try { 
+		try {
 			// 트랜잭션 단위로 처리하기 위해서 수동커밋으로 설정함
 			sqlSession = sqlSessionFactory.openSession(false); // false면 수동커밋
 			NoticeMapper mapper = sqlSession.getMapper(NoticeMapper.class);
 			
-			// 답글 insert 하기 전에 같은 글그룹 내의 순번
+			// 답글 insert 하기 전에 같은 글그룹 내의 순번 수정하기
 			mapper.updateReSeq(noticeVo.getReRef(), noticeVo.getReSeq());
 			
 			// 답글에 알맞은 값으로 VO를 수정
@@ -112,7 +113,7 @@ public class NoticeMyBatisDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 			sqlSession.rollback(); // 롤백하기
-			return false; // finally가 있으면 실행해주고 return 한다
+			return false;
 		} finally {
 			sqlSession.close(); // sqlSession 닫기
 		}
@@ -132,6 +133,8 @@ public class NoticeMyBatisDao {
 			return mapper.getNoticesBySearch(startRow, pageSize, category, search);
 		}
 	}
+	
+	
 	// notice 테이블과 attach 테이블 왼쪽 외부조인해서 가져오기
 	public NoticeVo getNoticeAndAttaches(int num) {
 		try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
@@ -163,6 +166,5 @@ public class NoticeMyBatisDao {
 		for (NoticeVo noticeVo : noticeList) {
 			System.out.println(noticeVo);
 		}
-		
 	}
 }

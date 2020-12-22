@@ -1,8 +1,7 @@
 <%@page import="com.exam.vo.AttachVo"%>
 <%@page import="java.util.List"%>
-<%@page import="com.exam.dao.AttachDao"%>
+<%@page import="com.exam.dao.*"%>
 <%@page import="com.exam.vo.NoticeVo"%>
-<%@page import="com.exam.dao.NoticeDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -23,8 +22,10 @@ String pageNum = request.getParameter("pageNum");
 
 <%
 // DAO 준비
-NoticeDao noticeDao = NoticeDao.getInstance();
-AttachDao attachDao = AttachDao.getInstance();
+// NoticeDao noticeDao = NoticeDao.getInstance();
+// AttachDao attachDao = AttachDao.getInstance();
+NoticeMyBatisDao noticeDao = NoticeMyBatisDao.getInstance();
+AttachMyBatisDao attachDao = AttachMyBatisDao.getInstance();
 
 // 글번호 num에 해당하는 글내용 VO로 가져오기
 NoticeVo noticeVo = noticeDao.getNoticeByNum(num);
@@ -111,7 +112,7 @@ List<AttachVo> attachList = attachDao.getAttachesByNoNum(num);
 	</table>
 
 	<div id="table_search">
-		<input type="submit" value="글수정" class="btn">
+		<input type="submit" value="글수정" class="btn" >
 		<input type="reset" value="다시쓰기" class="btn">
 		<input type="button" value="목록보기" class="btn" onclick="location.href = 'fileNotice.jsp?pageNum=<%=pageNum %>'">
 	</div>
@@ -175,9 +176,6 @@ $('span.delete-oldfile').on('click', function () {
 	$(this).parent().remove();
 	fileCount--;
 });
-
-
-
 
 </script>
 

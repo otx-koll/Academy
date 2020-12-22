@@ -51,6 +51,36 @@ public class UserDao {
 			JdbcUtils.close(con, pstmt);
 		}
 	} // addUser
+	
+	// 아이디 중복체크
+	public int getCountById(String id) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		int count = 0;
+		
+		try {
+			con = JdbcUtils.getConnection();
+			
+			String sql = "";
+			
+			sql += "SELECT COUNT(*) FROM user WHERE id = ? ";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				count = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtils.close(con, pstmt, rs);
+		}
+		return count;
+	} // getCountById
 
 	// 로그인 확인
 	public int loginCheck(String id, String passwd) {

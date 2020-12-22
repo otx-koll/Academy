@@ -1,12 +1,10 @@
-<%@page import="com.exam.dao.AttachDao"%>
+<%@page import="com.exam.dao.*"%>
 <%@page import="com.exam.vo.AttachVo"%>
 <%@page import="java.sql.Timestamp"%>
-<%@page import="com.exam.dao.JdbcUtils"%>
 <%@page import="java.util.Enumeration"%>
 <%@page import="java.io.File"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
-<%@page import="com.exam.dao.NoticeDao"%>
 <%@page import="com.exam.vo.NoticeVo"%>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
@@ -80,8 +78,10 @@ MultipartRequest multi = new MultipartRequest(
 String pageNum = multi.getParameter("pageNum");
 
 //DAO 객체 준비
-NoticeDao noticeDao = NoticeDao.getInstance();
-AttachDao attachDao = AttachDao.getInstance();
+// NoticeDao noticeDao = NoticeDao.getInstance();
+// AttachDao attachDao = AttachDao.getInstance();
+NoticeMyBatisDao noticeDao = NoticeMyBatisDao.getInstance();
+AttachMyBatisDao attachDao = AttachMyBatisDao.getInstance();
 
 //VO 객체 준비
 NoticeVo noticeVo = new NoticeVo();
