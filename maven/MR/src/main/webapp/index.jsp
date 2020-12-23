@@ -17,6 +17,11 @@
 .center-right{
 	flex:2;
 }
+body{
+	margin: 0;
+	background-color: black;
+	color: white;
+}
 </style>
 <script src="/script/jquery-1.6.1.min.js"></script>
 </head>

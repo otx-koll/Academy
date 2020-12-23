@@ -1,13 +1,15 @@
 package com.project.vo;
 
+import java.sql.Timestamp;
+
 public class UserVo {
 	private String id;
 	private String passwd;
 	private String name;
 	private String birthday;
-	private String gender;
 	private String email;
 	private String tel;
+	private Timestamp regDate;
 	
 	public UserVo() {}
 
@@ -43,14 +45,6 @@ public class UserVo {
 		this.birthday = birthday;
 	}
 
-	public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-
 	public String getEmail() {
 		return email;
 	}
@@ -67,9 +61,17 @@ public class UserVo {
 		this.tel = tel;
 	}
 
+	public Timestamp getRegDate() {
+		return regDate;
+	}
+
+	public void setRegDate(Timestamp regDate) {
+		this.regDate = regDate;
+	}
+
 	@Override
 	public String toString() {
-		return "UserVo [id=" + id + ", passwd=" + passwd + ", name=" + name + ", birthday=" + birthday + ", gender="
-				+ gender + ", email=" + email + ", tel=" + tel + "]";
+		return "UserVo [id=" + id + ", passwd=" + passwd + ", name=" + name + ", birthday=" + birthday + ", email="
+				+ email + ", tel=" + tel + ", regDate=" + regDate + "]";
 	}
 }

@@ -21,12 +21,16 @@ String id = (String) session.getAttribute("id");
 // 세션값 없으면 [로그인] [회원가입]
 %>
 <style>
+body{
+	margin: 0;
+	background-color: black;
+	color: white;
+}
 nav a{
 	text-decoration: none;
-	color: black;
 }
 nav a:visited{
-	color: black;
+	color: gray;
 }
 nav a:hover{
 	background-color: aliceblue;
@@ -34,6 +38,7 @@ nav a:hover{
 }
 a{
 	text-decoration: none;
+	color: aqua;
 }
 #wrap{
 	height: 30px;

@@ -5,13 +5,18 @@
 <head>
 <title>로그인</title>
 <style>
-	
+a{
+	text-decoration: none;
+	color: black;
+}
 </style>
 </head>
 <body>
-	<h1>
+	
+	<h3>
 		<a href="/index.jsp">Home</a>
-	</h1>
+	</h3>
+	<hr>
 	
 	<form action="loginPro.jsp" method="post" id="login">
 		<input type="text" name="id" placeholder="아이디"><br>
@@ -27,7 +32,9 @@
 	
 <script src="/script/jquery-3.5.1.js"></script>
 <script>
-		
+	$(document).ready(function () {
+		$('input[name="id"]').focus();
+	});
 </script>
 </body>
 </html>

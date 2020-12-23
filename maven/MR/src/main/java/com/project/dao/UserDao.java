@@ -31,7 +31,7 @@ public class UserDao {
 			con = JdbcUtils.getConnection();
 
 			String sql = "";
-			sql += "INSERT INTO user (id, passwd, name, birthday, gender, email, tel) ";
+			sql += "INSERT INTO user (id, passwd, name, birthday, email, tel, reg_date) ";
 			sql += "VALUES (?, ?, ?, ?, ?, ?, ?) ";
 
 			pstmt = con.prepareStatement(sql);
@@ -39,9 +39,9 @@ public class UserDao {
 			pstmt.setString(2, userVo.getPasswd());
 			pstmt.setString(3, userVo.getName());
 			pstmt.setString(4, userVo.getBirthday());
-			pstmt.setString(5, userVo.getGender());
-			pstmt.setString(6, userVo.getEmail());
-			pstmt.setString(7, userVo.getTel());
+			pstmt.setString(5, userVo.getEmail());
+			pstmt.setString(6, userVo.getTel());
+			pstmt.setTimestamp(7, userVo.getRegDate());
 
 			pstmt.executeUpdate();
 
@@ -180,6 +180,69 @@ public class UserDao {
 		return passwd;
 	} // passwdSearch
 	
+	// 회원 정보 하나 가져오기
+	public UserVo getUserById(String id) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		UserVo userVo = null;
+		
+		try {
+			con = JdbcUtils.getConnection();
+			
+			String sql = "";
+			
+			sql = "SELECT * FROM user WHERE id = ? ";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				userVo = new UserVo();
+				userVo.setId(rs.getString("id"));
+				userVo.setPasswd(rs.getString("passwd"));
+				userVo.setName(rs.getString("name"));
+				userVo.setBirthday(rs.getString("birthday"));
+				userVo.setEmail(rs.getString("email"));
+				userVo.setTel(rs.getString("tel"));
+				userVo.setRegDate(rs.getTimestamp("reg_date"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtils.close(con, pstmt, rs);
+		}
+		return userVo;
+	} // getUserById
 	
-	
+	// 
+	public void update(UserVo userVo) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			con = JdbcUtils.getConnection();
+			
+			String sql = "";
+			
+			sql = "UPDATE user ";
+			sql += "SET name = ?, email = ?, tel = ? ";
+			sql += "WHERE id = ? ";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, userVo.getName());
+			pstmt.setString(2, userVo.getEmail());
+			pstmt.setString(3, userVo.getTel());
+			pstmt.setString(4, userVo.getId());
+			
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtils.close(con, pstmt);
+		}
+	}
 }

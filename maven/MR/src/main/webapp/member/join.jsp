@@ -43,22 +43,12 @@
 		</div>
 		
 		<div>
-			<label>성별</label><br>
-			<select id="gender" name="gender" required>
-				<option value="">성별</option>
-				<option value="female">여자</option>
-				<option value="male">남자</option> 
-			</select><br>
-			<span class="wrongMsg"></span>
-		</div>
-		
-		<div>
 			<label>본인 확인 이메일</label><span>(선택)</span><br>
 			<input name="email" type="email" class="email"><br>
 		</div>
 		
 		<div>
-			<label>휴대전화</label><br>
+			<label>전화번호</label><br>
 			<input name="tel" type="tel" id="tel" required><br>
 			<span class="wrongMsg"></span>
 		</div>
@@ -127,17 +117,6 @@
 		}
 	});
 	
-/////////////////////
-// 	$('#id, #passwd, #passwd2, #name, #birth, #gender, tel').focusout(function () {
-// 		let vals = $(this).val();
-// 		let vals2 = $(this).children(input);
-		
-// 		if (vals == '') {
-// 			$(vals).html("필수 정보 입니다").css('color', 'red');
-// 		} else {
-// 			$(vals).html("");
-// 		}
-// 	});
 
 </script>
 </body>

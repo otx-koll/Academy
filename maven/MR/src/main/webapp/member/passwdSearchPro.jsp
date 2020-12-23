@@ -14,7 +14,7 @@ String passwd = userDao.passwdSearch(id, tel);
 if (passwd == null) {
 %>
 	<script>
-		alert("잘못 입력한 정보입니다");
+		alert("일치하지 않는 정보입니다");
 		history.back();
 	</script>
 	<%

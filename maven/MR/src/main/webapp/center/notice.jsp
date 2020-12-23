@@ -10,7 +10,7 @@
 <title>동행 게시판</title>
 </head>
 <%
-	// 검색어 관련 파라미터값 가져오기. 없으면 null 리턴
+// 검색어 관련 파라미터값 가져오기. 없으면 null 리턴
 String category = request.getParameter("category"); // 검색유형
 String search = request.getParameter("search"); // 검색어
 
@@ -55,12 +55,12 @@ if (count > 0) {
 
 <table border="1">
 	<tr>
-		<th scope="col" class="tno">글번호</th>
-		<th scope="col" class="ttitle">글제목</th>
-		<th scope="col" class="twrite">작성자</th>
-		<th scope="col" class="tdate">작성일자</th>
-		<th scope="col" class="tread">조회수</th>
-		<th scope="col" class="tread">좋아요</th>
+		<th scope="col">글번호</th>
+		<th scope="col">글제목</th>
+		<th scope="col">작성자</th>
+		<th scope="col">작성일자</th>
+		<th scope="col">조회수</th>
+		<th scope="col">좋아요</th>
 	</tr>
 	<%
 		if (count > 0) {
