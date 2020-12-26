@@ -20,70 +20,45 @@ String id = (String) session.getAttribute("id");
 // 세션값 있으면	..님 반가워요~	[로그아웃]으로 바뀌고 [회원가입]은 없어짐
 // 세션값 없으면 [로그인] [회원가입]
 %>
-<style>
-body{
-	margin: 0;
-	background-color: black;
-	color: white;
-}
-nav a{
-	text-decoration: none;
-}
-nav a:visited{
-	color: gray;
-}
-nav a:hover{
-	background-color: aliceblue;
-	color: teal;
-}
-a{
-	text-decoration: none;
-	color: aqua;
-}
-#wrap{
-	height: 30px;
-	display: flex;
-}
-#top_menu{
-	flex:1;
-}
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<script src="/script/jquery-1.6.1.min.js"></script>
 
-#login {
-	flex:2;
-}
-
-</style>
-<header id="header">
-
-	<div id="wrap">
-		<div id="top_menu">
-			<nav>
-				<a href="/">HOME</a>
+<div class="header">
+	<h3><a href="/">HOME</a></h3>
+	<nav>
+		<ul class="nav nav-pills pull-left">
+			<li>
 				<a href="/center/notice.jsp">NOTICE</a>
+			</li>
+			<li>
 				<a href="/review/reviewNotice.jsp">REVIEW</a>
+			</li>
+			<li>
 				<a href="/best/award.jsp">CINE</a>
-			</nav>
-		</div>
+			</li>
+		</ul>
 		
-		<div id="login">
-		
-			<input type="text" class="input_box" name="search">
-			<input type="submit" value="검색" class="btn">
-			
+		<form class="navbar-form navbar-right" role="search">
+			<div class="form-group">
+				<input type="text" class="form-control" name="search" placeholder="Search">
+			</div>
+			<input type="submit" value="검색" class="btn btn-default">
+			<div class="nav navbar-nav navbar-right">
 			<%
 			if (id != null) {
 				%>
 				<%=id %>님 반갑습니다
 				<a href="/member/userInfo.jsp">내정보</a>
 				<a href="/member/logout.jsp">Logout</a>
+				</div>
 				<%
 			} else { // id == null
 				%>
-				<a href="/member/login.jsp">Login</a> | <a href="/member/join.jsp">Join</a>
+					<a href="/member/login.jsp">Login</a> | <a href="/member/join.jsp">Join</a>
+				</div>
 				<%
 			}
 			%>
-			
-		</div>
-	</div>
-</header>
+		</form>
+	</nav>
+</div>

@@ -3,33 +3,19 @@
 <html>
 <head>
 <title>영화 리뷰 사이트</title>
-
-<style>
-#center1{
-	display: flex;
-}
-#center2{
-	display: flex;
-}
-.center-left{
-	flex:1;
-}
-.center-right{
-	flex:2;
-}
-body{
-	margin: 0;
-	background-color: black;
-	color: white;
-}
-</style>
+<link href="/css/bootstrap.min.css" rel="stylesheet">
 <script src="/script/jquery-1.6.1.min.js"></script>
+
 </head>
+
 <body>
-	
+	<div class="container">
 	<jsp:include page="/include/topHeader.jsp" />
-	<div id="center1">
-		<div class="center-left">
+	<br>
+	<br>
+	<br>
+	<div class="jumbotron">
+		<div>
 			<h3><a href="/best/award.jsp">박스 오피스 순위</a></h3>
 			<ol>
 				<li>가</li>
@@ -38,7 +24,7 @@ body{
 			</ol>
 		</div>
 		
-		<div class="center-right">
+		<div>
 		<h3><a href="#">신작 업데이트</a></h3>
 			<ul>
 				<li>가</li>
@@ -46,7 +32,7 @@ body{
 				<li>다</li>
 			</ul>
 		</div>
-	</div>
+	
 	<br>
 	<div id="center2">
 		<div class="center-left">
@@ -66,6 +52,7 @@ body{
 			</ul>
 		</div>
 	</div>
-	
+	</div>
+	</div>
 </body>
 </html>
