@@ -1,0 +1,103 @@
+body {
+	height: 100vh;
+	background-color: #2E2E2E;
+}
+#joinIcon {
+	margin: 20px 0;
+	width: 20%;
+}
+a {
+	color: #92badd;
+	display: inline-block;
+	text-decoration: none;
+	font-weight: 400;
+}
+a:hover{
+	text-decoration: none;
+}
+.wrapper {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+	width: 100%;
+	min-height: 100%;
+	padding: 20px;
+	background-color: #2E2E2E;
+}
+
+#formContent {
+	border-radius: 10px 10px 10px 10px;
+	background: #fff;
+	padding: 30px;
+	width: 90%;
+	max-width: 450px;
+	position: relative;
+	padding: 0px;
+	box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+	text-align: center;
+}
+.join {
+	height: 700px;
+}
+.login {
+	height: 500px;
+}
+.loginInp {
+	background-color: #f6f6f6;
+	border: none;
+	color: #0d0d0d;
+	padding: 15px 32px;
+	text-align: left;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 5px;
+	width: 85%;
+	border: 2px solid #f6f6f6;
+	border-radius: 5px 5px 5px 5px;
+}
+.joinInp {
+	background-color: #f6f6f6;
+	border: none;
+	color: #0d0d0d;
+	padding: 10px 15px;
+	text-align: left;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 5px;
+	width: 70%;
+	border: 2px solid #f6f6f6;
+	border-radius: 5px 5px 5px 5px;
+}
+input[type=submit] {
+	background-color: #56baed;
+	border: none;
+	color: white;
+	padding: 15px 80px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 13px;
+	border-radius: 5px 5px 5px 5px;
+	margin: 40px 0px;
+}
+input[type=submit]:hover {
+  background-color: #39ace7;
+}
+.stick{
+	color: lightgray;
+	margin: 0 5px;
+}
+*:focus {
+	outline: none;
+}
+
+#loginIcon {
+	margin: 20px 0;
+	width: 40%;
+}
+.login.label{
+	margin: 10px 0 20px;
+}

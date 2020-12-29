@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <footer>
-	<div id="copy">
+	<div class="text-center">
 		footer
 	</div>
 </footer>

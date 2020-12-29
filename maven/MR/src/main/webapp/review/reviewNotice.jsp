@@ -8,7 +8,12 @@
 </head>
 
 <body>
+<div class="container">
 	<jsp:include page="/include/topHeader.jsp" />
-	리뷰게시판
+	
+	<div class="wrap">
+		리뷰게시판
+	</div>
+</div>
 </body>
 </html>

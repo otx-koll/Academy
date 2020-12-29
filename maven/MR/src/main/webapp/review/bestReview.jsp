@@ -7,7 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="/include/topHeader.jsp" />
-	인기리뷰
+<div class="container">
+	<jsp:include page="/include/topHeader.jsp" />
+	
+	<div class="wrap">
+		인기 리뷰
+	</div>
+</div>
 </body>
 </html>

@@ -418,8 +418,8 @@ public class ForumDao {
 
 		forumDao.deleteAll(); // 테이블 내용 모두 삭제
 
-		// 주글 15개 insert하기
-		for (int i = 0; i < 15; i++) {
+		// 주글 100개 insert하기
+		for (int i = 0; i < 100; i++) {
 			ForumVo forumVo = new ForumVo();
 
 			forumVo.setId("user1");

@@ -30,58 +30,93 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 <html>
 <head>
 <title>상세보기</title>
+<style>
+input[value="추천"] {
+	margin: 10px;
+}
+.wrap table{
+	margin-left:auto; margin-right:auto;
+}
+th, td {
+	padding: 10px 15px;
+}
+</style>
 </head>
 <body>
-<jsp:include page="/include/topHeader.jsp" />
-<div>
-	<table border="1">
-		<tr>
-			<th scope="col">글번호</th>
-			<td width="500"><%=forumVo.getNum() %></td>
-		</tr>
-		<tr>
-			<th scope="col">조회수</th>
-			<td ><%=forumVo.getReadcount() %></td>
-		</tr>
-		<tr>
-			<th scope="col" >작성자</th>
-			<td><%=forumVo.getId() %></td>
-		</tr>
-		<tr>
-			<th scope="col">작성일자</th>
-			<td><%=sdf.format(forumVo.getRegDate()) %></td>
-		</tr>
-		<tr>
-			<th scope="col">글제목</th>
-			<td><%=forumVo.getSubject() %></td>
-		</tr>
-		<tr>
-			<th scope="col">글내용</th>
-			<td><%=content %></td>
-		</tr>
-	</table>
+<div class="container">
+	<jsp:include page="/include/topHeader.jsp" />
+	
+	<!-- 글 내용 -->
+	<div class="wrap">
+		<table border="1" style="margin: auto" class="">
+			<tr>
+				<th scope="col" >작성자</th>
+				<td><%=forumVo.getId() %></td>
+				<th scope="col">조회수</th>
+				<td width="500"><%=forumVo.getReadcount() %></td>
+			</tr>
+			
+			<tr>
+				<th scope="col">제목</th>
+				<td><%=forumVo.getSubject() %></td>
+				<th scope="col">작성일</th>
+				<td><%=sdf.format(forumVo.getRegDate()) %></td>
+			</tr>
 
-	<div id="table_search">
+			<tr>
+				<td colspan="4"><%=content %></td>
+			</tr>
+		</table>
+		
+		<div class="text-center" style="margin-top: 30px;">
+			<input style="margin: auto" type="button" value="추천" onclick="alert('good')">
+		</div>
+	</div>
+	
+	<div class="float-right">
 		<%
 		String id = (String) session.getAttribute("id");
 		if (id != null) { // 로그인 했을때
 			if (id.equals(forumVo.getId())) { // 로그인 아이디와 글작성자 아이디가 같을때
 				%>
-				<input type="button" value="글수정" class="btn" onclick="location.href = 'modifyForm.jsp?num=<%=forumVo.getNum() %>&pageNum=<%=pageNum %>'">
-				<input type="button" value="글삭제" class="btn" onclick="remove()">
+				<input type="button" value="글수정" class="btn btn-secondary mb-3" onclick="location.href = 'modifyForm.jsp?num=<%=forumVo.getNum() %>&pageNum=<%=pageNum %>'">
+				<input type="button" value="글삭제" class="btn btn-secondary mb-3" onclick="remove()">
 				<%
 			}
 			%>
-			<input type="button" value="답글쓰기" class="btn" onclick="location.href = 'replyWriteForm.jsp?reRef=<%=forumVo.getReRef() %>&reLev=<%=forumVo.getReLev() %>&reSeq=<%=forumVo.getReSeq() %>&pageNum=<%=pageNum %>'">
+			<input type="button" value="답글쓰기" class="btn btn-secondary mb-3" onclick="location.href = 'replyWriteForm.jsp?reRef=<%=forumVo.getReRef() %>&reLev=<%=forumVo.getReLev() %>&reSeq=<%=forumVo.getReSeq() %>&pageNum=<%=pageNum %>'">
 			<%
 		}
 		%>
-		<input type="button" value="목록보기" class="btn" onclick="location.href = 'notice.jsp?pageNum=<%=pageNum %>'">
+		<input type="button" value="목록보기" class="btn btn-secondary mb-3" onclick="location.href = 'notice.jsp?pageNum=<%=pageNum %>'">
 	</div>
+	<br>
+	
+	<!-- 댓글 -->
+	<!-- 
+	<form id="commentForm" name="commentForm" method="post">
+		<div style="margin: 10px 0;">
+		    <span style="color:white;"><strong>댓글</strong></span>
+		</div>
+		
+		<div>
+		    <table class="table">
+		        <tr>
+		            <td>
+		                <textarea style="width: 100%" rows="3" id="comment" name="comment" placeholder="댓글을 입력하세요"></textarea>
+		               <br>
+		               <div>
+		                   <a href='#' onClick="fn_comment('${result.code }')" class="btn pull-right btn-success">등록</a>
+		                </div>
+		            </td>
+		        </tr>
+		    </table>
+		</div>
+    	<input type="hidden" id="b_code" name="b_code" value="${result.code }" />        
+	</form>
+	-->
+	
 </div>
-
-<jsp:include page="/include/bottomFooter.jsp" />
-
 
 <script>
 	function remove() {
@@ -94,7 +129,6 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		location.href = 'delete.jsp?num=<%=forumVo.getNum() %>&pageNum=<%=pageNum %>';
 	} // remove
 </script>
-
 </body>
 </html>   
 
