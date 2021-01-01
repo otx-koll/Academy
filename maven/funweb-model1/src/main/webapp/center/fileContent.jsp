@@ -11,9 +11,9 @@ int num = Integer.parseInt(request.getParameter("num"));
 String pageNum = request.getParameter("pageNum");
 
 // DAO 객체 준비
-// NoticeDao noticeDao = NoticeDao.getInstance();
+NoticeDao noticeDao = NoticeDao.getInstance();
 // AttachDao attachDao = AttachDao.getInstance();
-NoticeMyBatisDao noticeDao = NoticeMyBatisDao.getInstance();
+// NoticeMyBatisDao noticeDao = NoticeMyBatisDao.getInstance();
 AttachMyBatisDao attachDao = AttachMyBatisDao.getInstance();
 
 // 조회수 1 증가

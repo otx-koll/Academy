@@ -34,8 +34,8 @@ public class ForumDao {
 		try {
 			con = JdbcUtils.getConnection();
 
-			sql = "INSERT INTO forum (id, subject, content, readcount, reg_date, ip, re_ref, re_lev, re_seq, thumbs_up) ";
-			sql += "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+			sql = "INSERT INTO forum (id, subject, content, readcount, reg_date, ip, re_ref, re_lev, re_seq) ";
+			sql += "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) ";
 
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, forumVo.getId());
@@ -47,7 +47,6 @@ public class ForumDao {
 			pstmt.setInt(7, forumVo.getReRef());
 			pstmt.setInt(8, forumVo.getReLev());
 			pstmt.setInt(9, forumVo.getReSeq());
-			pstmt.setInt(10, forumVo.getThumbsUp());
 			// 실행
 			pstmt.executeUpdate();
 
@@ -56,7 +55,7 @@ public class ForumDao {
 		} finally {
 			JdbcUtils.close(con, pstmt);
 		}
-	} // addBoard()
+	} // addForum()
 
 	// 글 하나 가져오기
 	public ForumVo getForumByNum(int num) {
@@ -91,7 +90,6 @@ public class ForumDao {
 				forumVo.setReRef(rs.getInt("re_ref"));
 				forumVo.setReLev(rs.getInt("re_lev"));
 				forumVo.setReSeq(rs.getInt("re_seq"));
-				forumVo.setThumbsUp(rs.getInt("thumbs_up"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -139,7 +137,7 @@ public class ForumDao {
 		try {
 			con = JdbcUtils.getConnection();
 
-			sql = "SELECT COUNT(*) FROM Forum ";
+			sql = "SELECT COUNT(*) FROM forum ";
 
 			// 동적 sql 구현
 			if (category.equals("subject")) {
@@ -205,7 +203,6 @@ public class ForumDao {
 				forumVo.setReRef(rs.getInt("re_ref"));
 				forumVo.setReLev(rs.getInt("re_lev"));
 				forumVo.setReSeq(rs.getInt("re_seq"));
-				forumVo.setThumbsUp(rs.getInt("thumbs_up"));
 
 				list.add(forumVo);
 			}
@@ -217,7 +214,7 @@ public class ForumDao {
 		return list;
 	} // getForums
 
-	// 목록 불러오기
+	// 검색한 목록 불러오기
 	public List<ForumVo> getForumBySearch(int startRow, int pageSize, String category, String search) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -230,7 +227,7 @@ public class ForumDao {
 			con = JdbcUtils.getConnection();
 
 			sql = "SELECT * ";
-			sql += "FROM Forum ";
+			sql += "FROM forum ";
 			// 동적 sql 구현
 			if (category.equals("subject")) {
 				sql += "WHERE subject LIKE CONCAT('%', ?, '%') ";
@@ -278,6 +275,46 @@ public class ForumDao {
 		return list;
 	} // getForumsBySearch()
 
+	// 최근 게시글 5개 가져오기
+	public List<ForumVo> getFiveForums() {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		List<ForumVo> list = new ArrayList<>();
+
+		try {
+			con = JdbcUtils.getConnection();
+
+			String sql = "";
+
+			sql = "SELECT * ";
+			sql += "FROM forum ";
+			sql += "ORDER BY num DESC ";
+			sql += "LIMIT 0, 5 ";
+
+			pstmt = con.prepareStatement(sql);
+
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				ForumVo forumVo = new ForumVo();
+				forumVo.setSubject(rs.getString("subject"));
+				forumVo.setId(rs.getString("id"));
+				forumVo.setContent(rs.getString("content"));
+				forumVo.setRegDate(rs.getTimestamp("reg_date"));
+
+				list.add(forumVo);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtils.close(con, pstmt, rs);
+		}
+		return list;
+	} // getFiveForums
+	
+	
 	// 수정하기
 	public void updateBoard(ForumVo forumVo) {
 		Connection con = null;
@@ -315,7 +352,7 @@ public class ForumDao {
 		try {
 			con = JdbcUtils.getConnection();
 
-			sql = "DELETE FROM forum WHERE num = ?";
+			sql = "DELETE FROM forum WHERE num = ? ";
 
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, num);
@@ -390,6 +427,10 @@ public class ForumDao {
 		}
 	} // updateAndAddReply
 
+	
+	
+	
+	
 	// 전체 삭제
 	public void deleteAll() {
 		Connection con = null;

@@ -21,7 +21,7 @@ table{
 	margin-right:auto;
 }
 th { padding: 10px; }
-input[type="text"], textarea { width: 500px; }width: 500px;
+input[type="text"], textarea { width: 100%; }
 </style>
 </head>
 
@@ -29,23 +29,25 @@ input[type="text"], textarea { width: 500px; }width: 500px;
 <div class="container">
 	<jsp:include page="/include/topHeader.jsp" />
 	
+	
 	<div class="wrap text-center">
+		<h1>Notice</h1>
 	
 		<form action="writePro.jsp" method="post" name="frm">
 			<input type="hidden" name="pageNum" value="<%=pageNum %>">
 			<input type="hidden" name="id" value="<%=id %>">
 			
-			<table>
+			<table class="table">
 				<tr>
 					<th scope="col">글제목</th>
 					<td>
-						<input type="text" name="subject">
+						<input type="text" name="subject" class="form-control mr-sm-2">
 					</td>
 				</tr>
 				<tr>
 					<th scope="col">글내용</th>
 					<td>
-						<textarea rows="13" cols="40" name="content"></textarea>
+						<textarea rows="13" cols="40" name="content" class="form-control mr-sm-2"></textarea>
 					</td>
 				</tr>
 			</table>

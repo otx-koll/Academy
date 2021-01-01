@@ -54,7 +54,7 @@ public class NoticeDao {
 		} finally {
 			JdbcUtils.close(con, pstmt);
 		}
-	} // addBoard()
+	} // addNotice()
 	
 	public NoticeVo getNoticeByNum(int num) {
 		Connection con = null;

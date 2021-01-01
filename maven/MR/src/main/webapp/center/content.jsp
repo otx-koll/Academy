@@ -31,9 +31,6 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 <head>
 <title>상세보기</title>
 <style>
-input[value="추천"] {
-	margin: 10px;
-}
 .wrap table{
 	margin-left:auto; margin-right:auto;
 }
@@ -42,13 +39,14 @@ th, td {
 }
 </style>
 </head>
+
 <body>
 <div class="container">
 	<jsp:include page="/include/topHeader.jsp" />
 	
 	<!-- 글 내용 -->
 	<div class="wrap">
-		<table border="1" style="margin: auto" class="">
+		<table border="1" style="margin: auto">
 			<tr>
 				<th scope="col" >작성자</th>
 				<td><%=forumVo.getId() %></td>
@@ -68,9 +66,6 @@ th, td {
 			</tr>
 		</table>
 		
-		<div class="text-center" style="margin-top: 30px;">
-			<input style="margin: auto" type="button" value="추천" onclick="alert('good')">
-		</div>
 	</div>
 	
 	<div class="float-right">

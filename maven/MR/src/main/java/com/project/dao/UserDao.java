@@ -51,26 +51,26 @@ public class UserDao {
 			JdbcUtils.close(con, pstmt);
 		}
 	} // addUser
-	
+
 	// 아이디 중복체크
 	public int getCountById(String id) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
+
 		int count = 0;
-		
+
 		try {
 			con = JdbcUtils.getConnection();
-			
+
 			String sql = "";
-			
+
 			sql += "SELECT COUNT(*) FROM user WHERE id = ? ";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
-			
+
 			rs = pstmt.executeQuery();
-			
+
 			if (rs.next()) {
 				count = rs.getInt(1);
 			}
@@ -116,10 +116,10 @@ public class UserDao {
 			JdbcUtils.close(con, pstmt, rs);
 		}
 		return check;
-	} // userCheck
+	} // loginCheck
 
 	// 아이디 찾기
-	public String idSearch(String name, String tel) {
+	public String idSearch(String name, int tel) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -134,7 +134,7 @@ public class UserDao {
 
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, name);
-			pstmt.setString(2, tel);
+			pstmt.setInt(2, tel);
 
 			rs = pstmt.executeQuery();
 
@@ -179,26 +179,26 @@ public class UserDao {
 		}
 		return passwd;
 	} // passwdSearch
-	
+
 	// 회원 정보 하나 가져오기
 	public UserVo getUserById(String id) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
+
 		UserVo userVo = null;
-		
+
 		try {
 			con = JdbcUtils.getConnection();
-			
+
 			String sql = "";
-			
+
 			sql = "SELECT * FROM user WHERE id = ? ";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
-			
+
 			rs = pstmt.executeQuery();
-			
+
 			if (rs.next()) {
 				userVo = new UserVo();
 				userVo.setId(rs.getString("id"));
@@ -216,33 +216,55 @@ public class UserDao {
 		}
 		return userVo;
 	} // getUserById
-	
-	// 
+
+	// 수정하기
 	public void update(UserVo userVo) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		
+
 		try {
 			con = JdbcUtils.getConnection();
-			
+
 			String sql = "";
-			
+
 			sql = "UPDATE user ";
 			sql += "SET name = ?, email = ?, tel = ? ";
 			sql += "WHERE id = ? ";
-			
+
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, userVo.getName());
 			pstmt.setString(2, userVo.getEmail());
 			pstmt.setString(3, userVo.getTel());
 			pstmt.setString(4, userVo.getId());
-			
+
 			pstmt.executeUpdate();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			JdbcUtils.close(con, pstmt);
 		}
 	}
+
+	// 특정id에 해당하는 회원 1명 삭제하기
+	public void deleteById(String id) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			con = JdbcUtils.getConnection();
+
+			String sql = "";
+			sql += "DELETE FROM user WHERE id = ? ";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+
+			pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtils.close(con, pstmt);
+		}
+	} // deleteById()
 }

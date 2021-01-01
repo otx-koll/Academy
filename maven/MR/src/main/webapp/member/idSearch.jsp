@@ -1,30 +1,48 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-// String id = request.
-%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<title>아이디 찾기</title>
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/member.css" rel="stylesheet">
+<script src="/script/jquery-3.5.1.js"></script>
+<style>
+label {
+	margin: 10px 0 10px;
+	width: 80px;
+}
+</style>
 </head>
-<body>
-	<jsp:include page="/include/topHeaderMinusNav.jsp" />
 
-	<a href="/member/passwdSearch.jsp">비밀번호 찾기</a><br>
-	<form action="idSearchPro.jsp" method="post" id="idSearch">
-		<fieldset>
-			<legend>아이디 찾기</legend>
+<body>
+	<div class="wrapper">
+		<div id="formContent" class="login">
+		
+			<div>
+				<a href="/index.jsp">
+					<img src="/img/movie_icon.png" id="loginIcon"/>
+				</a>
+			</div>
 			
-			<label>이름</label>
-			<input type="text" name="name"><br>
+			<form action="idSearchPro.jsp" method="post" id="idSearch">
+				<fieldset>
+					<legend>아이디 찾기</legend><br>
+					
+					<label>이름</label>
+					<input type="text" name="name" class="joinInp" autofocus requried><br>
+					
+					<label>전화번호</label>
+					<input type="text" name="tel" class="joinInp" requried><br>
+					
+					<input type="submit" value="확인">
+				</fieldset>
+			</form>
 			
-			<label>전화번호</label>
-			<input type="text" name="tel"><br>
-			
-			<input type="submit" value="확인">
-		</fieldset>
-	</form>
+			<div>
+				<a href="/member/passwdSearch.jsp">비밀번호 찾기</a><br>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

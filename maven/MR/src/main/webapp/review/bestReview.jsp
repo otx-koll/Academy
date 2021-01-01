@@ -11,7 +11,7 @@
 	<jsp:include page="/include/topHeader.jsp" />
 	
 	<div class="wrap">
-		인기 리뷰
+		-
 	</div>
 </div>
 </body>

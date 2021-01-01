@@ -12,42 +12,17 @@
 		
 		<div class="wrap">
 			<div>
-				<h3><a href="/best/award.jsp">Box Office</a></h3>
-				<ol>
-					<li>가</li>
-					<li>나</li>
-					<li>다</li>
-				</ol>
+				<jsp:include page="/home/award.jsp" />
 			</div>
-			
+			<br>
+
 			<div>
-			<h3><a href="#">Update</a></h3>
-				<ul>
-					<li>가</li>
-					<li>나</li>
-					<li>다</li>
-				</ul>
+				<jsp:include page="/home/recent.jsp" />
 			</div>
+			<br>
 			
-			<div id="center2">
-				<div class="center-left">
-					<h3><a href="/review/bestReview.jsp">Best Review</a></h3>
-					<ol>
-						<li>a</li>
-						<li>b</li>
-					</ol>
-				</div>
-				
-				<div class="center-right">
-					<h3><a href="/review/reviewNotice.jsp">Recent Review</a></h3>
-					<ul>
-						<li>가</li>
-						<li>나</li>
-						<li>다</li>
-					</ul>
-				</div>
-			</div>
 		</div>
+		
 	</div>
 </body>
 </html>

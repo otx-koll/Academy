@@ -1,4 +1,4 @@
-<%@page import="com.exam.dao.MemberDao"%>
+<%@page import="com.project.dao.UserDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
@@ -16,9 +16,9 @@ request.setCharacterEncoding("utf-8");
 String passwd = request.getParameter("passwd");
 
 // DAO 객체 준비
-MemberDao memberDao = MemberDao.getInstance();
+UserDao userDao = UserDao.getInstance();
 
-int check = memberDao.userCheck(id, passwd);
+int check = userDao.loginCheck(id, passwd);
 
 if (check == 1) { // 패스워드 일치할 때 
 	response.sendRedirect("userInfo.jsp");

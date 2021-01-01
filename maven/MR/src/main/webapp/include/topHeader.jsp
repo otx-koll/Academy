@@ -54,7 +54,7 @@ nav {
 				<a class="nav-link" href="/review/reviewNotice.jsp">REVIEW</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="/best/award.jsp">CINE</a>
+				<a class="nav-link" href="/review/bestReview.jsp">CINE</a>
 			</li>
 		</ul>
 		
@@ -70,7 +70,7 @@ nav {
 			<span class="nav-link">
 				<%=id %>님 반갑습니다
 			</span>
-			<a class="nav-link" href="/member/userInfo.jsp">내정보</a>
+			<a class="nav-link" href="/member/info.jsp">내정보</a>
 			<a class="nav-link" href="/member/logout.jsp">Logout</a>
 			</div>
 			<%

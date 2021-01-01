@@ -7,8 +7,8 @@
 <link href="/css/bootstrap.min.css" rel="stylesheet">
 <link href="/css/member.css" rel="stylesheet">
 <script src="/script/jquery-3.5.1.js"></script>
-
 </head>
+
 <body>
 	<div class="wrapper">
 		<div id="formContent" class="login">

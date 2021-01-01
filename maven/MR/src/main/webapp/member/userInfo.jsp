@@ -38,8 +38,9 @@ UserVo userVo = userDao.getUserById(id);
 				<input type="submit" value="회원수정" onclick="modify()">
 			</form>
 			
-			<form>
-				<input type="button" value="탈퇴하기" onclick="alert('탈퇴하기')">
+			<form action="deleteUserPro.jsp" method="post" id="frm">
+				<input type="hidden" name="id" value="<%=userVo.getId() %>">
+				<input type="submit" value="탈퇴하기">
 			</form>
 		</div>
 	</div>
@@ -55,6 +56,14 @@ function modify() {
 	}
 	
 	location.href = 'index.jsp';
-} // remove
+} // modify
+
+$('form#frm').submit(function () { 
+	let isDelete = confirm('정말 탈퇴하시겠습니까?');
+	if (!isDelete) { 
+		return false;
+	} 
+});
+
 </script>
 </html>

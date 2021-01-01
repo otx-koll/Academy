@@ -5,7 +5,7 @@
 request.setCharacterEncoding("utf-8");
 
 String name = request.getParameter("name");
-String tel = request.getParameter("tel");
+int tel = Integer.parseInt(request.getParameter("tel"));
 
 UserDao userDao = UserDao.getInstance();
 
@@ -21,7 +21,7 @@ if (id == null) {
 } else {
 	%>
 	<script>
-		alert("아이디는 " + <%=id %> + "입니다.");
+		alert("아이디는 " + "<%=id %>" + "입니다.");
 		location.href = "login.jsp";
 	</script>
 	<%

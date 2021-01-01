@@ -7,17 +7,12 @@ String id = (String) session.getAttribute("id");
 	<div id="login">
 		<a href="/index.jsp">Home</a>
 		<%
-		if (id != null) {
-			%>
-			<a href="/member/logout.jsp">Logout</a>
-			<%
-		} else {
+		if (id == null) {
 			%>
 			<a href="/member/login.jsp">Login</a>
 			<%
 		}
 		%>
-		
 	</div>
 	<hr>
 </header>
