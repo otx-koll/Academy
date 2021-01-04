@@ -31,7 +31,7 @@ input[type="text"], textarea { width: 100%; }
 	
 	
 	<div class="wrap text-center">
-		<h1>Notice</h1>
+		<h3>Notice</h3><br>
 	
 		<form action="writePro.jsp" method="post" name="frm">
 			<input type="hidden" name="pageNum" value="<%=pageNum %>">

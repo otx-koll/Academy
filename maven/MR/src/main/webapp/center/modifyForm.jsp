@@ -24,40 +24,51 @@ ForumVo forumVo = forumDao.getForumByNum(num);
 <!DOCTYPE html>
 <html>
 <head>
-<title>글쓰기</title>
+<title>글 수정</title>
+<style>
+table{
+	margin-left:auto;
+	margin-right:auto;
+}
+th { padding: 10px; }
+input[type="text"], textarea { width: 100%; }
+</style>
 </head>
 <body>
 <div class="container">
 	<jsp:include page="/include/topHeader.jsp" />
 	
-	<div class="wrap">	
+	<div class="wrap text-center">
+		<h3>Modify</h3><br>
+	
 		<form action="modifyPro.jsp" method="post" name="frm">
 		<input type="hidden" name="pageNum" value="<%=pageNum %>">
 		<input type="hidden" name="num" value="<%=forumVo.getNum() %>">
-		<table id="notice">
+		
+		<table class="table">
 			<tr>
-				<th scope="col" class="twrite">작성자</th>
-				<td class="left" width="500">
-					<input type="text" name="id" value="<%=forumVo.getId() %>" readonly>
+				<th scope="col">작성자</th>
+				<td>
+					<input type="text" name="id" value="<%=forumVo.getId() %>" style="border:none; background-color:transparent" readonly>
 				</td>
 			</tr>
 			<tr>
 				<th scope="col" class="ttitle">글제목</th>
 				<td class="left">
-					<input type="text" name="subject" value="<%=forumVo.getSubject() %>">
+					<input type="text" name="subject" value="<%=forumVo.getSubject() %>" class="form-control mr-sm-2">
 				</td>
 			</tr>
 			<tr>
 				<th scope="col" class="ttitle">글내용</th>
 				<td class="left">
-					<textarea rows="13" cols="40" name="content"><%=forumVo.getContent() %></textarea>
+					<textarea rows="13" cols="40" name="content" class="form-control mr-sm-2"><%=forumVo.getContent() %></textarea>
 				</td>
 			</tr>
 		</table>
 	
 		<div>
-			<input type="submit" value="글수정">
-			<input type="button" value="목록보기" onclick="location.href = 'notice.jsp?pageNum=<%=pageNum %>'">
+			<input type="submit" value="글수정" class="btn btn-secondary mb-3">
+			<input type="button" value="목록보기" class="btn btn-secondary mb-3" onclick="location.href = 'notice.jsp?pageNum=<%=pageNum %>'">
 		</div>
 		</form>
 	</div>

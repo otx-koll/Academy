@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>동행 게시판</title>
+<title>게시판</title>
 <style>
 .subject{
 	color: black;
@@ -174,22 +174,27 @@ if (count > 0) {
 			%>
 		</div>
 		
+<!-- 		<form class="form-inline my-2 my-lg-0" role="search"> -->
+<!-- 			<input type="text" class="form-control mr-sm-2" name="search" placeholder="Search"> -->
+<!-- 			<input type="submit" value="검색" class="btn btn-dark my-2 my-sm-0" style="margin: 0 20px 0 0;"> -->
+<!-- 		</form> -->
+		
 		<div id="table_search" class="text-center">
-			<form action="notice.jsp" method="get">
-				<select name="category">
+			<form action="notice.jsp" method="get" class="form-inline" style="margin-left: 30%;">
+				<select name="category" class="form-control" style="margin-right: 5px;">
 					<option value="subject" <%=category.equals("subject") ? "selected" : ""%>>글제목</option>
 					<option value="content" <%=category.equals("content") ? "selected" : ""%>>글내용</option>
 					<option value="id" <%=category.equals("id") ? "selected" : ""%>>작성자ID</option>
 				</select>
-				<input type="text" name="search" value="<%=search%>">
-				<input type="submit" value="검색" class="btn btn-secondary mb-3">
+				<input type="text" name="search" class="form-control mr-sm-2" value="<%=search%>">
+				<input type="submit" value="검색" class="btn btn-secondary my-3 my-sm-0" style="margin-right: 5px;">
 				
 				<%
 				// 로그인 했을때만 [글쓰기] 버튼 보이기
 				String id = (String) session.getAttribute("id");
 				if (id != null) {
 					%>
-					<input type="button" value="글쓰기" class="btn btn-secondary mb-3" onclick="location.href='writeForm.jsp?pageNum=<%=pageNum%>'">
+					<input type="button" value="글쓰기" class="btn btn-secondary mb-3 my-sm-0" onclick="location.href='writeForm.jsp?pageNum=<%=pageNum%>'">
 					<%
 					}
 				%>

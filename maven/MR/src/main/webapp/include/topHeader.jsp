@@ -54,14 +54,15 @@ nav {
 				<a class="nav-link" href="/review/reviewNotice.jsp">REVIEW</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="/review/bestReview.jsp">CINE</a>
+<!-- 				<a class="nav-link" href="/home/cine.jsp">CINE</a> -->
+				<a class="nav-link" href="#">CINE</a>
 			</li>
 		</ul>
 		
-		<form class="form-inline my-2 my-lg-0" role="search">
-			<input type="text" class="form-control mr-sm-2" name="search" placeholder="Search">
-			<input type="submit" value="검색" class="btn btn-dark my-2 my-sm-0" style="margin: 0 20px 0 0;">
-		</form>
+<!-- 		<form class="form-inline my-2 my-lg-0" role="search"> -->
+<!-- 			<input type="text" class="form-control mr-sm-2" name="search" placeholder="Search"> -->
+<!-- 			<input type="submit" value="검색" class="btn btn-dark my-2 my-sm-0" style="margin: 0 20px 0 0;"> -->
+<!-- 		</form> -->
 		
 		<div class="nav navbar-nav navbar-right">
 		<%

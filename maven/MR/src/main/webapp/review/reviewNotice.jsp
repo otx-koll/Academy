@@ -1,3 +1,4 @@
+<%@page import="com.project.vo.AttachVo"%>
 <%@page import="com.project.vo.ReviewVo"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="com.project.vo.ForumVo"%>
@@ -73,6 +74,7 @@ List<ReviewVo> reviewList = null;
 if (count > 0) {
 	reviewList = reviewDao.getReviewBySearch(startRow, pageSize, category, search);
 }
+
 %>
 <body>
 <div class="container">
@@ -87,9 +89,9 @@ if (count > 0) {
 			for (ReviewVo reviewVo : reviewList) {
 			%>
 			<tr>
-				<td class="text-center" rowspan="3">
-					이미지 없음
-				</td>
+<!-- 				<td class="text-center" rowspan="3"> -->
+<%-- 					<img src="/upload/<%=attachVo.getUploadpath() %>/<%=attachVo.getFilename() %>" style="width: 200px; height: 300px;"> --%>
+<!-- 				</td> -->
 				
 				<td class="text-center"colspan="4"><%=reviewVo.getMvSubject() %></td>
 
@@ -184,20 +186,20 @@ if (count > 0) {
 		
 		<div id="table_search" class="text-center">
 			<form action="notice.jsp" method="get">
-				<select name="category">
-					<option value="subject" <%=category.equals("subject") ? "selected" : ""%>>글제목</option>
-					<option value="content" <%=category.equals("content") ? "selected" : ""%>>글내용</option>
-					<option value="id" <%=category.equals("id") ? "selected" : ""%>>작성자ID</option>
-				</select>
-				<input type="text" name="search" value="<%=search%>">
-				<input type="submit" value="검색" class="btn btn-secondary mb-3">
+<!-- 				<select name="category"> -->
+<%-- 					<option value="subject" <%=category.equals("subject") ? "selected" : ""%>>글제목</option> --%>
+<%-- 					<option value="content" <%=category.equals("content") ? "selected" : ""%>>글내용</option> --%>
+<%-- 					<option value="id" <%=category.equals("id") ? "selected" : ""%>>작성자ID</option> --%>
+<!-- 				</select> -->
+<%-- 				<input type="text" name="search" value="<%=search%>"> --%>
+<!-- 				<input type="submit" value="검색" class="btn btn-secondary mb-3"> -->
 				
 				<%
 				// 로그인 했을때만 [글쓰기] 버튼 보이기
 				String id = (String) session.getAttribute("id");
 				if (id != null) {
 					%>
-					<input type="button" value="글쓰기" class="btn btn-secondary mb-3" onclick="location.href='reviewWriteForm.jsp?pageNum=<%=pageNum%>'">
+					<input type="button" value="리뷰쓰기" class="btn btn-secondary mb-3" onclick="location.href='reviewWriteForm.jsp?pageNum=<%=pageNum%>'">
 					<%
 					}
 				%>

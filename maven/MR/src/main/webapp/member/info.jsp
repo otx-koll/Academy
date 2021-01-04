@@ -15,7 +15,7 @@ if (id == null) {
 <meta charset="UTF-8">
 <title>Info</title>
 <style>
-li{
+.mody {
 	margin: 10px;
 }
 </style>
@@ -28,8 +28,8 @@ li{
 	<div class="wrap">
 		<div>
 			<ul>
-				<li><a href="/member/UserCheck.jsp">내정보 수정</a></li>
-				<li><a href="#">내가 쓴 리뷰</a></li>
+				<li class="mody"><a href="/member/UserCheck.jsp">내정보 수정</a></li>
+				<li class="mody"><a href="#">내가 쓴 리뷰</a></li>
 			</ul>
 		</div>
 	</div>

@@ -96,7 +96,7 @@ th, td {
 		if (id != null) { // 로그인 했을때
 			if (id.equals(reviewVo.getId())) { // 로그인 아이디와 글작성자 아이디가 같을때
 				%>
-				<input type="button" value="글수정" class="btn btn-secondary mb-3" onclick="location.href = 'modifyForm.jsp?num=<%=reviewVo.getNum() %>&pageNum=<%=pageNum %>'">
+<%-- 				<input type="button" value="글수정" class="btn btn-secondary mb-3" onclick="location.href = 'modifyForm.jsp?num=<%=reviewVo.getNum() %>&pageNum=<%=pageNum %>'"> --%>
 				<input type="button" value="글삭제" class="btn btn-secondary mb-3" onclick="remove()">
 				<%
 			}

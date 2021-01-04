@@ -26,9 +26,7 @@ table{
 	margin-right:auto;
 }
 th { padding: 10px; }
-input[type="text"], textarea {
-	width: 500px;
-}
+input[type="text"], textarea { width: 100%; }
 </style>
 </head>
 
@@ -37,6 +35,7 @@ input[type="text"], textarea {
 	<jsp:include page="/include/topHeader.jsp" />
 	
 	<div class="wrap text-center">
+		<h3>Reply</h3><br>
 		
 		<form action="replyWritePro.jsp" method="post" name="frm">
 			<input type="hidden" name="id" value="<%=id %>">
@@ -45,17 +44,17 @@ input[type="text"], textarea {
 			<input type="hidden" name="reLev" value="<%=reLev %>">
 			<input type="hidden" name="reSeq" value="<%=reSeq %>">
 			
-			<table id="notice">
+			<table class="table">
 				<tr>
 					<th scope="col">글제목</th>
 					<td>
-						<input type="text" name="subject">
+						<input type="text" name="subject" class="form-control mr-sm-2">
 					</td>
 				</tr>
 				<tr>
 					<th scope="col">글내용</th>
 					<td>
-						<textarea rows="13" cols="40" name="content"></textarea>
+						<textarea rows="13" cols="40" name="content" class="form-control mr-sm-2"></textarea>
 					</td>
 				</tr>
 			</table>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<html>
 <head>
 <style>
 body {
@@ -24,19 +25,25 @@ li {
 	margin: 5px;
 }
 </style>
-
 </head>
 
-<h3><div class="box1">Box Office</div></h3>
-<div class="row">
-	<div class=" col-6 align-self-center">
-		<div id="msg" class="border border-secondary rounded row"></div>
-	</div>
-	<div class="col-6" style="margin-bottom: auto; margin-top: auto;">
-		<div class="box3"></div>
+<body>
+<div class="container">
+	<jsp:include page="/include/topHeader.jsp" />
+	
+	<div class="wrap">
+		<h3><div class="box1" style="background-color: #848cb5;">영화 검색</div></h3>
+		<div class="row">
+			<div class=" col-6 align-self-center">
+				<div id="msg" class="border border-secondary rounded row"></div>
+			</div>
+			<div class="col-6" style="margin-bottom: auto; margin-top: auto;">
+				<div class="box3"></div>
+			</div>
+		</div>
 	</div>
 </div>
-	
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
 $(function(){
@@ -131,3 +138,5 @@ function show(movieCd){
 }
 
 </script>
+</body>
+</html>
