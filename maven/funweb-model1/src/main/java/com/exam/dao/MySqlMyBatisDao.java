@@ -6,14 +6,14 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-import com.exam.mapper.MysqlMapper;
+import com.exam.mapper.MySqlMapper;
 import com.exam.vo.NoticeVo;
 
-public class MysqlMyBatisDao {
+public class MySqlMyBatisDao {
 	// ΩÃ±€≈Ê
-	private static MysqlMyBatisDao instance = new MysqlMyBatisDao();
+	private static MySqlMyBatisDao instance = new MySqlMyBatisDao();
 
-	public static MysqlMyBatisDao getInstance() {
+	public static MySqlMyBatisDao getInstance() {
 		return instance;
 	}
 	
@@ -21,13 +21,13 @@ public class MysqlMyBatisDao {
 	
 	private SqlSessionFactory sqlSessionFactory;
 	
-	private MysqlMyBatisDao() {
+	private MySqlMyBatisDao() {
 		sqlSessionFactory = MyBatisUtils.getSqlSessionFactory();
 	}
 	
 	public int getNextNum(String tableName) {
 		try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
-			MysqlMapper mapper = sqlSession.getMapper(MysqlMapper.class);
+			MySqlMapper mapper = sqlSession.getMapper(MySqlMapper.class);
 			int num = mapper.getNextNum(tableName);
 			return num;
 		}

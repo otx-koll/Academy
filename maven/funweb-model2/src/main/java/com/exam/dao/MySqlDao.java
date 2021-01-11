@@ -3,7 +3,7 @@ package com.exam.dao;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-import com.exam.mapper.MysqlMapper;
+import com.exam.mapper.MySqlMapper;
 
 public class MySqlDao {
 	// ΩÃ±€≈Ê
@@ -23,7 +23,7 @@ public class MySqlDao {
 	
 	public int getNextNum(String tableName) {
 		try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
-			MysqlMapper mapper = sqlSession.getMapper(MysqlMapper.class);
+			MySqlMapper mapper = sqlSession.getMapper(MySqlMapper.class);
 			int num = mapper.getNextNum(tableName);
 			return num;
 		}

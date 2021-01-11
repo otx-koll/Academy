@@ -1,6 +1,6 @@
 package com.exam.mapper;
 
-public interface MysqlMapper {
+public interface MySqlMapper {
 	
 	int getNextNum(String tableName);
 }

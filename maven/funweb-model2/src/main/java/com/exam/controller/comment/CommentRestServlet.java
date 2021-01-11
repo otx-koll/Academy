@@ -20,6 +20,7 @@ import org.json.simple.JSONValue;
 import com.exam.dao.CommentDao;
 import com.exam.dao.MySqlDao;
 import com.exam.vo.CommentVo;
+import com.exam.vo.Criteria;
 import com.google.gson.Gson;
 
 import lombok.extern.java.Log;
@@ -27,7 +28,7 @@ import lombok.extern.java.Log;
 @Log
 @WebServlet(urlPatterns = "/comment/*", loadOnStartup = 1)
 public class CommentRestServlet extends HttpServlet {
-
+	
 	private Gson gson = new Gson();
 
 	private void sendResponse(String strJson, HttpServletResponse response) throws ServletException, IOException {
@@ -58,10 +59,17 @@ public class CommentRestServlet extends HttpServlet {
 			
 			strJson = gson.toJson(map);
 		} else if (category.equals("list")) {
-			int nno = Integer.parseInt(request.getParameter("nno"));
+			int nno = Integer.parseInt(request.getParameter("nno")); // 게시판 글번호
+			int pageNum = Integer.parseInt(request.getParameter("pageNum")); // 댓글 페이지번호
+			int numOfRows = Integer.parseInt(request.getParameter("numOfRows")); // 한개의 댓글페이지당 댓글갯수
 			
-			List<CommentVo> commentList = commentDao.getComments(nno);
-			int totalCount = commentDao.getTotalCountByNno(nno);
+//			List<CommentVo> commentList = commentDao.getComments(nno);
+			
+			Criteria cri = new Criteria(pageNum, numOfRows);
+			
+			List<CommentVo> commentList = commentDao.getCommentsWithPaging(nno, cri);
+			
+			int totalCount = commentDao.getTotalCountByNno(nno); // 총 댓글 갯수
 			
 			Map<String, Object> map = new HashMap<>();
 			map.put("commentList", commentList);
@@ -99,6 +107,7 @@ public class CommentRestServlet extends HttpServlet {
 			return;
 		}
 		
+		
 		MySqlDao mySqlDao = MySqlDao.getInstance();
 		CommentDao commentDao = CommentDao.getInstance();
 		
@@ -107,11 +116,11 @@ public class CommentRestServlet extends HttpServlet {
 		
 		BufferedReader reader = request.getReader(); // http메시지 body에서 JSON 문자열 가져오기
 		CommentVo commentVo = gson.fromJson(reader, CommentVo.class);
-		reader.close(); // 입출력 입력객체 닫기
+		reader.close();  // 입출력 객체 닫기
 		
 		if (category.equals("main")) { // 주댓글 등록하기
 			int cno = mySqlDao.getNextNum("comment");
-			commentVo.setCno(cno); // 댓글 번호
+			commentVo.setCno(cno);  // 댓글 번호
 			commentVo.setReRef(cno); // 주댓글일때는 글번호가 글그룹번호와 동일함
 			commentVo.setReLev(0);
 			commentVo.setReSeq(0);
@@ -122,7 +131,7 @@ public class CommentRestServlet extends HttpServlet {
 			
 		} else if (category.equals("reply")) { // 답댓글 등록하기
 			int cno = mySqlDao.getNextNum("comment");
-			commentVo.setCno(cno); // 댓글 번호
+			commentVo.setCno(cno);  // 댓글 번호
 			commentVo.setId(id);
 			log.info("답댓글 : " + commentVo.toString());
 			
@@ -157,9 +166,13 @@ public class CommentRestServlet extends HttpServlet {
 		CommentDao commentDao = CommentDao.getInstance();
 		commentDao.update(commentVo); // DB update 처리 완료
 		
+		// 댓글수정 완료된 댓글내용 가져오기
+		CommentVo commentVoGet = commentDao.getCommentByCno(commentVo.getCno());
+		
 		// 클라이언트에게 응답을 줄 JSON 데이터 준비
 		Map<String, Object> map = new HashMap<>();
 		map.put("isSuccess", true);
+		map.put("comment", commentVoGet);
 		
 		String strJson = gson.toJson(map);
 		log.info("strJson : " + strJson);
@@ -173,6 +186,7 @@ public class CommentRestServlet extends HttpServlet {
 		log.info("doDelete 호출됨");
 		
 		int cno = Integer.parseInt(request.getParameter("cno"));
+		log.info("삭제 cno = " + cno);
 		
 		CommentDao commentDao = CommentDao.getInstance();
 		commentDao.deleteByCno(cno); // DB delete 처리 완료
