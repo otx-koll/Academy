@@ -49,6 +49,7 @@ public class ControllerFactory {
 		map.put("/fileWriteForm", new FileWriteFormController());
 		map.put("/fileWritePro", new FileWriteProController());
 		map.put("/fileContent", new FileContentController());
+		map.put("/download", new DownloadController());
 		
 	} // »ý¼ºÀÚ
 

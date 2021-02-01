@@ -97,8 +97,9 @@ span.reply-toggle:hover {
 									</c:when>
 									<c:otherwise>
 										<p>
-											<a href="/upload/${ attach.uploadpath }/${ attach.filename }">
-												${ attach.filename } </a>
+											<a href="/download.do?num=${ attach.num }">
+												${ attach.filename }
+											</a>
 										</p>
 									</c:otherwise>
 								</c:choose>
@@ -450,7 +451,7 @@ span.reply-toggle:hover {
 					let vm = this;
 					
 					$.ajax({
-						url: 'http://localhost:8080/comment?category=main', // 주댓글은 main
+						url: 'http://localhost:80/comment?category=main', // 주댓글은 main
 						data: str,
 						method: 'POST',
 						contentType: 'application/json; charset=UTF-8',
@@ -458,7 +459,7 @@ span.reply-toggle:hover {
 							console.log(response);
 
 							if (response.isSuccess) {
-								// 현재 페이지 다시 불러오기 // 하지만 이 방식은 서버에 부담이 간다
+								// 현재 페이지 다시 불러오기
 								vm.getList();
 								
 								// 다른방식 구현
@@ -479,7 +480,7 @@ span.reply-toggle:hover {
 
 				// 답댓글 등록하기
 				addReplyComment: function (event) {
-					let btn = event.target; // 이벤트가 발생된 객체. 쉽게 말해 this
+					let btn = event.target;
 					
 // 					let reRef = $(btn).data('reref');
 					let reRef = btn.dataset.reref;
@@ -503,7 +504,7 @@ span.reply-toggle:hover {
 					let vm = this;
 					
 					$.ajax({
-						url: 'http://localhost:8080/comment?category=reply', // 답댓글은 reply
+						url: 'http://localhost:80/comment?category=reply', // 답댓글은 reply
 						data: str,
 						method: 'POST',
 						contentType: 'application/json; charset=UTF-8',
@@ -541,7 +542,7 @@ span.reply-toggle:hover {
 					
 					// 삭제 요청
 					$.ajax({
-						url: 'http://localhost:8080/comment?cno=' + cno,
+						url: 'http://localhost:80/comment?cno=' + cno,
 						method: 'DELETE',
 						success: function (response) {
 							if (response.isSuccess == true) {
@@ -588,7 +589,7 @@ span.reply-toggle:hover {
 					let vm = this;
 					
 					$.ajax({
-						url: 'http://localhost:8080/comment',
+						url: 'http://localhost:80/comment',
 						method: 'PUT',
 						data: strJson,
 						contentType: 'application/json; charset=UTF-8',

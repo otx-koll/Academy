@@ -1,11 +1,11 @@
 package com.exam.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.mindrot.jbcrypt.BCrypt;
 
 import com.exam.mapper.MemberMapper;
 import com.exam.vo.MemberVo;
@@ -71,10 +71,10 @@ public class MemberMyBatisDao {
 		
 		try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
 			MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
-			String dbPasswd = mapper.userCheck(id);
+			String dbPasswd = mapper.userCheck(id); // dbPasswd는 암호화된 문자열임
 			
 			if (dbPasswd != null) {
-				if (passwd.equals(dbPasswd)) {
+				if (BCrypt.checkpw(passwd, dbPasswd)) { // passwd.equals(dbPasswd) 
 					check = 1;
 				} else {
 					check = 0;

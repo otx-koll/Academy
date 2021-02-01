@@ -51,7 +51,6 @@ public class FileWriteProController implements Controller {
 			dir.mkdirs();
 		}
 
-
 		//파일 업로드 하기
 		MultipartRequest multi = new MultipartRequest(
 				request,

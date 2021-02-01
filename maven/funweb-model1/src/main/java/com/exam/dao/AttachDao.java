@@ -8,7 +8,7 @@ import java.util.List;
 
 import com.exam.vo.AttachVo;
 
-public class AttachDao {
+public final class AttachDao {
 	
 	private static AttachDao instance = new AttachDao();
 	

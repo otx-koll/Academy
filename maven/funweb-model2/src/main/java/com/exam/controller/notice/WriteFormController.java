@@ -15,12 +15,12 @@ public class WriteFormController implements Controller {
 		// session 객체 참조 가져오기
 		HttpSession session = request.getSession();
 		
-		// 로그인 여부 확인
-		String id = (String) session.getAttribute("id");
-		if (id == null) {
-//			response.sendRedirect("/center/notice.jsp");
-			return "redirect:/notice.do"; // redirect없으면 jsp경로 다시 사용자가 요청하게 만듦
-		}
+//		// 로그인 여부 확인
+//		String id = (String) session.getAttribute("id");
+//		if (id == null) {
+////			response.sendRedirect("/center/notice.jsp");
+//			return "redirect:/notice.do"; // redirect없으면 jsp경로 다시 사용자가 요청하게 만듦
+//		}
 		
 		// 파라미터값  pageNum  가져오기
 		String pageNum = request.getParameter("pageNum");

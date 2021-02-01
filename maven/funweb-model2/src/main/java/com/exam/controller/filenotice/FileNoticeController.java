@@ -60,9 +60,6 @@ public class FileNoticeController implements Controller {
 			noticeList = noticeDao.getNoticesBySearch(startRow, pageSize, category, search);
 		}
 		
-		
-		
-		
 		// ==================================================
 		// 페이지블록 관련정보 구하기 작업
 		// ==================================================

@@ -1,6 +1,7 @@
 package com.exam.controller;
 
 import java.io.IOException;
+import java.util.Timer;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -25,8 +26,10 @@ public class FrontController extends HttpServlet {
 		// application 객체 가져와서 필요한 데이터 저장
 		ServletContext application = config.getServletContext();
 		application.setAttribute("aa", "안녕"); // 뭔가를 저장할 때
+		application.setAttribute("timer", new Timer(true));
 		
-		String hello = (String) application.getAttribute("aa");
+//		Timer timer = (Timer) application.getAttribute("timer");
+//		timer.cancel();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -48,7 +51,7 @@ public class FrontController extends HttpServlet {
 		// 프로젝트 이름 경로 가져오기
 		String contextPath = request.getContextPath();
 		System.out.println("contextPath: " + contextPath);
-		// contextPath: /index.do
+		// contextPath: /funweb-model2
 		
 		// 요청 명령어 구하기
 		String command = requestURI.substring(contextPath.length());

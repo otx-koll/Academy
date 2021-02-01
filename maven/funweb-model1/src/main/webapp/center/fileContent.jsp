@@ -1,30 +1,29 @@
 <%@page import="com.exam.vo.AttachVo"%>
-<%@page import="com.exam.dao.*"%>
+<%@page import="java.util.List"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="com.exam.vo.NoticeVo"%>
-<%@page import="java.util.List"%>
+<%@page import="com.exam.dao.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-// 파라미터값 num pageNum 가져오기
+// 파라미터값  num  pageNum  가져오기
 int num = Integer.parseInt(request.getParameter("num"));
 String pageNum = request.getParameter("pageNum");
 
 // DAO 객체 준비
-NoticeDao noticeDao = NoticeDao.getInstance();
+// NoticeDao noticeDao = NoticeDao.getInstance();
 // AttachDao attachDao = AttachDao.getInstance();
-// NoticeMyBatisDao noticeDao = NoticeMyBatisDao.getInstance();
+NoticeMyBatisDao noticeDao = NoticeMyBatisDao.getInstance();
 AttachMyBatisDao attachDao = AttachMyBatisDao.getInstance();
 
 // 조회수 1 증가
 noticeDao.updateReadcount(num);
 
 // 글 한개 가져오기
-// NoticeVo noticeVo = noticeDao.getNoticeByNum(num);
+//NoticeVo noticeVo = noticeDao.getNoticeByNum(num);
 NoticeVo noticeVo = noticeDao.getNoticeAndAttaches(num);
-
 // 첨부파일 리스트 정보 가져오기
-// List<AttachVo> attachList = attachDao.getAttachesByNoNum(num);
+//List<AttachVo> attachList = attachDao.getAttachesByNoNum(num);
 List<AttachVo> attachList = noticeVo.getAttachList();
 
 // 글 내용에서 "\n" 줄바꿈 문자열을 "<br>"로 교체하기
@@ -44,7 +43,6 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 <link href="/css/subpage.css" rel="stylesheet" type="text/css"  media="all">
 </head>
-
 <body>
 <div id="wrap">
 	<%-- header 영역 --%>
@@ -54,8 +52,8 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	<div id="sub_img_center"></div>
 	
 	<div class="clear"></div>
-	<!-- nav 영역 -->
-	<jsp:include page="/include/submenuBoard.jsp"/>
+	<%-- nav 영역 --%>
+	<jsp:include page="/include/submenuBoard.jsp" />
 	
 	<article>
 		
@@ -90,12 +88,12 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			<th scope="col" class="ttitle">첨부파일</th>
 			<td class="left">
 			<%
-			if (attachList != null && attachList.size() > 0) { // 최소 파일이 하나 이상 있을 때
-				for(AttachVo attachVo : attachList) {
+			if (attachList != null && attachList.size() > 0) {
+				for (AttachVo attachVo : attachList) {
 					if (attachVo.getImage().equals("I")) {
 						%>
 						<p>
-							<a href="/upload/<%=attachVo.getUploadpath() %>/<%=attachVo.getFilename() %>" width="100" height="100">
+							<a href="/upload/<%=attachVo.getUploadpath() %>/<%=attachVo.getFilename() %>">
 								<img src="/upload/<%=attachVo.getUploadpath() %>/<%=attachVo.getFilename() %>" width="100" height="100">
 							</a>
 						</p>
@@ -103,10 +101,10 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 					} else {
 						%>
 						<p>
-							<a href="/upload/<%=attachVo.getUploadpath() %>/<%=attachVo.getFilename() %>" width="100" height="100">
+							<a href="download.jsp?num=<%=attachVo.getNum() %>">
 								<%=attachVo.getFilename() %>
 							</a>
-						</p>
+						</p>					
 						<%
 					}
 				} // for
@@ -119,10 +117,10 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	<div id="table_search">
 		<%
 		String id = (String) session.getAttribute("id");
-		if (id != null) { // 로그인 했을 때
-			if (id.equals(noticeVo.getId())) { // 로그인 아이디와 글작성자 아이디가 같을 때
+		if (id != null) { // 로그인 했을때
+			if (id.equals(noticeVo.getId())) { // 로그인 아이디와 글작성자 아이디가 같을때
 				%>
-				<input type="button" value="글수정" class="btn" onclick="location.href = 'fileModifyForm.jsp?&num=<%=num %>&pageNum=<%=pageNum %>'">
+				<input type="button" value="글수정" class="btn" onclick="location.href = 'fileModifyForm.jsp?num=<%=num %>&pageNum=<%=pageNum %>'">
 				<input type="button" value="글삭제" class="btn" onclick="remove()">
 				<%
 			}
@@ -131,24 +129,24 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			<%
 		}
 		%>
-		<input type="button" value="목록보기" class="btn" onclick="location.href='fileNotice.jsp?pageNum=<%=pageNum %>'">
+		<input type="button" value="목록보기" class="btn" onclick="location.href = 'fileNotice.jsp?pageNum=<%=pageNum %>'">
 	</div>
 	
 	<div class="clear"></div>
 	<div id="page_control">
-		
 	</div>
 		
 	</article>
     
 	<div class="clear"></div>
 	<%-- footer 영역 --%>
-	<jsp:include page="../include/bottomFooter.jsp" />
+	<jsp:include page="/include/bottomFooter.jsp" />
 </div>
+
 <script>
 	function remove() {
-		let isDelete = confirm('<%=noticeVo.getNum() %>번 글을 정말 삭제하시겠습니까?'); // 확인 창 띄우기. true와 false 리턴
-		if (isDelete) { // confirm이 true라면
+		let isDelete = confirm('<%=noticeVo.getNum() %>번 글을 정말 삭제하시겠습니까?');
+		if (isDelete) {
 			location.href = 'fileDelete.jsp?num=<%=noticeVo.getNum() %>&pageNum=<%=pageNum %>';
 		}
 	}
@@ -156,3 +154,6 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 </body>
 </html>   
 
+
+
+    

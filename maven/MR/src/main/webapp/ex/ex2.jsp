@@ -77,6 +77,12 @@ hr {
 table, td, tr {
 	border: solid 1px blue;
 }
+
+.costTab {
+	display: inline-block;
+ 	position: sticky;
+ 	top: 10px;
+}
 </style>
 </head>
 <body>
@@ -171,7 +177,7 @@ table, td, tr {
 				</div>
 			</div>
 			<div>
-				<div style="width: 332px;">
+				<div class="costTab" style="width: 332px;">
 					<div>
 						<span>얼마/1박</span>
 						<span class="float_right">평점</span>
